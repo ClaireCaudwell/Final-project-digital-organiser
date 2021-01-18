@@ -33,11 +33,11 @@ const User = mongoose.model("User", {
   //   minlength: 5,
   //   maxlength: 30,
   // },
-  // accessToken: {
-  //   type: String,
-  //   default: () => crypto.randomBytes(128).toString("hex"),
-  //   unique: true, 
-  // },
+  accessToken: {
+    type: String,
+    default: () => crypto.randomBytes(128).toString("hex"),
+    unique: true, 
+  },
   scheduleitem: [{
     item: {
       type: String,
@@ -76,7 +76,7 @@ app.post("/user", async (req, res) => {
   try {
     const { username } = req.body;
     const user = await new User({username}).save();
-    res.status(200).json({ userId: user._id, username: user.username, statusMessage: "User created" });
+    res.status(200).json({ userId: user._id, accessToken: user.accessToken, username: user.username, statusMessage: "User created" });
   } catch (error) {
     res.status(400).json({statusMessage: "Could not create user", error})
   }
