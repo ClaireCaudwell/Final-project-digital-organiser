@@ -1,4 +1,4 @@
-# Project Auth
+# Project digital organiser
 
 Replace this readme with your own information about your project.
 
