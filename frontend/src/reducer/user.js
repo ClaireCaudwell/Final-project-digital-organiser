@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     login: {
         userId: 0,
-        accessToken: "",
+        accessToken: null,
         username: null,
         statusMessage: null,
         errorMessage: null, 
@@ -14,13 +14,17 @@ export const user = createSlice({
     name: "user",
     initialState: initialState,
     reducers: {
-        setUsername: (state, action) => {
-            const { username } = action.payload;
-            state.login.username = username; 
+        setUserId: (state, action) => {
+            const { userId } = action.payload;
+            state.login.userId = userId; 
         },
         setAccessToken: (state, action) => {
             const { accessToken } = action.payload;
             state.login.accessToken = accessToken; 
+        },
+        setUsername: (state, action) => {
+            const { username } = action.payload;
+            state.login.username = username; 
         },
         setStatusMessage: (state, action) => {
             const { statusMessage } = action.payload;
@@ -33,42 +37,50 @@ export const user = createSlice({
     },
 });
 
-
-//If json response from fetch is a success then the redux store will be updated with this data
-// const handleLoginSuccess = (loginresponse) => {
-//     dispatch(user.actions.setUsername({ username: loginresponse.username }));        
-//     dispatch(user.actions.setAccessToken({ accessToken: loginresponse.accessToken }));
-//     dispatch(user.actions.setStatusMessage({ statusMessage: loginresponse.statusMessage}));       
-// };
-
-//If json response from fetch fails then the redux store will be updated with this data including the throw message
-// const handleLoginFailed = (error) => {
-//     dispatch(user.actions.setUsername({ username: null }));
-//     dispatch(user.actions.setErrorMessage({ errorMessage: error.toString()}));
-// };
-
-const LOGIN_URL = "http://localhost:8080/user"
-//Thunk and fetch for when the user logs in
-// if successful the username, accesstoken and status message will be dispatched to the initial state. 
-// if failed then the throw error is dispatched to errorMessage in the intial state 
-export const userLogin = (username) => {
+// Thunk that's triggered by the user when they sign up or log in
+// Does a fetch and a GET request sending the accessToken in headers which will allow for the Organiser.js to be rendered and the user will have access to their organiser
+// If not successful e.g. they haven't created a valid username/password or inputted the correct credentials the the throw error is shown
+export const getOrganiser = (userId, accessToken) => {
     return(dispatch) => {
-        fetch(LOGIN_URL, {
-            method: "POST",
-            body: JSON.stringify({ username }),
-            headers: { "Content-Type": "application/json"},
+        fetch(`http://localhost:8080/users/${userId}/organiser`,{
+            method: "GET",
+            headers: { Authorization: accessToken },
         })
         .then((res) => {
             if(!res.ok) {
                 throw new Error(
-                    "Login failed. Please enter a valid username"
+                    "Couldn't get your organiser. Please check your username and password are correct"
                 );
-            } return res.json();
+            } return res.json(); 
         })
         .then((json) => {
-            dispatch(user.actions.setUsername({ username: json.username }));        
+            dispatch(user.actions.setStatusMessage({ statusMessage: json.successMessage }));
+        })
+        .catch((error) => {
+            dispatch(user.actions.setErrorMessage({ errorMessage: error.toString()}))
+        })
+    };
+};
+// Thunk and fetch for the user to login using the sessions endpoint
+export const userLogin = (username, password) => {
+    return(dispatch) => {
+        fetch("http://localhost:8080/sessions", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+        })
+        .then((res) => {
+            if(!res.ok) {
+                throw new Error(
+                    "Login failed. Please check your username and password"
+                );
+            } return res.json(); 
+        })               
+        .then((json) => {
             dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }));
-            dispatch(user.actions.setStatusMessage({ statusMessage: json.statusMessage}));       
+            dispatch(user.actions.setUserId({ userId: json.userId}));      
+            dispatch(user.actions.setUsername({ username: json.username }));        
+            dispatch(user.actions.setStatusMessage({ statusMessage: json.statusMessage})); 
         })
         .catch((error) => { 
             dispatch(user.actions.setUsername({ username: null }));
