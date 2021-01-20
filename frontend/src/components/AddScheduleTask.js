@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { task } from "../reducer/task";
 
-export const AddScheduleItem = () => {
+export const AddScheduleTask = () => {
     const dispatch = useDispatch();
     const [scheduletask, setScheduleTask] = useState("");
     const userId = useSelector((store) => store.user.login.userId);
@@ -11,7 +11,7 @@ export const AddScheduleItem = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:8080/users/${userId}/addscheduletask`, {
+        fetch(`http://localhost:8080/users/${userId}/scheduletask`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ userId, scheduletask }),
@@ -37,8 +37,8 @@ export const AddScheduleItem = () => {
     };
 
     return (
-        <section>
-            <h2>Schedule something!</h2>
+        <section className="schedule-component-container"> 
+            <h4>Schedule something!</h4>
             <form>
                 <input
                     value={scheduletask}

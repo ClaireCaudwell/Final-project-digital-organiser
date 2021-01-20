@@ -33,7 +33,7 @@ export const user = createSlice({
         setErrorMessage: (state, action) => {
             const { errorMessage } = action.payload;
             state.login.errorMessage = errorMessage; 
-        },
+        }
     },
 });
 
@@ -61,6 +61,36 @@ export const getOrganiser = (userId, accessToken) => {
         })
     };
 };
+
+const SIGNUP_URL = "http://localhost:8080/users";
+
+export const userSignup = (username, password) => {
+    return(dispatch) => {
+        fetch(SIGNUP_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify({ username, password }),
+        })
+        .then((res) => {
+            if(!res.ok) {
+                throw new Error(
+                    "Sign up failed. Please enter a valid username and password"
+                );
+            } return res.json();
+        })
+        .then((json) => {
+            dispatch(user.actions.setAccessToken({ accessToken: json.accessToken })); 
+            dispatch(user.actions.setUserId({ userId: json.userId}));
+            dispatch(user.actions.setUsername({ username: json.username }));        
+            dispatch(user.actions.setStatusMessage({ statusMessage: json.statusMessage}));      
+        })
+        .catch((error) => { 
+            dispatch(user.actions.setUsername({ username: null }));
+            dispatch(user.actions.setErrorMessage({ errorMessage: error.toString()}));
+        })
+
+    }
+}
 // Thunk and fetch for the user to login using the sessions endpoint
 export const userLogin = (username, password) => {
     return(dispatch) => {

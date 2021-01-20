@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-
-import { Organiser } from "./Organiser";
-import { user, userLogin } from "reducer/user";
-
-const SIGNUP_URL = "http://localhost:8080/users";
+import { userLogin, userSignup } from "reducer/user";
+import { Schedule } from "./Schedule";
 
 export const SignupLogin = () => {
     const dispatch = useDispatch();
@@ -22,33 +19,9 @@ export const SignupLogin = () => {
     // Finally username and password useState is set back to empty string
     const handleSignup = (event) => {
         event.preventDefault();
-
-        fetch(SIGNUP_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json"},
-            body: JSON.stringify({ username, password }),
-        })
-        .then((res) => {
-            if(!res.ok) {
-                throw new Error(
-                    "Sign up failed. Please enter a valid username and password"
-                );
-            } return res.json();
-        })
-        .then((json) => {
-            dispatch(user.actions.setAccessToken({ accessToken: json.accessToken })); 
-            dispatch(user.actions.setUserId({ userId: json.userId}));
-            dispatch(user.actions.setUsername({ username: json.username }));        
-            dispatch(user.actions.setStatusMessage({ statusMessage: json.statusMessage}));      
-        })
-        .catch((error) => { 
-            dispatch(user.actions.setUsername({ username: null }));
-            dispatch(user.actions.setErrorMessage({ errorMessage: error.toString()}));
-        })
-        .finally(() => {
-            setUsername("");
-            setPassword(""); 
-        })
+        dispatch(userSignup(username, password));
+        setUsername("");
+        setPassword(""); 
     };
 
     // If user already signed up then they can login
@@ -67,33 +40,36 @@ export const SignupLogin = () => {
     // The fetch and GET request is done in server.js which authenticates the accessToken and thus authenticates that the user exsists in the database which allows for the user is shown their organiser which will be rendered in Organiser.js.
     return (
         <>
-        {!accessToken ? (
-                <section>
-                    <h1>Welcome</h1>
-                    <p>Please enter your name and password to signup or login</p>
-                    <form>
-                        <input
-                            value={username}
-                            onChange={(event) => setUsername(event.target.value)}
-                            minLength="3"
-                            maxLength="20"
-                            required                
-                        /> 
-                         <input
-                            type="password"
-                            value={password}
-                            onChange={(event) => setPassword(event.target.value)}
-                            minLength="5"
-                            required                
-                        />             
-                        <button type="submit" onClick={handleSignup}>SIGN UP</button>
-                        <button type="submit" onClick={handleLogin}>LOGIN</button>
-                    </form>
-                    {userId === 0 && <p>{error}</p>}
-                </section>
+        {!accessToken ? ( 
+            <main>
+                <h1>Organiser .</h1>
+                <h4 className="welcome">Welcome to Organiser . </h4>
+                <p className="signuplogin-text">Sign up or login to get your organiser</p>
+                <form className="signup-login-form">
+                    Username
+                    <input
+                        value={username}
+                        onChange={(event) => setUsername(event.target.value)}
+                        minLength="3"
+                        maxLength="20"
+                        required                
+                    />
+                    Password   
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                        minLength="5"
+                        required                
+                    />
+                    <button className="form-button" type="submit" onClick={handleSignup}>SIGN UP</button>
+                    <button className="form-button" type="submit" onClick={handleLogin}>LOGIN</button> 
+                </form>
+                {userId === 0 && <p>{error}</p>}
+            </main>
             ) : (
-                <Organiser />
-            )} 
-        </>
+            <Schedule />            
+        )}
+        </>  
     );
 };

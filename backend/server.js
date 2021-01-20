@@ -19,8 +19,8 @@ const userSchema = new mongoose.Schema( {
     type: String,
     required: true,
     unique: true,
-    minLength: 3,
-    maxLength: 20,
+    minlength: 3,
+    maxlength: 20,
   },
   password: {
     type: String,
@@ -137,7 +137,7 @@ app.get("/schedule", async (req, res) => {
 // POST endpoint where the user can add a new schedule item to their weekly schedule
 // The user is found by the userId stored in the redux store?
 // The data sent from the frontend is item, date, time, userId and this is sent to the database by adding a new ScheduleItem to the users object
-app.post("/users/:id/addscheduletask", async (req, res) => {
+app.post("/users/:id/scheduletask", async (req, res) => {
   try {
     const userId = req.params.id;
     const { scheduletask, date, time } = req.body;
@@ -147,6 +147,7 @@ app.post("/users/:id/addscheduletask", async (req, res) => {
     } catch(error) {
       throw "User not found";
     }
+    //Try to change push to findByIdAndUpdate when have time
     user.scheduleTask.push({ task: scheduletask })
     user.save();
     let addedTask = user.scheduleTask[user.scheduleTask.length-1];
@@ -157,7 +158,7 @@ app.post("/users/:id/addscheduletask", async (req, res) => {
 });
 
 // DELETE endpoint where a schedule item can be deleted from the database based on the schedule items id?
-app.delete("/deletescheduleitem/:id", async (req, res) => {
+app.delete("/users/:id/scheduletask", async (req, res) => {
 
 });
 

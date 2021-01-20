@@ -3,8 +3,11 @@ import { useSelector, useDispatch  } from "react-redux";
 
 import { getOrganiser, user } from "../reducer/user";
 import { Header } from "./Header";
+import { Calendar } from "./Calendar";
+import { AddScheduleTaskButton } from "./AddScheduleTaskButton";
+import { WeeklySchedule } from "./WeeklySchedule";
 
-export const Organiser = () => {
+export const Schedule = () => {
     const dispatch = useDispatch();
     const userId = useSelector((store) => store.user.login.userId);
     const accessToken = useSelector((store) => store.user.login.accessToken);
@@ -22,7 +25,15 @@ export const Organiser = () => {
     
     return (
         <>
-            <Header />         
+            <Header />
+            <main>
+                <div className="week-number-text">
+                    <h2>Week number</h2>
+                </div>
+                <Calendar />
+                <AddScheduleTaskButton />
+                <WeeklySchedule />
+            </main>        
         </>
     )
 };
