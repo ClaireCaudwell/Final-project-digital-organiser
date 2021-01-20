@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch  } from "react-redux";
 
 import { getOrganiser, user } from "../reducer/user";
+import { AddScheduleItem } from "./AddScheduleItem";
 
 export const Organiser = () => {
     const dispatch = useDispatch();
-    const userCreatedMessage = useSelector((store) => store.user.login.statusMessage);
     const username = useSelector((store) => store.user.login.username);
     const userId = useSelector((store) => store.user.login.userId);
     const accessToken = useSelector((store) => store.user.login.accessToken);
@@ -24,7 +24,7 @@ export const Organiser = () => {
     return (
         <section>
             <p>Hi {username}. Welcome to your organiser</p>
-            <p>{userCreatedMessage}</p>
+            <AddScheduleItem />
         </section>
     )
 };

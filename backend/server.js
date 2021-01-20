@@ -13,7 +13,8 @@ mongoose.Promise = Promise;
 Model structure for the username, password and access token.
 Tried to connect the Scheduleitem model, but need to test this to see if it works. 
  */
-const User = mongoose.model("User", {
+
+const userSchema = new mongoose.Schema( {
   username: {
     type: String,
     required: true,
@@ -32,32 +33,30 @@ const User = mongoose.model("User", {
     default: () => crypto.randomBytes(128).toString("hex"),
     unique: true, 
   },
-  scheduleitem: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Scheduleitem",
-  },
+  //Array of subdocument - saved whenever their top-level parent document is saved
+  scheduleTask: [{
+    task: {
+      type: String,
+      minlength: 3,
+      maxlength: 30,
+      required: true,
+    },
+    date: {
+      type: Date,
+      default: () => Date.now(),
+    },
+    time: {
+      type: Date,
+      default: () => Date.now(),
+    },
+    delete: {
+      type: Boolean,
+      default: false,
+    }, 
+  }]
 });
 
-const Scheduleitem = mongoose.model("Scheduleitem", {
-  item: {
-    type: String,
-    minlength: 3,
-    maxlength: 30,
-    required: true,
-  },
-  date: {
-    type: Date,
-    default: () => Date.now(),
-  },
-  time: {
-    type: Date,
-    default: () => Date.now(),
-  },
-  delete: {
-    type: Boolean,
-    default: false,
-  },
-});
+const User = mongoose.model("User", userSchema);
 
 // Function is called when the "/users/:id/organiser" is actioned in the getOrganiser function
 // Checks the accessToken sent in the headers to see if it exists in the database
@@ -126,8 +125,7 @@ app.post("/sessions", async (req, res) => {
 // If successful then the Organiser.js is rendered taking the user to their organiser
 app.get("/users/:id/organiser", authenticateUser);
 app.get("/users/:id/organiser", async (req, res) => {
-  const successMessage = `${req.user.username} welcome to your organiser`;
-  res.status(201).json({ successMessage });
+  res.status(201).json({ statusMessage: "Connected to organiser" });
 });
 
 // GET endpoint to get all of the users schedule items for the week they click on the calendar
@@ -138,20 +136,23 @@ app.get("/schedule", async (req, res) => {
 
 // POST endpoint where the user can add a new schedule item to their weekly schedule
 // The user is found by the userId stored in the redux store?
-// The data sent from the frontend is item, date, time, userId and this is sent to the database by adding a new ScheduleItem
-app.post("/scheduleitem", async (req, res) => {
+// The data sent from the frontend is item, date, time, userId and this is sent to the database by adding a new ScheduleItem to the users object
+app.post("/users/:id/addscheduletask", async (req, res) => {
   try {
-    const { item, date, time, userId } = req.body;
-    const user = await findOne({ userId });
-    if ( user === userId ){
-      const scheduleItem = new Scheduleitem({ description: "scheduleItem", item });
-      scheduleItem.save();
-      res.status(200).json({ itemId: scheduleItem._id, statusMessage: "Schedule item created" });
-    } else {
-        throw "User not found"
+    const userId = req.params.id;
+    const { scheduletask, date, time } = req.body;
+    let user;
+    try {
+      user = await User.findById(userId);
+    } catch(error) {
+      throw "User not found";
     }
+    user.scheduleTask.push({ task: scheduletask })
+    user.save();
+    let addedTask = user.scheduleTask[user.scheduleTask.length-1];
+    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, statusMessage: "Schedule item created" });
   } catch (error) {
-    res.status(400).json({ statusMesssage: "Could't create schedule item.", error});
+    res.status(400).json({ errorMesssage: "Could't create schedule item.", error});
   }
 });
 

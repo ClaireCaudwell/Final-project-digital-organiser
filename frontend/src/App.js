@@ -3,10 +3,10 @@ import { Provider } from "react-redux";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
 import { user } from "./reducer/user";
-import { scheduleItem } from "./reducer/item";
+import { task } from "./reducer/task";
 import { SignupLogin } from "components/SignupLogin";
 
-const reducer = combineReducers({ user: user.reducer, scheduleitem: scheduleItem.reducer });
+const reducer = combineReducers({ user: user.reducer, task: task.reducer });
 const store = configureStore({ reducer: reducer });
 
 export const App = () => {

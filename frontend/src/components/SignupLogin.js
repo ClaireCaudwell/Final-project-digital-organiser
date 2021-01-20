@@ -31,7 +31,7 @@ export const SignupLogin = () => {
         .then((res) => {
             if(!res.ok) {
                 throw new Error(
-                    "Sign up failed. Please enter a valid username and password that's between 3 and 20 characters long"
+                    "Sign up failed. Please enter a valid username and password"
                 );
             } return res.json();
         })
@@ -75,13 +75,16 @@ export const SignupLogin = () => {
                         <input
                             value={username}
                             onChange={(event) => setUsername(event.target.value)}
-                            minLength="3"                
+                            minLength="3"
+                            maxLength="20"
+                            required                
                         /> 
                          <input
                             type="password"
                             value={password}
                             onChange={(event) => setPassword(event.target.value)}
-                            minLength="5"                
+                            minLength="5"
+                            required                
                         />             
                         <button type="submit" onClick={handleSignup}>SIGN UP</button>
                         <button type="submit" onClick={handleLogin}>LOGIN</button>
