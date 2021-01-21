@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema( {
     },
     date: {
       type: Date,
-      default: () => Date.now(),
+      // default: () => Date.now(),
     },
     time: {
       type: Date,
@@ -148,10 +148,10 @@ app.post("/users/:id/scheduletask", async (req, res) => {
       throw "User not found";
     }
     //Try to change push to findByIdAndUpdate when have time
-    user.scheduleTask.push({ task: scheduletask })
+    user.scheduleTask.push({ task: scheduletask, date: date })
     user.save();
     let addedTask = user.scheduleTask[user.scheduleTask.length-1];
-    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, statusMessage: "Schedule item created" });
+    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, date: addedTask.date, statusMessage: "Schedule item created" });
   } catch (error) {
     res.status(400).json({ errorMesssage: "Could't create schedule item.", error});
   }
