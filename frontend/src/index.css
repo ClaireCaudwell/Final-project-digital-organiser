@@ -7,11 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -100,6 +95,12 @@ header{
   background-color: #F3FDD8;
 }
 
+.active {
+  color: #8ccf6d;
+  border-bottom: 2px solid #8ccf6d; 
+}
+
+
 h2 {
   font-weight: 400;
   padding: 10px;
@@ -167,7 +168,6 @@ input:checked + .slider:before {
 }
 
 /* Rounded sliders */
-
 .toggle-container {
   margin-top: 5px;
 }
@@ -185,7 +185,7 @@ input:checked + .slider:before {
   color: gray;
 }
 
-/* AddScheduleTask.js */
+/* AddScheduleTaskButton.js */
 .add-schedule-container{
   display: flex;
   align-items: center;
@@ -206,4 +206,44 @@ input:checked + .slider:before {
   font-size: 30px;
   cursor: pointer;
   color: white;
+}
+
+/* AddScheduleTask.js */
+
+.close-button-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.close-button {
+  border-radius: 50%;
+  width: 22px;
+  border: none;
+  background-color: #a1a79f;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+}
+
+.input-box {
+  border: 2px solid #8ccf6d;
+  width: 95%;
+}
+
+.add-task-button {
+  width: 100%;
+  background-color: white;
+  border: 2px solid black;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.back-link {
+  text-decoration: none;
+}
+
+.time-input {
+  width: 100%;
 }
