@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
+
 
 export const AddScheduleTaskButton = () => {
 
@@ -7,9 +8,9 @@ export const AddScheduleTaskButton = () => {
         <section className="schedule-component-container">
             <div>
                 <h4>Add to your schedule</h4>
-                <button>
-                    <Link className="link" to="/addtask">Schedule</Link>
-                </button>
+                <NavLink className="link" to="/addtask">
+                    <button type="button" >Schedule</button>
+                </NavLink>
             </div>
         </section>
     );

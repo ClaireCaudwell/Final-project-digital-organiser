@@ -34,3 +34,29 @@ export const task = createSlice({
         },
     }
 }); 
+
+//Thunk for when the user adds a schedule task
+export const getTask = (scheduletask, userId) => {
+    return(dispatch) => {
+        fetch(`http://localhost:8080/users/${userId}/scheduletask`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId, scheduletask }),
+        })
+        .then((res) => {
+            if(!res.ok) {
+                throw new Error(
+                    "Couldn't retrieve task"
+                );
+            } return res.json();
+        })
+        .then((json) => {
+            dispatch(task.actions.setTaskId({ taskId: json.taskId }));
+            dispatch(task.actions.setStatusMessage({ statusMessage: json.statusMessage}));
+            dispatch(task.actions.setTask({ task: json.task }));
+        })
+        .catch((error) => {
+            dispatch(task.actions.setErrorMessage({ errorMessage: error.toString()}));
+        })
+    };
+};

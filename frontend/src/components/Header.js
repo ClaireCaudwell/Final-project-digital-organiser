@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { ColourSchemeToggle } from "./ColourSchemeToggle";
 
 export const Header = () => {
@@ -16,14 +16,10 @@ export const Header = () => {
             <nav>
                 <ul>
                     <div>
-                        <li>
-                            <Link className="link" to="/schedule">SCHEDULE</Link>
-                        </li>
+                        <li><NavLink className="link" to="/schedule">SCHEDULE</NavLink></li>
                     </div>
                     <div>
-                        <li>
-                            <Link className="link" to="/notes">NOTES</Link>
-                        </li>
+                        <li><NavLink className="link" to="/notes">NOTES</NavLink></li>
                     </div>
                 </ul>
             </nav>

@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch  } from "react-redux";
 
 import { getOrganiser, user } from "../reducer/user";
-import { Header } from "./Header";
-import { Calendar } from "./Calendar";
-import { AddScheduleTaskButton } from "./AddScheduleTaskButton";
-import { WeeklySchedule } from "./WeeklySchedule";
+import { Header } from "../components/Header";
+import { Calendar } from "../components/Calendar";
+import { AddScheduleTaskButton } from "../components/AddScheduleTaskButton";
+import { WeeklySchedule } from "../components/WeeklySchedule";
 
 export const Schedule = () => {
     const dispatch = useDispatch();
