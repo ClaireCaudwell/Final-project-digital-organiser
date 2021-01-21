@@ -54,7 +54,7 @@ export const getOrganiser = (userId, accessToken) => {
             } return res.json(); 
         })
         .then((json) => {
-            dispatch(user.actions.setStatusMessage({ statusMessage: json.successMessage }));
+            dispatch(user.actions.setStatusMessage({ statusMessage: json.statusMessage }));
         })
         .catch((error) => {
             dispatch(user.actions.setErrorMessage({ errorMessage: error.toString()}))

@@ -15,10 +15,6 @@ export const Schedule = () => {
 
     const [ date, setDate ] = useState(new Date());
 
-    const onChange = (date) => {
-        setDate(date)
-    };
-
     //useEffect allow for the dispatch to be done when the Schedule component is mounted. This dispatch will trigger the fetch in the user.js redux store and authenticate the user so using the accessToken. If the user doesn't sign up or login with the correct credentials then an accessToken is never created.
     //
     useEffect(() => {
@@ -30,6 +26,11 @@ export const Schedule = () => {
     // From here the user can choose to add a new schedule item, click on a schedule item to render the schedule summary 
     // From the schedule summary the user can edit or delete the schedule item
     
+
+    const onChange = (date) => {
+        setDate(date);
+    };
+
     return (
         <>
             <Header />
@@ -42,6 +43,7 @@ export const Schedule = () => {
                         value={date}
                         onChange={onChange}
                         showWeekNumbers
+                        // onClickWeekNumber={}
                     />
                 </div>
                 <AddScheduleTaskButton />
