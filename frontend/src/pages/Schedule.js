@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch  } from "react-redux";
 
-import { getOrganiser, user } from "../reducer/user";
+import { getOrganiser } from "../reducer/user";
 import { Header } from "../components/Header";
 import { Calendar } from "../components/Calendar";
 import { AddScheduleTaskButton } from "../components/AddScheduleTaskButton";
@@ -12,10 +12,10 @@ export const Schedule = () => {
     const userId = useSelector((store) => store.user.login.userId);
     const accessToken = useSelector((store) => store.user.login.accessToken);
 
-    //useEffect dispatches to the getOrganiser thunk in redux store passing the userId and accessToken stored in redux store
-    // This allows for the user to be validated before the Organiser.js component is rendered to ensure that the user has an account or entered valid credentials
+    //useEffect allow for the dispatch to be done when the Schedule component is mounted. This dispatch will trigger the fetch in the user.js redux store and authenticate the user so using the accessToken. If the user doesn't sign up or login with the correct credentials then an accessToken is never created.
+    //
     useEffect(() => {
-        dispatch(user.actions.setErrorMessage({ errorMessage: null }))
+        // dispatch(user.actions.setErrorMessage({ errorMessage: null }))
         dispatch(getOrganiser(userId, accessToken));
     },[userId, accessToken, dispatch]);
     
@@ -27,7 +27,7 @@ export const Schedule = () => {
         <>
             <Header />
             <main>
-                <div className="week-number-text">
+                <div className="schedule-component-container">
                     <h2>Week number</h2>
                 </div>
                 <Calendar />

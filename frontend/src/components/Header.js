@@ -11,7 +11,10 @@ export const Header = () => {
         <header>
             <div className="header-toggle-container">
                 <h2>Hi {username}. Welcome to your organiser</h2>
-                <ColourSchemeToggle />
+                <div className="toggle-container">
+                    <ColourSchemeToggle />
+                    <p className="toggle-text">Toggle to choose between colour themes</p>
+                </div>
             </div>
             <nav>
                 <ul>

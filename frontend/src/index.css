@@ -104,11 +104,18 @@ h2 {
   font-weight: 400;
   padding: 10px;
   text-align: left;
+  font-size: 22px;
+  padding: 0;
+  margin: 0 40px 20px 0;
+}
+
+nav {
+  margin-top: 40px;
 }
 
 .header-toggle-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -116,7 +123,7 @@ h2 {
   position: relative;
   display: inline-block;
   width: 60px;
-  height: 34px;
+  height: 25px;
 }
 
 .switch input { 
@@ -140,10 +147,10 @@ h2 {
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 18px;
+  width: 18px;
+  left: 8px;
+  bottom: 4.5px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
@@ -160,10 +167,43 @@ input:checked + .slider:before {
 }
 
 /* Rounded sliders */
+
+.toggle-container {
+  margin-top: 5px;
+}
+
 .slider.round {
   border-radius: 34px;
 }
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.toggle-text {
+  font-size: 10px;
+  color: gray;
+}
+
+/* AddScheduleTask.js */
+.add-schedule-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.add-schedule-container h4 {
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.add-schedule-container button {
+  border-radius: 50%;
+  width: 34px;
+  border: none;
+  background-color: #8ccf6d;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
 }
