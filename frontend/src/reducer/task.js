@@ -4,8 +4,7 @@ const initialState = {
     scheduleTask: {
         taskId: 0,
         task: null,
-        date: null,
-        time: 0,
+        startdatetime: null,
         delete: false,
         statusMessage: null,
         errorMessage: null,
@@ -24,9 +23,9 @@ export const task = createSlice({
             const { task } = action.payload;
             state.scheduleTask.task = task; 
         },
-        setDate: (state, action) => {
-            const { date } = action.payload;
-            state.scheduleTask.date = date; 
+        setStartdatetime: (state, action) => {
+            const { startdatetime } = action.payload;
+            state.scheduleTask.startdatetime = startdatetime; 
         },
         setStatusMessage: (state, action) => {
             const { statusMessage } = action.payload;
@@ -40,12 +39,12 @@ export const task = createSlice({
 }); 
 
 //Thunk for when the user adds a schedule task
-export const getTask = (scheduletask, userId, date) => {
+export const getTask = (scheduletask, userId, startDateTime) => {
     return(dispatch) => {
         fetch(`http://localhost:8080/users/${userId}/scheduletask`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userId, scheduletask, date }),
+            body: JSON.stringify({ userId, scheduletask, startDateTime }),
         })
         .then((res) => {
             if(!res.ok) {
@@ -58,7 +57,7 @@ export const getTask = (scheduletask, userId, date) => {
             dispatch(task.actions.setTaskId({ taskId: json.taskId }));
             dispatch(task.actions.setStatusMessage({ statusMessage: json.statusMessage}));
             dispatch(task.actions.setTask({ task: json.task }));
-            dispatch(task.actions.setDate({ date: json.date }));
+            dispatch(task.actions.setStartdatetime({ startdatetime: json.startdatetime }));
         })
         .catch((error) => {
             dispatch(task.actions.setErrorMessage({ errorMessage: error.toString()}));

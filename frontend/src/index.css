@@ -248,3 +248,9 @@ input:checked + .slider:before {
 .time-input {
   width: 100%;
 }
+
+.date-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

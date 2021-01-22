@@ -31,6 +31,10 @@ export const Schedule = () => {
         setDate(date);
     };
 
+    const selectWeekNumber =  (weekNumber, date, event) => {
+        alert(`Clicked week: ', ${weekNumber}, 'that starts on: ', ${date}`);
+    };
+
     return (
         <>
             <Header />
@@ -43,7 +47,7 @@ export const Schedule = () => {
                         value={date}
                         onChange={onChange}
                         showWeekNumbers
-                        // onClickWeekNumber={}
+                        onClickWeekNumber={selectWeekNumber}
                     />
                 </div>
                 <AddScheduleTaskButton />
