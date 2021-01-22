@@ -4,11 +4,24 @@ const initialState = {
     scheduleTask: {
         taskId: 0,
         task: null,
-        startdatetime: null,
+        startdate: null,
+        starttime: null,
         delete: false,
         statusMessage: null,
         errorMessage: null,
-    }
+    }, 
+    // weeklySchedule: [{
+    //     scheduleTask: {
+    //         taskId: 0,
+    //         task: null,
+    //         starttime: null,
+    //         startdate: null,
+    //         weekNumber: null,
+    //         delete: false,
+    //         statusMessage: null,
+    //         errorMessage: null,            
+    //     },
+    // }],
 };
 
 export const task = createSlice({
@@ -23,9 +36,13 @@ export const task = createSlice({
             const { task } = action.payload;
             state.scheduleTask.task = task; 
         },
-        setStartdatetime: (state, action) => {
-            const { startdatetime } = action.payload;
-            state.scheduleTask.startdatetime = startdatetime; 
+        setStartdate: (state, action) => {
+            const { startdate } = action.payload;
+            state.scheduleTask.startdate = startdate; 
+        },
+        setStarttime: (state, action) => {
+            const { starttime } = action.payload;
+            state.scheduleTask.starttime = starttime; 
         },
         setStatusMessage: (state, action) => {
             const { statusMessage } = action.payload;
@@ -35,8 +52,12 @@ export const task = createSlice({
             const { errorMessage } = action.payload;
             state.scheduleTask.errorMessage = errorMessage; 
         },
+        // setWeeklySchedule: (state, action) => {
+        //     const { weeklySchedule } = action.payload;
+        //     state.WeeklySchedule = weeklySchedule;
+        // },
     }
-}); 
+});
 
 //Thunk for when the user adds a schedule task
 export const getTask = (scheduletask, userId, startDateTime) => {
@@ -57,7 +78,8 @@ export const getTask = (scheduletask, userId, startDateTime) => {
             dispatch(task.actions.setTaskId({ taskId: json.taskId }));
             dispatch(task.actions.setStatusMessage({ statusMessage: json.statusMessage}));
             dispatch(task.actions.setTask({ task: json.task }));
-            dispatch(task.actions.setStartdatetime({ startdatetime: json.startdatetime }));
+            dispatch(task.actions.setStartdate({ startdate: json.startdate }));
+            dispatch(task.actions.setStarttime({ starttime: json.starttime }));
         })
         .catch((error) => {
             dispatch(task.actions.setErrorMessage({ errorMessage: error.toString()}));

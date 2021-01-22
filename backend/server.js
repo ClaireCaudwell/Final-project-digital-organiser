@@ -125,9 +125,18 @@ app.get("/users/:id/organiser", async (req, res) => {
 
 // GET endpoint to get all of the users schedule items for the week they click on the calendar
 // Send in body the user Id and week range? Not quite sure yet how to do this
-app.get("/schedule", async (req, res) => {
+// app.get("/users/:id/scheduletask", async (req, res) => {
+//   try {
+//     const userId = req.params.id;
+//     const { week, weekDate } = req.body;
+//     let user;
+//   } try {
+//       user = await User.findByOne(userId);
+//     } catch (error) {
+//       throw "User not found";
+//   } user.scheduleTask.filter(weekDate +6)
 
-});
+// });
 
 // POST endpoint where the user can add a new schedule item to their weekly schedule
 // The user is found by the userId stored in the redux store?
@@ -145,8 +154,10 @@ app.post("/users/:id/scheduletask", async (req, res) => {
     //Try to change push to findByIdAndUpdate when have time
     user.scheduleTask.push({ task: scheduletask, startdatetime: startDateTime })
     user.save();
-    let addedTask = user.scheduleTask[user.scheduleTask.length-1];
-    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, startdatetime: addedTask.startdatetime, statusMessage: "Schedule item created" });
+    const addedTask = user.scheduleTask[user.scheduleTask.length-1];
+    const date = addedTask.startdatetime.toDateString();
+    const time = addedTask.startdatetime.toTimeString();
+    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, startdate: date, starttime: time, statusMessage: "Schedule item created" });
   } catch (error) {
     res.status(400).json({ errorMesssage: "Could't create schedule item.", error});
   }

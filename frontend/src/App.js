@@ -5,12 +5,13 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import { user } from "./reducer/user";
 import { task } from "./reducer/task";
+import { weeklySchedule } from "./reducer/weeklySchedule";
 import { SignupLogin } from "./pages/SignupLogin";
 import { Schedule } from "./pages/Schedule";
 import { Notes } from "./pages/Notes";
 import { AddScheduleTask } from "components/AddScheduleTask";
 
-const reducer = combineReducers({ user: user.reducer, task: task.reducer });
+const reducer = combineReducers({ user: user.reducer, task: task.reducer, weeklySchedule: weeklySchedule.reducer });
 const store = configureStore({ reducer: reducer });
 
 export const App = () => {
