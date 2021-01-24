@@ -40,7 +40,8 @@ export const AddScheduleTask = () => {
     const timeChosen = (clock) => { 
         startDateTime.setHours(parseInt(clock.split(":")[0]),parseInt(clock.split(":")[1]));
         setTime(startDateTime);
-    };    
+        console.log(startDateTime)
+    };   
 
     return (
         <section className="schedule-component-container">
