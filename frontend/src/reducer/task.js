@@ -9,19 +9,7 @@ const initialState = {
         delete: false,
         statusMessage: null,
         errorMessage: null,
-    }, 
-    // weeklySchedule: [{
-    //     scheduleTask: {
-    //         taskId: 0,
-    //         task: null,
-    //         starttime: null,
-    //         startdate: null,
-    //         weekNumber: null,
-    //         delete: false,
-    //         statusMessage: null,
-    //         errorMessage: null,            
-    //     },
-    // }],
+    },
 };
 
 export const task = createSlice({
@@ -52,10 +40,6 @@ export const task = createSlice({
             const { errorMessage } = action.payload;
             state.scheduleTask.errorMessage = errorMessage; 
         },
-        // setWeeklySchedule: (state, action) => {
-        //     const { weeklySchedule } = action.payload;
-        //     state.WeeklySchedule = weeklySchedule;
-        // },
     }
 });
 

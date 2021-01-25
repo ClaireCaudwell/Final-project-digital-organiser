@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    weeklySchedule: [],
-    errorMessage: null,
+    weeklySchedule: {
+        weeklyTasks: [],
+        errorMessage: null,
+        week: null,
+    }
 };
 
 export const weeklySchedule = createSlice({
@@ -11,11 +14,14 @@ export const weeklySchedule = createSlice({
     reducers: {
         setWeeklySchedule: (state, action) => {
             const { weeklySchedule } = action.payload;
-            state.weeklySchedule = weeklySchedule;
+            state.weeklySchedule.weeklyTasks = weeklySchedule;
+        },
+        setWeekNumber: (state, action) => {            
+            state.weeklySchedule.week = action.payload;
         },
         setErrorMessage: (state, action) => {
             const { errorMessage } = action.payload;
-            state.errorMessage = errorMessage; 
+            state.weeklySchedule.errorMessage = errorMessage; 
         },
     },
 });

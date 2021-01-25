@@ -1,17 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+import { WeeklyTask } from "./WeeklyTask";
+
 export const WeeklySchedule = () => {
 
-    const task = useSelector((store) => store.task.scheduleTask.task);
-    const date = useSelector((store) => store.task.scheduleTask.startdate);
-    const time = useSelector((store) => store.task.scheduleTask.starttime);
+    const scheduleTasks = useSelector((store) => store.weeklySchedule.weeklySchedule.weeklyTasks);    
 
     return (
         <section className="schedule-component-container">
-            <p>{task}</p>
-            <p>{date}</p>
-            <p>{time}</p>
+            {scheduleTasks.map(task => (
+                <WeeklyTask key={task._id} task={task}/>
+            ))}            
         </section>
     );
 };

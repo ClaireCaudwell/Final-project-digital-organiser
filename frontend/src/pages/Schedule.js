@@ -7,12 +7,13 @@ import { getOrganiser } from "../reducer/user";
 import { Header } from "../components/Header";
 import { AddScheduleTaskButton } from "../components/AddScheduleTaskButton";
 import { WeeklySchedule } from "../components/WeeklySchedule";
-import { getSchedule } from "../reducer/weeklySchedule";
+import { getSchedule, weeklySchedule } from "../reducer/weeklySchedule";
 
 export const Schedule = () => {
     const dispatch = useDispatch();
     const userId = useSelector((store) => store.user.login.userId);
     const accessToken = useSelector((store) => store.user.login.accessToken);
+    const weekNumber = useSelector((store) => store.weeklySchedule.weeklySchedule.week);
 
     const [ date, setDate ] = useState(new Date());
     const [ week, setWeek ] = useState(0);
@@ -36,6 +37,7 @@ export const Schedule = () => {
     const onSelectWeekNumber =  (weekNumber, date) => {
         setWeek(week => weekNumber);
         dispatch(getSchedule(userId, date));
+        dispatch(weeklySchedule.actions.setWeekNumber(weekNumber));
     };
 
     // GET request that finds the user by ID and then filters the users ScheduleTask[{}] based on the week with the date that week starts on
@@ -45,7 +47,7 @@ export const Schedule = () => {
             <Header />
             <main>
                 <div className="schedule-component-container">
-                    <h2>Week number</h2>
+                    <h2>Week {weekNumber}</h2>
                 </div>
                 <div className="calendar-div">
                     <Calendar

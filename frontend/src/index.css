@@ -254,3 +254,21 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: space-between;
 }
+
+/* Tasks in schedule */
+.task-container {
+  margin: 10px;
+  border-top: 2px solid black;
+}
+
+.week-day-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+  background-color: #F3FDD8;
+  padding: 5px;
+}
+
+.week-day {
+  font-weight: 500;
+}
