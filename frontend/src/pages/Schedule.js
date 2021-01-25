@@ -34,13 +34,14 @@ export const Schedule = () => {
         setDate(date);
     };
 
+    // Sets weekNumber to week in setWeek
+    // Dispatches the userId and date (new date for the start of the week based on the week number the user clicks) to the weeklySchedule.js redux store and GET endpoint that fetches all of the tasks for the week
+    // Also setting weel number to the week the user clicks on in the calendar
     const onSelectWeekNumber =  (weekNumber, date) => {
         setWeek(week => weekNumber);
         dispatch(getSchedule(userId, date));
         dispatch(weeklySchedule.actions.setWeekNumber(weekNumber));
     };
-
-    // GET request that finds the user by ID and then filters the users ScheduleTask[{}] based on the week with the date that week starts on
 
     return (
         <>

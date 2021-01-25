@@ -74,7 +74,9 @@ export const AddScheduleTask = () => {
                         onChange={timeChosen}
                     />
                 </div>
-                <button className="add-task-button" type="submit" onClick={handleSubmit}>ADD</button>                
+                {/* <Link to="/schedule"> */}
+                    <button className="add-task-button" type="submit" onClick={handleSubmit}>ADD</button>
+                {/* </Link>                 */}
             </form>
             {statusMessage && <p>{`${statusMessage}`}</p>}
         </section>
