@@ -65,7 +65,7 @@ export const getTask = (scheduletask, userId, startDateTime) => {
         fetch(`http://localhost:8080/users/${userId}/scheduletask`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userId, scheduletask, startDateTime }),
+            body: JSON.stringify({ scheduletask, startDateTime }),
         })
         .then((res) => {
             if(!res.ok) {

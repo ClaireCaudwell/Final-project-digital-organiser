@@ -15,8 +15,7 @@ export const Schedule = () => {
     const accessToken = useSelector((store) => store.user.login.accessToken);
 
     const [ date, setDate ] = useState(new Date());
-    const [ week, setWeek ] = useState(null);
-    const [ weekDate, setWeekDate ] = useState(null);
+    const [ week, setWeek ] = useState(0);
 
     //useEffect allow for the dispatch to be done when the Schedule component is mounted. This dispatch will trigger the fetch in the user.js redux store and authenticate the user so using the accessToken. If the user doesn't sign up or login with the correct credentials then an accessToken is never created.
     //
@@ -32,19 +31,11 @@ export const Schedule = () => {
 
     const onChange = (date) => {
         setDate(date);
-        console.log(date);
     };
 
-    const selectWeekNumber =  (weekNumber, firstWeekDate) => {
-        // alert(`Clicked week: ', ${weekNumber}, 'that starts on: ', ${date}`);
-        setWeek(weekNumber);
-        setWeekDate(firstWeekDate);
-        console.log(week);
-        console.log(weekDate);
-
-        dispatch(getSchedule(userId, week, weekDate));
-        setWeek(null);
-        setWeekDate(null);
+    const onSelectWeekNumber =  (weekNumber, date) => {
+        setWeek(week => weekNumber);
+        dispatch(getSchedule(userId, date));
     };
 
     // GET request that finds the user by ID and then filters the users ScheduleTask[{}] based on the week with the date that week starts on
@@ -61,7 +52,7 @@ export const Schedule = () => {
                         value={date}
                         onChange={onChange}
                         showWeekNumbers
-                        onClickWeekNumber={selectWeekNumber}
+                        onClickWeekNumber={onSelectWeekNumber}
                     />
                 </div>
                 <AddScheduleTaskButton />

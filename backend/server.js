@@ -108,12 +108,11 @@ app.post("/sessions", async (req, res) => {
     const user = await User.findOne({ username });
     if (user && bcrypt.compareSync(password, user.password)) {
       res.status(200).json({ userId: user._id, accessToken: user.accessToken, username: username, statusMessage: "Logged in" });
-      next();
     } else {
       throw "User not found";
     }
   } catch (error) {
-    res.status(404).json({ notFound: true, errorMessage: "User not found", error });
+    res.status(404).json({ errorMessage: "User not found", error });
   }
 });
 
@@ -168,8 +167,8 @@ app.get("/users/:id/scheduleweek/:starttime", async (req, res) => {
         }
       };
       //8
-      const weeklyTasks = arrayOfTasks.filter(filteringTask);
-      res.status(201).json({ tasks: weeklyTasks });
+      const weeklySchedule = arrayOfTasks.filter(filteringTask);
+      res.status(201).json({ weeklySchedule: weeklySchedule });
     } catch(error) {
       res.status(404).json({ error });
     }
