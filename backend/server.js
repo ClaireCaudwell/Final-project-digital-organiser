@@ -168,7 +168,7 @@ app.get("/users/:id/scheduleweek/:starttime", async (req, res) => {
       };
       //8
       const weeklySchedule = arrayOfTasks.filter(filteringTask);
-      res.status(201).json({ weeklySchedule: weeklySchedule });
+      res.status(201).json({ weeklySchedule: weeklySchedule, startOfWeek: startOfWeek  });
     } catch(error) {
       res.status(404).json({ error });
     }
