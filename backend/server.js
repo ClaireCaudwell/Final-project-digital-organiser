@@ -168,13 +168,47 @@ app.get("/users/:id/scheduleweek/:starttime", async (req, res) => {
       };
       //8
       const weeklySchedule = arrayOfTasks.filter(filteringTask);
-      res.status(201).json({ weeklySchedule: weeklySchedule, startOfWeek: startOfWeek  });
+      res.status(201).json({ weeklySchedule: weeklySchedule, startOfWeek: startOfWeek, statusMessage
+      : "Schedule retrieved" });
     } catch(error) {
       res.status(404).json({ error });
     }
 });
 
-/* --- ENDPOINT 5 ---
+// --- ENDPOINT 5 ---
+// GET endpoint that will get one task 
+// User is found by ID then the array of schedule tasks are accessed
+// Then the user id is compared in if statement in the filteringTask function and used on the arrayOfTasks in the filter to filter the task if the Id has been found.
+// This is an array with an object in it. 
+app.get("/users/:id/scheduletask/:taskid", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const taskId = req.params.taskid;
+    let user;
+    try {
+      user = await User.findById(userId);
+    } catch(error) {
+      throw "User not found";
+    }
+    const arrayOfTasks = user.scheduleTask;
+    const filteringTask = (task) => {
+      if(task._id.toString() === taskId) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    const individualTask = arrayOfTasks.filter(filteringTask);
+    if(individualTask.length === 0) {
+      throw "Task ID not found"
+    }
+    res.status(201).json({ task: individualTask, statusMessage: "Task retrieved" });
+  } catch(error) {
+    res.status(404).json({ error });
+  }
+});
+
+/* --- ENDPOINT 6 ---
 1. POST endpoint where the user can add a new schedule item to their weekly schedule
 2. The user is found by using the userId stored in the redux store
 3. The data that creates the new task is scheduleTask, startDateTime
@@ -204,7 +238,7 @@ app.post("/users/:id/scheduletask", async (req, res) => {
   }
 });
 
-/* --- ENDPOINT 6 ---
+/* --- ENDPOINT 7 ---
 1. PUT endpoint to update a users schedule task. 
 2. User ID and the task ID is sent in the URL.
 3. Find the user by the ID.
@@ -239,7 +273,7 @@ app.put("/users/:id/updatetask/:taskid", async (req, res) => {
   }
 });
 
-/* --- ENDPOINT 7 ---
+/* --- ENDPOINT 8 ---
  1. PUT endpoint where a schedule task's delete property is updated to true
  2. This means that when the user wants to show the weekly tasks in the frontend only the tasks that have delete: false will be returned in the json
 */
