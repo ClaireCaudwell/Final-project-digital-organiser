@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import DatePicker from 'react-date-picker/dist/entry.nostyle';
 import TimePicker from 'react-time-picker/dist/entry.nostyle';
 
@@ -9,11 +9,14 @@ import '../TimePicker.css';
 import '../Clock.css';
 
 import { getTask } from "../reducer/task";
+import { getSchedule } from "../reducer/weeklySchedule";
 
 export const AddScheduleTask = () => {
     const dispatch = useDispatch();
     const userId = useSelector((store) => store.user.login.userId);
     const statusMessage = useSelector((store => store.task.scheduleTask.statusMessage));
+    const date = useSelector((store) => store.weeklySchedule.weeklySchedule.firstDayOfWeek);
+
 
     const [scheduletask, setScheduleTask] = useState("");
 
@@ -23,9 +26,11 @@ export const AddScheduleTask = () => {
 
     // Dispatching the scheduleTask and startdatetime the user selected to the getTask thunk in task.js redux.
     // startDateTime is called this as it's a combination of th date and time the user selects. The date showing in the database will be based on UTC or GMT timezone and will show an hour behind for Swedish time(the time my computer is set to) e.g. if I select 2021-01-27 10:00 it will show 2021-01-27 09:00 as UTC and GMT in the database. This will be converted to the correct time based on where the user lives when we use the data in the frontend so it'll show the correct time for the schedule task.
+    // Also when the user adds a new task the current schedule will be updated with this new task as doing the GET request to backend to retrieve the newly added task
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(getTask(scheduletask, userId, startDateTime));
+        dispatch(getSchedule(userId, date));
         setScheduleTask("");       
     };
 
@@ -44,11 +49,11 @@ export const AddScheduleTask = () => {
 
     return (
         <section className="schedule-component-container">
-            <Link to="/schedule" className="back-link">
+            <NavLink to="/schedule" className="back-link">
                 <div className="close-button-container">
                     <button className="close-button" type="button">x</button> 
                 </div>
-            </Link>
+            </NavLink>
             <h2>Schedule something!</h2>
             <form>
                 <input

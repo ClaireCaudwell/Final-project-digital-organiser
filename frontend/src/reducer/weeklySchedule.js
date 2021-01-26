@@ -46,7 +46,7 @@ export const weeklySchedule = createSlice({
                 [],
                 [],
             ];
-
+            
             // For each object check it's day of the week e.g. 0, 1, 2, 3 etc
             // Based on that number push it to the empty array and give that array the day's number
             for ( let i = 0; i < sortedSchedule.length; i++ ) {

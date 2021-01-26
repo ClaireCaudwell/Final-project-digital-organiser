@@ -257,7 +257,7 @@ input:checked + .slider:before {
 
 /* Tasks in schedule */
 .task-container {
-  margin: 10px;
+  /* margin: 10px; */
   border-top: 2px solid black;
 }
 
@@ -269,6 +269,20 @@ input:checked + .slider:before {
   padding: 5px;
 }
 
-.week-day {
+.heavy-text {
   font-weight: 500;
+}
+
+.time-task-container {
+  background-color: #CCD4C8;
+  padding: 10px;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Summary */
+.Summary-container {
+  border: 2px solid #C7F5B1;
+  padding: 10px;
 }
