@@ -5,7 +5,7 @@ import { TimeTask } from "./TimeTask";
 
 export const WeeklyTask = ({ tasks, dayIndex }) => {
     // Getting first day of week from redux weeklySchedule.js 
-    const firstDayOfWeek = useSelector((store) => store.weeklySchedule.weeklySchedule.firstDayOfWeek);
+    const firstDayOfWeek = useSelector((store) => store.weeklySchedule.schedule.firstDayOfWeek);
 
     // Taking the firstDayOfWeek from redux store which is a string
     // Converting it to a date using the new date object so we can use date methods on it

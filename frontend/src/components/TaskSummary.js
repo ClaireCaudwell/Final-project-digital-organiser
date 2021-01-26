@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from 'react-router-dom'; 
+import { useParams, NavLink } from 'react-router-dom';
 
 
 export const TaskSummary = () => {
@@ -29,8 +29,6 @@ export const TaskSummary = () => {
         getTask(taskId, userId);
     }, [taskId, userId]);
 
-    console.log(taskDetails);
-
     // Getting first day of week from redux weeklySchedule.js 
     // const firstDayOfWeek = useSelector((store) => store.weeklySchedule.weeklySchedule.firstDayOfWeek);
 
@@ -51,14 +49,29 @@ export const TaskSummary = () => {
     // const time = new Date(dateandtime);
     // const taskTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
+    const handleDelete = (event) => {
+        event.preventDefault();
+        // dispatch()
+    };
+
     return (
         <section className="schedule-component-container">
-            {/* <div className="week-day-container">
-                <p className="heavy-text">{weekday}</p>
-                <p>{weekDate}</p>
+            <NavLink to="/schedule" className="back-link">
+                <div className="close-button-container">
+                    <button className="close-button" type="button">x</button> 
+                </div>
+            </NavLink>
+            <h2 className="summary-text">Schedule summary</h2>
+            <div className="week-day-container no-background">
+                <p>Monday</p>
+                <p>01/01/21</p>
             </div>
-            <p>{task}</p>
-            <p className="heavy-text">{taskTime}</p>          */}
+            <p>Walk the dog</p>
+            <p className="heavy-text">Time 14:00</p>
+            <div className="button-container">
+                <button type="button">EDIT</button>
+                <button type="submit" onClick={handleDelete}>DELETE</button>
+            </div>         
         </section>
     );
 };

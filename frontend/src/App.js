@@ -33,7 +33,7 @@ export const App = () => {
           <Route path="/addtask">
               <AddScheduleTask />                            
           </Route>
-          <Route path="/taskSummary/:userid">
+          <Route path="/taskSummary/:taskId">
             <TaskSummary />
           </Route>
           <Redirect to="/" />

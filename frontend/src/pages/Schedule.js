@@ -14,11 +14,20 @@ export const Schedule = () => {
     const dispatch = useDispatch();
     const userId = useSelector((store) => store.user.login.userId);
     const accessToken = useSelector((store) => store.user.login.accessToken);
-    // const weekNumber = useSelector((store) => store.weeklySchedule.weeklySchedule.week);
+    // const weekNumber = useSelector((store) => store.weeklySchedule.schedule.firstDayOfWeek);
 
     const [ date, setDate ] = useState(new Date());
     const [ week, setWeek ] = useState(0);
 
+    // Sets weekNumber to week in setWeek
+    // Dispatches the userId and date (new date for the start of the week based on the week number the user clicks) to the weeklySchedule.js redux store and GET endpoint that fetches all of the tasks for the week
+    // Also setting weel number to the week the user clicks on in the calendar
+    const onSelectWeekNumber =  (weekNumber, date) => {
+        setWeek(week => weekNumber);
+        dispatch(getSchedule(userId, date));
+        dispatch(weeklySchedule.actions.setWeekNumber(weekNumber));
+    };
+    
     //useEffect allow for the dispatch to be done when the Schedule component is mounted. This dispatch will trigger the fetch in the user.js redux store and authenticate the user so using the accessToken. If the user doesn't sign up or login with the correct credentials then an accessToken is never created.
     //
     useEffect(() => {
@@ -28,20 +37,10 @@ export const Schedule = () => {
     
     // As soon as the Schedule.js is rendered then a get request is done, to get all the schedule items for that user, for that week. The accessToken is sent in headers as authorization and the response will and array of objects
     // From here the user can choose to add a new schedule item, click on a schedule item to render the schedule summary 
-    // From the schedule summary the user can edit or delete the schedule item
-    
+    // From the schedule summary the user can edit or delete the schedule item    
 
     const onChange = (date) => {
         setDate(date);
-    };
-
-    // Sets weekNumber to week in setWeek
-    // Dispatches the userId and date (new date for the start of the week based on the week number the user clicks) to the weeklySchedule.js redux store and GET endpoint that fetches all of the tasks for the week
-    // Also setting weel number to the week the user clicks on in the calendar
-    const onSelectWeekNumber =  (weekNumber, date) => {
-        setWeek(week => weekNumber);
-        dispatch(getSchedule(userId, date));
-        dispatch(weeklySchedule.actions.setWeekNumber(weekNumber));
     };
 
     // if(accessToken) {
