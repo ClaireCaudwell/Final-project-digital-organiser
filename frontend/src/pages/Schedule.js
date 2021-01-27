@@ -4,7 +4,7 @@ import Calendar from 'react-calendar';
 
 import '../Calendar.css';
 
-import { getOrganiser } from "../reducer/user";
+import { getOrganiser, user } from "../reducer/user";
 import { Header } from "../components/Header";
 import { AddScheduleTaskButton } from "../components/AddScheduleTaskButton";
 import { WeeklySchedule } from "../components/WeeklySchedule";
@@ -31,8 +31,9 @@ export const Schedule = () => {
     //useEffect allow for the dispatch to be done when the Schedule component is mounted. This dispatch will trigger the fetch in the user.js redux store and authenticate the user so using the accessToken. If the user doesn't sign up or login with the correct credentials then an accessToken is never created.
     //
     useEffect(() => {
-        // dispatch(user.actions.setErrorMessage({ errorMessage: null }))
+        dispatch(user.actions.setErrorMessage({ errorMessage: null }))
         dispatch(getOrganiser(userId, accessToken));
+        // onSelectWeekNumber();
     },[userId, accessToken, dispatch]);
     
     // As soon as the Schedule.js is rendered then a get request is done, to get all the schedule items for that user, for that week. The accessToken is sent in headers as authorization and the response will and array of objects
@@ -42,13 +43,6 @@ export const Schedule = () => {
     const onChange = (date) => {
         setDate(date);
     };
-
-    // if(accessToken) {
-    //     date
-    // }
-
-    // 1. When user signs up or logs in I want the week number and weekdays to be set to the current week
-    // 2. Also when user logs in I want the current weeks tasks to be shown - local storage? Automatic fetch? 
 
     return (
         <>

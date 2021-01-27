@@ -8,16 +8,15 @@ import '../DatePicker.css';
 import '../TimePicker.css';
 import '../Clock.css';
 
-import { getTask } from "../reducer/task";
+import { setTask, task } from "../reducer/task";
 import { getSchedule } from "../reducer/weeklySchedule";
 
 export const AddScheduleTask = () => {
     const dispatch = useDispatch();
     const userId = useSelector((store) => store.user.login.userId);
     const statusMessage = useSelector((store => store.task.scheduleTask.statusMessage));
-    const date = useSelector((store) => store.weeklySchedule.weeklySchedule.firstDayOfWeek);
-
-
+    const date = useSelector((store) => store.weeklySchedule.schedule.firstDayOfWeek);
+    
     const [scheduletask, setScheduleTask] = useState("");
 
     // startDateTime is a combination of the date and time the user selects
@@ -29,8 +28,9 @@ export const AddScheduleTask = () => {
     // Also when the user adds a new task the current schedule will be updated with this new task as doing the GET request to backend to retrieve the newly added task
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(getTask(scheduletask, userId, startDateTime));
+        dispatch(setTask(scheduletask, userId, startDateTime));
         dispatch(getSchedule(userId, date));
+        // dispatch(task.actions.clearStatusMessage());
         setScheduleTask("");       
     };
 
@@ -38,9 +38,6 @@ export const AddScheduleTask = () => {
     // The user then chooses a time in the time picker and the value is assigned to the time useState. This is a string e.g "10:00".
     // onChange calls the timeChosen function and the startDateTime hours and minutes are modified using the setHours method so it will reflect the time the user has selected.
     // This is done by using the parameter clock (the time the user selected e.g. "10:00") and seperating into two numbers using the split (splits the string "10:00" into an array of substrings, and returns the new array["10", "00"], the ":" is identifies where the split should split the numbers) and parseInt converts these two strings into numbers by selecting them based on the index numbers of the elements, 0 is hours and 1 is min.
-    const dateChosen = (startDateTime) => {
-        setStartDateTime(startDateTime);
-    };
 
     const timeChosen = (clock) => { 
         startDateTime.setHours(parseInt(clock.split(":")[0]),parseInt(clock.split(":")[1]));
@@ -64,24 +61,26 @@ export const AddScheduleTask = () => {
                     minLength="2"
                     maxLength="30" 
                 />
-                <div className="date-container">
-                    <p>DATE:</p>
+                <label className="date-container">
+                    DATE:
                     <DatePicker
                         value={startDateTime}
-                        onChange={dateChosen}
+                        onChange={(startDateTime) => setStartDateTime(startDateTime)}
                         showWeekNumbers
+                        required
                     />
-                </div>
-                <div className="date-container">
-                    <p>TIME:</p>
+                </label>
+                <label className="date-container">
+                    TIME:
                     <TimePicker
                         value={time}
                         onChange={timeChosen}
+                        closeClock
+                        disableClock
+                        required
                     />
-                </div>
-                {/* <Link to="/schedule"> */}
-                    <button className="add-task-button" type="submit" onClick={handleSubmit}>ADD</button>
-                {/* </Link>                 */}
+                </label>
+                <button className="add-task-button" type="submit" onClick={handleSubmit}>ADD</button>
             </form>
             {statusMessage && <p>{`${statusMessage}`}</p>}
         </section>

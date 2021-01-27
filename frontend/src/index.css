@@ -96,11 +96,17 @@ header{
   background-color: #F3FDD8;
 }
 
+.top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 .active {
   color: #8ccf6d;
   border-bottom: 2px solid #8ccf6d; 
 }
-
 
 h2 {
   font-weight: 400;
@@ -108,11 +114,10 @@ h2 {
   text-align: left;
   font-size: 22px;
   padding: 0;
-  margin: 0 40px 20px 0;
 }
 
 nav {
-  margin-top: 40px;
+  margin: 50px 0 10px;
 }
 
 .header-toggle-container {
@@ -253,6 +258,7 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 /* Tasks in schedule */

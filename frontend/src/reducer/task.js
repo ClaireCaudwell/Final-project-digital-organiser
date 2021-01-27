@@ -4,8 +4,7 @@ const initialState = {
     scheduleTask: {
         taskId: 0,
         task: null,
-        startdate: null,
-        starttime: null,
+        startdatetime: null,
         delete: false,
         statusMessage: null,
         errorMessage: null,
@@ -24,18 +23,17 @@ export const task = createSlice({
             const { task } = action.payload;
             state.scheduleTask.task = task; 
         },
-        setStartdate: (state, action) => {
-            const { startdate } = action.payload;
-            state.scheduleTask.startdate = startdate; 
-        },
-        setStarttime: (state, action) => {
-            const { starttime } = action.payload;
-            state.scheduleTask.starttime = starttime; 
+        setStartDateTime: (state, action) => {
+            const { startdatetime } = action.payload;
+            state.scheduleTask.startdatetime = startdatetime; 
         },
         setStatusMessage: (state, action) => {
             const { statusMessage } = action.payload;
             state.scheduleTask.statusMessage = statusMessage; 
         },
+        // clearStatusMessage: (state, action) => {
+        //     state.scheduleTask.statusMessage = null;
+        // },
         setErrorMessage: (state, action) => {
             const { errorMessage } = action.payload;
             state.scheduleTask.errorMessage = errorMessage; 
@@ -44,7 +42,7 @@ export const task = createSlice({
 });
 
 //Thunk for when the user adds a schedule task
-export const getTask = (scheduletask, userId, startDateTime) => {
+export const setTask = (scheduletask, userId, startDateTime) => {
     return(dispatch) => {
         fetch(`http://localhost:8080/users/${userId}/scheduletask`, {
             method: "POST",
@@ -62,8 +60,7 @@ export const getTask = (scheduletask, userId, startDateTime) => {
             dispatch(task.actions.setTaskId({ taskId: json.taskId }));
             dispatch(task.actions.setStatusMessage({ statusMessage: json.statusMessage}));
             dispatch(task.actions.setTask({ task: json.task }));
-            dispatch(task.actions.setStartdate({ startdate: json.startdate }));
-            dispatch(task.actions.setStarttime({ starttime: json.starttime }));
+            dispatch(task.actions.setStartDateTime({ startdatetime: json.startdatetime }));
         })
         .catch((error) => {
             dispatch(task.actions.setErrorMessage({ errorMessage: error.toString()}));

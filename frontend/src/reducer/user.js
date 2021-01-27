@@ -20,11 +20,11 @@ export const user = createSlice({
         },
         setAccessToken: (state, action) => {
             const { accessToken } = action.payload;
-            state.login.accessToken = accessToken; 
+            state.login.accessToken = accessToken;
         },
         setUsername: (state, action) => {
             const { username } = action.payload;
-            state.login.username = username; 
+            state.login.username = username;
         },
         setStatusMessage: (state, action) => {
             const { statusMessage } = action.payload;
@@ -32,7 +32,12 @@ export const user = createSlice({
         },
         setErrorMessage: (state, action) => {
             const { errorMessage } = action.payload;
-            state.login.errorMessage = errorMessage; 
+            state.login.errorMessage = errorMessage;
+        },
+        setLogOut: (state, action) => {
+            state.login.accessToken = null;
+            state.login.userId = 0;
+            state.login.username = null;
         }
     },
 });
