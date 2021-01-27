@@ -16,6 +16,7 @@ export const WeeklyTask = ({ tasks, dayIndex }) => {
     const date = new Date(firstDayOfWeek);
     const firstDayOfWeekDateNumber = date.getDate();
     date.setDate(firstDayOfWeekDateNumber+dayIndex);
+    
     const weekDate = date.toLocaleDateString();
     const weekday = date.toLocaleString([], {weekday: 'long'});
 

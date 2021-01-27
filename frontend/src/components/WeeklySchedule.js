@@ -9,17 +9,17 @@ export const WeeklySchedule = () => {
     let weeklyTasks = useSelector((store) => store.weeklySchedule.schedule.weeklyTasks);
 
     // redux store is read only, make a copy so that we can modify the data    
-    weeklyTasks = weeklyTasks.map(a => Object.assign({}, a));
+    const tasks = weeklyTasks.map(a => Object.assign({}, a));
     
     // Converting the string startdatetime for each task to a date so it can be sorted below
-    // In order to do this without line 12 would I have to dispatch the new date back to the redux store as I can't modify the initial state
+    // In order to do this without line 12 would I have to dispatch the new date back to the redux store as I can't modify the initial state?
     // Do I even need redux store for the array of users tasks being accessed from backend?
-    for (let i = 0; i < weeklyTasks.length; i++) {
-        weeklyTasks[i].startdatetime = new Date(weeklyTasks[i].startdatetime);
+    for (let i = 0; i < tasks.length; i++) {
+        tasks[i].startdatetime = new Date(tasks[i].startdatetime);
     }
 
     // Function to sort each array object based on it's date
-    const sortedSchedule = weeklyTasks.sort( (a,b) => {
+    const sortedSchedule = tasks.sort( (a,b) => {
         if (a.startdatetime > b.startdatetime) {
             return 1;
         } else {

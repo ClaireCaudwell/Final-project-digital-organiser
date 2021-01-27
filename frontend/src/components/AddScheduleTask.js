@@ -8,7 +8,7 @@ import '../DatePicker.css';
 import '../TimePicker.css';
 import '../Clock.css';
 
-import { setTask, task } from "../reducer/task";
+import { setTask } from "../reducer/task";
 import { getSchedule } from "../reducer/weeklySchedule";
 
 export const AddScheduleTask = () => {
@@ -30,7 +30,6 @@ export const AddScheduleTask = () => {
         event.preventDefault();
         dispatch(setTask(scheduletask, userId, startDateTime));
         dispatch(getSchedule(userId, date));
-        // dispatch(task.actions.clearStatusMessage());
         setScheduleTask("");       
     };
 

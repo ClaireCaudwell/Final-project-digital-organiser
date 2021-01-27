@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = { 
     schedule: {
         weeklyTasks: [],
-        errorMessage: null,
         week: null,
         firstDayOfWeek: null,
+        errorMessage: null,
     }  
 };
 
@@ -33,9 +33,9 @@ export const weeklySchedule = createSlice({
 
 // Thunk for doing the GET request to get the schedule tasks for the week from. 
 // Based on the date for the beginning of the week
-export const getSchedule = (userId, date) => {
+export const getSchedule = (userId, monday) => {
     return(dispatch) => {
-        fetch(`http://localhost:8080/users/${userId}/scheduleweek/${date}`, {
+        fetch(`http://localhost:8080/users/${userId}/scheduleweek/${monday}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         })

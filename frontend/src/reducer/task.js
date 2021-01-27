@@ -41,7 +41,7 @@ export const task = createSlice({
     }
 });
 
-//Thunk for when the user adds a schedule task
+// Thunk for when the user adds a schedule task
 export const setTask = (scheduletask, userId, startDateTime) => {
     return(dispatch) => {
         fetch(`http://localhost:8080/users/${userId}/scheduletask`, {
@@ -64,6 +64,27 @@ export const setTask = (scheduletask, userId, startDateTime) => {
         })
         .catch((error) => {
             dispatch(task.actions.setErrorMessage({ errorMessage: error.toString()}));
+        })
+    };
+};
+
+export const getTask = (taskId, userId) => {
+    return(dispatch) => {
+        fetch(`http://localhost:8080/users/${userId}/scheduletask/${taskId}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json"},
+    })
+    .then((res) => {
+        return res.json();
+    })
+        .then((json) => {
+            dispatch(task.actions.setTaskId({ taskId: json.taskId }));
+            dispatch(task.actions.setStatusMessage({ statusMessage: json.statusMessage}));
+            dispatch(task.actions.setTask({ task: json.task }));
+            dispatch(task.actions.setStartDateTime({ startdatetime: json.startdatetime }));
+        })
+        .catch((error) => {
+            dispatch(task.actions.setErrorMessage({ errorMessage: error.error}));
         })
     };
 };

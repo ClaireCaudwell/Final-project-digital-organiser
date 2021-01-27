@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch  } from "react-redux";
 import Calendar from 'react-calendar';
+import moment from 'moment';
 
 import '../Calendar.css';
 
@@ -10,38 +11,44 @@ import { AddScheduleTaskButton } from "../components/AddScheduleTaskButton";
 import { WeeklySchedule } from "../components/WeeklySchedule";
 import { getSchedule, weeklySchedule } from "../reducer/weeklySchedule";
 
+
 export const Schedule = () => {
     const dispatch = useDispatch();
     const userId = useSelector((store) => store.user.login.userId);
     const accessToken = useSelector((store) => store.user.login.accessToken);
-    // const weekNumber = useSelector((store) => store.weeklySchedule.schedule.firstDayOfWeek);
 
-    const [ date, setDate ] = useState(new Date());
-    const [ week, setWeek ] = useState(0);
-
-    // Sets weekNumber to week in setWeek
-    // Dispatches the userId and date (new date for the start of the week based on the week number the user clicks) to the weeklySchedule.js redux store and GET endpoint that fetches all of the tasks for the week
-    // Also setting weel number to the week the user clicks on in the calendar
-    const onSelectWeekNumber =  (weekNumber, date) => {
-        setWeek(week => weekNumber);
-        dispatch(getSchedule(userId, date));
-        dispatch(weeklySchedule.actions.setWeekNumber(weekNumber));
-    };
+    // Stores the date the user clicks on in the calendar
+    // const [ selectedDate, setSelectedDate ] = useState(new Date());
     
-    //useEffect allow for the dispatch to be done when the Schedule component is mounted. This dispatch will trigger the fetch in the user.js redux store and authenticate the user so using the accessToken. If the user doesn't sign up or login with the correct credentials then an accessToken is never created.
-    //
+    // Gets current week based on today's date
+    const currentWeek = moment().isoWeek();
+    // Get start of week date based on the today's date. Set it to ISO 8601, 12:00 am e.g. Mon Jan 25 2021 00:00:00 GMT+0100 
+    const monday = moment().startOf('isoWeek');    
+
+    // After user signs ups or logs in and before this component is mounted the dispatch to getOrganiser is done in user.js redux.
+    // This is so the user can be authenticated and gain access to the schedule.page
+    // Error message is set to null in case the login or sign up wasn't successful the first time. This is so it's not still there in redux store user.js when they are authenticated
     useEffect(() => {
-        dispatch(user.actions.setErrorMessage({ errorMessage: null }))
         dispatch(getOrganiser(userId, accessToken));
-        // onSelectWeekNumber();
-    },[userId, accessToken, dispatch]);
-    
-    // As soon as the Schedule.js is rendered then a get request is done, to get all the schedule items for that user, for that week. The accessToken is sent in headers as authorization and the response will and array of objects
-    // From here the user can choose to add a new schedule item, click on a schedule item to render the schedule summary 
-    // From the schedule summary the user can edit or delete the schedule item    
+        dispatch(user.actions.setErrorMessage({ errorMessage: null }));
+    },[dispatch, userId, accessToken]);
 
-    const onChange = (date) => {
-        setDate(date);
+
+    // After the first useEffect is done and the userId has been stored in the redux store a dispatch is done to get the schedule based on current week
+    // Regardless of if they have any tasks or not.
+    useEffect(() => {
+        if(userId){
+            dispatch(weeklySchedule.actions.setErrorMessage({ errorMessage: null}));
+            dispatch(getSchedule(userId, monday));
+        }
+    }, [ dispatch, monday, userId]);
+
+    // When a week is clicked the week and the date of the monday of that week is sent into the onSelectWeekNumber function
+    // This triggers the dispatch to get the schedule for that week from database based on the date for the Monday and the calculated end of week date
+    const onSelectWeekNumber =  (week, monday) => {
+        // week = week number clicked
+        // monday = the date the week starts on 
+        dispatch(getSchedule(userId, monday));     
     };
 
     return (
@@ -49,13 +56,13 @@ export const Schedule = () => {
             <Header />
             <main>
                 <div className="schedule-component-container">
-                    <h2>Week {week}</h2>
+                    <h2>Week {currentWeek}</h2>
                 </div>
                 <p className="schedule-component-container">Please select a week number in the calendar to see your schedule for that week</p>
                 <div className="calendar-div">
                     <Calendar
-                        value={date}
-                        onChange={onChange}
+                        // value={selectedDate}
+                        // onChange={onDaySelect}
                         showWeekNumbers
                         onClickWeekNumber={onSelectWeekNumber}
                     />

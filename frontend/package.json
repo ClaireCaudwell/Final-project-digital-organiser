@@ -13,6 +13,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.3.0",
+    "moment": "^2.29.1",
     "react": "^16.12.0",
     "react-calendar": "^3.3.0",
     "react-date-picker": "^8.0.6",
