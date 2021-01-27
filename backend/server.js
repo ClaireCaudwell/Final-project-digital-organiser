@@ -230,9 +230,9 @@ app.post("/users/:id/scheduletask", async (req, res) => {
     user.scheduleTask.push({ task: scheduletask, startdatetime: startDateTime })
     user.save();
     const addedTask = user.scheduleTask[user.scheduleTask.length-1];
-    const date = addedTask.startdatetime.toDateString();
-    const time = addedTask.startdatetime.toTimeString();
-    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, startdate: date, starttime: time, statusMessage: "Schedule item created" });
+    // const date = addedTask.startdatetime.toDateString();
+    // const time = addedTask.startdatetime.toTimeString();
+    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, startdatetime: addedTask.startdatetime, statusMessage: "Schedule item created" });
   } catch (error) {
     res.status(400).json({ notFound: true, errorMesssage: "Could't create schedule task", error});
   }
