@@ -128,6 +128,34 @@ app.get("/users/:id/organiser", async (req, res) => {
 });
 
 /* --- ENDPOINT 4 ---
+1. POST endpoint where the user can add a new schedule item to their weekly schedule
+2. The user is found by using the userId stored in the redux store
+3. The data that creates the new task is scheduleTask, startDateTime
+4. This is pushed and saved to the ScheduleTask array in the user's object.
+5. To get the data for the last created task so it can be sent back in the json response do length -1. 
+5. Also split up the date and time so they can be sent seperatley in the json response.
+*/
+app.post("/users/:id/scheduletask", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const { scheduletask, startDateTime } = req.body;
+    let user;
+    try {
+      user = await User.findById(userId);
+    } catch(error) {
+        throw "User not found";
+    }
+    //Try to change push to findByIdAndUpdate when have time
+    user.scheduleTask.push({ task: scheduletask, startdatetime: startDateTime })
+    user.save();
+    const addedTask = user.scheduleTask[user.scheduleTask.length-1];
+    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, startdatetime: addedTask.startdatetime, statusMessage: "Schedule item created" });
+  } catch (error) {
+    res.status(400).json({ notFound: true, errorMesssage: "Could't create schedule task", error});
+  }
+});
+
+/* --- ENDPOINT 5 ---
 1. GET endpoint to get users schedule for the week when they click on the week in the calendar.
 2. This is based on the users Id and the starttime for the week that's passed in the url
 3. Search for user by ID.
@@ -202,39 +230,9 @@ app.get("/users/:id/scheduletask/:taskid", async (req, res) => {
     if(individualTask.length === 0) {
       throw "Task ID not found"
     }
-    res.status(201).json({ task: individualTask, statusMessage: "Task retrieved" });
-  } catch(error) {
+    res.status(201).json({ taskId: individualTask[0]._id, task: individualTask[0].task, startdatetime: individualTask[0].startdatetime, statusMessage: "Task retrieved" });
+     } catch(error) {
     res.status(404).json({ error });
-  }
-});
-
-/* --- ENDPOINT 6 ---
-1. POST endpoint where the user can add a new schedule item to their weekly schedule
-2. The user is found by using the userId stored in the redux store
-3. The data that creates the new task is scheduleTask, startDateTime
-4. This is pushed and saved to the ScheduleTask array in the user's object.
-5. To get the data for the last created task so it can be sent back in the json response do length -1. 
-5. Also split up the date and time so they can be sent seperatley in the json response.
-*/
-app.post("/users/:id/scheduletask", async (req, res) => {
-  try {
-    const userId = req.params.id;
-    const { scheduletask, startDateTime } = req.body;
-    let user;
-    try {
-      user = await User.findById(userId);
-    } catch(error) {
-        throw "User not found";
-    }
-    //Try to change push to findByIdAndUpdate when have time
-    user.scheduleTask.push({ task: scheduletask, startdatetime: startDateTime })
-    user.save();
-    const addedTask = user.scheduleTask[user.scheduleTask.length-1];
-    // const date = addedTask.startdatetime.toDateString();
-    // const time = addedTask.startdatetime.toTimeString();
-    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, startdatetime: addedTask.startdatetime, statusMessage: "Schedule item created" });
-  } catch (error) {
-    res.status(400).json({ notFound: true, errorMesssage: "Could't create schedule task", error});
   }
 });
 
