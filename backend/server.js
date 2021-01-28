@@ -245,7 +245,7 @@ app.get("/users/:id/scheduletask/:taskid", async (req, res) => {
 6. Then if it's a match the task and startdatetime are saved to the users object.
 7. Will try and use local storage to hold the data for the tasks for the week, so if the user wants to update one of the properties e.g. task, date or time. Then the data will be shown in the edittask componenent. This will mean that the user won't have to update re-write all details of the task. 
 */
-app.put("/users/:id/updatetask/:taskid", async (req, res) => {
+app.patch("/users/:id/scheduletask/:taskid", async (req, res) => {
   try {
     const userId = req.params.id;
     const taskId = req.params.taskid;
@@ -265,9 +265,20 @@ app.put("/users/:id/updatetask/:taskid", async (req, res) => {
       }
     }
     user.save();
-    res.status(200).json({ statusMessage: "Task updated"});
+    const filteringTask = (task) => {
+      if(task._id.toString() === taskId) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    const individualTask = arrayOfTasks.filter(filteringTask);
+    if(individualTask.length === 0) {
+      throw "Task ID not found"
+    }
+    res.status(200).json({ taskId: individualTask[0]._id, task: individualTask[0].task, startdatetime: individualTask[0].startdatetime, statusMessage: "Task updated"});
   } catch(error) {
-    res.status(400).json({ notFound: true, errorMesssage: "User not found", error});
+    res.status(400).json({ notFound: true, error});
   }
 });
 
