@@ -11,7 +11,7 @@ import '../Clock.css';
 import { setTask, task } from "../reducer/task";
 import { getSchedule } from "../reducer/weeklySchedule";
 
-export const AddScheduleTask = () => {
+export const AddEditScheduleTask = () => {
     const dispatch = useDispatch();
     const userId = useSelector((store) => store.user.login.userId);
     const statusMessage = useSelector((store => store.task.scheduleTask.statusMessage));
@@ -56,13 +56,14 @@ export const AddScheduleTask = () => {
                 </div>
             </NavLink>
             <h2>Schedule something!</h2>
+            <h2>Edit your task</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     className="input-box"
                     value={scheduletask}
                     onChange={(event) => setScheduleTask(event.target.value)}
                     required
-                    minLength="2"
+                    minLength="3"
                     maxLength="30" 
                 />
                 <label className="date-container">
@@ -85,6 +86,7 @@ export const AddScheduleTask = () => {
                     />
                 </label>
                 <button className="add-task-button" type="submit">ADD TASK</button>
+                <button className="add-task-button" type="submit">UPDATE TASK</button>
             </form>
             {statusMessage && <p>{`${statusMessage}`}</p>}
         </section>

@@ -9,7 +9,7 @@ import { weeklySchedule } from "./reducer/weeklySchedule";
 import { SignupLogin } from "./pages/SignupLogin";
 import { Schedule } from "./pages/Schedule";
 import { Notes } from "./pages/Notes";
-import { AddScheduleTask } from "components/AddScheduleTask";
+import { AddEditScheduleTask } from "components/AddEditScheduleTask";
 import { TaskSummary } from "components/TaskSummary";
 
 const reducer = combineReducers({ user: user.reducer, task: task.reducer, weeklySchedule: weeklySchedule.reducer });
@@ -30,8 +30,8 @@ export const App = () => {
           <Route path="/notes">
               <Notes />                            
           </Route>
-          <Route path="/addtask">
-              <AddScheduleTask />                            
+          <Route path="/addedittask">
+              <AddEditScheduleTask />                            
           </Route>
           <Route path="/taskSummary/:taskId">
             <TaskSummary />

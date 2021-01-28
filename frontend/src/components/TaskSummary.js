@@ -43,7 +43,9 @@ export const TaskSummary = () => {
             <p>{task}</p>
             <p className="heavy-text">{time}</p>
             <div className="button-container">
+            <NavLink className="link" to="/addedittask">
                 <button type="button">EDIT</button>
+            </NavLink>
                 <button type="submit" onClick={handleDelete}>DELETE</button>
             </div>         
         </section>
