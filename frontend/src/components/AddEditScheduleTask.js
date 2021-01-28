@@ -8,7 +8,7 @@ import '../DatePicker.css';
 import '../TimePicker.css';
 import '../Clock.css';
 
-import { setTask, task } from "../reducer/task";
+import { addTask, task, editTask } from "../reducer/task";
 import { getSchedule } from "../reducer/weeklySchedule";
 
 export const AddEditScheduleTask = () => {
@@ -16,6 +16,7 @@ export const AddEditScheduleTask = () => {
     const userId = useSelector((store) => store.user.login.userId);
     const statusMessage = useSelector((store => store.task.scheduleTask.statusMessage));
     const date = useSelector((store) => store.weeklySchedule.schedule.firstDayOfWeek);
+    const taskId = useSelector((store) => store.task.scheduleTask.taskId);
     
     const [scheduletask, setScheduleTask] = useState("");
     // startDateTime is a combination of the date and time the user selects
@@ -41,11 +42,17 @@ export const AddEditScheduleTask = () => {
 
     // Submits form to the backend via redux store task.js
     // Also sends a new get request to get the weeks worth of schedule tasks again - not sure if this is the best idea?
-    const handleSubmit = (event) => {
+    const handleOnAdd = (event) => {
         event.preventDefault();
-        dispatch(setTask(scheduletask, userId, startDateTime));
+        dispatch(addTask(scheduletask, userId, startDateTime));
         dispatch(getSchedule(userId, date));
         setScheduleTask("");
+    };
+
+    const handleOnUpdate = (event) => {
+        event.preventDefault();
+        dispatch(editTask(scheduletask, userId, startDateTime, taskId));
+        dispatch(getSchedule(userId, date));
     };
 
     return (
@@ -57,7 +64,7 @@ export const AddEditScheduleTask = () => {
             </NavLink>
             <h2>Schedule something!</h2>
             <h2>Edit your task</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleOnAdd}>
                 <input
                     className="input-box"
                     value={scheduletask}
@@ -86,7 +93,7 @@ export const AddEditScheduleTask = () => {
                     />
                 </label>
                 <button className="add-task-button" type="submit">ADD TASK</button>
-                <button className="add-task-button" type="submit">UPDATE TASK</button>
+                <button className="add-task-button" type="submit" onClick={handleOnUpdate}>UPDATE TASK</button>
             </form>
             {statusMessage && <p>{`${statusMessage}`}</p>}
         </section>

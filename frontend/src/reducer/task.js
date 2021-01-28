@@ -31,9 +31,6 @@ export const task = createSlice({
             const { statusMessage } = action.payload;
             state.scheduleTask.statusMessage = statusMessage; 
         },
-        // clearStatusMessage: (state, action) => {
-        //     state.scheduleTask.statusMessage = null;
-        // },
         setErrorMessage: (state, action) => {
             const { errorMessage } = action.payload;
             state.scheduleTask.errorMessage = errorMessage; 
@@ -41,8 +38,8 @@ export const task = createSlice({
     }
 });
 
-// Thunk for when the user adds a schedule task
-export const setTask = (scheduletask, userId, startDateTime) => {
+// Thunk for fetch to POST endpoint to add a schedule task
+export const addTask = (scheduletask, userId, startDateTime) => {
     return(dispatch) => {
         fetch(`http://localhost:8080/users/${userId}/scheduletask`, {
             method: "POST",
@@ -68,6 +65,7 @@ export const setTask = (scheduletask, userId, startDateTime) => {
     };
 };
 
+// Thunk to get the task when the user clicks on the task in the summary. The data received back in json is sent into the taskSummary.js
 export const getTask = (taskId, userId) => {
     return(dispatch) => {
         fetch(`http://localhost:8080/users/${userId}/scheduletask/${taskId}`, {
@@ -77,6 +75,33 @@ export const getTask = (taskId, userId) => {
     .then((res) => {
         return res.json();
     })
+    .then((json) => {
+        dispatch(task.actions.setTaskId({ taskId: json.taskId }));
+        dispatch(task.actions.setStatusMessage({ statusMessage: json.statusMessage}));
+        dispatch(task.actions.setTask({ task: json.task }));
+        dispatch(task.actions.setStartDateTime({ startdatetime: json.startdatetime }));
+    })
+    .catch((error) => {
+        dispatch(task.actions.setErrorMessage({ errorMessage: error.error}));
+    })
+    };
+};
+
+// Thunk doing the dispatch to the PATCH endpoint that updates a task
+export const editTask = (scheduletask, userId, startDateTime, taskId) => {
+    return(dispatch) => {
+        fetch(`http://localhost:8080/users/${userId}/scheduletask/${taskId}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify({ scheduletask, startDateTime }),
+        })
+        .then((res) => {
+            if(!res.ok) {
+                throw new Error(
+                    "Couldn't update task"
+                );
+            } return res.json();
+        })
         .then((json) => {
             dispatch(task.actions.setTaskId({ taskId: json.taskId }));
             dispatch(task.actions.setStatusMessage({ statusMessage: json.statusMessage}));
@@ -85,6 +110,6 @@ export const getTask = (taskId, userId) => {
         })
         .catch((error) => {
             dispatch(task.actions.setErrorMessage({ errorMessage: error.error}));
-        })
+        });
     };
 };
