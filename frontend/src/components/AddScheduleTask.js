@@ -56,7 +56,7 @@ export const AddScheduleTask = () => {
                 </div>
             </NavLink>
             <h2>Schedule something!</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input
                     className="input-box"
                     value={scheduletask}
@@ -84,7 +84,7 @@ export const AddScheduleTask = () => {
                         required
                     />
                 </label>
-                <button className="add-task-button" type="submit" onClick={handleSubmit}>ADD TASK</button>
+                <button className="add-task-button" type="submit">ADD TASK</button>
             </form>
             {statusMessage && <p>{`${statusMessage}`}</p>}
         </section>
