@@ -1,30 +1,36 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import moment from 'moment';
 
 import { TimeTask } from "./TimeTask";
 
 export const WeeklyTask = ({ tasks, dayIndex }) => {
-    // Getting first day of week from redux weeklySchedule.js 
+    // Getting first day of week from redux store 
     const firstDayOfWeek = useSelector((store) => store.weeklySchedule.schedule.firstDayOfWeek);
-
-    // Taking the firstDayOfWeek from redux store which is a string
-    // Converting it to a date using the new date object so we can use date methods on it
-    // Then getting the day of the month for that date using getDate method
-    // Then using the setDate method to set the day of the date, taking the first day of the week and incremeting this based on the dayIndex number (array of days of the week) by 1.
-    // The date is converted to a string in English which will be e.g. 01/01/21 etc
-    // Then the date is covnverted to the day of the week e.g. "Monday"
-    const date = new Date(firstDayOfWeek);
-    const firstDayOfWeekDateNumber = date.getDate();
-    date.setDate(firstDayOfWeekDateNumber+dayIndex);
     
-    const weekDate = date.toLocaleDateString();
-    const weekday = date.toLocaleString([], {weekday: 'long'});
+    // --- The below code helps to show and format each day and date of the week in the schedule --- //
 
+    // Using the firstDayOfTheWeek, e.g. date for the Monday from redux which is sent from the backend to convert it from a string to a date object
+    const date = new Date(firstDayOfWeek);
+    // Then use the date (firstDayOfWeek) to get the day of the month using getDate(), will be number e.g. if the first day of the week is the 28th it will be 28 
+    const monday = date.getDate();
+    // Then use the date (firstDayOfWeek) and set the day of the month using the monday date above e.g. 28.
+    // Then increment this date based using the dayIndex which is the index number of each of the arrays in the weeklyTasksArray
+    date.setDate(monday+dayIndex);
+
+    // Then for each day, can use the date, to format the weekday and week date the way I want them to be
+    // Converting the day of the week e.g. Monday
+    const weekday = moment(date).format("dddd");
+    // Converting the date e.g. 10/10/21
+    const weekdate = moment(date).format("DDD/MM/YY");   
+
+    // Show the day and date of the week
+    // Then map through the tasks into the TimeTask component as there may be more than one task for that day of the week
     return (
         <div className="task-container">
             <div className="week-day-container">
                 <p className="heavy-text">{weekday}</p>
-                <p>{weekDate}</p>
+                <p>{weekdate}</p>
             </div>
             {tasks.map(task => (
                 <TimeTask task={task} key={task._id} dayIndex={dayIndex} />
