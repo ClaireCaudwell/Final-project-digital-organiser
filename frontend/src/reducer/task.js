@@ -5,9 +5,9 @@ const initialState = {
         taskId: 0,
         task: null,
         startdatetime: null,
-        delete: false,
         statusMessage: null,
         errorMessage: null,
+        editPage: false,
     },
 };
 
@@ -34,6 +34,13 @@ export const task = createSlice({
         setErrorMessage: (state, action) => {
             const { errorMessage } = action.payload;
             state.scheduleTask.errorMessage = errorMessage; 
+        },
+        setEditPage: (state, action) => {
+            if(action.payload === true){
+                state.scheduleTask.editPage = true;
+            } else {
+                state.scheduleTask.editPage = false;
+            }
         },
     }
 });
@@ -111,5 +118,32 @@ export const editTask = (scheduletask, userId, startDateTime, taskId) => {
         .catch((error) => {
             dispatch(task.actions.setErrorMessage({ errorMessage: error.error}));
         });
+    };
+};
+
+// Thunk is called when user deletes task
+// Does fetch to DELETE endpoint
+export const deleteTask = (userId, taskId) => {
+    return(dispatch) => {
+        fetch(`http://localhost:8080/users/${userId}/scheduletask/${taskId}`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+        })
+        .then((res) => {
+            if(!res.ok) {
+                throw new Error(
+                    "Couldn't delete task"
+                );
+            } return res.json();
+        })
+        .then((json) => {
+            dispatch(task.actions.setStatusMessage({ statusMessage: json.statusMessage}));
+            dispatch(task.actions.setTaskId({ taskId: 0 }));
+            dispatch(task.actions.setTask({ task: null }));
+            dispatch(task.actions.setStartDateTime({ startdatetime: null }));
+        })
+        .catch((error) => {
+            dispatch(task.actions.setErrorMessage({ errorMessage: error.toString()}));
+        })
     };
 };

@@ -13,10 +13,12 @@ import { getSchedule } from "../reducer/weeklySchedule";
 
 export const AddEditScheduleTask = () => {
     const dispatch = useDispatch();
+
     const userId = useSelector((store) => store.user.login.userId);
     const statusMessage = useSelector((store => store.task.scheduleTask.statusMessage));
     const date = useSelector((store) => store.weeklySchedule.schedule.firstDayOfWeek);
     const taskId = useSelector((store) => store.task.scheduleTask.taskId);
+    const setEditPage = useSelector((store) => store.task.scheduleTask.editPage);
     
     const [scheduletask, setScheduleTask] = useState("");
     // startDateTime is a combination of the date and time the user selects
@@ -29,6 +31,13 @@ export const AddEditScheduleTask = () => {
         if(statusMessage === "Task retrieved"){
             dispatch(task.actions.setStatusMessage({ statusMessage: null }));
         }
+        // dispatch(task.actions.setEditPage());
+        // if(statusMessage === "Task updated") {
+        //     dispatch(task.actions.setStatusMessage({ statusMessage: null }));
+        // }
+        // if(statusMessage === "Schedule task created") {
+        //     dispatch(task.actions.setStatusMessage({ statusMessage: null }));
+        // }
     });
 
     // startDateTime is a a new Date() based on the date the user selects in the date picker
@@ -49,6 +58,8 @@ export const AddEditScheduleTask = () => {
         setScheduleTask("");
     };
 
+    // When user has made their changes and press the UPDATE TASK button the dispatch is done to the editTask thunk. This triggers the fetch to PATCH endpoint which will update the task
+    // Then a new dispatch is done to get the updated schedule
     const handleOnUpdate = (event) => {
         event.preventDefault();
         dispatch(editTask(scheduletask, userId, startDateTime, taskId));
@@ -62,8 +73,8 @@ export const AddEditScheduleTask = () => {
                     <button className="close-button" type="button">x</button> 
                 </div>
             </NavLink>
-            <h2>Schedule something!</h2>
-            <h2>Edit your task</h2>
+            {!setEditPage && <h2>Schedule something!</h2>}
+            {setEditPage && <h2>Edit your task</h2>}
             <form onSubmit={handleOnAdd}>
                 <input
                     className="input-box"
@@ -92,8 +103,8 @@ export const AddEditScheduleTask = () => {
                         required
                     />
                 </label>
-                <button className="add-task-button" type="submit">ADD TASK</button>
-                <button className="add-task-button" type="submit" onClick={handleOnUpdate}>UPDATE TASK</button>
+                {!setEditPage && <button className="add-task-button" type="submit">ADD TASK</button>}
+                {setEditPage && <button className="add-task-button" type="submit" onClick={handleOnUpdate}>UPDATE TASK</button>}
             </form>
             {statusMessage && <p>{`${statusMessage}`}</p>}
         </section>

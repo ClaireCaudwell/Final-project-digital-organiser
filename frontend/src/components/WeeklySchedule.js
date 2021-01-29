@@ -61,7 +61,7 @@ export const WeeklySchedule = () => {
     // index is the index number for each of the 7 arrays in the weeklyTasksArray
     return (
         <section className="schedule-component-container">
-            {weeklyTasks.length === 0 && <p>No schedule tasks. Add tasks to get up and running with your schedule</p>}
+            {weeklyTasks.length === 0 && <p>No dates in your schedule</p>}
             <div>
                 {weeklyTasksArray.map((tasks, index) => (
                     <WeeklyTask key={index} tasks={tasks} dayIndex={index} />

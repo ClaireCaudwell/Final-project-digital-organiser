@@ -11,7 +11,7 @@ export const TimeTask = ({ task }) => {
     return (
         <NavLink to={`/taskSummary/${taskId}`} className="link">
             <div className="time-task-container">
-                <p>{task.task}</p>
+                <p className="task">{task.task}</p>
                 <p className="heavy-text">{time}</p>
             </div>
         </NavLink>
