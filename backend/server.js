@@ -149,7 +149,7 @@ app.post("/users/:id/scheduletask", async (req, res) => {
     user.scheduleTask.push({ task: scheduletask, startdatetime: startDateTime })
     user.save();
     const addedTask = user.scheduleTask[user.scheduleTask.length-1];
-    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, startdatetime: addedTask.startdatetime, statusMessage: "Schedule item created" });
+    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, startdatetime: addedTask.startdatetime, statusMessage: "Schedule task created" });
   } catch (error) {
     res.status(400).json({ notFound: true, errorMesssage: "Could't create schedule task", error});
   }
@@ -286,24 +286,30 @@ app.patch("/users/:id/scheduletask/:taskid", async (req, res) => {
  1. PUT endpoint where a schedule task's delete property is updated to true
  2. This means that when the user wants to show the weekly tasks in the frontend only the tasks that have delete: false will be returned in the json
 */
-app.put("/users/:id/deletetask/:taskid", async (req, res) => {
+app.delete("/users/:id/scheduletask/:taskid", async (req, res) => {
   try {
     const userId = req.params.id;
     const taskId = req.params.taskid;
     let user;
     try {
-    user = await User.findById(userId);
-  }
+      user = await User.findById(userId);
+   }
     catch (error) {
       throw "User not found"
-  }
+  } 
   const arrayOfTasks = user.scheduleTask;
+  let indexNumber = false;
   let i;
   for (i = 0; i < arrayOfTasks.length; i++) {
     if(arrayOfTasks[i]._id.toString() === taskId){
-      arrayOfTasks[i].delete = true;
+      indexNumber = i;
     }
   }
+  if(indexNumber === false) {
+    throw "Task ID not found"
+  }
+  // Splicing/removing the element(object) based on the index number of the element from the array
+  arrayOfTasks.splice(indexNumber, 1);
   user.save();
   res.status(200).json({ statusMessage: "Task deleted"});
 } catch(error) {
