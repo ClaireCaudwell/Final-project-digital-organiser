@@ -38,6 +38,7 @@ export const user = createSlice({
             state.login.accessToken = null;
             state.login.userId = 0;
             state.login.username = null;
+            state.login.errorMessage = null;
         }
     },
 });

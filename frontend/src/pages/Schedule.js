@@ -7,7 +7,7 @@ import '../Calendar.css';
 
 import { getOrganiser, user } from "../reducer/user";
 import { Header } from "../components/Header";
-import { AddScheduleTaskButton } from "../components/AddScheduleTaskButton";
+import { AddTaskButton } from "../components/AddTaskButton";
 import { WeeklySchedule } from "../components/WeeklySchedule";
 import { getSchedule, weeklySchedule } from "../reducer/weeklySchedule";
 
@@ -73,7 +73,7 @@ export const Schedule = () => {
                         onClickWeekNumber={onSelectWeekNumber}
                     />
                 </div>
-                <AddScheduleTaskButton />
+                <AddTaskButton />
                 <WeeklySchedule />
             </main>        
         </>

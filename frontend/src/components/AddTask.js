@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+
 import DatePicker from 'react-date-picker/dist/entry.nostyle';
 import TimePicker from 'react-time-picker/dist/entry.nostyle';
 
@@ -8,36 +9,26 @@ import '../DatePicker.css';
 import '../TimePicker.css';
 import '../Clock.css';
 
-import { addTask, task, editTask } from "../reducer/task";
+import { addTask, task } from "../reducer/task";
 import { getSchedule } from "../reducer/weeklySchedule";
 
-export const AddEditScheduleTask = () => {
+export const AddTask = () => {
     const dispatch = useDispatch();
 
     const userId = useSelector((store) => store.user.login.userId);
     const statusMessage = useSelector((store => store.task.scheduleTask.statusMessage));
     const date = useSelector((store) => store.weeklySchedule.schedule.firstDayOfWeek);
-    const taskId = useSelector((store) => store.task.scheduleTask.taskId);
-    const setEditPage = useSelector((store) => store.task.scheduleTask.editPage);
     
     const [scheduletask, setScheduleTask] = useState("");
     // startDateTime is a combination of the date and time the user selects
     const [ startDateTime, setStartDateTime ] = useState(new Date());
     const [ time, setTime ] = useState(new Date());
+    const [ clearMessage, setClearMesssage ] = useState(false);
 
-    // Before component is mounted clear any Task's retrieved from redux task.js
-    // This is because redux is being used to store the data sent back from creating and getting a task in the backend
     useEffect(() => {
-        if(statusMessage === "Task retrieved"){
+        if(statusMessage === "Task updated"){
             dispatch(task.actions.setStatusMessage({ statusMessage: null }));
         }
-        // dispatch(task.actions.setEditPage());
-        // if(statusMessage === "Task updated") {
-        //     dispatch(task.actions.setStatusMessage({ statusMessage: null }));
-        // }
-        // if(statusMessage === "Schedule task created") {
-        //     dispatch(task.actions.setStatusMessage({ statusMessage: null }));
-        // }
     });
 
     // startDateTime is a a new Date() based on the date the user selects in the date picker
@@ -56,27 +47,28 @@ export const AddEditScheduleTask = () => {
         dispatch(addTask(scheduletask, userId, startDateTime));
         dispatch(getSchedule(userId, date));
         setScheduleTask("");
+        dispatch(task.actions.setStatusMessage({ statusMessage: null }));
+        setClearMesssage(true);
     };
 
-    // When user has made their changes and press the UPDATE TASK button the dispatch is done to the editTask thunk. This triggers the fetch to PATCH endpoint which will update the task
-    // Then a new dispatch is done to get the updated schedule
-    const handleOnUpdate = (event) => {
-        event.preventDefault();
-        dispatch(editTask(scheduletask, userId, startDateTime, taskId));
-        dispatch(getSchedule(userId, date));
+    const handleClose = () => {
+        if(clearMessage) {
+            dispatch(task.actions.setStatusMessage({ statusMessage: null })); 
+        }
+        dispatch(task.actions.clearState());
     };
 
     return (
         <section className="schedule-component-container">
             <NavLink to="/schedule" className="back-link">
                 <div className="close-button-container">
-                    <button className="close-button" type="button">x</button> 
+                    <button className="close-button" type="button" onClick={handleClose}>x</button> 
                 </div>
             </NavLink>
-            {!setEditPage && <h2>Schedule something!</h2>}
-            {setEditPage && <h2>Edit your task</h2>}
+            <h2>Schedule something!</h2>
             <form onSubmit={handleOnAdd}>
                 <input
+                    type="text"
                     className="input-box"
                     value={scheduletask}
                     onChange={(event) => setScheduleTask(event.target.value)}
@@ -103,8 +95,7 @@ export const AddEditScheduleTask = () => {
                         required
                     />
                 </label>
-                {!setEditPage && <button className="add-task-button" type="submit">ADD TASK</button>}
-                {setEditPage && <button className="add-task-button" type="submit" onClick={handleOnUpdate}>UPDATE TASK</button>}
+                <button className="add-task-button" type="submit">ADD TASK</button>
             </form>
             {statusMessage && <p>{`${statusMessage}`}</p>}
         </section>

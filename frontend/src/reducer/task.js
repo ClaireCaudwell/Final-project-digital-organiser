@@ -7,7 +7,6 @@ const initialState = {
         startdatetime: null,
         statusMessage: null,
         errorMessage: null,
-        editPage: false,
     },
 };
 
@@ -35,12 +34,10 @@ export const task = createSlice({
             const { errorMessage } = action.payload;
             state.scheduleTask.errorMessage = errorMessage; 
         },
-        setEditPage: (state, action) => {
-            if(action.payload === true){
-                state.scheduleTask.editPage = true;
-            } else {
-                state.scheduleTask.editPage = false;
-            }
+        clearState: (state, action) => {
+            state.scheduleTask.taskId = 0;
+            state.scheduleTask.task = null;
+            state.scheduleTask.startdatetime = null;   
         },
     }
 });
@@ -84,7 +81,6 @@ export const getTask = (taskId, userId) => {
     })
     .then((json) => {
         dispatch(task.actions.setTaskId({ taskId: json.taskId }));
-        dispatch(task.actions.setStatusMessage({ statusMessage: json.statusMessage}));
         dispatch(task.actions.setTask({ task: json.task }));
         dispatch(task.actions.setStartDateTime({ startdatetime: json.startdatetime }));
     })
@@ -95,9 +91,9 @@ export const getTask = (taskId, userId) => {
 };
 
 // Thunk doing the dispatch to the PATCH endpoint that updates a task
-export const editTask = (scheduletask, userId, startDateTime, taskId) => {
+export const editTask = (scheduletask, userId, startDateTime, taskid) => {
     return(dispatch) => {
-        fetch(`http://localhost:8080/users/${userId}/scheduletask/${taskId}`, {
+        fetch(`http://localhost:8080/users/${userId}/scheduletask/${taskid}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify({ scheduletask, startDateTime }),
