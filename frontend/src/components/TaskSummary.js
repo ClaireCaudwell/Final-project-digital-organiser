@@ -5,8 +5,6 @@ import { useParams, NavLink } from 'react-router-dom';
 import moment from 'moment';
 
 import { getTask, deleteTask, task } from "../reducer/task";
-import { getSchedule } from "../reducer/weeklySchedule";
-import { Schedule } from "../pages/Schedule";
 
 export const TaskSummary = () => {
     const { taskId } = useParams();
@@ -15,15 +13,13 @@ export const TaskSummary = () => {
     const taskDescription = useSelector((store) => store.task.scheduleTask.task);
     const statusMessage = useSelector((store => store.task.scheduleTask.statusMessage));
     const startdatetime = useSelector((store) => store.task.scheduleTask.startdatetime);
-    const monday = useSelector((store) => store.weeklySchedule.schedule.firstDayOfWeek);
 
-    const [ clearMessage, setClearMesssage ] = useState(false);
-    const [ page, setPage ] = useState(false);
+    const [ taskDeleted, setTaskDeleted ] = useState(false);
 
     // Before component renders dispatch is done to get the task from the database
     useEffect(() => {
         dispatch(getTask(taskId, userId));
-        setClearMesssage(true);
+        // dispatch(task.actions.setStatusMessage({ statusMessage: null}))
     }, [taskId, userId, dispatch]);
 
     // Converting the of the week e.g. Monday
@@ -38,53 +34,47 @@ export const TaskSummary = () => {
     // Function called when the user clicks on the delete button
     // Sends fetch request to backend using the userId (from redux user store) and taskId (from use Params)
     // Response back is a status message ("Task deleted") or errorMessage("User ID not found" or "Task ID not found")
-    const handleDelete = (event) => {
-        event.preventDefault();
+    const handleDelete = () => {
         dispatch(deleteTask(userId, taskId));
-        dispatch(getSchedule(userId, monday));
-        setPage(true);
+        dispatch(task.actions.setStatusMessage({ statusMessage: null}));
+        setTaskDeleted(true);
     };
 
-    const handleClearMessage = () => {
-        if(clearMessage) {
-            dispatch(task.actions.setStatusMessage({ statusMessage: null })); 
-        }
+    const handleClose = () => {
         dispatch(task.actions.clearState());
+        dispatch(task.actions.setStatusMessage({ statusMessage: null}))
     };
 
-    const handleOnEditClick = () => {
-        if(clearMessage) {
-            dispatch(task.actions.setStatusMessage({ statusMessage: null })); 
-        }
+    const handleEdit = () => {
+        dispatch(task.actions.setStatusMessage({ statusMessage: null })); 
     };
 
     return (
-        <>
-            {!page ? (
-            <section className="schedule-component-container">
-                <NavLink to="/schedule" className="back-link">
-                    <div className="close-button-container">
-                        <button className="close-button" type="button" onClick={handleClearMessage}>x</button> 
-                    </div>
-                </NavLink>
-                <h2 className="summary-text">Task summary</h2>
-                <div className="week-day-container no-background">
-                    <p>{weekday}</p>
-                    <p>{date}</p>
+        <section className="schedule-component-container">
+            <NavLink to="/" className="back-link">
+                <div className="close-button-container">
+                    <button className="close-button" type="button" onClick={handleClose}>close</button> 
                 </div>
-                <p>{taskDescription}</p>
-                <p className="heavy-text">{time}</p>
-                <div className="button-container">
-                <NavLink className="link" to="/edittask">
-                    <button type="button" onClick={handleOnEditClick}>EDIT</button>
-                </NavLink>
-                <button type="button" onClick={handleDelete}>DELETE</button>
-                </div>
-                {statusMessage && <p>{`${statusMessage}`}</p>}
-            </section>
-            ) : (
-                <Schedule />
-            )}
-        </>     
+            </NavLink>
+        {!taskDeleted ? (
+            <>
+            <h2 className="summary-text">Task summary</h2>
+            <div className="week-day-container no-background">
+                <p>{weekday}</p>
+                <p>{date}</p>
+            </div>
+            <p>{taskDescription}</p>
+            <p className="heavy-text">{time}</p>
+            </>
+        ) : (
+            <p>{statusMessage}</p>
+        )}
+        <div className="button-container">
+            <NavLink className="link" to="/edittask">
+                <button type="button" onClick={handleEdit}>EDIT</button>
+            </NavLink>
+            <button type="button" onClick={handleDelete}>DELETE</button>
+        </div>
+        </section>
     );
 };

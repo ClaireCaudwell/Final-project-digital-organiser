@@ -4,16 +4,18 @@ import { NavLink } from 'react-router-dom';
 import { ColourSchemeToggle } from "./ColourSchemeToggle";
 
 import { user} from "../reducer/user";
+import { weeklySchedule } from "../reducer/weeklySchedule";
 
 export const Header = () => {
     const dispatch = useDispatch();
 
     const username = useSelector((store) => store.user.login.username);
 
-    const handleLogOut = (event) => {
-        event.preventDefault();
+    const handleLogOut = () => {
         dispatch(user.actions.setLogOut());
         dispatch(user.actions.setStatusMessage({ statusMessage: "Logged out!" }));
+        dispatch(user.actions.setErrorMessage({ errorMessage: null }));
+        dispatch(weeklySchedule.actions.setLogout());        
     };
 
     return (        
@@ -23,16 +25,18 @@ export const Header = () => {
                     <ColourSchemeToggle />
                     <p className="toggle-text">Toggle to choose between colour themes</p>
                 </div>
-                <button type="submit" onClick={handleLogOut}>LOG OUT</button>
+                <NavLink to="/">
+                    <button type="button" onClick={handleLogOut}>LOG OUT</button>
+                </NavLink>
             </div>
             <h2>Hi {username}. Welcome to your organiser</h2>
             <nav>
                 <ul>
                     <div>
-                        <li><NavLink className="link" activeClassName="active" to="/schedule">SCHEDULE</NavLink></li>
+                        <li><NavLink to="/" className="link">SCHEDULE</NavLink></li>
                     </div>
                     <div>
-                        <li><NavLink className="link" to="/notes">NOTES</NavLink></li>
+                        <li><NavLink to="/notes" className="link">NOTES</NavLink></li>
                     </div>
                 </ul>
             </nav>

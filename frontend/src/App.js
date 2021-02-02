@@ -7,7 +7,6 @@ import { user } from "./reducer/user";
 import { task } from "./reducer/task";
 import { weeklySchedule } from "./reducer/weeklySchedule";
 import { SignupLogin } from "./pages/SignupLogin";
-import { Schedule } from "./pages/Schedule";
 import { Notes } from "./pages/Notes";
 import { AddTask } from "components/AddTask";
 import { TaskSummary } from "components/TaskSummary";
@@ -19,15 +18,15 @@ const store = configureStore({ reducer: reducer });
 export const App = () => {
 
   return (
-    <Provider store={store}>
+    <Provider store={store}>      
       <BrowserRouter>
         <Switch>
           <Route path="/" exact >
-            <SignupLogin />                            
+            <SignupLogin />
           </Route>
-          <Route path="/schedule">
+          {/* <Route path="/schedule">
               <Schedule />                            
-          </Route>
+          </Route> */}
           <Route path="/notes">
               <Notes />                            
           </Route>

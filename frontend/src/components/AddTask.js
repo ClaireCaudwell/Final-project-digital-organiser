@@ -1,35 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import moment from 'moment';
 
-import DatePicker from 'react-date-picker/dist/entry.nostyle';
-import TimePicker from 'react-time-picker/dist/entry.nostyle';
+import DatePicker from "react-date-picker/dist/entry.nostyle";
+import TimePicker from "react-time-picker/dist/entry.nostyle";
 
-import '../DatePicker.css';
-import '../TimePicker.css';
-import '../Clock.css';
+import "../DatePicker.css";
+import "../TimePicker.css";
+import "../Clock.css";
 
 import { addTask, task } from "../reducer/task";
-import { getSchedule } from "../reducer/weeklySchedule";
+import { weeklySchedule, getSchedule } from "../reducer/weeklySchedule";
 
 export const AddTask = () => {
     const dispatch = useDispatch();
 
     const userId = useSelector((store) => store.user.login.userId);
     const statusMessage = useSelector((store => store.task.scheduleTask.statusMessage));
-    const date = useSelector((store) => store.weeklySchedule.schedule.firstDayOfWeek);
+    const monday = useSelector((store) => store.weeklySchedule.schedule.firstDayOfWeek);
     
     const [scheduletask, setScheduleTask] = useState("");
     // startDateTime is a combination of the date and time the user selects
-    const [ startDateTime, setStartDateTime ] = useState(new Date());
+    const [ startDateTime, setStartDateTime ] = useState(new Date(monday));
     const [ time, setTime ] = useState(new Date());
-    const [ clearMessage, setClearMesssage ] = useState(false);
-
-    useEffect(() => {
-        if(statusMessage === "Task updated"){
-            dispatch(task.actions.setStatusMessage({ statusMessage: null }));
-        }
-    });
 
     // startDateTime is a a new Date() based on the date the user selects in the date picker
     // The user then chooses a time in the time picker and the value is assigned to the time useState. This is a string e.g "10:00".
@@ -40,29 +34,29 @@ export const AddTask = () => {
         setTime(startDateTime);
     };
 
+    // Gets current week based on today's date
+    const currentWeek = moment(monday).isoWeek();
+
     // Submits form to the backend via redux store task.js
     // Also sends a new get request to get the weeks worth of schedule tasks again - not sure if this is the best idea?
     const handleOnAdd = (event) => {
         event.preventDefault();
         dispatch(addTask(scheduletask, userId, startDateTime));
-        dispatch(getSchedule(userId, date));
+        dispatch(getSchedule(userId, monday));
+        dispatch(weeklySchedule.actions.setWeekNumber(currentWeek));
         setScheduleTask("");
-        dispatch(task.actions.setStatusMessage({ statusMessage: null }));
-        setClearMesssage(true);
     };
 
     const handleClose = () => {
-        if(clearMessage) {
-            dispatch(task.actions.setStatusMessage({ statusMessage: null })); 
-        }
         dispatch(task.actions.clearState());
+        dispatch(task.actions.setStatusMessage({ statusMessage: null}))
     };
 
     return (
         <section className="schedule-component-container">
-            <NavLink to="/schedule" className="back-link">
+            <NavLink to="/" className="back-link">
                 <div className="close-button-container">
-                    <button className="close-button" type="button" onClick={handleClose}>x</button> 
+                    <button className="close-button" type="button" onClick={handleClose}>close</button> 
                 </div>
             </NavLink>
             <h2>Schedule something!</h2>

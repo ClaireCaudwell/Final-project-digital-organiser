@@ -34,7 +34,7 @@ export const task = createSlice({
             const { errorMessage } = action.payload;
             state.scheduleTask.errorMessage = errorMessage; 
         },
-        clearState: (state, action) => {
+        clearState: (state) => {
             state.scheduleTask.taskId = 0;
             state.scheduleTask.task = null;
             state.scheduleTask.startdatetime = null;   

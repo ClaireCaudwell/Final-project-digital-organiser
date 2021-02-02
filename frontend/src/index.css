@@ -103,10 +103,10 @@ header{
   margin-bottom: 10px;
 }
 
-.active {
+/* .active {
   color: #8ccf6d;
   border-bottom: 2px solid #8ccf6d; 
-}
+} */
 
 h2 {
   font-weight: 400;
@@ -223,14 +223,17 @@ input:checked + .slider:before {
 }
 
 .close-button {
-  border-radius: 50%;
-  width: 22px;
+  border-radius: 7%;
   border: none;
-  background-color: #a1a79f;
+  background-color: #8d8d8d;
   text-align: center;
   font-size: 18px;
   cursor: pointer;
   color: white;
+}
+
+.close-button:hover {
+  background-color: #707070;
 }
 
 .input-box {

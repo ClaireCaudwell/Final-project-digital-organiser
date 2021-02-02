@@ -9,48 +9,49 @@ import '../TimePicker.css';
 import '../Clock.css';
 
 import { editTask, task } from "../reducer/task";
-import { getSchedule } from "../reducer/weeklySchedule";
 
 export const EditTask = () => {
     const dispatch = useDispatch();
 
     const userId = useSelector((store) => store.user.login.userId);
     const statusMessage = useSelector((store => store.task.scheduleTask.statusMessage));
-    const startdatetime = useSelector((store) => store.task.scheduleTask.startdatetime);
+    const dateandtime = useSelector((store) => store.task.scheduleTask.startdatetime);
     const taskDescription = useSelector((store) => store.task.scheduleTask.task);
     const taskid = useSelector((store) => store.task.scheduleTask.taskId);
-    const date = useSelector((store) => store.weeklySchedule.schedule.firstDayOfWeek);
     
     const [scheduletask, setScheduleTask] = useState(taskDescription);
     // startDateTime is a combination of the date and time the user selects
-    const [ startDateTime, setStartDateTime ] = useState(new Date(startdatetime));
-    const [ time, setTime ] = useState(new Date(startdatetime));
-    const [ clearMessage, setClearMesssage ] = useState(false);
+    const [ startDateTime, setStartDateTime ] = useState(new Date(dateandtime));
+    const [ time, setTime ] = useState(new Date(dateandtime));
+
+    const dateChosen = (newdate) => {
+        // If user only changes the date, the original time is set to the setStartDateTime with the new date
+        newdate.setHours(time.getHours(), time.getMinutes());
+        setStartDateTime(newdate);
+    };
 
     const timeChosen = (clock) => { 
+        // On the startDateTime use the time inputted by the user and set it to the startdatetime
         startDateTime.setHours(parseInt(clock.split(":")[0]),parseInt(clock.split(":")[1]));
+        // The use this new Date and set it to the time
         setTime(startDateTime);
     };
 
     const handleOnUpdate = (event) => {
         event.preventDefault();
         dispatch(editTask(scheduletask, userId, startDateTime, taskid));
-        dispatch(getSchedule(userId, date));
-        setClearMesssage(true);
     };
 
-    const handleClearMessage = () => {
-        if(clearMessage) {
-            dispatch(task.actions.setStatusMessage({ statusMessage: null })); 
-        }
+    const handleClose = () => {
         dispatch(task.actions.clearState());
+        dispatch(task.actions.setStatusMessage({ statusMessage: null}))
     };
 
     return (
         <section className="schedule-component-container">
-            <NavLink to="/schedule" className="back-link">
-                <div className="close-button-container" onClick={handleClearMessage}>
-                    <button className="close-button" type="button">x</button> 
+            <NavLink to="/" className="back-link">
+                <div className="close-button-container" onClick={handleClose}>
+                    <button className="close-button" type="button">close</button> 
                 </div>
             </NavLink>
             <h2>Edit your task</h2>
@@ -68,7 +69,7 @@ export const EditTask = () => {
                     DATE:
                     <DatePicker
                         value={startDateTime}
-                        onChange={(startDateTime) => setStartDateTime(startDateTime)}
+                        onChange={dateChosen}
                         showWeekNumbers
                         required
                     />

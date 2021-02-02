@@ -40,7 +40,7 @@ export const SignupLogin = () => {
     // The fetch and GET request is done in server.js which authenticates the accessToken and thus authenticates that the user exsists in the database which allows for the user is shown their organiser which will be rendered in Organiser.js.
     return (
         <>
-        {!accessToken ? ( 
+        {!accessToken ? (
             <main>
                 <h1>Organiser .</h1>
                 <h4 className="welcome">Welcome to Organiser . </h4>
@@ -68,7 +68,7 @@ export const SignupLogin = () => {
                 {userId === 0 && <p>{error}</p>}
             </main>
             ) : (
-            <Schedule />            
+            <Schedule />          
         )}
         </>  
     );
