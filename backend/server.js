@@ -124,8 +124,14 @@ app.post("/sessions", async (req, res) => {
 */
 app.get("/users/:id/organiser", authenticateUser);
 app.get("/users/:id/organiser", async (req, res) => {
-  res.status(201).json({ statusMessage: "Connected to organiser" });
+    res.status(201).json({ statusMessage: "Connected to organiser" });
 });
+
+// app.get("/users/:id/organiser", async (req, res) => {
+//   authenticateUser(req, res).then(
+//     res.status(201).json({ statusMessage: "Connected to organiser" })
+//   );
+// });
 
 /* --- ENDPOINT 4 ---
 1. POST endpoint where the user can add a new schedule item to their weekly schedule
@@ -149,7 +155,7 @@ app.post("/users/:id/scheduletask", async (req, res) => {
     user.scheduleTask.push({ task: scheduletask, startdatetime: startDateTime })
     user.save();
     const addedTask = user.scheduleTask[user.scheduleTask.length-1];
-    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, startdatetime: addedTask.startdatetime, statusMessage: "Schedule task created" });
+    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, startdatetime: addedTask.startdatetime, statusMessage: "Task created" });
   } catch (error) {
     res.status(400).json({ notFound: true, errorMesssage: "Could't create schedule task", error});
   }
