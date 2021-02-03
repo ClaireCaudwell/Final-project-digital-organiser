@@ -18,14 +18,15 @@ export const TaskSummary = () => {
 
     // Before component renders dispatch is done to get the task from the database
     useEffect(() => {
-        dispatch(getTask(taskId, userId));
-        // dispatch(task.actions.setStatusMessage({ statusMessage: null}))
-    }, [taskId, userId, dispatch]);
+        if(!taskDeleted){
+            dispatch(getTask(taskId, userId));
+        }
+        // dispatch(task.actions.setStatusMessage({ statusMessage: null}));
+    }, [taskId, userId, dispatch, taskDeleted]);
 
     // Converting the of the week e.g. Monday
     const weekday = moment(startdatetime).format("dddd");
     // Converting the date e.g. 10/10/21
-    // const date = moment(startdatetime).format("DDD/MM/YY");
     const date = new Date(startdatetime).toLocaleDateString();  
 
     // Converting the time
@@ -51,7 +52,7 @@ export const TaskSummary = () => {
 
     return (
         <section className="schedule-component-container">
-            <NavLink to="/" className="back-link">
+            <NavLink to="/schedule" className="back-link">
                 <div className="close-button-container">
                     <button className="close-button" type="button" onClick={handleClose}>close</button> 
                 </div>
@@ -65,16 +66,16 @@ export const TaskSummary = () => {
             </div>
             <p>{taskDescription}</p>
             <p className="heavy-text">{time}</p>
+            <div className="button-container">
+                <NavLink className="link" to="/edittask">
+                    <button type="button" onClick={handleEdit}>EDIT</button>
+                </NavLink>
+                <button type="button" onClick={handleDelete}>DELETE</button>
+            </div>
             </>
         ) : (
             <p>{statusMessage}</p>
         )}
-        <div className="button-container">
-            <NavLink className="link" to="/edittask">
-                <button type="button" onClick={handleEdit}>EDIT</button>
-            </NavLink>
-            <button type="button" onClick={handleDelete}>DELETE</button>
-        </div>
         </section>
     );
 };

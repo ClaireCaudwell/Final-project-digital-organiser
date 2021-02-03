@@ -7,6 +7,7 @@ import { user } from "./reducer/user";
 import { task } from "./reducer/task";
 import { weeklySchedule } from "./reducer/weeklySchedule";
 import { SignupLogin } from "./pages/SignupLogin";
+import { Schedule } from "./pages/Schedule";
 import { Notes } from "./pages/Notes";
 import { AddTask } from "components/AddTask";
 import { TaskSummary } from "components/TaskSummary";
@@ -24,9 +25,9 @@ export const App = () => {
           <Route path="/" exact >
             <SignupLogin />
           </Route>
-          {/* <Route path="/schedule">
+          <Route path="/schedule">
               <Schedule />                            
-          </Route> */}
+          </Route>
           <Route path="/notes">
               <Notes />                            
           </Route>

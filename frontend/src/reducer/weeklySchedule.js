@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import moment from 'moment';
 
 const initialState = { 
     schedule: {
         weeklyTasks: [],
         week: null,
-        firstDayOfWeek: null,
+        firstDayOfWeek: moment().startOf('isoWeek').toISOString(),
+        //Date for start of week based on today's date and convert to ISO string 
+        selectedDate: moment().startOf('isoWeek').toISOString(),
         errorMessage: null,
-        selectedDate: null,
     }
 };
 
@@ -18,22 +20,24 @@ export const weeklySchedule = createSlice({
             const { weeklySchedule } = action.payload;
             state.schedule.weeklyTasks = weeklySchedule;
         },
-        setWeekNumber: (state, action) => {    
+        setWeekNumber: (state, action) => { 
             state.schedule.week = action.payload;
         },
         // Getting back in the json response from the GET endpoint the start of week date that we sent in. This is a new Date for the first day of the week that corresponds to the week number the user clicks on
         setStartOfWeek: (state, action) => {
-            state.schedule.firstDayOfWeek = action.payload.startOfWeek;
+            const { startOfWeek } = action.payload;
+            state.schedule.firstDayOfWeek = startOfWeek;
         },
         setSelectedDate: (state, action) => {
-            state.schedule.selectedDate = action.payload;
+            state.schedule.selectedDate = action.payload.selectedDate;
         },
         setErrorMessage: (state, action) => {
             const { errorMessage } = action.payload;
             state.schedule.errorMessage = errorMessage; 
         },
         setLogout: (state) => {
-            state.schedule.firstDayOfWeek = null;
+            state.schedule.firstDayOfWeek = moment().startOf('isoWeek').toISOString();
+            state.schedule.selectedDate = moment().startOf('isoWeek').toISOString();
             state.schedule.weeklyTasks = [];
             state.schedule.week = null;
         }

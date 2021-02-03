@@ -16,34 +16,37 @@ export const Schedule = () => {
     const userId = useSelector((store) => store.user.login.userId);
     const accessToken = useSelector((store) => store.user.login.accessToken);
     const authorized = useSelector((store) => store.user.login.authorized);
-    
-    // Gets current week based on today's date
-    const currentWeek = moment().isoWeek();
+    // Date for start of week based on today's date
+    const monday = useSelector((store) => store.weeklySchedule.schedule.firstDayOfWeek);
 
-    // User signs ups or logs in 
-    // Before this component is mounted the dispatch to getOrganiser is done in user.js redux.
-    // This is so the user can be authenticated and gain access to organiser page
-    // Error message is set to null in case the login or sign up wasn't successful the first time. This is so it's not still there in redux store user.js when they are authenticated
-    // Week number is set to the current week which will be shown in Schedule.js
+    // UseEffect actions following code before Schedule.js is mounted
+    // If userId exists in redux and authorized in redux is not true then 
     useEffect(() => {
         if(userId && !authorized){
+            // Dispatch to endpoint that authenticates the user
             dispatch(getOrganiser(userId, accessToken));
-            dispatch(user.actions.setAuthorized({ authorized: true}));
+            // Set authorized property in initial state as true
+            dispatch(user.actions.setAuthorized({ authorized: true }));
         }
+        // Clear error message that was shown if user logs in or signs up unsuccessfully
         dispatch(user.actions.setErrorMessage({ errorMessage: null }));
-        dispatch(weeklySchedule.actions.setWeekNumber(currentWeek));
-    },[dispatch, userId, accessToken, currentWeek, authorized]);
+    },[dispatch, userId, accessToken, authorized]);
 
-    // Get start of week date based on the today's date. Set it to ISO 8601, 12:00 am e.g. Mon Jan 25 2021 00:00:00 GMT+0100 
-    const monday = moment().startOf('isoWeek');
+    // Gets current week based on today's date
+    const currentWeek = moment(monday).isoWeek();
 
-    // dispatch is done to get the weekly schedule using the userId and the Monday date if the authorized is true i.e. meaning the user has logged in/signed up successfully 
+    // if authorized is then this second use effect is triggered
     useEffect(() => {
         if(authorized){
+            // dispatch to get schedule using userId and monday 
+            // Monday is the firstDayOfWeek from redux store and is the date for Monday of the week based on today's date
             dispatch(getSchedule(userId, monday));
+            // set current week to week based on today's date
+            dispatch(weeklySchedule.actions.setWeekNumber(currentWeek));
+            // Clear error message if fetch wasn't successful
             dispatch(weeklySchedule.actions.setErrorMessage({ errorMessage: null }));
         }    
-    }, [dispatch, monday, userId, authorized]);
+    }, [dispatch, userId, monday, authorized, currentWeek]);
 
     return (
         <>

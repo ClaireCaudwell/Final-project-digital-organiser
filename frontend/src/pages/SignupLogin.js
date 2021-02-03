@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { userLogin, userSignup } from "reducer/user";
-import { Schedule } from "./Schedule";
+// import { Schedule } from "./Schedule";
 
 export const SignupLogin = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
+
     const userId = useSelector((store) => store.user.login.userId);
     const error = useSelector((store) => store.user.login.errorMessage);
     const accessToken = useSelector((store) => store.user.login.accessToken);
-
+    
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -34,13 +37,21 @@ export const SignupLogin = () => {
         setPassword(""); 
     };
 
+    useEffect(() => {
+        if(accessToken) {
+            history.push("/schedule");
+            // return(
+            //     <></>
+            // )
+        }
+    }, [accessToken, history]);
+
     // if the accessToken hasn't been created i.e. the user hasn't signed up or logged in then the form will still be shown and error message will be shown
     // else the Organiser.js will be shown as the user has created a successful username/password a valid accessToken is dispatched to redux store.
     // Once the accessToken is true and before the Organiser.js is rendered the useEffect dispatches to the getOrganiser thunk in the redux store the userId and accessToken generated from a successfule sign up or login. 
     // The fetch and GET request is done in server.js which authenticates the accessToken and thus authenticates that the user exsists in the database which allows for the user is shown their organiser which will be rendered in Organiser.js.
     return (
         <>
-        {!accessToken ? (
             <main>
                 <h1>Organiser .</h1>
                 <h4 className="welcome">Welcome to Organiser . </h4>
@@ -65,11 +76,8 @@ export const SignupLogin = () => {
                     <button className="form-button" type="submit" onClick={handleSignup}>SIGN UP</button>
                     <button className="form-button" type="submit" onClick={handleLogin}>LOGIN</button> 
                 </form>
-                {userId === 0 && <p>{error}</p>}
+                {userId === null && <p>{error}</p>}
             </main>
-            ) : (
-            <Schedule />          
-        )}
         </>  
     );
 };
