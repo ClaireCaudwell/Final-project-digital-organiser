@@ -6,14 +6,15 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { user } from "./reducer/user";
 import { task } from "./reducer/task";
 import { weeklySchedule } from "./reducer/weeklySchedule";
+import { note } from "./reducer/note";
 import { SignupLogin } from "./pages/SignupLogin";
 import { Schedule } from "./pages/Schedule";
-import { Notes } from "./pages/Notes";
+import { NotesPage } from "./pages/NotesPage";
 import { AddTask } from "components/AddTask";
 import { TaskSummary } from "components/TaskSummary";
 import { EditTask } from "./components/EditTask";
 
-const reducer = combineReducers({ user: user.reducer, task: task.reducer, weeklySchedule: weeklySchedule.reducer });
+const reducer = combineReducers({ user: user.reducer, task: task.reducer, weeklySchedule: weeklySchedule.reducer, note: note.reducer });
 const store = configureStore({ reducer: reducer });
 
 export const App = () => {
@@ -28,8 +29,8 @@ export const App = () => {
           <Route path="/schedule">
               <Schedule />                            
           </Route>
-          <Route path="/notes">
-              <Notes />                            
+          <Route path="/notespage">
+              <NotesPage />                            
           </Route>
           <Route path="/addtask">
               <AddTask />                            
@@ -40,6 +41,9 @@ export const App = () => {
           <Route path="/edittask">
             <EditTask />
           </Route>
+          {/* <Route path="/addnote">
+            <AddNote />
+          </Route> */}
           <Redirect to="/" />
         </Switch>       
       </BrowserRouter>
