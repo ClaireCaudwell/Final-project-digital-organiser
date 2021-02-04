@@ -47,6 +47,19 @@ const userSchema = new mongoose.Schema( {
       type: Boolean,
       default: false,
     }, 
+  }],
+  // Array for users notes
+  notes: [{
+    noteText: {
+      type: String,
+      minlength: 2,
+      maxlength: 80,
+      required: true,
+    },
+    delete: {
+      type: Boolean,
+      default: false,
+    },
   }]
 });
 
@@ -318,6 +331,122 @@ app.delete("/users/:id/scheduletask/:taskid", async (req, res) => {
   arrayOfTasks.splice(indexNumber, 1);
   user.save();
   res.status(200).json({ statusMessage: "Task deleted"});
+} catch(error) {
+  res.status(400).json({ notFound: true, errorMesssage: "User not found", error});
+}
+});
+
+/* --- Endpoint 9 ---
+POST endpoint to add a note to the users array of notes
+*/
+app.post("/users/:id/note", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const { noteText } = req.body;
+    let user;
+    try {
+      user = await User.findById(userId);
+    } catch(error) {
+        throw "User not found";
+    }
+    //Try to change push to findByIdAndUpdate when have time
+    user.notes.push({ noteText: noteText })
+    user.save();
+    const addedNote = user.notes[user.notes.length-1];
+    res.status(200).json({ noteId: addedNote._id, noteText: addedNote.noteText, statusMessage: "Note created" });
+  } catch (error) {
+    res.status(400).json({ notFound: true, errorMesssage: "Could't create note", error});
+  }
+});
+
+/* --- ENDPOINT 10 ---
+GET endpoint to get the array of notes
+*/
+app.get("/users/:id/note", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    let user;
+    try {
+      user = await User.findById(userId);
+    } catch(error) {
+      throw "User not found";
+    }
+      const arrayOfNotes = user.notes;
+      res.status(201).json({ notes: arrayOfNotes, statusMessage
+      : "Notes retrieved" });
+    } catch(error) {
+      res.status(404).json({ error });
+    }
+});
+
+/* --- ENDPOINT 11 ---
+PATCH endpoint to update the note text finding the note by ID and updating the note text
+*/
+app.patch("/users/:id/note/:noteid", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const noteId = req.params.noteid;
+    const { noteText } = req.body;
+    let user;
+    try {
+      user = await User.findById(userId);
+    } catch(error) {
+        throw "User not found";
+    }
+    const arrayOfNotes = user.notes;
+    let i;
+    for (i = 0; i < arrayOfNotes.length; i++) {
+      if(arrayOfNotes[i]._id.toString() === noteId) {
+        arrayOfNotes[i].noteText = noteText;
+      }
+    }
+    user.save();
+    const filteringNote = (note) => {
+      if(note._id.toString() === noteId) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    const individualNote = arrayOfNotes.filter(filteringNote);
+    if(individualNote.length === 0) {
+      throw "Note ID not found"
+    }
+    res.status(200).json({ noteId: individualNote[0]._id, noteText: individualNote[0].noteText, statusMessage: "Note updated"});
+  } catch(error) {
+    res.status(400).json({ notFound: true, error});
+  }
+});
+
+/* --- ENDPOINT 12 ---
+DELETE endpoint to delete a note
+*/
+app.delete("/users/:id/note/:noteid", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const noteId = req.params.noteid;
+    let user;
+    try {
+      user = await User.findById(userId);
+   }
+    catch (error) {
+      throw "User not found"
+  } 
+  const arrayOfNotes = user.notes;
+  let indexNumber = false;
+  let i;
+  for (i = 0; i < arrayOfNotes.length; i++) {
+    if(arrayOfNotes[i]._id.toString() === noteId){
+      indexNumber = i;
+    }
+  }
+  if(indexNumber === false) {
+    throw "Note ID not found"
+  }
+  // Splicing/removing the element(object) based on the index number of the element from the array
+  arrayOfNotes.splice(indexNumber, 1);
+  user.save();
+  res.status(200).json({ statusMessage: "Note deleted"});
 } catch(error) {
   res.status(400).json({ notFound: true, errorMesssage: "User not found", error});
 }
