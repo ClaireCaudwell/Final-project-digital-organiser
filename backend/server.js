@@ -202,7 +202,7 @@ app.get("/users/:id/scheduleweek/:starttime", async (req, res) => {
       };
       //8
       const weeklySchedule = arrayOfTasks.filter(filteringTask);
-      res.status(201).json({ weeklySchedule: weeklySchedule, startOfWeek: startOfWeek, statusMessage
+      res.status(201).json({ weeklySchedule: weeklySchedule, statusMessage
       : "Schedule retrieved" });
     } catch(error) {
       res.status(404).json({ error });
