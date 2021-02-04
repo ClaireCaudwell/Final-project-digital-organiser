@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addNote, getNotes, note } from "../reducer/note"; 
@@ -8,10 +8,6 @@ export const AddNote = () => {
     const userId = useSelector((store) => store.user.login.userId);
 
     const [ noteText, setNoteText ] = useState("");
-
-    useEffect(() => {
-        dispatch(note.actions.setStatusMessage({ statusMessage: null }));
-    }, [dispatch]);
 
     const onAddNote = (event) => {
         event.preventDefault();

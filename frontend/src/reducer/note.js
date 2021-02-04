@@ -1,10 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    note: {
-        noteId: localStorage.noteId || 0,
-        noteText: localStorage.noteText || null,
-    },
     notesArray: [], 
     statusMessage: null,
     errorMessage: null,
@@ -14,16 +10,6 @@ export const note = createSlice({
     name: "note",
     initialState: initialState,
     reducers: {
-        setNoteId: (state, action) => {
-            const { noteId } = action.payload;
-            localStorage.setItem("noteId", noteId);
-            state.note.noteId = noteId; 
-        },
-        setNote: (state, action) => {
-            const { noteText } = action.payload;
-            localStorage.setItem("noteText", noteText);
-            state.note.noteText = noteText; 
-        },
         setNotesArray: (state, action) => {
             const { arrayOfNotes } = action.payload;
             state.notesArray = arrayOfNotes;
@@ -55,8 +41,6 @@ export const addNote = (userId, noteText) => {
             } return res.json();
         })
         .then((json) => {
-            dispatch(note.actions.setNoteId({ noteId: json.noteId }));
-            dispatch(note.actions.setNote({ noteText: json.noteText }));
             dispatch(note.actions.setStatusMessage({ statusMessage: json.statusMessage}));
         })
         .catch((error) => {
@@ -81,7 +65,6 @@ export const getNotes = (userId) => {
         })
         .then((json) => {
             dispatch(note.actions.setNotesArray({ arrayOfNotes: json.notes }));
-            dispatch(note.actions.setStatusMessage({ statusMessage: json.statusMessage}));
         })
         .catch((error) => {
             dispatch(note.actions.setErrorMessage({ errorMessage: error.toString() }));
@@ -98,7 +81,7 @@ export const deleteNote = (userId, noteId) => {
         .then((res) => {
             if(!res.ok) {
                 throw new Error(
-                    "No note"
+                    "No note to delete"
                 );
             } return res.json();
         })

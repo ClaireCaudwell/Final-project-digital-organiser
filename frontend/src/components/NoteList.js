@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getNotes, note } from "../reducer/note";
+import { getNotes } from "../reducer/note";
 import { Note } from "./Note";
 
 export const NoteList = () => {
@@ -11,7 +11,6 @@ export const NoteList = () => {
 
     useEffect(() => {
         dispatch(getNotes(userId));
-        dispatch(note.actions.setStatusMessage({ statusMessage: null }));
     }, [dispatch, userId]);
 
     return (
