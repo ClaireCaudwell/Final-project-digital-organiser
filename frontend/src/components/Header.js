@@ -25,7 +25,7 @@ export const Header = () => {
                     <ColourSchemeToggle />
                     <p className="toggle-text">Toggle to choose between colour themes</p>
                 </div>
-                <NavLink to="/">
+                <NavLink to="/" className="logout-button">
                     <button type="button" onClick={handleLogOut}>LOG OUT</button>
                 </NavLink>
             </div>
@@ -33,10 +33,10 @@ export const Header = () => {
             <nav>
                 <ul>
                     <div>
-                        <li><NavLink to="/schedule" className="link">SCHEDULE</NavLink></li>
+                        <li><NavLink to="/schedule" className="link" activeClassName="active">SCHEDULE</NavLink></li>
                     </div>
                     <div>
-                        <li><NavLink to="/notes" className="link">NOTES</NavLink></li>
+                        <li><NavLink to="/notes" className="link" activeClassName="active">NOTES</NavLink></li>
                     </div>
                 </ul>
             </nav>

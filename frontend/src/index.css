@@ -103,10 +103,15 @@ header{
   margin-bottom: 10px;
 }
 
-/* .active {
-  color: #8ccf6d;
-  border-bottom: 2px solid #8ccf6d; 
-} */
+.active {
+  color:#7db961;
+  border-bottom: 2px solid#7db961;
+}
+
+.logout-button {
+  border-bottom: none;
+  cursor: pointer;
+}
 
 h2 {
   font-weight: 400;
@@ -146,7 +151,7 @@ nav {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #8ccf6d;
+  background-color:#7db961;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -191,6 +196,47 @@ input:checked + .slider:before {
   color: gray;
 }
 
+/* Calendar/schedule area */
+
+.bold {
+  font-weight: 500;
+  background-color: #8d8d8d;
+  padding: 7px;
+  border-radius: 5px;
+  font-size: 18px;
+  color: white;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.today {
+  border-bottom: none;
+}
+
+.today button {
+  background-color: white;
+  color:#7db961;
+  font-size: 18px;
+  font-weight: 500;
+  border: 2px solid #7db961;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 7px;
+}
+
+.today button:hover {
+  color:#689c50;
+  border: 2px solid #689c50;
+}
+
+.text-center {
+  text-align: center;
+}
+
 /* AddScheduleTaskButton.js */
 .add-schedule-container{
   display: flex;
@@ -207,7 +253,7 @@ input:checked + .slider:before {
   border-radius: 50%;
   width: 34px;
   border: none;
-  background-color: #8ccf6d;
+  background-color:#7db961;
   text-align: center;
   font-size: 30px;
   cursor: pointer;
@@ -237,7 +283,7 @@ input:checked + .slider:before {
 }
 
 .input-box {
-  border: 2px solid #8ccf6d;
+  border: 2px solid#7db961;
   width: 95%;
 }
 

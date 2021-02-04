@@ -4,10 +4,7 @@ import moment from 'moment';
 const initialState = { 
     schedule: {
         weeklyTasks: [],
-        week: null,
-        firstDayOfWeek: moment().startOf('isoWeek').toISOString(),
-        //Date for start of week based on today's date and convert to ISO string 
-        selectedDate: moment().startOf('isoWeek').toISOString(),
+        selectedDate: moment().toISOString(),
         errorMessage: null,
     }
 };
@@ -20,14 +17,6 @@ export const weeklySchedule = createSlice({
             const { weeklySchedule } = action.payload;
             state.schedule.weeklyTasks = weeklySchedule;
         },
-        setWeekNumber: (state, action) => { 
-            state.schedule.week = action.payload;
-        },
-        // Getting back in the json response from the GET endpoint the start of week date that we sent in. This is a new Date for the first day of the week that corresponds to the week number the user clicks on
-        setStartOfWeek: (state, action) => {
-            const { startOfWeek } = action.payload;
-            state.schedule.firstDayOfWeek = startOfWeek;
-        },
         setSelectedDate: (state, action) => {
             state.schedule.selectedDate = action.payload.selectedDate;
         },
@@ -36,10 +25,8 @@ export const weeklySchedule = createSlice({
             state.schedule.errorMessage = errorMessage; 
         },
         setLogout: (state) => {
-            state.schedule.firstDayOfWeek = moment().startOf('isoWeek').toISOString();
             state.schedule.selectedDate = moment().startOf('isoWeek').toISOString();
             state.schedule.weeklyTasks = [];
-            state.schedule.week = null;
         }
     },
 });
@@ -61,7 +48,6 @@ export const getSchedule = (userId, monday) => {
         })
         .then((json) => {
             dispatch(weeklySchedule.actions.setWeeklySchedule({ weeklySchedule: json.weeklySchedule }));
-            dispatch(weeklySchedule.actions.setStartOfWeek({ startOfWeek: json.startOfWeek }));
         })
         .catch((error) => {
             dispatch(weeklySchedule.actions.setErrorMessage({ errorMessage: error.toString() }));

@@ -1,12 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import moment from "moment";
 
 export const Week = () => {
-    const week = useSelector((store) => store.weeklySchedule.schedule.week);
+    const selectedDate = useSelector((store) => store.weeklySchedule.schedule.selectedDate);
+
+    // Gets current week based on today's date
+    const currentWeek = moment(selectedDate).isoWeek();
 
     return (
-        <div className="schedule-component-container">
-            <h2>Week {week}</h2>
-        </div>
+        <>
+            <h2 className="bold">Week {currentWeek}</h2>
+        </>
     );
 };

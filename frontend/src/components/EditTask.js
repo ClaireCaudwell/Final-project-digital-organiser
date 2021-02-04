@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import DatePicker from "react-date-picker/dist/entry.nostyle";
 import TimePicker from "react-time-picker/dist/entry.nostyle";
-import moment from "moment";
 
 import "../DatePicker.css";
 import "../TimePicker.css";
@@ -41,15 +40,11 @@ export const EditTask = () => {
 
     const handleOnUpdate = (event) => {
         event.preventDefault();
-        // dispatch to PATCH the task in the backend
+        // dispatch to PATCH endpoint to update the task in the backend
         dispatch(editTask(scheduletask, userId, startDateTime, taskid));
-        // dispatching the monday date based on the date the user has selected
-        // using the date and time chosen and getting the monday date for that week
-        const monday = moment(startDateTime).startOf('isoWeek').toISOString();
-        dispatch(weeklySchedule.actions.setStartOfWeek({ startOfWeek: monday }));
         // converting the date and time the user has chosen into a string
         const dateandtime = startDateTime.toISOString();
-        // dispatching and updating the selected date with this date
+        // dispatching the selected date to the selectedDate in redux store
         dispatch(weeklySchedule.actions.setSelectedDate({ selectedDate: dateandtime }));
     };
 

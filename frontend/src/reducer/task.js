@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     scheduleTask: {
-        taskId: 0,
-        task: null,
-        startdatetime: null,
+        taskId: localStorage.taskId || 0,
+        task: localStorage.task || null,
+        startdatetime: localStorage.startdatetime || null,
         statusMessage: null,
         errorMessage: null,
     },
@@ -16,14 +16,17 @@ export const task = createSlice({
     reducers: {
         setTaskId: (state, action) => {
             const { taskId } = action.payload;
+            localStorage.setItem("taskId", taskId);
             state.scheduleTask.taskId = taskId; 
         },
         setTask: (state, action) => {
             const { task } = action.payload;
+            localStorage.setItem("task", task);
             state.scheduleTask.task = task; 
         },
         setStartDateTime: (state, action) => {
             const { startdatetime } = action.payload;
+            localStorage.setItem("startdatetime", startdatetime);
             state.scheduleTask.startdatetime = startdatetime; 
         },
         setStatusMessage: (state, action) => {
@@ -37,7 +40,10 @@ export const task = createSlice({
         clearState: (state) => {
             state.scheduleTask.taskId = 0;
             state.scheduleTask.task = null;
-            state.scheduleTask.startdatetime = null;   
+            state.scheduleTask.startdatetime = null;
+            localStorage.removeItem("taskId");
+            localStorage.removeItem("task");
+            localStorage.removeItem("startdatetime");   
         },
     }
 });

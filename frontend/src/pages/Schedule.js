@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch  } from "react-redux";
-import moment from 'moment';
+import { NavLink } from "react-router-dom";
+import moment from "moment";
 
 import { Week } from "../components/Week";
 import { ScheduleCalendar } from "../components/ScheduleCalendar";
@@ -12,12 +13,16 @@ import { weeklySchedule, getSchedule } from "../reducer/weeklySchedule";
 
 export const Schedule = () => {
     const dispatch = useDispatch();
+    const [number, setNumber] = useState(0);
 
     const userId = useSelector((store) => store.user.login.userId);
     const accessToken = useSelector((store) => store.user.login.accessToken);
     const authorized = useSelector((store) => store.user.login.authorized);
-    // Date for start of week based on today's date
-    const monday = useSelector((store) => store.weeklySchedule.schedule.firstDayOfWeek);
+    // Today's date from redux
+    const selectedDate = useSelector((store) => store.weeklySchedule.schedule.selectedDate);
+
+    // Getting the monday for the current week based on today's date
+    const monday = moment(selectedDate).startOf('isoWeek').toISOString();
 
     // UseEffect actions following code before Schedule.js is mounted
     // If userId exists in redux and authorized in redux is not true then 
@@ -33,28 +38,39 @@ export const Schedule = () => {
     },[dispatch, userId, accessToken, authorized]);
 
     // Gets current week based on today's date
-    const currentWeek = moment(monday).isoWeek();
+    // const currentWeek = moment(monday).isoWeek();
 
     // if authorized is then this second use effect is triggered
     useEffect(() => {
         if(authorized){
             // dispatch to get schedule using userId and monday 
-            // Monday is the firstDayOfWeek from redux store and is the date for Monday of the week based on today's date
             dispatch(getSchedule(userId, monday));
             // set current week to week based on today's date
-            dispatch(weeklySchedule.actions.setWeekNumber(currentWeek));
+            // dispatch(weeklySchedule.actions.setWeekNumber(currentWeek));
             // Clear error message if fetch wasn't successful
             dispatch(weeklySchedule.actions.setErrorMessage({ errorMessage: null }));
         }    
-    }, [dispatch, userId, monday, authorized, currentWeek]);
+    }, [dispatch, userId, monday, authorized]);
+
+    const setToday = () => {
+        dispatch(weeklySchedule.actions.setSelectedDate({ selectedDate: new Date().toISOString() }));
+        setNumber(Math.random());
+    };
 
     return (
         <>
             <Header />
             <main>
-                <Week />               
-                <p className="schedule-component-container">Please select a week number in the calendar to see your schedule for that week</p>
-                <ScheduleCalendar />
+                <div className="wrapper schedule-component-container ">
+                    <Week />
+                    <NavLink to="/schedule" className="today">
+                        <button type="button" onClick={setToday}>
+                            TODAY
+                        </button>
+                    </NavLink>
+                </div>
+                <p className="schedule-component-container text-center">Select a date to get your schedule for that week</p>
+                <ScheduleCalendar number={number} />
                 <AddTaskButton />
                 <WeeklySchedule />
             </main>     
