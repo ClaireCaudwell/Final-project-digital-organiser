@@ -54,12 +54,11 @@ const userSchema = new mongoose.Schema( {
       type: String,
       minlength: 2,
       maxlength: 80,
-      required: true,
     },
     delete: {
       type: Boolean,
       default: false,
-    },
+    }
   }]
 });
 
@@ -337,23 +336,22 @@ app.delete("/users/:id/scheduletask/:taskid", async (req, res) => {
 });
 
 /* --- Endpoint 9 ---
-POST endpoint to add a note to the users array of notes
+POST endpoint to add an empty note to the users array of notes
 */
 app.post("/users/:id/note", async (req, res) => {
   try {
-    const userId = req.params.id;
-    const { noteText } = req.body;
+    const userId = req.params.id;  
     let user;
     try {
       user = await User.findById(userId);
     } catch(error) {
         throw "User not found";
     }
-    //Try to change push to findByIdAndUpdate when have time
-    user.notes.push({ noteText: noteText })
+    // Pushing an empty object to create an object with the delete and _id properties, so then when the user types in the note in the textarea box a dispatch is done to the PATCH endpoint to update the task with the note text
+    user.notes.push({ });
     user.save();
     const addedNote = user.notes[user.notes.length-1];
-    res.status(200).json({ noteId: addedNote._id, noteText: addedNote.noteText, statusMessage: "Note created" });
+    res.status(200).json({ noteId: addedNote._id, statusMessage: "Note created" });
   } catch (error) {
     res.status(400).json({ notFound: true, errorMesssage: "Could't create note", error});
   }
@@ -372,6 +370,8 @@ app.get("/users/:id/note", async (req, res) => {
       throw "User not found";
     }
       const arrayOfNotes = user.notes;
+      arrayOfNotes.reverse();
+
       res.status(201).json({ notes: arrayOfNotes, statusMessage
       : "Notes retrieved" });
     } catch(error) {
@@ -412,7 +412,7 @@ app.patch("/users/:id/note/:noteid", async (req, res) => {
     if(individualNote.length === 0) {
       throw "Note ID not found"
     }
-    res.status(200).json({ noteId: individualNote[0]._id, noteText: individualNote[0].noteText, statusMessage: "Note updated"});
+    res.status(200).json({ statusMessage: "Note added"});
   } catch(error) {
     res.status(400).json({ notFound: true, error});
   }
