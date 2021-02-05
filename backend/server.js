@@ -139,12 +139,6 @@ app.get("/users/:id/organiser", async (req, res) => {
     res.status(201).json({ statusMessage: "Connected to organiser" });
 });
 
-// app.get("/users/:id/organiser", async (req, res) => {
-//   authenticateUser(req, res).then(
-//     res.status(201).json({ statusMessage: "Connected to organiser" })
-//   );
-// });
-
 /* --- ENDPOINT 4 ---
 1. POST endpoint where the user can add a new schedule item to their weekly schedule
 2. The user is found by using the userId stored in the redux store
