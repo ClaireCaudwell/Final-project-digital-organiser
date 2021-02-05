@@ -6,9 +6,8 @@ import TimePicker from "react-time-picker/dist/entry.nostyle";
 
 import "../DatePicker.css";
 import "../TimePicker.css";
-import "../Clock.css";
 
-import { editTask, task } from "../reducer/task";
+import { editTask, task } from "../../reducer/task";
 import { weeklySchedule } from "reducer/weeklySchedule";
 
 export const EditTask = () => {

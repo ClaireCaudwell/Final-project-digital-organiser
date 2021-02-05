@@ -3,12 +3,12 @@ import { useSelector, useDispatch  } from "react-redux";
 import { NavLink } from "react-router-dom";
 import moment from "moment";
 
-import { Week } from "../components/Week";
-import { ScheduleCalendar } from "../components/ScheduleCalendar";
+import { Week } from "../components/Schedule-components/Week";
+import { ScheduleCalendar } from "../components/Schedule-components/ScheduleCalendar";
 import { getOrganiser, user } from "../reducer/user";
 import { Header } from "../components/Header";
-import { AddTaskButton } from "../components/AddTaskButton";
-import { WeeklySchedule } from "../components/WeeklySchedule";
+import { AddTaskButton } from "../components/Schedule-components/AddTaskButton";
+import { WeeklySchedule } from "../components/Schedule-components/WeeklySchedule";
 import { weeklySchedule, getSchedule } from "../reducer/weeklySchedule";
 
 export const Schedule = () => {

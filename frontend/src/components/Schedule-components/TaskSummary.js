@@ -4,7 +4,7 @@ import { useParams, NavLink } from 'react-router-dom';
 
 import moment from 'moment';
 
-import { getTask, deleteTask, task } from "../reducer/task";
+import { getTask, deleteTask, task } from "../../reducer/task";
 
 export const TaskSummary = () => {
     const { taskId } = useParams();
@@ -21,7 +21,6 @@ export const TaskSummary = () => {
         if(!taskDeleted){
             dispatch(getTask(taskId, userId));
         }
-        // dispatch(task.actions.setStatusMessage({ statusMessage: null}));
     }, [taskId, userId, dispatch, taskDeleted]);
 
     // Converting the of the week e.g. Monday

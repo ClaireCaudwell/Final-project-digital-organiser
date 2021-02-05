@@ -50,6 +50,9 @@ export const addNote = (userId) => {
         .catch((error) => {
             dispatch(note.actions.setErrorMessage({ errorMessage: error.toString()}));
         })
+        .finally(() => {
+            dispatch(getNotes(userId));
+        })
     };
 };
 
@@ -97,6 +100,9 @@ export const updateNote = (userId, noteId, noteText) => {
         .catch((error) => {
             dispatch(note.actions.setErrorMessage({ errorMessage: error.toString()}));
         })
+        .finally(() => {
+            dispatch(getNotes(userId));
+        })
     };
 };
 
@@ -115,9 +121,12 @@ export const deleteNote = (userId, noteId) => {
         })
         .then((json) => {
             dispatch(note.actions.setStatusMessage({ statusMessage: json.statusMessage}));
-        })
+        })        
         .catch((error) => {
             dispatch(note.actions.setErrorMessage({ errorMessage: error.toString() }));
+        })
+        .finally(() => {
+            dispatch(getNotes(userId));
         })
     };
 };

@@ -1,10 +1,10 @@
 import React from "react";
-import { useSelector, useDispatch  } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Calendar from "react-calendar";
 
 import "../Calendar.css";
 
-import { weeklySchedule } from "../reducer/weeklySchedule";
+import { weeklySchedule } from "../../reducer/weeklySchedule";
 
 export const ScheduleCalendar = ({ number }) => {
     const dispatch = useDispatch();

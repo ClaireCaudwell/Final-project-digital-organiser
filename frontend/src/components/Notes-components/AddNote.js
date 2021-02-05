@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addNote, getNotes, note } from "../reducer/note";
+import { addNote, note } from "../../reducer/note";
 
 export const AddNote = () => {
 
@@ -12,7 +12,6 @@ export const AddNote = () => {
     // Each object is given an _id and delete: false properties
     const onAddNote = () => {
         dispatch(addNote(userId));
-        dispatch(getNotes(userId));
         dispatch(note.actions.setStatusMessage({ statusMessage: null }));
     };
  

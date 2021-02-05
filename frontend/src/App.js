@@ -10,9 +10,9 @@ import { note } from "./reducer/note";
 import { SignupLogin } from "./pages/SignupLogin";
 import { Schedule } from "./pages/Schedule";
 import { NotesPage } from "./pages/NotesPage";
-import { AddTask } from "components/AddTask";
-import { TaskSummary } from "components/TaskSummary";
-import { EditTask } from "./components/EditTask";
+import { AddTask } from "components/Schedule-components/AddTask";
+import { TaskSummary } from "components/Schedule-components/TaskSummary";
+import { EditTask } from "./components/Schedule-components/EditTask";
 
 const reducer = combineReducers({ user: user.reducer, task: task.reducer, weeklySchedule: weeklySchedule.reducer, note: note.reducer });
 const store = configureStore({ reducer: reducer });

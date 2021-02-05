@@ -8,10 +8,9 @@ import TimePicker from "react-time-picker/dist/entry.nostyle";
 
 import "../DatePicker.css";
 import "../TimePicker.css";
-import "../Clock.css";
 
-import { addTask, task } from "../reducer/task";
-import { weeklySchedule } from "../reducer/weeklySchedule";
+import { addTask, task } from "../../reducer/task";
+import { weeklySchedule } from "../../reducer/weeklySchedule";
 
 export const AddTask = () => {
     const dispatch = useDispatch();

@@ -3,7 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { userLogin, userSignup } from "reducer/user";
-// import { Schedule } from "./Schedule";
+import { 
+    MainContainer, 
+    MainTitleContainer, 
+    Title, 
+    SmallText,
+    SignupLoginForm
+} from "../styled-components/styled-component-one";
 
 export const SignupLogin = () => {
     const history = useHistory();
@@ -49,11 +55,12 @@ export const SignupLogin = () => {
     // The fetch and GET request is done in server.js which authenticates the accessToken and thus authenticates that the user exsists in the database which allows for the user is shown their organiser which will be rendered in Organiser.js.
     return (
         <>
-            <main>
-                <h1>Organiser .</h1>
-                <h4 className="welcome">Welcome to Organiser . </h4>
-                <p className="signuplogin-text">Sign up or login to get your organiser</p>
-                <form className="signup-login-form">
+            <MainContainer>
+                <MainTitleContainer>
+                    <Title>Organiser .</Title>
+                    <SmallText>Sign up or login to get your organiser</SmallText>
+                </MainTitleContainer>
+                <SignupLoginForm className="signup-login-form">
                     Username
                     <input
                         value={username}
@@ -72,9 +79,9 @@ export const SignupLogin = () => {
                     />
                     <button className="form-button" type="submit" onClick={handleSignup}>SIGN UP</button>
                     <button className="form-button" type="submit" onClick={handleLogin}>LOGIN</button> 
-                </form>
+                </SignupLoginForm>
                 {userId === null && <p>{error}</p>}
-            </main>
+            </MainContainer>
         </>  
     );
 };
