@@ -40,9 +40,6 @@ export const SignupLogin = () => {
     useEffect(() => {
         if(accessToken) {
             history.push("/schedule");
-            // return(
-            //     <></>
-            // )
         }
     }, [accessToken, history]);
 

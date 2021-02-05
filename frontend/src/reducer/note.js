@@ -22,16 +22,20 @@ export const note = createSlice({
             const { errorMessage } = action.payload;
             state.errorMessage = errorMessage; 
         },
+        setLogOut: (state) => {
+            state.notesArray = [];
+            state.statusMessage = null;
+            state.errorMessage = null;
+        }
     }
 });
 
 // Thunk for adding a note
-export const addNote = (userId, noteText) => {
+export const addNote = (userId) => {
     return(dispatch) => {
         fetch(`http://localhost:8080/users/${userId}/note`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ noteText }),
         })
         .then((res) => {
             if(!res.ok) {
@@ -65,9 +69,33 @@ export const getNotes = (userId) => {
         })
         .then((json) => {
             dispatch(note.actions.setNotesArray({ arrayOfNotes: json.notes }));
+            dispatch(note.actions.setStatusMessage({ statusMessage: json.statusMessage}));
         })
         .catch((error) => {
             dispatch(note.actions.setErrorMessage({ errorMessage: error.toString() }));
+        })
+    };
+};
+
+export const updateNote = (userId, noteId, noteText) => {
+    return(dispatch) => {
+        fetch(`http://localhost:8080/users/${userId}/note/${noteId}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify({ noteText }),
+        })
+        .then((res) => {
+            if(!res.ok) {
+                throw new Error(
+                    "Couldn't update note"
+                );
+            } return res.json();
+        })
+        .then((json) => {
+            dispatch(note.actions.setStatusMessage({ statusMessage: json.statusMessage}));
+        })
+        .catch((error) => {
+            dispatch(note.actions.setErrorMessage({ errorMessage: error.toString()}));
         })
     };
 };

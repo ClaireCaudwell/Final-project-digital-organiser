@@ -5,7 +5,8 @@ import { ColourSchemeToggle } from "./ColourSchemeToggle";
 
 import { user} from "../reducer/user";
 import { weeklySchedule } from "../reducer/weeklySchedule";
-
+import { note } from "../reducer/note";
+ 
 export const Header = () => {
     const dispatch = useDispatch();
 
@@ -15,7 +16,8 @@ export const Header = () => {
         dispatch(user.actions.setLogOut());
         dispatch(user.actions.setStatusMessage({ statusMessage: "Logged out!" }));
         dispatch(user.actions.setErrorMessage({ errorMessage: null }));
-        dispatch(weeklySchedule.actions.setLogout());        
+        dispatch(weeklySchedule.actions.setLogout()); 
+        dispatch(note.actions.setLogOut());  
     };
 
     return (        
