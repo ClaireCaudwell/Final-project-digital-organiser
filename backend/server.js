@@ -53,11 +53,15 @@ const userSchema = new mongoose.Schema( {
     noteText: {
       type: String,
       minlength: 2,
-      maxlength: 80,
+      maxlength: 170,
     },
     delete: {
       type: Boolean,
       default: false,
+    },
+    colour: {
+      type: Number,
+      default: 0, 
     }
   }]
 });
@@ -375,12 +379,14 @@ app.get("/users/:id/note", async (req, res) => {
 
 /* --- ENDPOINT 11 ---
 PATCH endpoint to update the note text finding the note by ID and updating the note text
+// if the noteText is not equal to null then set the noteText in the notes array in user model to the text being sent in. When the noteText is sent in the fetch as null i.e. updating the colour and not the text the the noteText won't be updated
+// Same principle for the colourNumber
 */
 app.patch("/users/:id/note/:noteid", async (req, res) => {
   try {
     const userId = req.params.id;
     const noteId = req.params.noteid;
-    const { noteText } = req.body;
+    const { noteText, colourNumber } = req.body;
     let user;
     try {
       user = await User.findById(userId);
@@ -391,7 +397,12 @@ app.patch("/users/:id/note/:noteid", async (req, res) => {
     let i;
     for (i = 0; i < arrayOfNotes.length; i++) {
       if(arrayOfNotes[i]._id.toString() === noteId) {
-        arrayOfNotes[i].noteText = noteText;
+        if(noteText != null) {
+          arrayOfNotes[i].noteText = noteText;
+        }
+        if(colourNumber != null) {
+          arrayOfNotes[i].colour = colourNumber;
+        }
       }
     }
     user.save();
