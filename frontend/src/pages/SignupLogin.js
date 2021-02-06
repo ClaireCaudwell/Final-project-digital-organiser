@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom";
 
 import { userLogin, userSignup } from "reducer/user";
 import { 
-    MainContainer, 
+    MainContainer,
+    FrontpageDiv, 
     MainTitleContainer, 
     Title, 
     SmallText,
@@ -55,32 +56,34 @@ export const SignupLogin = () => {
     // The fetch and GET request is done in server.js which authenticates the accessToken and thus authenticates that the user exsists in the database which allows for the user is shown their organiser which will be rendered in Organiser.js.
     return (
         <>
+            <MainTitleContainer>
+                <Title>Organiser</Title>
+                <SmallText>Sign up or login to get your organiser</SmallText>
+            </MainTitleContainer>
             <MainContainer>
-                <MainTitleContainer>
-                    <Title>Organiser .</Title>
-                    <SmallText>Sign up or login to get your organiser</SmallText>
-                </MainTitleContainer>
-                <SignupLoginForm className="signup-login-form">
-                    Username
-                    <input
-                        value={username}
-                        onChange={(event) => setUsername(event.target.value)}
-                        minLength="3"
-                        maxLength="20"
-                        required                
-                    />
-                    Password   
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(event) => setPassword(event.target.value)}
-                        minLength="5"
-                        required                
-                    />
-                    <button className="form-button" type="submit" onClick={handleSignup}>SIGN UP</button>
-                    <button className="form-button" type="submit" onClick={handleLogin}>LOGIN</button> 
-                </SignupLoginForm>
-                {userId === null && <p>{error}</p>}
+                <FrontpageDiv>
+                    <SignupLoginForm className="signup-login-form">
+                        Username
+                        <input
+                            value={username}
+                            onChange={(event) => setUsername(event.target.value)}
+                            minLength="3"
+                            maxLength="20"
+                            required                
+                        />
+                        Password   
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
+                            minLength="5"
+                            required                
+                        />
+                        <button className="form-button" type="submit" onClick={handleSignup}>SIGN UP</button>
+                        <button className="form-button" type="submit" onClick={handleLogin}>LOGIN</button> 
+                    </SignupLoginForm>
+                    {userId === null && <p>{error}</p>}
+                </FrontpageDiv>
             </MainContainer>
         </>  
     );

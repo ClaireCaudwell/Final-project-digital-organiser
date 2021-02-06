@@ -80,12 +80,12 @@ export const getNotes = (userId) => {
     };
 };
 
-export const updateNote = (userId, noteId, noteText) => {
+export const updateNote = (userId, noteId, noteText, colourNumber) => {
     return(dispatch) => {
         fetch(`http://localhost:8080/users/${userId}/note/${noteId}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json"},
-            body: JSON.stringify({ noteText }),
+            body: JSON.stringify({ noteText, colourNumber }),
         })
         .then((res) => {
             if(!res.ok) {

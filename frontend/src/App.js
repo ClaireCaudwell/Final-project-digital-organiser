@@ -20,7 +20,7 @@ const store = configureStore({ reducer: reducer });
 export const App = () => {
 
   return (
-    <Provider store={store}>      
+    <Provider store={store}>
       <BrowserRouter>
         <Switch>
           <Route path="/" exact >
@@ -41,9 +41,6 @@ export const App = () => {
           <Route path="/edittask">
             <EditTask />
           </Route>
-          {/* <Route path="/addnote">
-            <AddNote />
-          </Route> */}
           <Redirect to="/" />
         </Switch>       
       </BrowserRouter>

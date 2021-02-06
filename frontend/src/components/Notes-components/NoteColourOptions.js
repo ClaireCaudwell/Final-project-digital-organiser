@@ -1,10 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-export const NoteColourOptions = ({ setShowColourOptions, setColour }) => {
+import { updateNote } from "../../reducer/note";
 
-    useEffect(() => {
-        document.body.remove().addEventListener();
-    });
+export const NoteColourOptions = ({ setShowColourOptions, noteItem }) => {
+    const dispatch = useDispatch();
+    const userId = useSelector((store) => store.user.login.userId);
+    const noteId = noteItem._id;
+
+    // useEffect(() => {
+    //     document.body.remove().addEventListener();
+    // });
 
     const onUnclickOptions = () => {
         setShowColourOptions(false);
@@ -17,51 +23,33 @@ export const NoteColourOptions = ({ setShowColourOptions, setColour }) => {
         }
     });
 
-    // if the user clicks on a specifc colour the following will happen:
-    // 1. The tick will be rendered on that square they click on
-    // 2. And the colour of the post it note will change to the colour selected
-
-    // const button = getElementById()
-    // const onChooseColour = (event) => {
-    //     if(button.className === "dark-green"){
-    //         setColour(0);
-    //     } else if(className === "light-green"){
-    //         setColour(1);
-    //     } else if(className === "light-blue"){
-    //         setColour(2);
-    //     } else {
-    //         setColour(3);
-    //     }
-    // };
+    const onChooseColour = (colourNumber) => {
+        dispatch(updateNote(userId, noteId, null, colourNumber));
+    };
 
     return (
         <div className="dropdown">
             <div className="Colour-square-container" onClick={onUnclickOptions}>
-                {/* <button 
-                    className="colour-square dark-green" 
-                    id="colourButton"
-
-                    onClick={onChooseColour}>
-                    &#x2713;
-                </button>
                 <button 
-                    className="colour-square light-green" 
+                    className="colour-square colour-0 colour-0-hover" 
                     id="colourButton"
-                    onClick={onChooseColour}>
-                    &#x2713;
-                </button>
+                    onClick={() => onChooseColour(0)}
+                ></button>
                 <button 
-                    className="colour-square light-blue" 
+                    className="colour-square colour-1 colour-1-hover" 
                     id="colourButton"
-                    onClick={onChooseColour}>
-                    &#x2713;
-                </button>
+                    onClick={() => onChooseColour(1)}
+                ></button>
                 <button 
-                    className="colour-square light-grey" 
+                    className="colour-square colour-2 colour-2-hover" 
                     id="colourButton"
-                    onClick={onChooseColour}>
-                    &#x2713;
-                </button> */}
+                    onClick={() => onChooseColour(2)}
+                ></button>
+                <button 
+                    className="colour-square colour-3 colour-3-hover" 
+                    id="colourButton"
+                    onClick={() => onChooseColour(3)}
+                ></button>
             </div>
         </div>
     );

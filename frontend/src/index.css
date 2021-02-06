@@ -1,10 +1,16 @@
-*{
+* {
   box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  margin: 0;
+  border: 2px orangered solid;
 }
 
 body {
   margin: 0;
-  background-color: rgb(243, 253, 216);
+  font-family: 'Quicksand', sans-serif;
 }
 
 /* font-family: 'Open Sans', sans-serif;
@@ -263,7 +269,7 @@ input:checked + .slider:before {
 }
 
 .input-box {
-  border: 2px solid#7db961;
+  border: 2px solid #7db961;
   width: 95%;
 }
 
@@ -344,8 +350,6 @@ input:checked + .slider:before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 200px;
-  height: 200px;
   margin: 10px;
   padding: 10px;
 }
@@ -370,7 +374,7 @@ input:checked + .slider:before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #C7F5B1;
+  /* background-color: #C7F5B1; */
   width: 200px;
   height: 200px;
   padding: 0px 2px 10px 2px;
@@ -405,7 +409,6 @@ input:checked + .slider:before {
 }
 
 .note-buttons {
-  background-color: #C7F5B1;
   border: none;
   text-align: center;
   font-size: 18px;
@@ -415,8 +418,7 @@ input:checked + .slider:before {
 }
 
 .note-buttons:hover{
-  background-color: #a6f382;
-  color: #696868;
+  color: #4e4d4d;
 }
 
 /*
@@ -426,7 +428,7 @@ input:checked + .slider:before {
 #CCD4C8 - light grey
 */
 
-/* NoteColourOptions dropdown */
+/* NoteColourOptions */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -451,30 +453,35 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 
-.dark-green {
+.colour-0 {
   background-color: #C7F5B1;
 }
-.dark-green:hover {
-  background-color: #b0f58f;
+
+.colour-0-hover:hover {
+  background-color: #adf08f;
 }
 
-.light-green {
-  background-color: #EAFABE;
+.colour-1 {
+  background-color: #d3e5ec;
 }
-.light-green:hover {
+
+.colour-1-hover:hover {
+  background-color: #b5dbeb;
+}
+
+.colour-2 {
   background-color: #def69a;
 }
 
-.light-blue {
-  background-color: #d3e5ec;
-}
-.light-blue:hover {
-  background-color: #bce1f0;
+.colour-2-hover:hover {
+  background-color: #d7f87b;
 }
 
-.light-grey {
+.colour-3 {
   background-color: #CCD4C8;
 }
-.light-grey:hover {
-  background-color: #bec7b9;
+
+.colour-3-hover:hover {
+  background-color: #bdc7bb;
 }
+

@@ -10,12 +10,12 @@ export const Note = ({ noteItem }) => {
     const userId = useSelector((store) => store.user.login.userId);
     const [ noteText, setNoteText ] = useState(noteItem.noteText);
     const [ showColourOptions, setShowColourOptions ] = useState(false);
-    const [ colour, setColour ] = useState(0);
 
     const noteId = noteItem._id;
 
+    // null is the fourth parameter for the colourNumber as don't want to update in this dispatch to the fetch
     const onUpdateNote = () => {
-        dispatch(updateNote(userId, noteId, noteText));
+        dispatch(updateNote(userId, noteId, noteText, null));
     };
 
     const onDelete = () => {
@@ -26,32 +26,41 @@ export const Note = ({ noteItem }) => {
         setShowColourOptions(true);
     };
 
-
+    const colours = ["colour-0","colour-1", "colour-2", "colour-3"];
+    
     return (
         <>
-        {/* <div 
-            className="note-container" 
-            className={colour === 0 ? "dark-green" : colour === 1 ? "light-green" : colour === 2 ? "light-blue" : "light-grey"} >
-            <div className="input-note-container">
-                {showColourOptions && <NoteColourOptions setShowColourOptions={setShowColourOptions} setColour={setColour}/>}
+        <div className="note-container">
+            <div className={"input-note-container " + colours[noteItem.colour]}>
+                {showColourOptions && <NoteColourOptions setShowColourOptions={setShowColourOptions} noteItem={noteItem}/>}
                 <div className="button-container">
-                    <button type="button" className="note-buttons show" onClick={onClickOptions}>...</button>
-                    <button type="button" className="note-buttons" onClick={onDelete}>x</button>
+                    <button 
+                        type="button" 
+                        className={"note-buttons "  + colours[noteItem.colour]} 
+                        onClick={onClickOptions}>
+                            ...
+                    </button>
+                    <button 
+                        type="button" 
+                        className={"note-buttons "  + colours[noteItem.colour]} 
+                        onClick={onDelete}>
+                            x
+                    </button>
                 </div>
                 <textarea
-                    className="note-input"
+                    className={"note-input "  + colours[noteItem.colour]}
                     type="text"
                     value={noteText}
                     onChange={event => setNoteText(event.target.value)}
                     onBlur={onUpdateNote}
                     required
                     minLength="2"
-                    maxLength="80"
-                    rows="5"
+                    maxLength="170"
+                    rows="6"
                     cols="20"                 
                 />
             </div>
-        </div> */}
+        </div>
         </>
     );
 };
