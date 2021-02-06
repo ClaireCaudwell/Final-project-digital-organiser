@@ -18,16 +18,25 @@ export const Note = ({ noteItem }) => {
         dispatch(updateNote(userId, noteId, noteText, null));
     };
 
+    // Dispatching to the fetch to the DELETE endpoint in backend to delete the note object from the array
     const onDelete = () => {
         dispatch(deleteNote(userId, noteId));
     };
 
+    // If true will mount the NoteColourOptions component
     const onClickOptions = () => {
         setShowColourOptions(true);
     };
 
-    const colours = ["colour-0","colour-1", "colour-2", "colour-3"];
-    
+    // When the array of notes is returned from the backend to redux and accessed in this component via useSelector, the colour property of each note will be read. It'll be a number between 0-3
+    // This number is then used to set the background-colour for the note
+    // The colours array represents the className for each of the colours in styled components
+    // To get the className/colour that matches the colour number the note has, the colours array is used 
+    // The index number for each element/className is matched to the the colour number for the note e.g. if a note has colour number 0 then the corresponding CSS className will be "colour-0" in the styled componenets etc
+    const colours = ["colour-0","colour-1", "colour-2", "colour-3"];    
+
+    // Concatenating the first string class name with the second
+    // The second is made up of the colours array where the index matches the note's colour number
     return (
         <>
         <div className="note-container">

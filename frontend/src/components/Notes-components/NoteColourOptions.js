@@ -8,14 +8,11 @@ export const NoteColourOptions = ({ setShowColourOptions, noteItem }) => {
     const userId = useSelector((store) => store.user.login.userId);
     const noteId = noteItem._id;
 
-    // useEffect(() => {
-    //     document.body.remove().addEventListener();
-    // });
-
     const onUnclickOptions = () => {
         setShowColourOptions(false);
     };
 
+    // When user doesn't click a button to choose a colour and instead clicks on to the body of the document the onClickedOptions will be set to false and this component will be de-mounted 
     document.body.addEventListener("click", (event) => {
         const isButton = event.target.id === "colourButton";
         if(!isButton) {
@@ -23,10 +20,16 @@ export const NoteColourOptions = ({ setShowColourOptions, noteItem }) => {
         }
     });
 
+    // Dispatch to do the fetch for the PATCH endpoint to set the colour number in the notes colour property
     const onChooseColour = (colourNumber) => {
         dispatch(updateNote(userId, noteId, null, colourNumber));
     };
 
+    // User clicks on a button to select which colour they want the note to be
+    // This send a specific number to the onChooseColour function
+    // The onChooseColour function dispatches the colourNumber and other info to the fetch for the PATCH endpoint in the backend
+    // This will set the note object in the user model to that number
+    // Sending the textNote in as null as we only want the colourNumber to be updated in the fetch when doing this action 
     return (
         <div className="dropdown">
             <div className="Colour-square-container" onClick={onUnclickOptions}>
