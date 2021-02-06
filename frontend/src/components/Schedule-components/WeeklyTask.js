@@ -6,7 +6,8 @@ import { TimeTask } from "./TimeTask";
 
 export const WeeklyTask = ({ tasks, dayIndex }) => {
    // Today's date from redux
-   const selectedDate = useSelector((store) => store.weeklySchedule.schedule.selectedDate);
+   const selectedDate = new Date(useSelector((store) => store.weeklySchedule.schedule.selectedDate));
+   const dateSelected = selectedDate.toLocaleDateString();
 
    // Getting the monday for the current week based on today's date by converting using moment
    const monday = moment(selectedDate).startOf('isoWeek').toISOString();
@@ -24,14 +25,16 @@ export const WeeklyTask = ({ tasks, dayIndex }) => {
     // Converting the day of the week e.g. Monday
     const weekday = date.toLocaleString([], {weekday: 'long'});
     // Converting the date e.g. 10/10/21
-    const weekdate = date.toLocaleDateString();  
+    const weekdate = date.toLocaleDateString(); 
 
     // Show the day and date of the week
     // Then map through the tasks into the TimeTask component as there may be more than one task for that day of the week
     return (
         <div className="task-container">
-            <div className="week-day-container">
-                <p className="heavy-text">{weekday}</p>
+            <div 
+                className={dateSelected === weekdate ? "weekday-container-two" : "weekday-container-one"}
+            >
+                <p>{weekday}</p>
                 <p>{weekdate}</p>
             </div>
             {tasks.map(task => (
