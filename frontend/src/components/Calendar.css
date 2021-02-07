@@ -1,24 +1,11 @@
-.calendar-div {
-  width: 300px;
-  height: 335px;
-  padding: 10px;
-  margin: 10px;
-  border: 2px solid black;
-}
-
 .react-calendar {
   min-width: 300px;
   max-width: 343px;
   height: 100%;
   background: white;
-  /* border: 2px solid black; */
   font-family: 'Open Sans', sans-serif;
-  /* font-family: 'Quicksand', sans-serif; */
   line-height: 1.125em;
-}
-
-.react-calendar--doubleView {
-  width: 700px;
+  padding: 20px 10px;
 }
 
 .react-calendar--doubleView .react-calendar__viewContainer {
@@ -55,6 +42,7 @@
 /* Month navigation container */
 .react-calendar__navigation {
   height: 55px;
+  width: 100%;
   margin-bottom: 1em;
   background-color: #bfe7b6;
   padding: 5px;
@@ -139,15 +127,15 @@
 /*Today's date when not selected and hovering over it */
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
-  background-color: #ccf656;
+  background-color: #d7f87b;
 }
 
 .react-calendar__tile--hasActive {
-  background-color:#ccf656;
+  background-color:#d7f87b;
 }
 
 .react-calendar__tile--now:enabled:hover{
-  background-color: #ccf656;
+  background-color: #d7f87b;
 }
 
 .react-calendar__tile--hasActive:enabled:hover,
@@ -165,7 +153,7 @@
 /* Selected date highlighted */
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
-  background:#ccf656;
+  background:#d7f87b;
 }
 
 .react-calendar--selectRange .react-calendar__tile--hover {

@@ -9,7 +9,7 @@ export const TimeTask = ({ task }) => {
     const time = moment(task.startdatetime).format("HH:mm");
 
     return (
-        <NavLink to={`/taskSummary/${taskId}`} className="link">
+        <NavLink to={`/taskSummary/${taskId}`} className="task-link">
             <div className="time-task-container">
                 <p className="task">{task.task}</p>
                 <p className="heavy-text">{time}</p>

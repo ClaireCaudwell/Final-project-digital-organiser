@@ -22,7 +22,7 @@ export const ScheduleCalendar = ({ number }) => {
     };    
 
     return (
-        <div className="calendar-div">
+        <section className="schedule-div white">
             <Calendar
                 view={"month"}
                 value={selectedDate}
@@ -31,6 +31,6 @@ export const ScheduleCalendar = ({ number }) => {
                 // prevLabel
                 // nextLabel
             />      
-        </div>
+        </section>
     )
 };

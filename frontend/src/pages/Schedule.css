@@ -10,20 +10,25 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     margin: 10px 0;
+}
+
+.white {
+    background-color: white;
 }
 
 .select-calendar-text {
     font-size: 17px;
     color: #313131;
     text-align: justify;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .week-text {
     width: 70%;
     color: #313131;
-    text-align: center;
+    text-align: center; 
     padding: 12px 0;
     margin: 0 10px 0 0;
     font-size: 20px;
@@ -45,51 +50,120 @@
     cursor: pointer;
     border-radius: 2px;
     padding: 10px 0;
-  }
+}
   
-  .today button:hover {
+.today button:hover {
     background-color: #C7F5B1;
-  }
+}  
   
-  /* Calendar/schedule area */
-  
-  .text-center {
-    text-align: center;
-  }
-  
-  /* AddScheduleTaskButton.js */
-  .add-schedule-container{
+/* Add Task Button Area */
+.add-task-container {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-  }
-  
-  .add-schedule-container h4 {
-    font-size: 19px;
-    font-weight: 500;
-  }
-  
-  .add-schedule-container button {
-    border-radius: 50%;
-    width: 34px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.add-task-container button {
+    background-color: #d7f87b;
+    color: #313131;
+    border-radius: 5px;
     border: none;
-    background-color: #b3ff90;
     text-align: center;
-    font-size: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 20px;
+    font-family: 'Quicksand', sans-serif;
     cursor: pointer;
-    color: #186b3f;
-  }
+}
+
+.add-task-container button:hover {
+    background-color: #d6fb5d;
+}
+
+.add-task-container p {
+    margin-left: 20px;
+    font-size: 17px;
+    font-family: 'Quicksand', sans-serif;
+    text-align: justify;
+}
+
+/* Weekly schedule */
+.status-message {
+    color: #313131;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.weekly-tasks{
+    display: flex;
+    flex-direction: column;
+}
+
+.weekday-container-one {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:#bfe7b6;
+    padding: 7px;
+    font-size: 18px;
+    color: #313131;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+}
   
-  .add-schedule-container button:hover {
-    background-color: #9ffb75;
-  }
+.weekday-container-two {
+    width: 100%;
+    background-color: #d7f87b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px;
+    font-size: 18px;
+    color: #313131;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.task-link {
+    text-decoration: none;
+    width: 100%;
+}
   
-  /* AddScheduleTask.js */
-  .close-button-container {
+.time-task-container {
+    width: 100%;
+    background-color: #fff;
+    padding: 7px;
+    display: flex;
+    justify-content: space-between;
+    color: #313131;
+    margin-bottom: 10px;
+    font-size: 18px;
+    border-bottom: 3px solid #C7F5B1;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.task {
+    word-wrap: break-word;
+}
+
+
+
+
+
+
+
+
+
+  
+/* AddScheduleTask.js */
+.close-button-container {
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-  }
+}
   
   .close-button {
     border-radius: 7%;
@@ -131,40 +205,6 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
-  }
-  
-  /* Tasks in schedule */
-  .task-container {
-    border-top: 2px solid black;
-  }
-  
-  .weekday-container-one {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 0;
-    background-color: #F3FDD8;
-    padding: 5px;
-  }
-  
-  .weekday-container-two {
-    background-color: #d7f87b;
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 0;
-    padding: 5px;
-    font-weight: bold;
-  }
-  
-  .time-task-container {
-    background-color: #bfe7b6;
-    padding: 10px;
-    margin: 5px 0;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .task {
-    word-wrap: break-word;
   }
   
   /* Summary */

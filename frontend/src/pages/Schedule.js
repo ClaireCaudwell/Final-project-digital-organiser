@@ -62,14 +62,14 @@ export const Schedule = () => {
             <Header />
             <main className="main-schedule-container">
                 <p className="select-calendar-text schedule-div">Select a date to get your schedule for that week</p>
-                <div className="schedule-div">
+                <section className="schedule-div">
                     <h2 className="week-text">Week {currentWeek}</h2>
                     <NavLink to="/schedule" className="today">
                         <button type="button" onClick={setToday}>
                             Today
                         </button>
                     </NavLink>
-                </div>
+                </section>
                 <ScheduleCalendar number={number} />
                 <AddTaskButton />
                 <WeeklySchedule />
