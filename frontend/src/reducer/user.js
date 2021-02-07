@@ -8,7 +8,7 @@ const initialState = {
         statusMessage: null,
         errorMessage: null, 
         authorized: false,
-    }
+    },
 };
 
 export const user = createSlice({

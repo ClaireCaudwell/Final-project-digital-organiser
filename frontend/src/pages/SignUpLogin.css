@@ -1,0 +1,150 @@
+/* Signup & Login Page */
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px 0;
+}
+
+.frontpage-header-div {
+  font-family: 'Quicksand', sans-serif;
+  background-color: #F3FDD8;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 35px;
+  width: 80%;
+}
+
+.frontpage-header-div h1 {
+  font-size: 25px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid #c8ec52;
+  margin-bottom: 10px;
+  color: #313131;
+}
+
+.frontpage-header-div p {
+  margin: 0;
+  font-size: 15px;
+  color: #313131;
+  font-weight: 500;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.form-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  padding: 20px 0;
+  background-color: #C7F5B1;
+  border-radius: 5px;
+  color: #313131; 
+  font-family: 'Quicksand', sans-serif;
+}
+
+.form-div form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 20px;
+}
+
+.form-div label {
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #313131;
+  font-size: 16px;
+}
+
+.form-div input {
+  margin-bottom: 20px;
+  width: 100%;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid #F3FDD8;
+  transition: 0.3s;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.form-div input:focus {
+  border-bottom: 2px solid #6fd845;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-button {
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: #F3FDD8;
+  color: #313131; 
+  cursor: pointer;
+  border-radius:5px;
+  padding: 10px;
+  border: none;
+  color: #313131;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.form-button:hover {
+  background-color: #dfff74;
+  border: none;
+  transition: 0.3s;
+}
+
+/* Media query landscape mobile and tablet devices with max width 823px and min width 640px */
+@media (max-width: 823px) and (min-width: 640px) {
+  main {
+    padding-top: 70px;
+  }
+
+  .frontpage-header-div {
+    width: 45%;
+  }
+  
+  .form-div {
+    width: 45%;
+  }
+}
+
+/* Media query for tablet devices with a max width of 1024px and min width of 840px */
+@media (max-width: 1024px) and (min-width: 840px) {
+  main {
+    padding-top: 120px;
+  }
+
+  .frontpage-header-div {
+    width: 35%;
+  }
+  
+  .form-div {
+    width: 35%;
+  }
+}
+
+/* Media query for tablet devices and desktop with a min height of 1023px */
+@media (min-height: 1023px){
+  main {
+    padding-top: 160px;
+  }
+
+  .frontpage-header-div {
+    min-width: 35%;
+    max-width: 25%;
+  }
+  
+  .form-div {
+    min-width: 35%;
+    max-width: 25%;
+  }
+}

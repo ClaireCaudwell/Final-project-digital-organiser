@@ -45,5 +45,5 @@ export const App = () => {
         </Switch>       
       </BrowserRouter>
     </Provider>
-  )
+  );
 };
