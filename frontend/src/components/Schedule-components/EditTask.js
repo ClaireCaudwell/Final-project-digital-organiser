@@ -53,45 +53,48 @@ export const EditTask = () => {
     };
 
     return (
-        <section className="schedule-component-container">
-            <NavLink to="/schedule" className="back-link">
-                <div className="close-button-container" onClick={handleClose}>
-                    <button className="close-button" type="button">close</button> 
-                </div>
-            </NavLink>
-            <h2>Edit your task</h2>
-            <form onSubmit={handleOnUpdate}>
-                <input
-                    type="text"
-                    className="input-box"
-                    value={scheduletask}
-                    onChange={(event) => setScheduleTask(event.target.value)}
-                    required
-                    minLength="3"
-                    maxLength="30" 
-                />
-                <label className="date-container">
-                    DATE:
-                    <DatePicker
-                        value={startDateTime}
-                        onChange={dateChosen}
-                        showWeekNumbers
+        <section className="task-section">
+            <div className="task-container">
+                <NavLink to="/schedule"
+                    className="close-button-container">
+                    <button type="button" onClick={handleClose}>close</button> 
+                </NavLink>
+                <h2>Edit your task</h2>
+                <form onSubmit={handleOnUpdate} className="form-container">
+                    <input
+                        type="text"
+                        className="input-box"
+                        value={scheduletask}
+                        onChange={(event) => setScheduleTask(event.target.value)}
                         required
+                        minLength="3"
+                        maxLength="30" 
                     />
-                </label>
-                <label className="date-container">
-                    TIME:
-                    <TimePicker
-                        value={time}
-                        onChange={timeChosen}
-                        closeClock
-                        disableClock
-                        required
-                    />
-                </label>
-                <button className="add-task-button" type="submit" onClick={handleOnUpdate}>UPDATE TASK</button>
-            </form>
-            {statusMessage && <p>{`${statusMessage}`}</p>}
+                    <label className="date-container">
+                        DATE:
+                        <DatePicker
+                            value={startDateTime}
+                            onChange={dateChosen}
+                            showWeekNumbers
+                            required
+                            className="picker"
+                        />
+                    </label>
+                    <label className="date-container">
+                        TIME:
+                        <TimePicker
+                            value={time}
+                            onChange={timeChosen}
+                            closeClock
+                            disableClock
+                            required
+                            className="picker"
+                        />
+                    </label>
+                    <button className="add-task-button" type="submit" onClick={handleOnUpdate}>UPDATE TASK</button>
+                </form>
+                {statusMessage && <p className="status-message">{`${statusMessage}`}</p>}
+            </div>
         </section>
     )
 }

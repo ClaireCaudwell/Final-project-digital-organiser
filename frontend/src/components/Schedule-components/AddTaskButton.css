@@ -12,15 +12,17 @@
     border-radius: 5px;
     border: none;
     text-align: center;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 600;
     padding: 10px 20px;
     font-family: 'Quicksand', sans-serif;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .add-task-container button:hover {
     background-color: #d6fb5d;
+    transition: 0.3s;
 }
 
 .add-task-container p {

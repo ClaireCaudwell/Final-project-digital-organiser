@@ -15,7 +15,7 @@
 }
 
 .white {
-  background-color: white;
+  background-color: #fff;
 }
 
 .select-calendar-text {
@@ -31,7 +31,7 @@
   text-align: center; 
   padding: 12px 0;
   margin: 0 10px 0 0;
-  font-size: 20px;
+  font-size: 18px;
   border-radius: 2px;
   background-color: #d7f87b;
 }
@@ -42,7 +42,7 @@
 
 .today button {
   width: 100%;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   color: #313131;
   border: 3px solid #C7F5B1;
@@ -50,10 +50,12 @@
   cursor: pointer;
   border-radius: 2px;
   padding: 10px 0;
+  transition: 0.3s;
 }
   
 .today button:hover {
   background-color: #C7F5B1;
+  transition: 0.3s;
 }
 
 /* Weekly schedule */
@@ -75,9 +77,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color:#bfe7b6;
+  background-color:hsl(109, 51%, 81%);
   padding: 7px;
-  font-size: 18px;
+  font-size: 17px;
   color: #313131;
   font-weight: 600;
   font-family: 'Quicksand', sans-serif;
@@ -90,7 +92,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 7px;
-  font-size: 18px;
+  font-size: 17px;
   color: #313131;
   font-weight: 600;
   font-family: 'Quicksand', sans-serif;
@@ -109,7 +111,7 @@
   justify-content: space-between;
   color: #313131;
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 16px;
   border-bottom: 3px solid #C7F5B1;
   font-family: 'Open Sans', sans-serif;
 }
@@ -124,21 +126,6 @@
 
 
 
-
-
-  
-  /* Summary */
-  .Summary-container {
-    border: 2px solid #C7F5B1;
-    padding: 10px;
-  }
-  
-  .no-background {
-    background-color: white;
-    font-weight: 500;
-    padding: 0;
-    font-size: 20px;
-  }
   
   /* notes page */
   .add-note-text {

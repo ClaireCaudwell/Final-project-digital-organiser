@@ -55,8 +55,8 @@ export const AddTask = () => {
     };
 
     return (
-        <section className="addtask-section">
-            <div className="addtask-container">
+        <section className="task-section">
+            <div className="task-container">
                 <NavLink to="/schedule" className="close-button-container">
                     <button type="button" onClick={handleClose}>close</button> 
                 </NavLink>
@@ -72,7 +72,7 @@ export const AddTask = () => {
                         maxLength="30" 
                     />
                     <label className="date-container">
-                        DATE:
+                        Date:
                         <DatePicker
                             value={startDateTime}
                             onChange={(startDateTime) => setStartDateTime(startDateTime)}
@@ -81,7 +81,7 @@ export const AddTask = () => {
                         />
                     </label>
                     <label className="date-container">
-                        TIME:
+                        Time:
                         <TimePicker
                             value={time}
                             onChange={timeChosen}

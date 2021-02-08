@@ -74,10 +74,12 @@ span {
     cursor: pointer;
     border-radius: 5px;
     font-size: 13px;
+    transition: 0.3s;
 }
 
 .logout-button:hover {
     background-color: #d6fb5d;
+    transition: 0.3s;
 }
 
 /* Toggle slider */

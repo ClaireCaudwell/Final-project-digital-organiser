@@ -1,20 +1,20 @@
-/* Add Task component */
-.addtask-section {
+/* Add, Edit & schedule task components */
+.task-section {
     width: 100%;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     color: #313131;
-    margin-top: 20px;
 }
 
-.addtask-container {
+.task-container {
     padding: 20px 20px 0 20px;
     margin:20px 0;
     background-color: #C7F5B1;
     border-radius: 5px;
-    width: 80%;
+    width: 100%;
     height: 100%;
 }
 
@@ -43,12 +43,15 @@
 }
 
 /* h2 text */
-.addtask-container h2 {
+.task-container h2 {
     font-family: 'Quicksand', sans-serif;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 500;
+    border-bottom: 3px solid #F3FDD8;
+    padding-bottom: 10px;
 }
 
+/* AddTask & EditTask.js */
 /* Form */
 .form-container {
     width: 100%;
@@ -56,11 +59,13 @@
 }
 
 .input-box {
-    border: 3px solid #fff;
+    /* border: 3px solid #fff; */
+    background-color: #fff;
+    border: none;
     width: 100%;
     height: 60px;
-    margin-bottom: 20px;
-    background-color: transparent;
+    margin-bottom: 17px;
+    /* background-color: transparent; */
     font-family: 'Open Sans', sans-serif;
     font-size: 17px;
     outline: none;
@@ -79,11 +84,13 @@
     margin-bottom: 10px;
     font-weight: 600;
     font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
 }
 
 /* Date & time pickers */
 .picker {
     width: 70%;
+    background-color: #fff;
 }
 
 /*  Form button */
@@ -108,3 +115,41 @@
     transition: 0.3s;
 }
 
+/* TaskSummary.js */
+/* Edit & Delete buttons */
+.edit-delete-button-container {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 0;
+}
+
+.no-link {
+    text-decoration: none;
+}
+
+.edit-delete-button-container button {
+    border: none;
+    background-color: #F3FDD8;
+    border-radius: 50%;
+    height: 65px;
+    width: 65px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #313131;
+    transition: 0.3s;
+}
+
+.edit-delete-button-container button:hover {
+    background-color: #dfff74;
+    border: none;
+    transition: 0.3s;
+}
+
+.material-icons {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #313131;
+}
