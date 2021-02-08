@@ -57,7 +57,7 @@ export const TaskSummary = () => {
                 </NavLink>
             {!taskDeleted ? (
                 <>
-                <h2>Task summary</h2>
+                <h2>Schedule date summary</h2>
                 <div className="weekday-container-two">
                     <p>{weekday}</p>
                     <p>{date}</p>

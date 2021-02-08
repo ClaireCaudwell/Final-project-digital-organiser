@@ -73,7 +73,7 @@ span {
     font-weight: 600;
     cursor: pointer;
     border-radius: 5px;
-    font-size: 13px;
+    font-size: 16px;
     transition: 0.3s;
 }
 
@@ -162,11 +162,15 @@ ul {
     width: 50%;
     text-align: center;
     padding: 15px 10px;
-    font-size: 19px;
+    font-size: 20px;
     font-family: 'Quicksand', sans-serif;
 }
 
 .active {
     background-color: #f3fdd8;
+    font-weight: 600;
+}
+
+.hover-tab:hover {
     font-weight: 600;
 }

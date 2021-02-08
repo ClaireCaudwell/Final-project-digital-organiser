@@ -6,6 +6,8 @@ import { AddNote } from "../components/Notes-components/AddNote";
 import { NoteList } from "../components/Notes-components/NoteList";
 import { getNotes, note } from "../reducer/note";
 
+import "./NotesPage.css"
+
 export const NotesPage = () => {
     const dispatch = useDispatch();
     const userId = useSelector((store) => store.user.login.userId);
@@ -18,7 +20,7 @@ export const NotesPage = () => {
     return (
         <>
             <Header />
-            <main>
+            <main className="main-container">
                 <AddNote />
                 <NoteList />
             </main>

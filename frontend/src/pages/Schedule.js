@@ -60,9 +60,9 @@ export const Schedule = () => {
     return (
         <>
             <Header />
-            <main className="main-schedule-container">
-                <p className="select-calendar-text schedule-div">Select a date to get your schedule for that week</p>
-                <section className="schedule-section">
+            <main className="main-container">
+                <p className="select-calendar-text schedule-div">Select a date in the calendar to get your schedule for that week</p>
+                <section className="section-container">
                     <h2 className="week-text">Week {currentWeek}</h2>
                     <NavLink to="/schedule" className="today">
                         <button type="button" onClick={setToday}>

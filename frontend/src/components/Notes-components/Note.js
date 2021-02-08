@@ -39,36 +39,32 @@ export const Note = ({ noteItem }) => {
     // The second is made up of the colours array where the index matches the note's colour number
     return (
         <>
-        <div className="note-container">
-            <div className={"input-note-container " + colours[noteItem.colour]}>
-                {showColourOptions && <NoteColourOptions setShowColourOptions={setShowColourOptions} noteItem={noteItem}/>}
-                <div className="button-container">
-                    <button 
-                        type="button" 
-                        className={"note-buttons "  + colours[noteItem.colour]} 
-                        onClick={onClickOptions}>
-                            ...
-                    </button>
-                    <button 
-                        type="button" 
-                        className={"note-buttons "  + colours[noteItem.colour]} 
-                        onClick={onDelete}>
-                            x
-                    </button>
-                </div>
-                <textarea
-                    className={"note-input "  + colours[noteItem.colour]}
-                    type="text"
-                    value={noteText}
-                    onChange={event => setNoteText(event.target.value)}
-                    onBlur={onUpdateNote}
-                    required
-                    minLength="2"
-                    maxLength="170"
-                    rows="6"
-                    cols="20"                 
-                />
+        <div className={"note-container " + colours[noteItem.colour]}>
+            {showColourOptions && <NoteColourOptions setShowColourOptions={setShowColourOptions} noteItem={noteItem}/>}
+            <div className="note-button-container">
+                <button 
+                    type="button" 
+                    className={"note-buttons "  + colours[noteItem.colour]} 
+                    onClick={onClickOptions}>
+                        ...
+                </button>
+                <button 
+                    type="button" 
+                    className={"note-buttons "  + colours[noteItem.colour]} 
+                    onClick={onDelete}>
+                        x
+                </button>
             </div>
+            <textarea
+                className={"note-textarea "  + colours[noteItem.colour]}
+                type="text"
+                value={noteText}
+                onChange={event => setNoteText(event.target.value)}
+                onBlur={onUpdateNote}
+                maxLength="170"
+                rows="6"
+                cols="25"                 
+            />
         </div>
         </>
     );

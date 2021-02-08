@@ -16,13 +16,10 @@ export const AddNote = () => {
     };
  
     return (
-        <section>   
-            <div className="add-schedule-container">
-                <h4 className="add-note-text">Add a note</h4>
-                <button type="button" onClick={onAddNote}>
-                    +
-                </button>
-            </div>
+        <section className="section-container">   
+            <button type="button" className="add-note-button" onClick={onAddNote}>
+                Add a note +
+            </button>
         </section>
     );
 };

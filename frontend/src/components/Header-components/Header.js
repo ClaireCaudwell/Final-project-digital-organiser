@@ -39,10 +39,10 @@ export const Header = () => {
             </div>
             <nav>
                 <ul>
-                    <NavLink to="/schedule" className="link" activeClassName="active">
+                    <NavLink to="/schedule" className="link hover-tab" activeClassName="active">
                         Schedule
                     </NavLink>
-                    <NavLink to="/notespage" className="link" activeClassName="active">
+                    <NavLink to="/notespage" className="link hover-tab" activeClassName="active">
                         Notes
                     </NavLink>
                 </ul>

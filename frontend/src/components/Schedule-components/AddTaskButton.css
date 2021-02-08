@@ -7,7 +7,7 @@
 }
 
 .add-task-container button {
-    background-color: #d7f87b;
+    background-color: transparent;
     color: #313131;
     border-radius: 5px;
     border: none;
@@ -18,10 +18,11 @@
     font-family: 'Quicksand', sans-serif;
     cursor: pointer;
     transition: 0.3s;
+    background-color: #C7F5B1;
 }
 
 .add-task-container button:hover {
-    background-color: #d6fb5d;
+    background-color: #b9fa9a;
     transition: 0.3s;
 }
 

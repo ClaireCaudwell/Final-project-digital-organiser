@@ -10,7 +10,7 @@ export const TimeTask = ({ task }) => {
 
     return (
         <NavLink to={`/taskSummary/${taskId}`} className="task-link">
-            <div className="time-task-container">
+            <div className="time-task-container hover">
                 <p className="task">{task.task}</p>
                 <p className="heavy-text">{time}</p>
             </div>

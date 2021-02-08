@@ -31,8 +31,8 @@ export const NoteColourOptions = ({ setShowColourOptions, noteItem }) => {
     // This will set the note object in the user model to that number
     // Sending the textNote in as null as we only want the colourNumber to be updated in the fetch when doing this action 
     return (
-        <div className="dropdown">
-            <div className="Colour-square-container" onClick={onUnclickOptions}>
+        <div className="dropdown-color-menu">
+            <div className="colour-square-container" onClick={onUnclickOptions}>
                 <button 
                     className="colour-square colour-0 colour-0-hover" 
                     id="colourButton"

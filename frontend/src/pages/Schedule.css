@@ -1,12 +1,11 @@
 /* Schedule.js */
-.main-schedule-container {
+.main-container {
   padding: 0 20px;
-  margin-top: 20px;
   color: #313131;
   font-family: 'Quicksand', sans-serif;
 }
 
-.schedule-section {
+.section-container {
   width: 100%;
   display: flex;
   align-items: center;
@@ -33,7 +32,7 @@
   margin: 0 10px 0 0;
   font-size: 18px;
   border-radius: 2px;
-  background-color: #d7f87b;
+  background-color: #dfff74;
 }
 
 .today {
@@ -43,18 +42,18 @@
 .today button {
   width: 100%;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
   color: #313131;
-  border: 3px solid #C7F5B1;
-  background-color: transparent;
+  background-color: #C7F5B1;
+  border: none;
   cursor: pointer;
   border-radius: 2px;
-  padding: 10px 0;
+  padding: 13px 0;
   transition: 0.3s;
 }
   
 .today button:hover {
-  background-color: #C7F5B1;
+  background-color: #b9fa9a;
   transition: 0.3s;
 }
 
@@ -105,7 +104,7 @@
   
 .time-task-container {
   width: 100%;
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 7px;
   display: flex;
   justify-content: space-between;
@@ -114,162 +113,14 @@
   font-size: 16px;
   border-bottom: 3px solid #C7F5B1;
   font-family: 'Open Sans', sans-serif;
+  transition: 0.3s;
+}
+
+.hover:hover {
+  border-bottom: 3px solid #d7f87b;
+  transition: 0.3s;
 }
 
 .task {
   word-wrap: break-word;
 }
-
-
-
-
-
-
-
-  
-  /* notes page */
-  .add-note-text {
-    margin-right: 20px;
-  }
-  
-  .note-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    padding: 10px;
-  }
-  
-  .note-container p {
-    padding: 10px;
-  }
-  
-  .delete-button-container {
-    display: flex;  
-    padding: 5px 0;
-  }
-  
-  .text-container {
-    width: 100%;
-    height: 90%;
-    background-color: #dcf5d1;
-  }
-  
-  .input-note-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 200px;
-    padding: 0px 2px 10px 2px;
-  }
-  
-  .note-input {
-    height: 200px;
-    background-color :#C7F5B1;
-    border: none;
-    overflow: auto;
-    resize: none;
-    font-size: 15px;
-    font-family: arial;
-  }
-  
-  .note-input:focus{
-    outline: none;
-  }
-  
-  .note-add-button {
-    color: #8d8d8d;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    background-color: #C7F5B1;
-  }
-  
-  .button-container {
-    display: flex;
-    align-self: flex-end;
-    justify-content: center;
-    padding: 10px 5px;
-  }
-  
-  .note-buttons {
-    border: none;
-    text-align: center;
-    font-size: 18px;
-    cursor: pointer;
-    color: #585757;
-    align-self: flex-end;
-  }
-  
-  .note-buttons:hover{
-    color: #000000;
-  }
-  
-  /*
-  #EAFABE - light green
-  #EBEBEB - light blue
-  #C7F5B1 - darker green
-  #CCD4C8 - light grey
-  */
-  
-  /* NoteColourOptions */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .Colour-square-container {
-    width: 200px;
-    display: none;
-    position: absolute;
-    z-index: 1;
-    top: 0px;
-    left: -100px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    display: flex;
-  }
-  
-  .colour-square {
-    width: 30%;
-    height: 40px;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-  }
-  
-  .colour-0 {
-    background-color: #f3fdd8;
-  }
-  
-  .colour-0-hover:hover {
-    background-color: #e9fcb6;
-  }
-  
-  .colour-1 {
-    background-color: #9adb7c;
-  }
-  
-  .colour-1-hover:hover {
-    background-color: #8ecc71;
-  }
-  
-  .colour-2 {
-    background-color: #def69a;
-  }
-  
-  .colour-2-hover:hover {
-    background-color: #d7f87b;
-  }
-  
-  .colour-3 {
-    background-color: #CCD4C8;
-  }
-  
-  .colour-3-hover:hover {
-    background-color: #bdc7bb;
-  }
-  
-  

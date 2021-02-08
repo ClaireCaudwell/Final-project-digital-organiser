@@ -70,6 +70,7 @@ main {
   border-bottom: 2px solid #F3FDD8;
   transition: 0.3s;
   font-family: 'Open Sans', sans-serif;
+  font-size: 17px;
 }
 
 .form-div input:focus {
