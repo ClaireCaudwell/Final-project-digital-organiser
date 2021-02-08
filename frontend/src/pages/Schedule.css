@@ -262,6 +262,10 @@ ul {
 
 /* ------------------------------------------------------------------------ */
 /* Weekly schedule */
+.mobile-view {
+  width: 100%;
+}
+
 .status-message {
   color: #313131;
   font-family: 'Quicksand', sans-serif;
@@ -280,7 +284,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color:hsl(109, 51%, 81%);
+  background-color:#bfe7b6;
   padding: 7px;
   font-size: 17px;
   color: #313131;
@@ -290,7 +294,7 @@ ul {
   
 .weekday-container-two {
   width: 100%;
-  background-color: #d7f87b;
+  background-color: #dfff74;
   display: flex;
   align-items: center;
   justify-content: space-between;

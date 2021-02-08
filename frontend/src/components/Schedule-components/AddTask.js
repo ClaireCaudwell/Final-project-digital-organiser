@@ -10,7 +10,7 @@ import "../DatePicker.css";
 import "../TimePicker.css";
 
 import { addTask, task } from "../../reducer/task";
-import { weeklySchedule } from "../../reducer/weeklySchedule";
+import { weeklySchedule, getSchedule } from "../../reducer/weeklySchedule";
 
 export const AddTask = () => {
     const dispatch = useDispatch();
@@ -32,6 +32,7 @@ export const AddTask = () => {
         setTime(startDateTime);
     };
 
+    const monday = moment(selectedDate).startOf('isoWeek').toISOString();
     // Submits form to the backend via redux store task.js
     // Also sends a new get request to get the weeks worth of schedule tasks again - not sure if this is the best idea?
     const handleOnAdd = (event) => {
@@ -40,6 +41,7 @@ export const AddTask = () => {
         timeChosen(moment(time).format("HH:mm"));
         // dispatch to add task POST endpoint via redux task.js
         dispatch(addTask(scheduletask, userId, startDateTime));
+        dispatch(getSchedule(userId, monday));
         // converting the combined date and time to a string so it can be dispatched to the redux store to the selectedDate property
         const chosenDate = startDateTime.toISOString();
         dispatch(weeklySchedule.actions.setSelectedDate({ selectedDate: chosenDate }));
@@ -56,7 +58,7 @@ export const AddTask = () => {
     return (
         <section className="task-section">
             <div className="task-container">
-                <NavLink to="/schedule" className="close-button-container">
+                <NavLink to="/schedule" className="close-button-container" activeClassName="not-active">
                     <button type="button" onClick={handleClose}>close</button> 
                 </NavLink>
                 <h2>Add to your schedule</h2>

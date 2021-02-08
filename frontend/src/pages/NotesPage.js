@@ -6,7 +6,8 @@ import { AddNote } from "../components/Notes-components/AddNote";
 import { NoteList } from "../components/Notes-components/NoteList";
 import { getNotes, note } from "../reducer/note";
 
-import "./NotesPage.css"
+import "./NotesPage.css";
+import "./MediaQueries.css";
 
 export const NotesPage = () => {
     const dispatch = useDispatch();
