@@ -60,7 +60,7 @@ export const WeeklySchedule = () => {
     // Then the array is mapped through passing the data into the WeeklyTask component i.e. one task
     // index is the index number for each of the 7 arrays in the weeklyTasksArray
     return (
-        <section className="schedule-div weekly-tasks">
+        <section className="schedule-section weekly-tasks">
             {weeklyTasks.length === 0 && <p className="status-message">No dates in your schedule</p>}
             <>
                 {weeklyTasksArray.map((tasks, index) => (

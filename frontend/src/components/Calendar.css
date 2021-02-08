@@ -120,10 +120,11 @@
 
 /*Today's date, colour when not selected */
 .react-calendar__tile--now {
-  background: #bfe7b6;
+  background: #C7F5B1;
   color: #186b3f;
   font-weight: 600;
 }
+
 /*Today's date when not selected and hovering over it */
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {

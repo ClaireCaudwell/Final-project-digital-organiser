@@ -8,6 +8,7 @@ import TimePicker from "react-time-picker/dist/entry.nostyle";
 
 import "../DatePicker.css";
 import "../TimePicker.css";
+import "./AddTask.css";
 
 import { addTask, task } from "../../reducer/task";
 import { weeklySchedule } from "../../reducer/weeklySchedule";
@@ -54,45 +55,46 @@ export const AddTask = () => {
     };
 
     return (
-        <section className="schedule-component-container">
-            <NavLink to="/schedule" className="back-link">
-                <div className="close-button-container">
-                    <button className="close-button" type="button" onClick={handleClose}>close</button> 
-                </div>
-            </NavLink>
-            <h2>Schedule something!</h2>
-            <form onSubmit={handleOnAdd}>
-                <input
-                    type="text"
-                    className="input-box"
-                    value={scheduletask}
-                    onChange={(event) => setScheduleTask(event.target.value)}
-                    required
-                    minLength="3"
-                    maxLength="30" 
-                />
-                <label className="date-container">
-                    DATE:
-                    <DatePicker
-                        value={startDateTime}
-                        onChange={(startDateTime) => setStartDateTime(startDateTime)}
-                        showWeekNumbers
+        <section className="addtask-section">
+            <div className="addtask-container">
+                <NavLink to="/schedule" className="close-button-container">
+                    <button type="button" onClick={handleClose}>close</button> 
+                </NavLink>
+                <h2>Add to your schedule</h2>
+                <form onSubmit={handleOnAdd} className="form-container">
+                    <input
+                        type="text"
+                        className="input-box"
+                        value={scheduletask}
+                        onChange={(event) => setScheduleTask(event.target.value)}
                         required
+                        minLength="3"
+                        maxLength="30" 
                     />
-                </label>
-                <label className="date-container">
-                    TIME:
-                    <TimePicker
-                        value={time}
-                        onChange={timeChosen}
-                        closeClock
-                        disableClock
-                        required
-                    />
-                </label>
-                <button className="add-task-button" type="submit">ADD TASK</button>
-            </form>
-            {statusMessage && <p>{`${statusMessage}`}</p>}
+                    <label className="date-container">
+                        DATE:
+                        <DatePicker
+                            value={startDateTime}
+                            onChange={(startDateTime) => setStartDateTime(startDateTime)}
+                            required
+                            className="picker"
+                        />
+                    </label>
+                    <label className="date-container">
+                        TIME:
+                        <TimePicker
+                            value={time}
+                            onChange={timeChosen}
+                            closeClock
+                            disableClock
+                            required
+                            className="picker"
+                        />
+                    </label>
+                    <button className="add-task-button" type="submit">Add date</button>
+                </form>
+                {statusMessage && <p className="status-message">{`${statusMessage}`}</p>}
+            </div>
         </section>
     );
 };

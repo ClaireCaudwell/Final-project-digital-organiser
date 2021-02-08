@@ -1,152 +1,121 @@
 /* Schedule.js */
 .main-schedule-container {
-    padding: 0 20px;
-    margin-top: 20px;
-    color: #313131;
-    font-family: 'Quicksand', sans-serif;
+  padding: 0 20px;
+  margin-top: 20px;
+  color: #313131;
+  font-family: 'Quicksand', sans-serif;
 }
 
-.schedule-div {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px 0;
+.schedule-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
 }
 
 .white {
-    background-color: white;
+  background-color: white;
 }
 
 .select-calendar-text {
-    font-size: 17px;
-    color: #313131;
-    text-align: justify;
-    font-family: 'Quicksand', sans-serif;
+  font-size: 17px;
+  color: #313131;
+  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .week-text {
-    width: 70%;
-    color: #313131;
-    text-align: center; 
-    padding: 12px 0;
-    margin: 0 10px 0 0;
-    font-size: 20px;
-    border-radius: 2px;
-    background-color: #d7f87b;
+  width: 70%;
+  color: #313131;
+  text-align: center; 
+  padding: 12px 0;
+  margin: 0 10px 0 0;
+  font-size: 20px;
+  border-radius: 2px;
+  background-color: #d7f87b;
 }
 
 .today {
-    width: 30%;
+  width: 30%;
 }
 
 .today button {
-    width: 100%;
-    font-size: 20px;
-    font-weight: 500;
-    color: #313131;
-    border: 3px solid #C7F5B1;
-    background-color: transparent;
-    cursor: pointer;
-    border-radius: 2px;
-    padding: 10px 0;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 500;
+  color: #313131;
+  border: 3px solid #C7F5B1;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 10px 0;
 }
   
 .today button:hover {
-    background-color: #C7F5B1;
-}  
-  
-/* Add Task Button Area */
-.add-task-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.add-task-container button {
-    background-color: #d7f87b;
-    color: #313131;
-    border-radius: 5px;
-    border: none;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 10px 20px;
-    font-family: 'Quicksand', sans-serif;
-    cursor: pointer;
-}
-
-.add-task-container button:hover {
-    background-color: #d6fb5d;
-}
-
-.add-task-container p {
-    margin-left: 20px;
-    font-size: 17px;
-    font-family: 'Quicksand', sans-serif;
-    text-align: justify;
+  background-color: #C7F5B1;
 }
 
 /* Weekly schedule */
 .status-message {
-    color: #313131;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 18px;
-    margin-top: 0;
+  color: #313131;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 18px;
+  margin-top: 0;
+  font-weight: 500;
 }
 
 .weekly-tasks{
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .weekday-container-one {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color:#bfe7b6;
-    padding: 7px;
-    font-size: 18px;
-    color: #313131;
-    font-weight: 600;
-    font-family: 'Quicksand', sans-serif;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color:#bfe7b6;
+  padding: 7px;
+  font-size: 18px;
+  color: #313131;
+  font-weight: 600;
+  font-family: 'Quicksand', sans-serif;
 }
   
 .weekday-container-two {
-    width: 100%;
-    background-color: #d7f87b;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 7px;
-    font-size: 18px;
-    color: #313131;
-    font-weight: 600;
-    font-family: 'Quicksand', sans-serif;
+  width: 100%;
+  background-color: #d7f87b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px;
+  font-size: 18px;
+  color: #313131;
+  font-weight: 600;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .task-link {
-    text-decoration: none;
-    width: 100%;
+  text-decoration: none;
+  width: 100%;
 }
   
 .time-task-container {
-    width: 100%;
-    background-color: #fff;
-    padding: 7px;
-    display: flex;
-    justify-content: space-between;
-    color: #313131;
-    margin-bottom: 10px;
-    font-size: 18px;
-    border-bottom: 3px solid #C7F5B1;
-    font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  background-color: #fff;
+  padding: 7px;
+  display: flex;
+  justify-content: space-between;
+  color: #313131;
+  margin-bottom: 10px;
+  font-size: 18px;
+  border-bottom: 3px solid #C7F5B1;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .task {
-    word-wrap: break-word;
+  word-wrap: break-word;
 }
 
 
@@ -157,55 +126,6 @@
 
 
 
-  
-/* AddScheduleTask.js */
-.close-button-container {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-}
-  
-  .close-button {
-    border-radius: 7%;
-    border: none;
-    background-color: #8d8d8d;
-    text-align: center;
-    font-size: 18px;
-    cursor: pointer;
-    color: white;
-  }
-  
-  .close-button:hover {
-    background-color: #707070;
-  }
-  
-  .input-box {
-    border: 2px solid #7db961;
-    width: 95%;
-  }
-  
-  .add-task-button {
-    width: 100%;
-    background-color: white;
-    border: 2px solid black;
-    padding: 10px 0;
-    cursor: pointer;
-  }
-  
-  .back-link {
-    text-decoration: none;
-  }
-  
-  .time-input {
-    width: 100%;
-  }
-  
-  .date-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
   
   /* Summary */
   .Summary-container {

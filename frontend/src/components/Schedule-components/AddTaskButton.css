@@ -1,0 +1,31 @@
+/* Add Task Button Area */
+.add-task-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.add-task-container button {
+    background-color: #d7f87b;
+    color: #313131;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 20px;
+    font-family: 'Quicksand', sans-serif;
+    cursor: pointer;
+}
+
+.add-task-container button:hover {
+    background-color: #d6fb5d;
+}
+
+.add-task-container p {
+    margin-left: 20px;
+    font-size: 17px;
+    font-family: 'Quicksand', sans-serif;
+    text-align: justify;
+}
