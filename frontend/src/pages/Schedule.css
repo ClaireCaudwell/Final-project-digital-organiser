@@ -1,4 +1,170 @@
-/* Schedule.js */
+/* Schedule.js page styling & component styling*/
+/*  Header */
+header {
+  background-color: #ffff;
+}
+
+.top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f3fdd8;
+}
+
+.header-toggle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.header-toggle-container p {
+  font-size: 11px;
+  color: #313131;
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 0;
+}
+
+.welcome-div {
+  padding: 0 20px;
+  margin: 30px 0;
+}
+
+header h2 {
+  font-size: 21px;
+  font-weight: 400;
+  margin: 0;
+  text-align: left;
+  color: #313131;
+  font-family: 'Quicksand', sans-serif;
+}
+
+span {
+  font-weight: 600;
+}
+
+/* Logout button */
+.logout-link {
+  align-self: flex-start;
+  margin-top: 3px;
+}
+
+.logout-button {
+  color: #313131;
+  border: none;
+  background-color: #dfff74;
+  padding: 5px 7px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #d6fb5d;
+  transition: 0.3s;
+}
+
+/* Toggle slider */
+.toggle-container {
+  margin-top: 5px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 25px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #C7F5B1;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 8px;
+  bottom: 4.5px;
+  background-color: #fff;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #4d4c4c;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Navlinks */
+nav {
+  margin-top: 20px;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  list-style-type: none;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: #313131;
+  width: 50%;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 20px;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #e7f5c0;
+}
+
+.active {
+  background-color: #f3fdd8;
+  font-weight: 600;
+}
+
+.hover-tab:hover {
+  font-weight: 600;
+}
+
+/* React calendar styling is in Calendar.css */
+/* ------------------------------------------------------------------------ */
+/* Main container */
 .main-container {
   padding: 0 20px;
   color: #313131;
@@ -15,6 +181,7 @@
 
 .white {
   background-color: #fff;
+  padding-top: 10px;
 }
 
 .select-calendar-text {
@@ -57,6 +224,43 @@
   transition: 0.3s;
 }
 
+/* ------------------------------------------------------------------------ */
+/* Add Task Button Component */
+.add-task-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.add-task-container button {
+  background-color: transparent;
+  color: #313131;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 10px 20px;
+  font-family: 'Quicksand', sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: #C7F5B1;
+}
+
+.add-task-container button:hover {
+  background-color: #b9fa9a;
+  transition: 0.3s;
+}
+
+.add-task-container p {
+  margin-left: 20px;
+  font-size: 17px;
+  font-family: 'Quicksand', sans-serif;
+  text-align: justify;
+}
+
+/* ------------------------------------------------------------------------ */
 /* Weekly schedule */
 .status-message {
   color: #313131;
@@ -123,4 +327,160 @@
 
 .task {
   word-wrap: break-word;
+}
+
+/* ------------------------------------------------------------------------ */
+/* Add task, Edit task & summary task components */
+.task-section {
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #313131;
+}
+
+.task-container {
+  padding: 20px 20px 0 20px;
+  margin:20px 0;
+  background-color: #C7F5B1;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+/*  Close button */
+.close-button-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  text-decoration: none;
+}
+
+.close-button-container button {
+  color: #313131;
+  border: none;
+  background-color: #dfff74;
+  padding: 5px 7px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.close-button:hover {
+  background-color: #707070;
+}
+
+/* h2 text */
+.task-container h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  border-bottom: 3px solid #F3FDD8;
+  padding-bottom: 10px;
+}
+
+/* AddTask & EditTask.js */
+/* Form */
+.form-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-box {
+  background-color: #fff;
+  border: none;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 17px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 17px;
+  outline: none;
+  padding: 0 10px;
+}
+
+.input-box:focus {
+  border: 2px solid #6fd845;
+  transition: 0.3s;
+}
+
+.date-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 17px;
+}
+
+/* Date & time pickers */
+/* See DatePicker.css & TimePicker.css for more styling */
+.picker {
+  width: 70%;
+  background-color: #fff;
+}
+
+/*  Form button */
+.add-task-button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px 0;
+  background-color: #F3FDD8;
+  color: #313131; 
+  border: none;
+  cursor: pointer;
+  border-radius:5px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.add-task-button:hover {
+  background-color: #dfff74;
+  border: none;
+  transition: 0.3s;
+}
+
+/* TaskSummary.js */
+/* Edit & Delete buttons */
+.edit-delete-button-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px 0;
+}
+
+.no-link {
+  text-decoration: none;
+}
+
+.edit-delete-button-container button {
+  border: none;
+  background-color: #F3FDD8;
+  border-radius: 50%;
+  height: 65px;
+  width: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #313131;
+  transition: 0.3s;
+}
+
+.edit-delete-button-container button:hover {
+  background-color: #dfff74;
+  border: none;
+  transition: 0.3s;
+}
+
+.material-icons {
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #313131;
 }

@@ -1,8 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import "./AddTaskButton.css";
-
 export const AddTaskButton = () => {
 
     return (

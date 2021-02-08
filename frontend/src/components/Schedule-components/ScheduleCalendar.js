@@ -22,14 +22,12 @@ export const ScheduleCalendar = ({ number }) => {
     };    
 
     return (
-        <section className="schedule-section white">
+        <section className="section-container white">
             <Calendar
                 view={"month"}
                 value={selectedDate}
                 key={number}
                 onClickDay={onSelectDate}
-                // prevLabel
-                // nextLabel
             />      
         </section>
     )

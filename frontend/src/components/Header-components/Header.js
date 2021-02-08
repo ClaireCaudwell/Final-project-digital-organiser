@@ -6,8 +6,6 @@ import { ColourSchemeToggle } from "./ColourSchemeToggle";
 import { user} from "../../reducer/user";
 import { weeklySchedule } from "../../reducer/weeklySchedule";
 import { note } from "../../reducer/note";
-
-import "./Header.css";
  
 export const Header = () => {
     const dispatch = useDispatch();
