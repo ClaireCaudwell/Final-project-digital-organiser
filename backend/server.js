@@ -164,9 +164,9 @@ app.post("/users/:id/scheduletask", async (req, res) => {
     user.scheduleTask.push({ task: scheduletask, startdatetime: startDateTime })
     user.save();
     const addedTask = user.scheduleTask[user.scheduleTask.length-1];
-    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, startdatetime: addedTask.startdatetime, statusMessage: "Date added to your schedule" });
+    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, startdatetime: addedTask.startdatetime, statusMessage: "Task added to your schedule" });
   } catch (error) {
-    res.status(400).json({ notFound: true, errorMesssage: "Could't add to your shcedule", error});
+    res.status(400).json({ notFound: true, errorMesssage: "Could't add to your schedule", error});
   }
 });
 
@@ -291,7 +291,7 @@ app.patch("/users/:id/scheduletask/:taskid", async (req, res) => {
     if(individualTask.length === 0) {
       throw "Task ID not found"
     }
-    res.status(200).json({ taskId: individualTask[0]._id, task: individualTask[0].task, startdatetime: individualTask[0].startdatetime, statusMessage: "Schedule date updated"});
+    res.status(200).json({ taskId: individualTask[0]._id, task: individualTask[0].task, startdatetime: individualTask[0].startdatetime, statusMessage: "Task updated"});
   } catch(error) {
     res.status(400).json({ notFound: true, error});
   }
@@ -326,7 +326,7 @@ app.delete("/users/:id/scheduletask/:taskid", async (req, res) => {
   // Splicing/removing the element(object) based on the index number of the element from the array
   arrayOfTasks.splice(indexNumber, 1);
   user.save();
-  res.status(200).json({ statusMessage: "Date removed from your schedule"});
+  res.status(200).json({ statusMessage: "Task removed from your schedule"});
 } catch(error) {
   res.status(400).json({ notFound: true, errorMesssage: "User not found", error});
 }
