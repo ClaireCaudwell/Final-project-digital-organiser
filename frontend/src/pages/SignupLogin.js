@@ -76,8 +76,8 @@ export const SignupLogin = () => {
                         <button className="form-button" type="submit" onClick={handleSignup}>Sign up</button>
                         <button className="form-button" type="submit" onClick={handleLogin}>Login</button> 
                     </form>
-                    {userId === null && <p>{error}</p>}
                 </div>
+                    {userId === null && <p className="error-message">{error}</p>}
             </main>
         </>
     );

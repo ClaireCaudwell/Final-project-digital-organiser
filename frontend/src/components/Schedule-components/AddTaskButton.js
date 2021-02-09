@@ -7,9 +7,9 @@ export const AddTaskButton = () => {
         <section className="section-container">          
             <div className="add-task-container">
                 <NavLink to="/addtask">
-                    <button type="button" >Add date +</button>
+                    <button type="button" >Add task +</button>
                 </NavLink>
-                <p>Click on a date in your schedule to edit or delete</p>
+                <p>Click on a task in your schedule to edit or delete</p>
             </div>
         </section>
     );

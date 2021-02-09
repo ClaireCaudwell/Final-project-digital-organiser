@@ -53,13 +53,13 @@ export const EditTask = () => {
     };
 
     return (
-        <section className="task-section">
-            <div className="task-container">
+        <section className="task-section desktop-view-section">
+            <div className="task-container desktop-view-edittaskcontainer">
                 <NavLink to="/schedule"
                     className="close-button-container">
                     <button type="button" onClick={handleClose}>close</button> 
                 </NavLink>
-                <h2>Edit your scheduled date</h2>
+                <h2>Edit your task</h2>
                 <form onSubmit={handleOnUpdate} className="form-container">
                     <input
                         type="text"
@@ -91,7 +91,7 @@ export const EditTask = () => {
                             className="picker"
                         />
                     </label>
-                    <button className="add-task-button" type="submit" onClick={handleOnUpdate}>Update date</button>
+                    <button className="add-task-button" type="submit" onClick={handleOnUpdate}>Update task</button>
                 </form>
                 {statusMessage && <p className="status-message">{`${statusMessage}`}</p>}
             </div>

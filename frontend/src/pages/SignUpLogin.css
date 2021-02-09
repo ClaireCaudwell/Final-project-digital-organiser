@@ -103,6 +103,16 @@ main {
   transition: 0.3s;
 }
 
+.error-message {
+  margin-top: 20px;
+  color: #313131;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  width: 80%;
+}
+
 /* Media query landscape mobile and tablet devices with max width 823px and min width 640px */
 @media (max-width: 823px) and (min-width: 640px) {
   main {

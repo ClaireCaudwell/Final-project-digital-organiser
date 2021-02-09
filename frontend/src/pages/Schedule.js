@@ -59,7 +59,7 @@ export const Schedule = () => {
 
     // Will set the useState component to true or false depending on the screen size and render the certain components below based on the true or false state
     const showComponent = (event) => {
-        if(window.innerWidth < 1023) {
+        if(window.innerWidth < 900) {
             setComponent(true);
         } else {
             setComponent(false);
@@ -76,15 +76,15 @@ export const Schedule = () => {
             <Header />
             <main className="main-container desktop-view">
                 <section className="column-one mobile-view">
-                    <p className="select-calendar-text schedule-div">Select a date in the calendar to get your schedule for that week</p>
-                    <section className="section-container">
+                    <p className="select-calendar-text section-container">Select a date in the calendar to get your schedule for that week</p>
+                    <div className="section-container">
                         <h2 className="week-text">Week {currentWeek}</h2>
                         <NavLink to="/schedule" className="today">
                             <button type="button" onClick={setToday}>
                                 Today
                             </button>
                         </NavLink>
-                    </section>
+                    </div>
                     <ScheduleCalendar number={number} />
                     {component && <AddTaskButton />}
                     {!component && <AddTask />}

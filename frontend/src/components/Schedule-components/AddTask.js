@@ -56,12 +56,12 @@ export const AddTask = () => {
     };
 
     return (
-        <section className="task-section">
-            <div className="task-container">
-                <NavLink to="/schedule" className="close-button-container" activeClassName="not-active">
+        <section className="task-section desktop-view-tasksection">
+            <div className="task-container desktop-view-taskcontainer">
+                <NavLink to="/schedule" className="close-button-container desktop-view-close-button" activeClassName="not-active">
                     <button type="button" onClick={handleClose}>close</button> 
                 </NavLink>
-                <h2>Add to your schedule</h2>
+                <h2>Add a task</h2>
                 <form onSubmit={handleOnAdd} className="form-container">
                     <input
                         type="text"

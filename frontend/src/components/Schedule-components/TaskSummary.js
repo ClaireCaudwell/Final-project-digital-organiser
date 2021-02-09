@@ -50,14 +50,14 @@ export const TaskSummary = () => {
     };
 
     return (
-        <section className="task-section">
-            <div className="task-container">
+        <section className="task-section desktop-view-section">
+            <div className="task-container desktop-view-container">
                 <NavLink to="/schedule" className="close-button-container">
                     <button type="button" onClick={handleClose}>close</button> 
                 </NavLink>
             {!taskDeleted ? (
                 <>
-                <h2>Schedule date summary</h2>
+                <h2>Task summary</h2>
                 <div className="weekday-container-two">
                     <p>{weekday}</p>
                     <p>{date}</p>
