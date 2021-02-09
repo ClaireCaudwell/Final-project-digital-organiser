@@ -16,6 +16,7 @@
     cursor: pointer;
     transition: 0.3s;
     background-color: #C7F5B1;
+    margin-top: 13px;
 }
 
 .add-note-button:hover {
@@ -23,8 +24,12 @@
     transition: 0.3s;
 }
 
-.column-direction {
+.list-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    border: 1px solid red;
 }
 
 .note-container {

@@ -147,7 +147,7 @@ ul {
   color: #313131;
   width: 50%;
   text-align: center;
-  padding: 15px 10px;
+  padding: 30px 10px;
   font-size: 20px;
   font-family: 'Quicksand', sans-serif;
   background-color: #e7f5c0;
@@ -177,7 +177,6 @@ ul {
   align-items: center;
   justify-content: center;
   margin: 0 0 25px 0;
-  /* border: 1px solid blue; */
 }
 
 .white {
@@ -348,10 +347,10 @@ ul {
 }
 
 .task-container {
-  margin:20px 0;
+  margin: 20px 0;
   background-color: #C7F5B1;
   border-radius: 5px;
-  width: 100%;
+  width: 300px;
   height: 100%;
   padding: 20px;
 }

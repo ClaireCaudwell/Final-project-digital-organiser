@@ -1,96 +1,92 @@
 /* ------------------------------------------------------------------------ */
 /* Media queries */
-@media (min-width: 600px) and (max-width: 900px) {
-    .main-container {
-        padding: 0 60px;
-    }
-    
-    .column-direction {
+@media (min-width: 600px) {
+    /* Direction of the notes list */
+    main .list-section {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
     }
 
-    .note-container {
-        margin-right: 10px;
+    main .note-container {
+        margin: 0 20px 20px 20px;
     }
+
+    /* .note-container:last-child {
+        align-self: baseline;
+    } */
   
     .task-section {
         padding: 0 60px;
     }
-
-    .task-container {
-        max-width: 70%;
-        margin-top: 20px;
-    }
 }
 
-@media (min-width: 700px) and (max-width: 1023px) {
-       
-    .column-direction {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .note-container {
-        margin-right: 10px;
-    }
-  
-    .task-section {
-        padding: 0 90px;
-        margin-top: 30px;
-    }
-
-    .desktop-view-container {
-        max-width: 60%;
-        padding: 30px 20px;
-    }
-}
-
-@media (min-width: 900px) and (max-width: 1200px) {
-    /* Links in header */
-    .link {
-        padding: 30px 10px;
-    }
-
+@media (min-width: 750px) {    
     .desktop-view {
-        border: 1px solid blue;
-        width: 100%;
         display: flex;
         flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid blue;
+    }
+
+    .inner-div {
+        width: 100%;
+        padding: 0 30px;
+        display: flex;
         align-items: flex-start;
-        justify-content: space-between;
+        justify-content: center;
+        border: 1px solid blue;
     }
 
     /* Adding two columns which will seperate the week number, today button, calendar and add task component from the schedule list */
     .column-one {
-        width: 40%;
+        width: 300px;
         height: 100%;
         margin-top: 30px;
         display: flex;
         flex-direction: column;
-        align-items: space-between;
+        align-items: space-evenly;
+        margin-right: 20px;
     }
 
     .column-two {
-        width: 57%;
+        width: 600px;
         height: 100%;
         margin-top: 30px;
     }
 
+    .task-container {
+        width: 400px;
+        padding-top: 20px;
+    }
+
+    .desktop-view-section {
+        margin-top: 50px;
+    }
+
+    .desktop-view-tasksection {
+        padding: 0 ;
+    }
+    
+    .desktop-view-taskcontainer {
+        width: 300px;
+    }
+}
+
+@media (min-width: 1024px) {
     .select-calendar-text {
         margin-top: 0;
     }
 
     /* To change the width of the add task component */
-    .desktop-view-tasksection {
-        padding: 0;
+    .task-container {
+        width: 500px;
     }
 
     .desktop-view-taskcontainer {
-        padding: 25px;
-        border: 1px solid red;
+        padding: 15px;
+        width: 100%;
     }
 
     .desktop-view-close-button {
@@ -104,10 +100,4 @@
         justify-content: center;
         margin-top: 50px;
     }
-
-    .desktop-view-container {
-        min-width: 30%;
-        max-width: 40%;
-    }
-
   }

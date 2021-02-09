@@ -14,10 +14,12 @@ import { AddTask } from "../components/Schedule-components/AddTask";
 import "./Schedule.css";
 import "./MediaQueries.css";
 
+const MOBILE_WIDTH_THRESHOLD = 750;
+
 export const Schedule = () => {
     const dispatch = useDispatch();
     const [number, setNumber] = useState(0);
-    const [ component, setComponent ] = useState(window.innerWidth < 1023);
+    const [ component, setComponent ] = useState(window.innerWidth < MOBILE_WIDTH_THRESHOLD);
 
     const userId = useSelector((store) => store.user.login.userId);
     const accessToken = useSelector((store) => store.user.login.accessToken);
@@ -59,7 +61,7 @@ export const Schedule = () => {
 
     // Will set the useState component to true or false depending on the screen size and render the certain components below based on the true or false state
     const showComponent = (event) => {
-        if(window.innerWidth < 900) {
+        if(window.innerWidth < MOBILE_WIDTH_THRESHOLD) {
             setComponent(true);
         } else {
             setComponent(false);
@@ -75,23 +77,25 @@ export const Schedule = () => {
         <>
             <Header />
             <main className="main-container desktop-view">
-                <section className="column-one mobile-view">
-                    <p className="select-calendar-text section-container">Select a date in the calendar to get your schedule for that week</p>
-                    <div className="section-container">
-                        <h2 className="week-text">Week {currentWeek}</h2>
-                        <NavLink to="/schedule" className="today">
-                            <button type="button" onClick={setToday}>
-                                Today
-                            </button>
-                        </NavLink>
-                    </div>
-                    <ScheduleCalendar number={number} />
-                    {component && <AddTaskButton />}
-                    {!component && <AddTask />}
-                </section>
-                <section className="column-two mobile-view">
-                    <WeeklySchedule />
-                </section>
+                <div className="inner-div">
+                    <section className="column-one mobile-view">
+                        <p className="select-calendar-text section-container">Select a date in the calendar to get your schedule for that week</p>
+                        <div className="section-container">
+                            <h2 className="week-text">Week {currentWeek}</h2>
+                            <NavLink to="/schedule" className="today">
+                                <button type="button" onClick={setToday}>
+                                    Today
+                                </button>
+                            </NavLink>
+                        </div>
+                        <ScheduleCalendar number={number} />
+                        {component && <AddTaskButton />}
+                        {!component && <AddTask />}
+                    </section>
+                    <section className="column-two mobile-view">
+                        <WeeklySchedule />
+                    </section>
+                </div>
             </main>     
         </>
     )
