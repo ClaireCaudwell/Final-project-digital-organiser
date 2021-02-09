@@ -92,7 +92,7 @@ export const AddTask = () => {
                             className="picker"
                         />
                     </label>
-                    <button className="add-task-button" type="submit">Add date</button>
+                    <button className="add-task-button" type="submit">Add task</button>
                 </form>
                 {statusMessage && <p className="status-message">{`${statusMessage}`}</p>}
             </div>

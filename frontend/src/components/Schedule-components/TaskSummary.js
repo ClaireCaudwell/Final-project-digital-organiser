@@ -50,48 +50,48 @@ export const TaskSummary = () => {
     };
 
     return (
-        <section className="task-section desktop-view-section">
-            <div className="task-container desktop-view-container">
+        <section className="task-section desktop-view-tasksection">
+            <div className="task-container desktop-view-taskcontainer">
                 <NavLink to="/schedule" className="close-button-container">
                     <button type="button" onClick={handleClose}>close</button> 
                 </NavLink>
-            {!taskDeleted ? (
-                <>
-                <h2>Task summary</h2>
-                <div className="weekday-container-two">
-                    <p>{weekday}</p>
-                    <p>{date}</p>
-                </div>
-                <div className="time-task-container">
-                    <p>{taskDescription}</p>
-                    <p>{time}</p>
-                </div>
-                <div className="edit-delete-button-container">
-                    <NavLink to="/edittask" className="no-link">
-                        <button 
+                {!taskDeleted ? (
+                    <>
+                    <h2>Task summary</h2>
+                    <div className="weekday-container-two">
+                        <p>{weekday}</p>
+                        <p>{date}</p>
+                    </div>
+                    <div className="time-task-container">
+                        <p>{taskDescription}</p>
+                        <p>{time}</p>
+                    </div>
+                    <div className="edit-delete-button-container">
+                        <NavLink to="/edittask" className="no-link">
+                            <button 
+                                type="button" 
+                                onClick={handleEdit}
+                            >
+                                <span className="material-icons">
+                                    mode_edit
+                                </span>
+                                Edit
+                            </button>
+                        </NavLink>
+                        <button
                             type="button" 
-                            onClick={handleEdit}
+                            onClick={handleDelete}
                         >
                             <span className="material-icons">
-                                mode_edit
+                                delete
                             </span>
-                            Edit
+                            Delete
                         </button>
-                    </NavLink>
-                    <button
-                        type="button" 
-                        onClick={handleDelete}
-                    >
-                        <span className="material-icons">
-                            delete
-                        </span>
-                        Delete
-                    </button>
-                </div>
-                </>
-            ) : (
-                <p className="status-message">{statusMessage}</p>
-            )}
+                    </div>
+                    </>
+                ) : (
+                    <p className="status-message">{statusMessage}</p>
+                )}
             </div>
         </section>
     );

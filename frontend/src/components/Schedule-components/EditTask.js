@@ -53,8 +53,8 @@ export const EditTask = () => {
     };
 
     return (
-        <section className="task-section desktop-view-section">
-            <div className="task-container desktop-view-edittaskcontainer">
+        <section className="task-section desktop-view-tasksection">
+            <div className="task-container desktop-view-taskcontainer">
                 <NavLink to="/schedule"
                     className="close-button-container">
                     <button type="button" onClick={handleClose}>close</button> 

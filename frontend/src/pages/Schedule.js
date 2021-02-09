@@ -77,8 +77,8 @@ export const Schedule = () => {
         <>
             <Header />
             <main className="main-container desktop-view">
-                <div className="inner-div">
-                    <section className="column-one mobile-view">
+                <section className="inner-div">
+                    <div className="column-one mobile-view">
                         <p className="select-calendar-text section-container">Select a date in the calendar to get your schedule for that week</p>
                         <div className="section-container">
                             <h2 className="week-text">Week {currentWeek}</h2>
@@ -91,11 +91,11 @@ export const Schedule = () => {
                         <ScheduleCalendar number={number} />
                         {component && <AddTaskButton />}
                         {!component && <AddTask />}
-                    </section>
-                    <section className="column-two mobile-view">
+                    </div>
+                    <div className="column-two mobile-view">
                         <WeeklySchedule />
-                    </section>
-                </div>
+                    </div>
+                </section>
             </main>     
         </>
     )

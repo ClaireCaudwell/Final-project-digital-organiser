@@ -11,93 +11,55 @@
     main .note-container {
         margin: 0 20px 20px 20px;
     }
-
-    /* .note-container:last-child {
-        align-self: baseline;
-    } */
   
+    /* Section element for the addtask, edittask and tasksummary for mobile view */
     .task-section {
         padding: 0 60px;
     }
 }
 
-@media (min-width: 750px) {    
+@media (min-width: 750px) { 
+    /* Main element tag in schedule.js */
     .desktop-view {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        border: 1px solid blue;
     }
 
+    /* Section element tag in schedule.js */
     .inner-div {
         width: 100%;
-        padding: 0 30px;
+        /* padding: 0 30px; */
         display: flex;
         align-items: flex-start;
         justify-content: center;
-        border: 1px solid blue;
     }
 
+    /* Div element tags in Schedule.js */
     /* Adding two columns which will seperate the week number, today button, calendar and add task component from the schedule list */
     .column-one {
-        width: 300px;
+        width: 360px;
         height: 100%;
         margin-top: 30px;
         display: flex;
         flex-direction: column;
         align-items: space-evenly;
-        margin-right: 20px;
+        margin-right: 30px;
     }
 
     .column-two {
-        width: 600px;
+        max-width: 55%;
         height: 100%;
         margin-top: 30px;
     }
-
-    .task-container {
-        width: 400px;
-        padding-top: 20px;
-    }
-
-    .desktop-view-section {
-        margin-top: 50px;
-    }
-
-    .desktop-view-tasksection {
-        padding: 0 ;
-    }
     
+    /* Div element in addtask, edit task and tasksummary  */
     .desktop-view-taskcontainer {
-        width: 300px;
+        width: 360px;
     }
-}
 
-@media (min-width: 1024px) {
     .select-calendar-text {
         margin-top: 0;
     }
-
-    /* To change the width of the add task component */
-    .task-container {
-        width: 500px;
-    }
-
-    .desktop-view-taskcontainer {
-        padding: 15px;
-        width: 100%;
-    }
-
-    .desktop-view-close-button {
-        display: none;
-    }
-
-    /* To change the summary and edit task component */
-    .desktop-view-section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 50px;
-    }
-  }
+}

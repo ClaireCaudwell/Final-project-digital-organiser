@@ -15,7 +15,7 @@ main {
   justify-content: center;
   flex-direction: column;
   margin-bottom: 35px;
-  width: 80%;
+  width: 300px;
 }
 
 .frontpage-header-div h1 {
@@ -38,7 +38,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80%;
+  width: 300px;
   padding: 20px 0;
   background-color: #C7F5B1;
   border-radius: 5px;
@@ -113,33 +113,10 @@ main {
   width: 80%;
 }
 
-/* Media query landscape mobile and tablet devices with max width 823px and min width 640px */
-@media (max-width: 823px) and (min-width: 640px) {
-  main {
-    padding-top: 70px;
-  }
-
-  .frontpage-header-div {
-    width: 45%;
-  }
-  
-  .form-div {
-    width: 45%;
-  }
-}
-
 /* Media query for tablet devices with a max width of 1024px and min width of 840px */
 @media (max-width: 1024px) and (min-width: 840px) {
   main {
     padding-top: 120px;
-  }
-
-  .frontpage-header-div {
-    width: 35%;
-  }
-  
-  .form-div {
-    width: 35%;
   }
 }
 
@@ -148,14 +125,10 @@ main {
   main {
     padding-top: 160px;
   }
+}
 
-  .frontpage-header-div {
-    min-width: 35%;
-    max-width: 25%;
-  }
-  
-  .form-div {
-    min-width: 35%;
-    max-width: 25%;
+@media(min-width: 1024px) {
+  main {
+    padding-top: 80px;
   }
 }
