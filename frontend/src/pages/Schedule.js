@@ -43,6 +43,7 @@ export const Schedule = () => {
         }
         // Clear error message that was shown if user logs in or signs up unsuccessfully
         dispatch(user.actions.setErrorMessage({ errorMessage: null }));
+        // dispatch(weeklySchedule.actions.setSelectedDate({ selectedDate: todaysdate }));
     },[dispatch, userId, accessToken, authorized]);
 
     // if authorized is then this second use effect is triggered
@@ -51,7 +52,6 @@ export const Schedule = () => {
             // dispatch to get schedule using userId and monday 
             dispatch(getSchedule(userId, monday));
             // set current week to week based on today's date
-            // dispatch(weeklySchedule.actions.setWeekNumber(currentWeek));
             // Clear error message if fetch wasn't successful
             dispatch(weeklySchedule.actions.setErrorMessage({ errorMessage: null }));
             // Listening to the window size and sending in the function showComponent

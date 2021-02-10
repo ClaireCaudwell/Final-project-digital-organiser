@@ -25,7 +25,7 @@ export const weeklySchedule = createSlice({
             state.schedule.errorMessage = errorMessage; 
         },
         setLogout: (state) => {
-            state.schedule.selectedDate = moment().startOf('isoWeek').toISOString();
+            state.schedule.selectedDate = moment().toISOString();
             state.schedule.weeklyTasks = [];
         }
     },

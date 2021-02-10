@@ -29,10 +29,7 @@ export const EditTask = () => {
 
     const dateChosen = (newdate) => {
         // If user only changes the date, the original time is set to the setStartDateTime with the new date
-        // How to set the time "12:00" to the new date object
-        // Then this date can be used to set the hours on newdate
-        const convertedTime = new Date(chosenTime);
-        newdate.setHours(convertedTime.getHours(),convertedTime.getMinutes());
+        newdate.setHours(parseInt(chosenTime.split(":")[0]),parseInt(chosenTime.split(":")[1]));
         setStartDateTime(newdate);
     };
 
