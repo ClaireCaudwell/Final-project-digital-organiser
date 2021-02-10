@@ -69,6 +69,10 @@
   padding-left: calc(1px +  0.54em);
 }
 
+.react-date-picker__inputGroup__fit {
+  border: 1px solid blue;
+}
+
 .react-date-picker__button {
   border: 0;
   background: transparent;
@@ -94,12 +98,13 @@
 }
 
 .react-date-picker__calendar {
-  width: 360px;
+  width: 300px;
   max-width: 100vw;
   position: absolute;
   top: 100%;
   z-index: 1;
   line-height: 1.125em;
+  overflow: visible;
 }
 
 .react-date-picker__calendar--closed {

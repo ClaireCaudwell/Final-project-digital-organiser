@@ -6,7 +6,7 @@ import "../Calendar.css";
 
 import { weeklySchedule } from "../../reducer/weeklySchedule";
 
-export const ScheduleCalendar = ({ number }) => {
+export const ScheduleCalendar = ({ randomNumber }) => {
     const dispatch = useDispatch();
 
     // The calendar value is set to the selectedDate in redux
@@ -26,7 +26,7 @@ export const ScheduleCalendar = ({ number }) => {
             <Calendar
                 view={"month"}
                 value={selectedDate}
-                key={number}
+                key={randomNumber}
                 onClickDay={onSelectDate}
             />      
         </section>

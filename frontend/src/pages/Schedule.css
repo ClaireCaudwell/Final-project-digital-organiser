@@ -93,7 +93,7 @@ span {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #C7F5B1;
+  background-color: rgb(199, 245, 177);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -273,7 +273,7 @@ ul {
   color: #313131;
   font-family: 'Quicksand', sans-serif;
   font-size: 18px;
-  margin-top: 0;
+  margin-top: 10px;
   font-weight: 500;
 }
 

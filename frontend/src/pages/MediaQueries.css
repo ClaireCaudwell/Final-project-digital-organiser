@@ -38,7 +38,7 @@
 
     /* Div element tags in Schedule.js */
     /* Adding two columns which will seperate the week number, today button, calendar and add task component from the schedule list */
-    .column-one {
+    .left-column {
         width: 360px;
         height: 100%;
         margin-top: 30px;
@@ -48,10 +48,14 @@
         margin-right: 30px;
     }
 
-    .column-two {
+    .right-column {
         max-width: 55%;
         height: 100%;
         margin-top: 30px;
+    }
+
+    .left-column .close-button-container {
+        display: none;
     }
     
     /* Div element in addtask, edit task and tasksummary  */

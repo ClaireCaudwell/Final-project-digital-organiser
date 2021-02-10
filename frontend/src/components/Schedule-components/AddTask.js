@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import moment from "moment";
@@ -23,13 +23,24 @@ export const AddTask = () => {
     // startDateTime is a combination of the date and time the user selects
     // Will be filled in with the Monday date for that week    
     const [ startDateTime, setStartDateTime ] = useState(new Date(selectedDate));
-    // Set to current time
-    const [ time, setTime ] = useState(new Date());
+    // Set to current time with specific time format as string
+    const [ chosenTime, setChosenTime ] = useState(moment().format("HH:mm"));
 
-    // If user chooses a time then this is set to the hours in the startDateTime is a date object
-    const timeChosen = (clock) => { 
-        startDateTime.setHours(parseInt(clock.split(":")[0]),parseInt(clock.split(":")[1]));
-        setTime(startDateTime);
+    // Before component is mounted set the startDateTime to the selectedDate from redux - helps for the addtask being shown in the screen size larger than 750px to update the date when user clicks on the date in the calendar
+    useEffect(() => {
+        setStartDateTime(new Date(selectedDate));
+    }, [selectedDate]);
+
+    // If user clicks the "x" button then the clock date is set to null and startTimeDate is set to 00:00
+    // Else if user chooses a time this time(clock) sets the time in the startDateTime
+    // And set chosen time to clock, which will be a string as formatted in the useState
+    const timeChosen = (clock) => {
+        if(clock === null) {
+            startDateTime.setHours(0,0);
+        } else {
+            startDateTime.setHours(parseInt(clock.split(":")[0]),parseInt(clock.split(":")[1]));
+        }
+        setChosenTime(clock);
     };
 
     const monday = moment(selectedDate).startOf('isoWeek').toISOString();
@@ -37,8 +48,8 @@ export const AddTask = () => {
     // Also sends a new get request to get the weeks worth of schedule tasks again - not sure if this is the best idea?
     const handleOnAdd = (event) => {
         event.preventDefault();
-        // calling the timechosen function and if user hasn't selected date then it will be current time and formatted to hours and mins        
-        timeChosen(moment(time).format("HH:mm"));
+        // calling the timechosen function and if user hasn't selected date then it will be current time, formatted to hours and mins and string
+        timeChosen(chosenTime);
         // dispatch to add task POST endpoint via redux task.js
         dispatch(addTask(scheduletask, userId, startDateTime));
         dispatch(getSchedule(userId, monday));
@@ -79,12 +90,13 @@ export const AddTask = () => {
                             onChange={(startDateTime) => setStartDateTime(startDateTime)}
                             required
                             className="picker"
+                            clearIcon={null}
                         />
                     </label>
                     <label className="date-container">
                         Time:
                         <TimePicker
-                            value={time}
+                            value={chosenTime}
                             onChange={timeChosen}
                             closeClock
                             disableClock

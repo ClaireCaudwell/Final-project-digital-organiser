@@ -18,8 +18,8 @@ const MOBILE_WIDTH_THRESHOLD = 750;
 
 export const Schedule = () => {
     const dispatch = useDispatch();
-    const [number, setNumber] = useState(0);
-    const [ component, setComponent ] = useState(window.innerWidth < MOBILE_WIDTH_THRESHOLD);
+    const [ randomNumber, setRandomNumber ] = useState(0);
+    const [ showAddTask, setShowAddTask ] = useState(window.innerWidth < MOBILE_WIDTH_THRESHOLD);
 
     const userId = useSelector((store) => store.user.login.userId);
     const accessToken = useSelector((store) => store.user.login.accessToken);
@@ -54,23 +54,26 @@ export const Schedule = () => {
             // dispatch(weeklySchedule.actions.setWeekNumber(currentWeek));
             // Clear error message if fetch wasn't successful
             dispatch(weeklySchedule.actions.setErrorMessage({ errorMessage: null }));
-            //Listening to the window size and sending in the function showComponent
+            // Listening to the window size and sending in the function showComponent
             window.addEventListener("resize", showComponent);
-        }    
+        }
+        return () => {
+            window.removeEventListener("resize", showComponent);
+        }
     }, [dispatch, userId, monday, authorized]);
 
     // Will set the useState component to true or false depending on the screen size and render the certain components below based on the true or false state
     const showComponent = (event) => {
         if(window.innerWidth < MOBILE_WIDTH_THRESHOLD) {
-            setComponent(true);
+            setShowAddTask(true);
         } else {
-            setComponent(false);
+            setShowAddTask(false);
         }
     };
 
     const setToday = () => {
         dispatch(weeklySchedule.actions.setSelectedDate({ selectedDate: new Date().toISOString() }));
-        setNumber(Math.random());
+        setRandomNumber(Math.random());
     };
 
     return (
@@ -78,7 +81,7 @@ export const Schedule = () => {
             <Header />
             <main className="main-container desktop-view">
                 <section className="inner-div">
-                    <div className="column-one mobile-view">
+                    <div className="left-column mobile-view">
                         <p className="select-calendar-text section-container">Select a date in the calendar to get your schedule for that week</p>
                         <div className="section-container">
                             <h2 className="week-text">Week {currentWeek}</h2>
@@ -88,11 +91,11 @@ export const Schedule = () => {
                                 </button>
                             </NavLink>
                         </div>
-                        <ScheduleCalendar number={number} />
-                        {component && <AddTaskButton />}
-                        {!component && <AddTask />}
+                        <ScheduleCalendar randomNumber={randomNumber} />
+                        {showAddTask && <AddTaskButton />}
+                        {!showAddTask && <AddTask />}
                     </div>
-                    <div className="column-two mobile-view">
+                    <div className="right-column mobile-view">
                         <WeeklySchedule />
                     </div>
                 </section>

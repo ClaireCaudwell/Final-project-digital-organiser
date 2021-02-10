@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import moment from "moment";
+
 import DatePicker from "react-date-picker/dist/entry.nostyle";
 import TimePicker from "react-time-picker/dist/entry.nostyle";
 
@@ -22,19 +24,26 @@ export const EditTask = () => {
     const [scheduletask, setScheduleTask] = useState(taskDescription);
     // startDateTime is a combination of the date and time the user selects
     const [ startDateTime, setStartDateTime ] = useState(new Date(dateandtime));
-    const [ time, setTime ] = useState(new Date(dateandtime));
+    // const [ chosenTime, setChosenTime ] = useState(new Date(dateandtime));
+    const [ chosenTime, setChosenTime ] = useState(moment(dateandtime).format("HH:mm")); // String 12:00
 
     const dateChosen = (newdate) => {
         // If user only changes the date, the original time is set to the setStartDateTime with the new date
-        newdate.setHours(time.getHours(), time.getMinutes());
+        // How to set the time "12:00" to the new date object
+        // Then this date can be used to set the hours on newdate
+        const convertedTime = new Date(chosenTime);
+        newdate.setHours(convertedTime.getHours(),convertedTime.getMinutes());
         setStartDateTime(newdate);
     };
 
     const timeChosen = (clock) => { 
-        // On the startDateTime use the time inputted by the user and set it to the startdatetime
-        startDateTime.setHours(parseInt(clock.split(":")[0]),parseInt(clock.split(":")[1]));
+        if(clock === null) {
+            startDateTime.setHours(0,0);
+        } else {
+            startDateTime.setHours(parseInt(clock.split(":")[0]),parseInt(clock.split(":")[1]));
+        }
         // The use this new Date and set it to the time
-        setTime(startDateTime);
+        setChosenTime(clock);
     };
 
     const handleOnUpdate = (event) => {
@@ -75,15 +84,15 @@ export const EditTask = () => {
                         <DatePicker
                             value={startDateTime}
                             onChange={dateChosen}
-                            showWeekNumbers
                             required
                             className="picker"
+                            clearIcon={null}
                         />
                     </label>
                     <label className="date-container">
                         TIME:
                         <TimePicker
-                            value={time}
+                            value={chosenTime}
                             onChange={timeChosen}
                             closeClock
                             disableClock

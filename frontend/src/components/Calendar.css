@@ -1,11 +1,11 @@
 .react-calendar {
-  min-width: 300px;
-  max-width: 343px;
-  height: 100%;
+  width: 300px;
+  min-height: 300px;
+  max-height: 343px;
   background: white;
   font-family: 'Quicksand', sans-serif;
   line-height: 1.125em;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .react-calendar--doubleView .react-calendar__viewContainer {

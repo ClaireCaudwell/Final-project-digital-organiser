@@ -59,7 +59,7 @@
 }
 
 .react-time-picker__inputGroup__input:invalid {
-  background: rgba(255, 0, 0, 0.1);
+  background: rgba(199, 245, 177, 0.1);
 }
 
 .react-time-picker__inputGroup__input--hasLeadingZero {
