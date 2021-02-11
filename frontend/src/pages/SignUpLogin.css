@@ -110,6 +110,7 @@
   margin-top: 15px;
   font-weight: 500;
   text-align: center;
+  width: 300px;
 }
 
 /* Media query for tablet devices with a max width of 1024px and min width of 840px */

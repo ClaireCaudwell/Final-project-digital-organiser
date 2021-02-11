@@ -26,7 +26,8 @@ export const AddTask = () => {
     // Before component is mounted set the startDateTime to the selectedDate from redux - helps for the addtask being shown in the screen size larger than 750px to update the date when user clicks on the date in the calendar
     useEffect(() => {
         setStartDateTime(new Date(selectedDate));
-    }, [selectedDate]);
+        dispatch(task.actions.setStatusMessage({ statusMessage: null}));
+    }, [dispatch, selectedDate]);
 
     // If user clicks the "x" button then the time chosen is set to null and startTimeDate is set to 00:00
     // Else if user chooses a time this time is set to the date in startDateTime so startdatetime is a combo of the date and time chosen

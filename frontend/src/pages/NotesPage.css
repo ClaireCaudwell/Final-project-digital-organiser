@@ -35,10 +35,15 @@
     margin-top: 20px;
 }
 
-/* .add-note-button:hover {
+.add-note-button-one:hover {
     background-color: #b9fa9a;
     transition: 0.3s;
-} */
+}
+
+.add-note-button-two:hover {
+    background-color: #f5bd99;
+    transition: 0.3s;
+}
 
 .list-section {
     display: flex;
