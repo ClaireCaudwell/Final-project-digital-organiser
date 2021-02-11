@@ -41,7 +41,7 @@ export const SignupLogin = () => {
 
     return (
         <>
-            <main>
+            <main className="login-signup-main">
                 <div className="frontpage-header-div">
                     <h1>Organiser</h1>
                     <p>Sign up or login to get your organiser</p>
@@ -81,7 +81,7 @@ export const SignupLogin = () => {
                         </button> 
                     </form>
                 </div>
-                {userId === null && <p className="error-message">{error}</p>}
+                <div>{userId === null && <p className="error-message">{error}</p>}</div>
             </main>
         </>
     );

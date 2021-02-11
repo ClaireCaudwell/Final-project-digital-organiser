@@ -1,5 +1,5 @@
 /* Signup & Login Page */
-main {
+.login-signup-main {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,33 +106,32 @@ main {
 .error-message {
   color: #313131;
   font-family: 'Quicksand', sans-serif;
-  font-size: 18px;
-  margin-top: 10px;
+  font-size: 15px;
+  margin-top: 15px;
   font-weight: 500;
-  width: 300px;
   text-align: center;
 }
 
 /* Media query for tablet devices with a max width of 1024px and min width of 840px */
 @media (max-width: 1023px) and (min-width: 840px) {
-  main {
+  .login-signup-main {
     margin-top: 90px;
   }
 }
 
 /* Media query for tablet devices and desktop with a min height of 1023px */
 @media (min-height: 1023px){
-  main {
+  .login-signup-main {
     margin: 160px;
   }
 }
 
 @media(min-width: 1024px) {
-  main {
+  .login-signup-main {
     margin-top: 100px;
   }
 
-  .frontpage-header-div, .form-div {
+  .frontpage-header-div, .form-div, .error-message {
     width: 400px;
   }
 }

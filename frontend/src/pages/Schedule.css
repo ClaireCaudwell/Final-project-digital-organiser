@@ -147,7 +147,7 @@ ul {
   color: #313131;
   width: 50%;
   text-align: center;
-  padding: 30px 10px;
+  padding: 20px;
   font-size: 20px;
   font-family: 'Quicksand', sans-serif;
   background-color: #e7f5c0;
@@ -199,9 +199,10 @@ ul {
   text-align: center; 
   padding: 12px 0;
   margin: 0 10px 0 0;
-  font-size: 18px;
+  font-size: 19px;
   border-radius: 2px;
   background-color: #C7F5B1;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .today {
@@ -210,15 +211,16 @@ ul {
 
 .today button {
   width: 100%;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 600;
   color: #313131;
   background-color:#dfff74 ;
   border: none;
   cursor: pointer;
   border-radius: 2px;
-  padding: 13px 0;
+  padding: 11px 0;
   transition: 0.3s;
+  font-family: 'Quicksand', sans-serif;
 }
   
 .today button:hover {
@@ -241,7 +243,7 @@ ul {
   border-radius: 5px;
   border: none;
   text-align: center;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 600;
   padding: 10px 20px;
   font-family: 'Quicksand', sans-serif;
@@ -347,7 +349,7 @@ ul {
   border-bottom: 3px solid #fff;
   margin: 15px 0 0 0;
   padding: 24px 10px;
-  font-size: 20px;
+  font-size: 19px;
   color: #313131;
   font-weight: 600;
   font-family: 'Quicksand', sans-serif;
@@ -401,7 +403,7 @@ ul {
 /* h2 text */
 .task-container h2 {
   font-family: 'Quicksand', sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
   border-bottom: 3px solid #F3FDD8;
   padding-bottom: 10px;
