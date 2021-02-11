@@ -31,9 +31,6 @@ export const TaskSummary = () => {
     // Converting the time
     const time = moment(startdatetime).format("HH:mm");
 
-    // Function called when the user clicks on the delete button
-    // Sends fetch request to backend using the userId (from redux user store) and taskId (from use Params)
-    // Response back is a status message ("Task deleted") or errorMessage("User ID not found" or "Task ID not found")
     const handleDelete = () => {
         dispatch(deleteTask(userId, taskId));
         dispatch(task.actions.setStatusMessage({ statusMessage: null}));

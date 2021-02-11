@@ -21,15 +21,11 @@ export const NoteColourOptions = ({ setShowColourOptions, noteItem }) => {
     });
 
     // Dispatch to do the fetch for the PATCH endpoint to set the colour number in the notes colour property
+    // Null represents the noteText which we don't want to be updated when the colour is being updated
     const onChooseColour = (colourNumber) => {
         dispatch(updateNote(userId, noteId, null, colourNumber));
     };
 
-    // User clicks on a button to select which colour they want the note to be
-    // This send a specific number to the onChooseColour function
-    // The onChooseColour function dispatches the colourNumber and other info to the fetch for the PATCH endpoint in the backend
-    // This will set the note object in the user model to that number
-    // Sending the textNote in as null as we only want the colourNumber to be updated in the fetch when doing this action 
     return (
         <div className="dropdown-color-menu">
             <div className="colour-square-container" onClick={onUnclickOptions}>

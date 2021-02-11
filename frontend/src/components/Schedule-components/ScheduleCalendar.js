@@ -15,7 +15,6 @@ export const ScheduleCalendar = ({ randomNumber }) => {
     // So when the user goes back to the schedule.js the calendar will show the last date the user clicked on
     const selectedDate = new Date(useSelector((store) => store.weeklySchedule.schedule.selectedDate));
 
-    // Getting the date selected by user in calendar, converting to string and dispatching to update the selectedDate in redux
     const onSelectDate = (date) => {
         const chosenDate = date.toISOString();
         dispatch(weeklySchedule.actions.setSelectedDate({ selectedDate: chosenDate }));     

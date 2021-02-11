@@ -30,7 +30,8 @@ export const WeeklyTask = ({ tasks, dayIndex }) => {
     // Then map through the tasks into the TimeTask component as there may be more than one task for that day of the week
     return (
         <>
-            {weekday === "Saturday" && <p className="weekend-plans">Weekend Plans</p>}
+            {weekday === "Monday" && <p className="plans-title">Weekday Plans</p>}
+            {weekday === "Saturday" && <p className="plans-title">Weekend Plans</p>}
             <div
                 className={dateSelected === weekdate ? "weekday-container-two" : "weekday-container-one"}
             >

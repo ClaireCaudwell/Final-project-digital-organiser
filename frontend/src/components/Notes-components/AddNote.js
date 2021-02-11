@@ -9,8 +9,6 @@ export const AddNote = () => {
     const userId = useSelector((store) => store.user.login.userId);
     const colourSchemeState = useSelector((store) => store.user.toggleColourscheme);
 
-    // Adds an empty object to the notes array in the backend
-    // Each object is given an _id and delete: false properties
     const onAddNote = () => {
         dispatch(addNote(userId));
         dispatch(note.actions.setStatusMessage({ statusMessage: null }));

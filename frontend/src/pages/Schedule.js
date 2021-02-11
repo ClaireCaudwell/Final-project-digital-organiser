@@ -14,10 +14,12 @@ import { AddTask } from "../components/Schedule-components/AddTask";
 import "./Schedule.css";
 import "./MediaQueries.css";
 
-const MOBILE_WIDTH_THRESHOLD = 750;
 
 export const Schedule = () => {
     const dispatch = useDispatch();
+    
+    const MOBILE_WIDTH_THRESHOLD = 750;
+    
     const [ randomNumber, setRandomNumber ] = useState(0);
     const [ showAddTask, setShowAddTask ] = useState(window.innerWidth < MOBILE_WIDTH_THRESHOLD);
 
@@ -32,26 +34,20 @@ export const Schedule = () => {
     // Gets current week based on today's date
     const currentWeek = moment(selectedDate).isoWeek();
 
-    // UseEffect actions following code before Schedule.js is mounted
-    // If userId exists in redux and authorized in redux is not true then 
+    // If userId exists in redux and authorized in redux is false then organiser
+    // POST endpoint is triggered. Stops from the endpoint being called everytime component is mounted
     useEffect(() => {
         if(userId && !authorized){
-            // Dispatch to endpoint that authenticates the user
             dispatch(getOrganiser(userId, accessToken));
-            // Set authorized property in initial state as true
             dispatch(user.actions.setAuthorized({ authorized: true }));
         }
-        // Clear error message that was shown if user logs in or signs up unsuccessfully
         dispatch(user.actions.setErrorMessage({ errorMessage: null }));
     },[dispatch, userId, accessToken, authorized]);
 
-    // if authorized is then this second use effect is triggered
+    // if authorized is true then this second use effect is triggered
     useEffect(() => {
         if(authorized){
-            // dispatch to get schedule using userId and monday 
             dispatch(getSchedule(userId, monday));
-            // set current week to week based on today's date
-            // Clear error message if fetch wasn't successful
             dispatch(weeklySchedule.actions.setErrorMessage({ errorMessage: null }));
             // Listening to the window size and sending in the function showComponent
             window.addEventListener("resize", showComponent);
@@ -61,7 +57,8 @@ export const Schedule = () => {
         }
     }, [dispatch, userId, monday, authorized]);
 
-    // Will set the useState component to true or false depending on the screen size and render the certain components below based on the true or false state
+    // Will set the useState showAddTask state to true or false depending on the width of the screen size 
+    // Renders specific components below based on the true or false state
     const showComponent = (event) => {
         if(window.innerWidth < MOBILE_WIDTH_THRESHOLD) {
             setShowAddTask(true);
@@ -70,6 +67,10 @@ export const Schedule = () => {
         }
     };
 
+    // Today button that allows for the user to go back to todays date in the calendar
+    // When button is clicked a random number is generated
+    // Random number is passed as props into calendar component and used in the calendars key which is a number
+    // This is a way to trigger a re-render of the calendar to show that the today date has been selected
     const setToday = () => {
         dispatch(weeklySchedule.actions.setSelectedDate({ selectedDate: new Date().toISOString() }));
         setRandomNumber(Math.random());
