@@ -13,7 +13,7 @@ export const Note = ({ noteItem }) => {
 
     const noteId = noteItem._id;
 
-    // null is the fourth parameter for the colourNumber as don't want to update in this dispatch to the fetch
+    // null is the fourth parameter for the colourNumber as don't want to update this in dispatch to the fetch to PATCH endpoint
     const onUpdateNote = () => {
         dispatch(updateNote(userId, noteId, noteText, null));
     };

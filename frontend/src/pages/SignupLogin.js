@@ -9,26 +9,25 @@ import "./SignUpLogin.css";
 export const SignupLogin = () => {
     const history = useHistory();
     const dispatch = useDispatch();
-
+    
     const userId = useSelector((store) => store.user.login.userId);
     const error = useSelector((store) => store.user.login.errorMessage);
     const accessToken = useSelector((store) => store.user.login.accessToken);
     
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [ username, setUsername ] = useState("");
+    const [ password, setPassword ] = useState("");
+    const [ buttonClick, setButtonClick ] = useState(null);
 
-    const handleSignup = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(userSignup(username, password));
+        if(buttonClick === "signup") {
+            dispatch(userSignup(username, password));
+        } 
+        if(buttonClick === "login") {
+            dispatch(userLogin(username, password));
+        }
         setUsername("");
-        setPassword(""); 
-    };
-
-    const handleLogin = (event) => {
-        event.preventDefault();
-        dispatch(userLogin(username, password));
-        setUsername("");
-        setPassword(""); 
+        setPassword("");        
     };
 
     // When access token is present in the user redux store
@@ -48,28 +47,41 @@ export const SignupLogin = () => {
                     <p>Sign up or login to get your organiser</p>
                 </div>
                 <div className="form-div">
-                    <form>
-                        <label>Password</label> 
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor="username">Username</label>
                             <input
+                                type="text"
                                 value={username}
                                 onChange={(event) => setUsername(event.target.value)}
                                 minLength="3"
                                 maxLength="20"
                                 required                 
                             />
-                        <label>Username</label>
+                        <label htmlFor="password">Password</label>
                             <input
                                 type="password"
                                 value={password}
                                 onChange={(event) => setPassword(event.target.value)}
                                 minLength="5"
-                                required                
+                                maxLength="30"
+                                required              
                             />
-                        <button className="form-button" type="submit" onClick={handleSignup}>Sign up</button>
-                        <button className="form-button" type="submit" onClick={handleLogin}>Login</button> 
+                        <button 
+                            className="form-button" 
+                            type="submit" 
+                            onClick={() => setButtonClick("signup")}
+                            >
+                                Sign up
+                            </button>
+                        <button 
+                            className="form-button" 
+                            type="submit" 
+                            onClick={() => setButtonClick("login")}>
+                                Login
+                        </button> 
                     </form>
                 </div>
-                    {userId === null && <p className="error-message">{error}</p>}
+                {userId === null && <p className="error-message">{error}</p>}
             </main>
         </>
     );

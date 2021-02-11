@@ -4,7 +4,7 @@ main {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 40px 0;
+  margin: 40px 0;
 }
 
 .frontpage-header-div {
@@ -104,31 +104,35 @@ main {
 }
 
 .error-message {
-  margin-top: 20px;
   color: #313131;
   font-family: 'Quicksand', sans-serif;
-  font-size: 15px;
+  font-size: 18px;
+  margin-top: 10px;
   font-weight: 500;
+  width: 300px;
   text-align: center;
-  width: 80%;
 }
 
 /* Media query for tablet devices with a max width of 1024px and min width of 840px */
-@media (max-width: 1024px) and (min-width: 840px) {
+@media (max-width: 1023px) and (min-width: 840px) {
   main {
-    padding-top: 120px;
+    margin-top: 90px;
   }
 }
 
 /* Media query for tablet devices and desktop with a min height of 1023px */
 @media (min-height: 1023px){
   main {
-    padding-top: 160px;
+    margin: 160px;
   }
 }
 
 @media(min-width: 1024px) {
   main {
-    padding-top: 80px;
+    margin-top: 100px;
+  }
+
+  .frontpage-header-div, .form-div {
+    width: 400px;
   }
 }

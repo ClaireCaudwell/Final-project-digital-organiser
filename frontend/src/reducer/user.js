@@ -103,7 +103,8 @@ export const userSignup = (username, password) => {
             dispatch(user.actions.setAccessToken({ accessToken: json.accessToken })); 
             dispatch(user.actions.setUserId({ userId: json.userId}));
             dispatch(user.actions.setUsername({ username: json.username }));        
-            dispatch(user.actions.setStatusMessage({ statusMessage: json.statusMessage}));      
+            dispatch(user.actions.setStatusMessage({ statusMessage: json.statusMessage})); 
+            dispatch(user.actions.setErrorMessage({ errorMessage: json.errorMessage} ));   
         })
         .catch((error) => { 
             dispatch(user.actions.setUsername({ username: null }));

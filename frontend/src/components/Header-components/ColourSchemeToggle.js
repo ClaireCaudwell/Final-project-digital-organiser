@@ -10,7 +10,7 @@ export const ColourSchemeToggle = () => {
 
     const changeColourScheme = () => {
         if(colourSchemeState) {
-            dispatch(user.actions.setColourScheme({ colourScheme: false} ));
+            dispatch(user.actions.setColourScheme({ colourScheme: false}));
         }
 
         if(!colourSchemeState) {
