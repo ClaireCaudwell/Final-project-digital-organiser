@@ -104,7 +104,7 @@ span {
   height: 18px;
   width: 18px;
   left: 8px;
-  bottom: 4.5px;
+  bottom: 4px;
   background-color: #fff;
   -webkit-transition: .4s;
   transition: .4s;
@@ -334,6 +334,18 @@ ul {
 
 .task {
   word-wrap: break-word;
+}
+
+.weekend-plans {
+  width: 100%;
+  background-color: #dfff74;
+  border-bottom: 3px solid #fff;
+  margin: 15px 0 0 0;
+  padding: 24px 10px;
+  font-size: 20px;
+  color: #313131;
+  font-weight: 600;
+  font-family: 'Quicksand', sans-serif;
 }
 
 /* ------------------------------------------------------------------------ */

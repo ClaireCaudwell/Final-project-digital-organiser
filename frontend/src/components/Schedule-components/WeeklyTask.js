@@ -13,33 +13,35 @@ export const WeeklyTask = ({ tasks, dayIndex }) => {
    const monday = moment(selectedDate).startOf('isoWeek').toISOString();
     
     // --- The below code helps to show and format each day and date of the week in the schedule --- //
-
     // Using the monday date and converting to date object
     const date = new Date(monday);
     // Then use the date for the Monday of the week to get the number for that day using getDate() e.g. if Monday is the 28th it will be 28 
     const mondayDateNumber = date.getDate();
     // Then use the date (monday) and set the day of the month using the monday date above e.g. 28.
-    // Then increment this date using the dayIndex which is the index number of each of the arrays in the weeklyTasksArray
+    // Then increment this date using the dayIndex which is the index number of each of the objects in the weeklyTasksArray
     date.setDate(mondayDateNumber+dayIndex); 
     
     // Converting the day of the week e.g. Monday
     const weekday = date.toLocaleString([], {weekday: 'long'});
     // Converting the date e.g. 10/10/21
-    const weekdate = date.toLocaleDateString(); 
+    const weekdate = date.toLocaleDateString();
 
     // Show the day and date of the week
     // Then map through the tasks into the TimeTask component as there may be more than one task for that day of the week
     return (
         <>
-            <div 
+            {weekday === "Saturday" && <p className="weekend-plans">Weekend Plans</p>}
+            <div
                 className={dateSelected === weekdate ? "weekday-container-two" : "weekday-container-one"}
             >
                 <p>{weekday}</p>
                 <p>{weekdate}</p>
             </div>
+            <>
             {tasks.map(task => (
                 <TimeTask task={task} key={task._id} dayIndex={dayIndex} />
-            ))}           
+            ))}
+            </>           
         </>
     );
 };

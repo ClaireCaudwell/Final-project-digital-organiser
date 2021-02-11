@@ -9,6 +9,7 @@ const initialState = {
         errorMessage: null, 
         authorized: false,
     },
+    toggleColourscheme: false,
 };
 
 export const user = createSlice({
@@ -40,6 +41,10 @@ export const user = createSlice({
         },
         setAuthorized: (state, action) => {
             state.login.authorized = action.payload.authorized;
+        },
+        setColourScheme: (state, action) => {
+            const { colourScheme } = action.payload;
+            state.toggleColourscheme = colourScheme;
         },
         setLogOut: (state) => {
             state.login.userId = null;

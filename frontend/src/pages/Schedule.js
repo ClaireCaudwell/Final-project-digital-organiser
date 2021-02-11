@@ -43,7 +43,6 @@ export const Schedule = () => {
         }
         // Clear error message that was shown if user logs in or signs up unsuccessfully
         dispatch(user.actions.setErrorMessage({ errorMessage: null }));
-        // dispatch(weeklySchedule.actions.setSelectedDate({ selectedDate: todaysdate }));
     },[dispatch, userId, accessToken, authorized]);
 
     // if authorized is then this second use effect is triggered

@@ -16,23 +16,26 @@ export const EditTask = () => {
     const dispatch = useDispatch();
 
     const userId = useSelector((store) => store.user.login.userId);
+    const taskid = useSelector((store) => store.task.scheduleTask.taskId);
     const statusMessage = useSelector((store => store.task.scheduleTask.statusMessage));
     const dateandtime = useSelector((store) => store.task.scheduleTask.startdatetime);
     const taskDescription = useSelector((store) => store.task.scheduleTask.task);
-    const taskid = useSelector((store) => store.task.scheduleTask.taskId);
     
-    const [scheduletask, setScheduleTask] = useState(taskDescription);
-    // startDateTime is a combination of the date and time the user selects
+    // All three states set to the data from the object for the task in the weeklyTasks in redux store
+    const [scheduletask, setScheduleTask] = useState(taskDescription); 
     const [ startDateTime, setStartDateTime ] = useState(new Date(dateandtime));
-    // const [ chosenTime, setChosenTime ] = useState(new Date(dateandtime));
-    const [ chosenTime, setChosenTime ] = useState(moment(dateandtime).format("HH:mm")); // String 12:00
+    const [ taskTime, setTaskTime ] = useState(moment(dateandtime).format("HH:mm"));
 
+    // If user only changes the date, the original time is set to the new date so it's a comination of the date and time
     const dateChosen = (newdate) => {
-        // If user only changes the date, the original time is set to the setStartDateTime with the new date
-        newdate.setHours(parseInt(chosenTime.split(":")[0]),parseInt(chosenTime.split(":")[1]));
+        newdate.setHours(parseInt(taskTime.split(":")[0]),parseInt(taskTime.split(":")[1]));
         setStartDateTime(newdate);
     };
 
+    // If user decides to click the "x" on the react time picker then the time is set to null
+    // This sets the time to null in useState
+    // Else the date the user has chosen will be updated with the new time chosen
+    // And the taskTime will be set to the time that the user has chosen and converted in the state to a string of hour and min e.g 12:00
     const timeChosen = (clock) => { 
         if(clock === null) {
             startDateTime.setHours(0,0);
@@ -40,7 +43,7 @@ export const EditTask = () => {
             startDateTime.setHours(parseInt(clock.split(":")[0]),parseInt(clock.split(":")[1]));
         }
         // The use this new Date and set it to the time
-        setChosenTime(clock);
+        setTaskTime(clock);
     };
 
     const handleOnUpdate = (event) => {
@@ -89,7 +92,7 @@ export const EditTask = () => {
                     <label className="date-container">
                         TIME:
                         <TimePicker
-                            value={chosenTime}
+                            value={taskTime}
                             onChange={timeChosen}
                             closeClock
                             disableClock

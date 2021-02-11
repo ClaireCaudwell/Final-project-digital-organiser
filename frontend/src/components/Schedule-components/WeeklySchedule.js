@@ -45,7 +45,7 @@ export const WeeklySchedule = () => {
         }
         weeklyTasksArray[day].push(sortedSchedule[i]);
     }
-
+    
     // Example of how the array will look when the sorted items are pushed into their corresponding arrays
     /* weeklyTasksArray = [
         0: [{…}, {…}, {…}, {…}],
@@ -57,8 +57,8 @@ export const WeeklySchedule = () => {
         6: [{…}],
     ]; */
 
-    // Then the array is mapped through passing the data into the WeeklyTask component i.e. one task
     // index is the index number for each of the 7 arrays in the weeklyTasksArray
+    // Mapping through each array that represents a day of the week
     return (
         <section className="section-container weekly-tasks">
             {weeklyTasks.length === 0 && <p className="status-message">No tasks in your schedule</p>}
