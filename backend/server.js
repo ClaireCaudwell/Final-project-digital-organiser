@@ -9,10 +9,6 @@ const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/digitalOrganiser"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
 
-/*
-Model structure for the username, password and access token.
-Tried to connect the Scheduleitem model, but need to test this to see if it works. 
- */
 const userSchema = new mongoose.Schema( {
   username: {
     type: String,
@@ -32,7 +28,8 @@ const userSchema = new mongoose.Schema( {
     default: () => crypto.randomBytes(128).toString("hex"),
     unique: true, 
   },
-  //Array of subdocument - saved whenever their top-level parent document is saved
+  // Array of tasks
+  // subdocument - saved whenever their top-level parent document is saved
   scheduleTask: [{
     task: {
       type: String,
@@ -67,8 +64,7 @@ const userSchema = new mongoose.Schema( {
 
 const User = mongoose.model("User", userSchema);
 
-// Function is called when the "/users/:id/organiser" is actioned in the getOrganiser function
-// Checks the accessToken sent in the headers to see if it exists in the database
+// Authenticate user endpoint when user signs up or logs in
 const authenticateUser = async (req, res, next) => {
   try {
     const user = await User.findOne({ accessToken: req.header("Authorization")});
@@ -85,20 +81,14 @@ const authenticateUser = async (req, res, next) => {
   }
 };
 
-// Defines the port the app will run on. Defaults to 8080, but can be 
-// overridden when starting the server. For example:
-//
-//   PORT=9000 npm start
 const port = process.env.PORT || 8080;
 const app = express();
 
-// Add middlewares to enable cors and json body parsing
 app.use(cors());
 app.use(bodyParser.json());
 
-/* # ENDPOINT 1
-POST endpoint for username and password to be saved to the database. If username and password are a success (they meet the charachter length requirements) then the users id, token, name and a status message is returned to the frontend and stored in the user.js redux store 
-*/
+// POST endpoint to create user
+// Returns access Token amongst other things
 app.post("/users", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -113,10 +103,8 @@ app.post("/users", async (req, res) => {
   }
 });
 
-/* # ENDPOINT 2
-POST endpoint for existing user to login
-Username is checked in the database, if success the userId, accessToken, usernam and message is returned to frontend and saved in user.js redux store 
-*/
+// POST endpoint to find user in database based on username and password
+// Returns access Token amongst other things
 app.post("/sessions", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -131,25 +119,14 @@ app.post("/sessions", async (req, res) => {
   }
 });
 
-/* --- ENDPOINT 3 ---
-1. The accessToken (stored in redux store after user has signed or logged in successfully) is authorized in the authenticateUser function above. 
-2. Then the first GET endpoint below (line 125) will be triggered, thus triggering the second GET endpoint below (line 126). 
-3. The users id is sent in the url to further identify the user.
-4. If successful then the Organiser.js is rendered taking the user to their organiser
-*/
+// If user is authenticate i.e. if they have a valid access token then the GET endpoint is actioned
 app.get("/users/:id/organiser", authenticateUser);
 app.get("/users/:id/organiser", async (req, res) => {
     res.status(201).json({ statusMessage: "Connected to organiser" });
 });
 
-/* --- ENDPOINT 4 ---
-1. POST endpoint where the user can add a new schedule item to their weekly schedule
-2. The user is found by using the userId stored in the redux store
-3. The data that creates the new task is scheduleTask, startDateTime
-4. This is pushed and saved to the ScheduleTask array in the user's object.
-5. To get the data for the last created task so it can be sent back in the json response do length -1. 
-5. Also split up the date and time so they can be sent seperatley in the json response.
-*/
+//-------------------- Schedule Endpoints -------------------- //
+// POST endpoint adding a schedule task to the users schedule task array
 app.post("/users/:id/scheduletask", async (req, res) => {
   try {
     const userId = req.params.id;
@@ -160,7 +137,6 @@ app.post("/users/:id/scheduletask", async (req, res) => {
     } catch(error) {
         throw "User not found";
     }
-    //Try to change push to findByIdAndUpdate when have time
     user.scheduleTask.push({ task: scheduletask, startdatetime: startDateTime })
     user.save();
     const addedTask = user.scheduleTask[user.scheduleTask.length-1];
@@ -170,18 +146,8 @@ app.post("/users/:id/scheduletask", async (req, res) => {
   }
 });
 
-/* --- ENDPOINT 5 ---
-1. GET endpoint to get users schedule for the week when they click on the week in the calendar.
-2. This is based on the users Id and the starttime for the week that's passed in the url
-3. Search for user by ID.
-4. Creating a the date for the start of the week based on the start time for the week sent from the frontend.
-5. Creating the date for the end of the week - create a copy of the start of the week date and add 7 days to this.
-6. Accessing the whole array of tasks for that user.
-7. Creating a function to help with filtering the array of tasks for the user. This compares the startOfWeek date and endOfWeek date to the task dates in the array of tasks.
-If there is a task that exist that has a date between the start and end of week dates then it will be true i.e. there will be task(s), otherwise no task(s) exsists between those dates
-8. Then we use that function to help filter the array of tasks that have a date between the startOfWeek and endOfWeek dates.
-This array of object(s) will be passed back to the frontend and stored in the redux store.
-*/
+// GET endpoint to get the weekly schedule for the user
+// Filters based on the start and end of week date 
 app.get("/users/:id/scheduleweek/:starttime", async (req, res) => {
   try {
     // 3 
@@ -218,11 +184,7 @@ app.get("/users/:id/scheduleweek/:starttime", async (req, res) => {
     }
 });
 
-// --- ENDPOINT 5 ---
-// GET endpoint that will get one task 
-// User is found by ID then the array of schedule tasks are accessed
-// Then the user id is compared in if statement in the filteringTask function and used on the arrayOfTasks in the filter to filter the task if the Id has been found.
-// This is an array with an object in it. 
+// GET endpoint to get a single task based on user and task id
 app.get("/users/:id/scheduletask/:taskid", async (req, res) => {
   try {
     const userId = req.params.id;
@@ -251,15 +213,7 @@ app.get("/users/:id/scheduletask/:taskid", async (req, res) => {
   }
 });
 
-/* --- ENDPOINT 7 ---
-1. PUT endpoint to update a users schedule task. 
-2. User ID and the task ID is sent in the URL.
-3. Find the user by the ID.
-4. Once this is accessed then the whole array of tasks are passed into the arrayOfTasks variable. 
-5. Then they are iterate through to check for the one to be updated using the taskid.
-6. Then if it's a match the task and startdatetime are saved to the users object.
-7. Will try and use local storage to hold the data for the tasks for the week, so if the user wants to update one of the properties e.g. task, date or time. Then the data will be shown in the edittask componenent. This will mean that the user won't have to update re-write all details of the task. 
-*/
+// PATCH endpoint to update a single task
 app.patch("/users/:id/scheduletask/:taskid", async (req, res) => {
   try {
     const userId = req.params.id;
@@ -297,10 +251,7 @@ app.patch("/users/:id/scheduletask/:taskid", async (req, res) => {
   }
 });
 
-/* --- ENDPOINT 8 ---
- 1. PUT endpoint where a schedule task's delete property is updated to true
- 2. This means that when the user wants to show the weekly tasks in the frontend only the tasks that have delete: false will be returned in the json
-*/
+// DELETE endpoint deleting a task
 app.delete("/users/:id/scheduletask/:taskid", async (req, res) => {
   try {
     const userId = req.params.id;
@@ -332,9 +283,8 @@ app.delete("/users/:id/scheduletask/:taskid", async (req, res) => {
 }
 });
 
-/* --- Endpoint 9 ---
-POST endpoint to add an empty note to the users array of notes
-*/
+//-------------------- Note Endpoints -------------------- //
+// POST endpoint to create a note object in notes array
 app.post("/users/:id/note", async (req, res) => {
   try {
     const userId = req.params.id;  
@@ -344,7 +294,6 @@ app.post("/users/:id/note", async (req, res) => {
     } catch(error) {
         throw "User not found";
     }
-    // Pushing an empty object to create an object with the delete and _id properties, so then when the user types in the note in the textarea box a dispatch is done to the PATCH endpoint to update the task with the note text
     user.notes.push({ });
     user.save();
     const addedNote = user.notes[user.notes.length-1];
@@ -354,9 +303,7 @@ app.post("/users/:id/note", async (req, res) => {
   }
 });
 
-/* --- ENDPOINT 10 ---
-GET endpoint to get the array of notes
-*/
+// GET endpoint to get the array of notes
 app.get("/users/:id/note", async (req, res) => {
   try {
     const userId = req.params.id;
@@ -376,11 +323,8 @@ app.get("/users/:id/note", async (req, res) => {
     }
 });
 
-/* --- ENDPOINT 11 ---
-PATCH endpoint to update the note text finding the note by ID and updating the note text
-// if the noteText is not equal to null then set the noteText in the notes array in user model to the text being sent in. When the noteText is sent in the fetch as null i.e. updating the colour and not the text the the noteText won't be updated
-// Same principle for the colourNumber
-*/
+// PATCH endpoint to update a single note
+// Will either be noteText or colourNumber
 app.patch("/users/:id/note/:noteid", async (req, res) => {
   try {
     const userId = req.params.id;
@@ -422,9 +366,7 @@ app.patch("/users/:id/note/:noteid", async (req, res) => {
   }
 });
 
-/* --- ENDPOINT 12 ---
-DELETE endpoint to delete a note
-*/
+// DELETE endpoint to delete a note
 app.delete("/users/:id/note/:noteid", async (req, res) => {
   try {
     const userId = req.params.id;
@@ -456,7 +398,6 @@ app.delete("/users/:id/note/:noteid", async (req, res) => {
 }
 });
 
-// Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
 });
