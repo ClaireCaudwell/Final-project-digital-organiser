@@ -51,10 +51,6 @@ const userSchema = new mongoose.Schema( {
       type: String,
       maxlength: 170,
     },
-    delete: {
-      type: Boolean,
-      default: false,
-    },
     colour: {
       type: Number,
       default: 0, 
@@ -277,7 +273,7 @@ app.delete("/users/:id/scheduletask/:taskid", async (req, res) => {
   // Splicing/removing the element(object) based on the index number of the element from the array
   arrayOfTasks.splice(indexNumber, 1);
   user.save();
-  res.status(200).json({ statusMessage: "Task removed from your schedule"});
+  res.status(200).json({ statusMessage: "Task deleted from your schedule"});
 } catch(error) {
   res.status(400).json({ notFound: true, errorMesssage: "User not found", error});
 }
