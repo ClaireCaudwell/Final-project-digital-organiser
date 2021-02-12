@@ -18,8 +18,7 @@ export const AddNote = () => {
         <section className="section-container">   
             <button 
                 type="button" 
-                // className="add-note-button"
-                className={colourSchemeState ? "add-note-button-two" : "add-note-button-one"}
+                className={colourSchemeState === "checked" ? "add-note-button-two" : "add-note-button-one"}
                 onClick={onAddNote}>
                 Add a note +
             </button>

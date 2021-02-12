@@ -97,6 +97,10 @@
   transition: 0.3s;
 }
 
+.form-button:last-child {
+  margin-bottom: 0;
+}
+
 .form-button:hover {
   background-color: #dfff74;
   border: none;

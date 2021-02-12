@@ -22,12 +22,14 @@ export const AddTask = () => {
     const [scheduletask, setScheduleTask] = useState("");    
     const [ startDateTime, setStartDateTime ] = useState(new Date(selectedDate));
     const [ taskTime, setTaskTime ] = useState(moment().format("HH:mm"));
+    const monday = moment(selectedDate).startOf('isoWeek').toISOString();
 
     // Before component is mounted set the startDateTime to the selectedDate from redux - helps for the addtask being shown in the screen size larger than 750px to update the date when user clicks on the date in the calendar
     useEffect(() => {
         setStartDateTime(new Date(selectedDate));
+        dispatch(getSchedule(userId, monday));
         dispatch(task.actions.setStatusMessage({ statusMessage: null}));
-    }, [dispatch, selectedDate]);
+    }, [dispatch, selectedDate, userId, monday]);
 
     // If user clicks the "x" button then the time chosen is set to null and startTimeDate is set to 00:00
     // Else if user chooses a time this time is set to the date in startDateTime so startdatetime is a combo of the date and time chosen
@@ -41,8 +43,6 @@ export const AddTask = () => {
         setTaskTime(clock);
     };
 
-    const monday = moment(selectedDate).startOf('isoWeek').toISOString();
-    
     const handleOnAdd = (event) => {
         event.preventDefault();
         // calling the timechosen function and if user hasn't selected date then it will be current time, formatted string of hours and mins

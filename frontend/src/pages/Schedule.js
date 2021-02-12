@@ -14,7 +14,6 @@ import { AddTask } from "../components/Schedule-components/AddTask";
 import "./Schedule.css";
 import "./MediaQueries.css";
 
-
 export const Schedule = () => {
     const dispatch = useDispatch();
     

@@ -87,7 +87,10 @@ export const TaskSummary = () => {
                     </div>
                     </>
                 ) : (
-                    <p className="status-message">{statusMessage}</p>
+                    <div className="delete-container">
+                        <span className="material-icons larger-bin">delete</span>
+                        <p className="status-message">{statusMessage}</p>
+                    </div>
                 )}
             </div>
         </section>

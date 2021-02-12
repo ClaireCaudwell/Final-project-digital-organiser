@@ -9,7 +9,7 @@ const initialState = {
         errorMessage: null, 
         authorized: false,
     },
-    toggleColourscheme: false,
+    toggleColourscheme: null,
 };
 
 export const user = createSlice({
