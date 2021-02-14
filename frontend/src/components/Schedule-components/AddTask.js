@@ -21,7 +21,7 @@ export const AddTask = () => {
     
     const [scheduletask, setScheduleTask] = useState("");    
     const [ startDateTime, setStartDateTime ] = useState(new Date(selectedDate));
-    const [ taskTime, setTaskTime ] = useState(moment().format("HH:mm"));
+    const [ taskTime, setTaskTime ] = useState(moment().format("H:mm"));
     const monday = moment(selectedDate).startOf('isoWeek').toISOString();
 
     // Before component is mounted set the startDateTime to the selectedDate from redux - helps for the addtask being shown in the screen size larger than 750px to update the date when user clicks on the date in the calendar
@@ -95,6 +95,7 @@ export const AddTask = () => {
                             disableClock
                             required
                             className="picker"
+                            format="H:mm"
                         />
                     </label>
                     <button className="add-task-button" type="submit">Add task</button>

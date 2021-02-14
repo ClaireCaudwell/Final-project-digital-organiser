@@ -88,6 +88,7 @@
 /* Note textarea styling */
 .note-textarea {
     height: 200px;
+    width: 100%;
     background-color :#C7F5B1;
     border: none;
     overflow: hidden;

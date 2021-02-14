@@ -24,7 +24,7 @@ export const EditTask = () => {
     // All three states set to the data from the object for the task in the weeklyTasks in redux store
     const [scheduletask, setScheduleTask] = useState(taskDescription); 
     const [ startDateTime, setStartDateTime ] = useState(new Date(dateandtime));
-    const [ taskTime, setTaskTime ] = useState(moment(dateandtime).format("HH:mm"));
+    const [ taskTime, setTaskTime ] = useState(moment(dateandtime).format("H:mm"));
 
     // If user only changes the date, the original time is set to the new date so it's a comination of the date and time
     const dateChosen = (newdate) => {
@@ -98,6 +98,7 @@ export const EditTask = () => {
                             disableClock
                             required
                             className="picker"
+                            format="H:mm"
                         />
                     </label>
                     <button className="add-task-button" type="submit" onClick={handleOnUpdate}>Update task</button>

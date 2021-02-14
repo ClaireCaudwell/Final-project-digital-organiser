@@ -1,39 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { user } from "../../reducer/user";
 
 export const ColourSchemeToggle = () => {
     const dispatch = useDispatch();
-
-    const [ onToggle, setOnToggle ] = useState(false);
     
     const colourSchemeState = useSelector((store) => store.user.toggleColourscheme);
 
     const changeColourScheme = () => {
-        if(!onToggle){
-            setOnToggle(true);
+        if(colourSchemeState === "unchecked"){
             dispatch(user.actions.setColourScheme({ colourScheme: "checked" }));
         } else {
-            setOnToggle(false);
             dispatch(user.actions.setColourScheme({ colourScheme: "unchecked" }));
         }
     };
 
-    // useEffect(() => {
-    //     if(colourSchemeState) {
-    //         dispatch(user.actions.setColourScheme({ colourScheme: "checked" }));
-    //     }
-    // }, []);
-
     return (
         <div className="toggle-container">
-            <label className="switch" onChange={changeColourScheme}>
+            <label className="switch">
                 <input
                     className="input"
                     type="checkbox"
-                    value={onToggle}
-                    onChange={event => setOnToggle(event.target.value)}
+                    checked={colourSchemeState === "checked" ? true : false}
+                    onChange={changeColourScheme}
                 />
                 <span
                     // className="slider round"
