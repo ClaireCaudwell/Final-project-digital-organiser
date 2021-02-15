@@ -1,16 +1,18 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+
+import { BasicContainer, BasicLink } from "../../styled-components/GlobalStyle";
+import { AddTaskContainer, AddButton, AddTaskParagraph } from "../../styled-components/Schedule";
 
 export const AddTaskButton = () => {
 
     return (
-        <section className="section-container">          
-            <div className="add-task-container">
-                <NavLink to="/addtask">
-                    <button type="button" >Add task +</button>
-                </NavLink>
-                <p>Click on a task in your schedule to edit or delete</p>
-            </div>
-        </section>
+        <BasicContainer>          
+            <AddTaskContainer>
+                <BasicLink to="/addtask">
+                    <AddButton type="button" >Add task +</AddButton>
+                </BasicLink>
+                <AddTaskParagraph>Click on a task in your schedule to edit or delete</AddTaskParagraph>
+            </AddTaskContainer>
+        </BasicContainer>
     );
 };

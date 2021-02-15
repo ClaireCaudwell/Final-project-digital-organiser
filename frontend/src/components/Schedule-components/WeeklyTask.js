@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import moment from 'moment';
 
 import { TimeTask } from "./TimeTask";
+import { WeekdayText } from "../../styled-components/Schedule";
 
 export const WeeklyTask = ({ tasks, dayIndex }) => {
    // Today's date from redux
@@ -30,8 +31,8 @@ export const WeeklyTask = ({ tasks, dayIndex }) => {
     // Then map through the tasks into the TimeTask component as there may be more than one task for that day of the week
     return (
         <>
-            {weekday === "Monday" && <p className="plans-title">Weekday Plans</p>}
-            {weekday === "Saturday" && <p className="plans-title">Weekend Plans</p>}
+            {weekday === "Monday" && <WeekdayText>Weekday Plans</WeekdayText>}
+            {weekday === "Saturday" && <WeekdayText>Weekend Plans</WeekdayText>}
             <div
                 className={dateSelected === weekdate ? "weekday-container-two" : "weekday-container-one"}
             >

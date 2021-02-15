@@ -1,8 +1,9 @@
 import Header from "./Header";
-
+import Schedule from "./Schedule";
 
 const LightTheme = {
     ...Header,
+    ...Schedule,
     
     
     body: "#f3fdd8",
@@ -29,6 +30,15 @@ const LightTheme = {
     },
     backgroundColourSeven: {
         background: "#c7f5b1"
+    },
+    hoverColourSeven: {
+        background: "#b9fa9a"
+    },
+    backgroundColourEight: {
+        background: "#bfe7b6"
+    },
+    textColourOne: {
+        color: "#25b344"
     }
 }
 

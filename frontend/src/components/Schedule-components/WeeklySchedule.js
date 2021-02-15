@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { WeeklyTask } from "./WeeklyTask";
+import { StatusMessage, WeeklyTaskContainer } from "../../styled-components/Schedule";
 
 export const WeeklySchedule = () => {
     // Array of objects from redux store.
@@ -60,13 +61,13 @@ export const WeeklySchedule = () => {
     // index is the index number for each of the 7 arrays in the weeklyTasksArray
     // Mapping through each array that represents a day of the week
     return (
-        <section className="section-container weekly-tasks">
-            {weeklyTasks.length === 0 && <p className="status-message">No tasks in your schedule</p>}
+        <WeeklyTaskContainer>
+            {weeklyTasks.length === 0 && <StatusMessage className="status-message">No tasks in your schedule</StatusMessage>}
             <>
                 {weeklyTasksArray.map((tasks, index) => (
                     <WeeklyTask key={index} tasks={tasks} dayIndex={index} />
                 ))}
             </>
-        </section>
+        </WeeklyTaskContainer>
     );
 };

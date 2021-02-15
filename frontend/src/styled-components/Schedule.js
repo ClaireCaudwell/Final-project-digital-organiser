@@ -1,5 +1,7 @@
 import styled from "styled-components/macro";
-import { BasicContainer, BasicLink, BasicButton  } from "./GlobalStyle"; 
+import { Schedule } from "../pages/Schedule";
+import { BasicContainer, BasicLink, BasicButton, BasicP } from "./GlobalStyle";
+import "../components/Calendar.css";
 
 export const MainContainer = styled.main`
     padding: 0 20px;
@@ -44,7 +46,7 @@ export const RightColumn = styled.div`
 `;
 
 export const ScheduleText = styled(BasicContainer)`
-    font-size: 17px;
+    font-size: 18px;
     text-align: justify;
     font-family: 'Quicksand', sans-serif;
     margin-top: 10px;
@@ -75,4 +77,163 @@ export const TodayButton = styled(BasicButton)`
     }
 `;
 
+// Styling for calendar
+export const CalendarContainer = styled(BasicContainer)`
+    background-color: #fff;
+    padding: 20px 0;
+    border-radius: 5px;
+`;
 
+export const CalendarWrapper = styled.div`
+    .react-calendar {
+        width: 300px;
+        min-height: 300px;
+        max-height: 343px;
+        background: #fff;
+        border: none;
+        font-family: 'Quicksand', sans-serif;
+    }
+    .react-calendar button {
+        border: 0;
+        outline: none;
+        border-radius: 50px;
+        height: 45px;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 15px;
+    }
+    .react-calendar__navigation {
+        background-color: ${({ theme }) => theme.backgroundColourEight.background};
+        height: 55px;
+        width: 100%;
+        margin-bottom: 1em;
+        padding: 5px;
+        font-weight: bold;
+    }
+    .react-calendar__navigation button {
+        min-width: 44px;
+        background: none;
+    }
+    .react-calendar__navigation button:enabled:hover,
+    .react-calendar__navigation button:enabled:focus {
+        border: 2px solid white;
+    }
+    .react-calendar__navigation__label__labelText {
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 700;
+        font-size: 17px;
+    }
+    .react-calendar__navigation__arrow {
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 700;
+        font-size: 17px;
+    }
+    .react-calendar__month-view__weekdays {
+        text-align: center;
+        text-transform: uppercase;
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 600;
+    }
+    abbr {
+        text-decoration: none;
+    }
+    .react-calendar__month-view__weekdays__weekday {
+        padding: 0.2em;
+    }
+    .react-calendar__month-view__days__day--weekend {
+        color: ${({ theme }) => theme.textColourOne.color};
+        font-family: 'Quicksand', sans-serif;
+    }
+    .react-calendar__month-view__days__day--neighboringMonth {
+        color: ${({ theme }) => theme.textColourOne.color};
+    }
+    .react-calendar__tile {
+        background: none;
+    }
+    /*When hovering over date */
+    .react-calendar__tile:enabled:hover,
+    .react-calendar__tile:enabled:focus {
+        background-color: ${({ theme }) => theme.backgroundColourEight.background};
+    }
+    /*Today's date, colour when not selected */
+    .react-calendar__tile--now {
+        background: ${({ theme }) => theme.backgroundColourSeven.background};
+        color: ${({ theme }) => theme.textColourOne.color};
+        font-weight: 600;
+    }
+    /*Today's date when not selected and hovering over it */
+    .react-calendar__tile--now:enabled:hover,
+    .react-calendar__tile--now:enabled:focus {
+        background-color: ${({ theme }) => theme.backgroundColourThree.background};
+    }
+    .react-calendar__tile--hasActive {
+        background-color: ${({ theme }) => theme.backgroundColourThree.background};
+    }
+    .react-calendar__tile--now:enabled:hover{
+        background-color: ${({ theme }) => theme.backgroundColourThree.background};
+    }
+    /* Today's date highlighted */
+    .react-calendar__tile--active {
+        background-color: ${({ theme }) => theme.backgroundColourThree.background};
+        color: rgb(0, 0, 0);
+        font-weight: 600;
+    }
+    /* Selected date highlighted */
+    .react-calendar__tile--active:enabled:hover,
+    .react-calendar__tile--active:enabled:focus {
+        background-color: ${({ theme }) => theme.backgroundColourThree.background};
+    }
+`;
+
+// Styling for add task button component
+export const AddTaskContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+`;
+
+export const AddButton = styled(BasicButton)`
+    text-align: center;
+    font-size: 19px;
+    padding: 10px 20px;
+    background-color: ${({ theme }) => theme.backgroundColourSeven.background};
+    &:hover{
+        background-color: ${({ theme }) => theme.hoverColourSeven.background};
+    }
+`;
+
+export const AddTaskParagraph = styled(BasicP)`
+    margin-left: 20px;
+    font-family: 'Quicksand', sans-serif;
+    text-align: justify;
+`;
+
+// Weekly Schedule
+export const StatusMessage = styled(BasicP)`
+    font-family: 'Quicksand', sans-serif;
+    margin-top: 10px;
+    font-size: 18px;
+`;
+
+export const WeeklyTaskContainer = styled(BasicContainer)`
+    flex-direction: column;
+`;
+
+// Weekday task
+
+export const WeekdayText = styled(BasicP)`
+    width: 100%;
+    background-color: #dfff74;
+    border-bottom: 3px solid #fff;
+    margin: 15px 0 0 0;
+    padding: 24px 10px;
+    font-size: 19px;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+    &:first-child{
+        margin: 0;
+    }
+`;
+
+
+export default Schedule;

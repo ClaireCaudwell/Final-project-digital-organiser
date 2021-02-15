@@ -2,9 +2,12 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Calendar from "react-calendar";
 
-import "../Calendar.css";
-
 import { weeklySchedule } from "../../reducer/weeklySchedule";
+import { 
+    CalendarContainer,
+    CalendarWrapper
+    
+} from "../../styled-components/Schedule";
 
 export const ScheduleCalendar = ({ randomNumber }) => {
     const dispatch = useDispatch();
@@ -21,13 +24,14 @@ export const ScheduleCalendar = ({ randomNumber }) => {
     };
 
     return (
-        <section className="section-container white">
-            <Calendar
-                view={"month"}
-                value={selectedDate}
-                key={randomNumber}
-                onClickDay={onSelectDate}
-            />      
-        </section>
+        <CalendarContainer>
+            <CalendarWrapper>
+                <Calendar
+                    value={selectedDate}
+                    key={randomNumber}
+                    onClickDay={onSelectDate}
+                />
+            </CalendarWrapper>      
+        </CalendarContainer>
     )
 };

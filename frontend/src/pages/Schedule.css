@@ -175,11 +175,11 @@
   margin: 0 0 25px 0;
 } */
 
-.white {
+/* .white {
   background-color: #fff;
   padding: 20px 0;
   border-radius: 5px;
-}
+} */
 
 /* .select-calendar-text {
   font-size: 17px;
@@ -222,39 +222,31 @@
 
 /* ------------------------------------------------------------------------ */
 /* Add Task Button Component */
-.add-task-container {
+/* .add-task-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-}
+} */
 
-.add-task-container button {
-  background-color: transparent;
-  color: #313131;
-  border-radius: 5px;
-  border: none;
+/* .add-task-container button {
   text-align: center;
   font-size: 19px;
-  font-weight: 600;
   padding: 10px 20px;
-  font-family: 'Quicksand', sans-serif;
-  cursor: pointer;
-  transition: 0.3s;
   background-color: #C7F5B1;
-}
+} */
 
-.add-task-container button:hover {
+/* .add-task-container button:hover {
   background-color: #b9fa9a;
   transition: 0.3s;
-}
+} */
 
-.add-task-container p {
+/* .add-task-container p {
   margin-left: 20px;
   font-size: 17px;
   font-family: 'Quicksand', sans-serif;
   text-align: justify;
-}
+} */
 
 /* ------------------------------------------------------------------------ */
 /* Weekly schedule */
@@ -263,18 +255,18 @@
   width: 100%;
 }
 
-.status-message {
+/* .status-message {
   color: #313131;
   font-family: 'Quicksand', sans-serif;
   font-size: 18px;
   margin-top: 10px;
   font-weight: 500;
-}
+} */
 
-.weekly-tasks{
+/* .weekly-tasks{
   display: flex;
   flex-direction: column;
-}
+} */
 
 .weekday-container-one {
   width: 100%;
@@ -331,7 +323,7 @@
 }
 
 /* Styling for weekday and weekend plans title in schedule */
-.plans-title:first-child {
+/* .plans-title:first-child {
   margin: 0;
 }
 
@@ -345,7 +337,7 @@
   color: #313131;
   font-weight: 600;
   font-family: 'Quicksand', sans-serif;
-}
+} */
 
 /* ------------------------------------------------------------------------ */
 /* Add task, Edit task & summary task components */
@@ -504,7 +496,6 @@
   justify-content: center;
   margin: 20px 0;
   padding: 20px;
-  /* background-color: #fff; */
   text-align: center;
   border-radius: 5px;
   height: 70%;

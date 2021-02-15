@@ -1,7 +1,6 @@
 import styled from "styled-components/macro";
 import { Header } from "components/Header";
-import { BasicButton, BasicH1 } from "styled-components/GlobalStyle";
-import { NavLink } from 'react-router-dom';
+import { BasicButton, BasicH1, BasicLink } from "styled-components/GlobalStyle";
 
 export const HeaderContainer = styled.header`
   background-color: ${({ theme }) => theme.backgroundColourOne.background};
@@ -76,15 +75,10 @@ font-family: 'Open Sans', sans-serif;
 margin-bottom: 0;
 `;
 
-const activeClassName = 'nav-item-active';
-export const StyledLink = styled(NavLink).attrs({ activeClassName })`
+// const activeClassName = 'nav-item-active';
+export const StyledLink = styled(BasicLink)`
     align-self: flex-start;
     margin-top: 3px;
-    color: #313131;
-    text-decoration: none;
-    &.${activeClassName} {
-        text-decoration: none;
-  }
 `;
 
 export const SmallButton = styled(BasicButton)`
@@ -120,7 +114,7 @@ export const UlContainer = styled.ul`
     padding: 0;
 `;
 
-export const Link = styled(StyledLink)`
+export const Link = styled(BasicLink)`
 width: 50%;
 text-align: center;
 padding: 20px;
@@ -130,7 +124,7 @@ background-color: ${({ theme }) => theme.backgroundColourFour.background};
 &:hover{
     font-weight: 600;
 }
-&.${activeClassName} {
+&.${props=> props.activeClassName} {
     background-color: ${({ theme }) => theme.backgroundColourFive.background};
     font-weight: 600;
 }

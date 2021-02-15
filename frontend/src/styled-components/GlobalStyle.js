@@ -31,7 +31,7 @@ export const BasicH1 = styled.h1`
 `;
 
 export const BasicP = styled.p`
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   font-family: 'Open Sans', sans-serif;
 `;
@@ -40,7 +40,7 @@ export const BasicButton = styled.button`
   border: none;
   border-radius: 5px;
   font-family: 'Quicksand', sans-serif;
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
@@ -68,6 +68,6 @@ export const BasicLink = styled(NavLink).attrs({ activeClassName })`
     color: #313131;
     text-decoration: none;
     &.${activeClassName} {
-        text-decoration: none;
+      text-decoration: none;
   }
 `;
