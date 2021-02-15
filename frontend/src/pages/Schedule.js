@@ -1,15 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch  } from "react-redux";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import moment from "moment";
 
 import { ScheduleCalendar } from "../components/Schedule-components/ScheduleCalendar";
 import { getOrganiser, user } from "../reducer/user";
-import { Header } from "../components/Header-components/Header";
+import { Header } from "../components/Header";
 import { AddTaskButton } from "../components/Schedule-components/AddTaskButton";
 import { WeeklySchedule } from "../components/Schedule-components/WeeklySchedule";
 import { weeklySchedule, getSchedule } from "../reducer/weeklySchedule";
 import { AddTask } from "../components/Schedule-components/AddTask";
+
+import {
+    MainContainer,
+    SectionContainer,
+    LeftColumn,
+    RightColumn,
+    ScheduleText,
+    WeekText,
+    Link,
+    TodayButton
+
+} from "../styled-components/Schedule";
+
+import { BasicContainer } from "../styled-components/GlobalStyle";
 
 import "./Schedule.css";
 import "./MediaQueries.css";
@@ -78,27 +92,27 @@ export const Schedule = () => {
     return (
         <>
             <Header />
-            <main className="main-container desktop-view">
-                <section className="inner-div">
-                    <div className="left-column mobile-view">
-                        <p className="select-calendar-text section-container">Select a date in the calendar to get your schedule for that week</p>
-                        <div className="section-container">
-                            <h2 className="week-text">Week {currentWeek}</h2>
-                            <NavLink to="/schedule" className="today">
-                                <button type="button" onClick={setToday}>
+            <MainContainer>
+                <SectionContainer>
+                    <LeftColumn>
+                        <ScheduleText>Select a date in the calendar to get your schedule for that week</ScheduleText>
+                        <BasicContainer>
+                            <WeekText>Week {currentWeek}</WeekText>
+                            <Link to="/schedule">
+                                <TodayButton type="button" onClick={setToday}>
                                     Today
-                                </button>
-                            </NavLink>
-                        </div>
+                                </TodayButton>
+                            </Link>
+                        </BasicContainer>
                         <ScheduleCalendar randomNumber={randomNumber} />
                         {showAddTask && <AddTaskButton />}
                         {!showAddTask && <AddTask />}
-                    </div>
-                    <div className="right-column mobile-view">
+                    </LeftColumn>
+                    <RightColumn>
                         <WeeklySchedule />
-                    </div>
-                </section>
-            </main>     
+                    </RightColumn>
+                </SectionContainer>
+            </MainContainer>     
         </>
     )
 };

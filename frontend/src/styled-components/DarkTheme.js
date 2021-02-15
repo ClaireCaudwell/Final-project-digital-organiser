@@ -1,7 +1,9 @@
-import Header from "./Header"
+import Header from "./Header";
+
 
 const DarkTheme = {
     ...Header,
+    
     
     body: "#ffe6cc",
     backgroundColourOne: {
@@ -17,10 +19,16 @@ const DarkTheme = {
         background: "#ff7733"
     },
     backgroundColourFour: {
-        background: "#ffcc99"
+        background: "#ffd9b3"
     },
     backgroundColourFive: {
         background: "#ffe6cc"
+    },
+    backgroundColourSix: {
+        background: "#ffcc99"
+    },
+    backgroundColourSeven: {
+        background: "#ffb380"
     }
 }
 

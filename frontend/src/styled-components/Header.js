@@ -1,6 +1,6 @@
-import { Header } from "components/Header-components/Header";
-import { BasicButton, BasicH1 } from "styled-components/GlobalStyle";
 import styled from "styled-components/macro";
+import { Header } from "components/Header";
+import { BasicButton, BasicH1 } from "styled-components/GlobalStyle";
 import { NavLink } from 'react-router-dom';
 
 export const HeaderContainer = styled.header`
@@ -20,6 +20,54 @@ export const ToggleContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    margin-top: 5px;
+    position: relative;
+`;
+
+export const Slider = styled.label`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 66px;
+    height: 32px;
+    border-radius: 15px;
+    background-color: ${({ theme }) => theme.backgroundColourSix.background};
+    transition: 0.5s;
+    cursor: pointer;
+    padding-left: 2px;
+    &::after {
+    content: "";
+        display: block;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        margin: 5px;
+        background: #fff;
+        transition: 0.5s;
+    }
+`;
+export const ToggleInput = styled.input`
+    opacity: 0;
+    z-index: 1;
+    border-radius: 15px;
+    width: 66px;
+    height: 32px;
+    transition: 0.5s;
+    margin: 4px;
+    cursor: pointer;
+    //if the input is checked make the input and label 
+    // change colour and apply the after psuedo styling
+    &:checked + ${Slider} {
+        background-color: ${({ theme }) => theme.backgroundColourSix.background};
+        &::after {
+            display: block;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            margin-left: 38px;
+            transition: 0.5s;
+        }
+    }
 `;
 
 export const ToggleText = styled.p`

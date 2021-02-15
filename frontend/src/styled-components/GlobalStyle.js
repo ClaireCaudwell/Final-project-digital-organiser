@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components/macro";
+import { NavLink } from 'react-router-dom';
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -22,19 +23,6 @@ export const GlobalStyle = createGlobalStyle`
     /* transition: all 0.3s ease-in-out; */
   }
 `;
-
-// Header.js
-// export const HeaderContainer = styled.header`
-//   background-color: ${({ theme }) => theme.backgroundColourOne.background};
-// `;
-
-// export const TopContainer = styled.div`
-//   background-color: ${({ theme }) => theme.backgroundColourTwo.background};
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   padding: 20px; 
-// `;
 
 // Basic styles to be used throught components and then built upon
 export const BasicH1 = styled.h1`
@@ -66,4 +54,20 @@ export const Bold = styled.span`
   font-weight: 600;
 `;
 
-// export default GlobalStyle;
+export const BasicContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 25px 0;
+  border: 1px solid blue;
+`;
+
+const activeClassName = 'nav-item-active';
+export const BasicLink = styled(NavLink).attrs({ activeClassName })`
+    color: #313131;
+    text-decoration: none;
+    &.${activeClassName} {
+        text-decoration: none;
+  }
+`;

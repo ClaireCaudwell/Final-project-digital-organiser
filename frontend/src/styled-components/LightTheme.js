@@ -1,7 +1,9 @@
-import Header from "./Header"
+import Header from "./Header";
+
 
 const LightTheme = {
     ...Header,
+    
     
     body: "#f3fdd8",
     backgroundColourOne: {
@@ -21,6 +23,12 @@ const LightTheme = {
     },
     backgroundColourFive: {
         background: "#f3fdd8"
+    },
+    backgroundColourSix: {
+        background: "#a5ed84"
+    },
+    backgroundColourSeven: {
+        background: "#c7f5b1"
     }
 }
 

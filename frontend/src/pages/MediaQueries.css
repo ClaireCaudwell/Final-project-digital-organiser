@@ -20,25 +20,24 @@
 
 @media (min-width: 750px) { 
     /* Main element tag in schedule.js */
-    .desktop-view {
+    /* .desktop-view {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
-    }
+    } */
 
     /* Section element tag in schedule.js */
-    .inner-div {
+    /* .inner-div {
         width: 100%;
-        /* padding: 0 30px; */
         display: flex;
         align-items: flex-start;
         justify-content: center;
-    }
+    } */
 
     /* Div element tags in Schedule.js */
     /* Adding two columns which will seperate the week number, today button, calendar and add task component from the schedule list */
-    .left-column {
+    /* .left-column {
         width: 360px;
         height: 100%;
         margin-top: 30px;
@@ -46,13 +45,13 @@
         flex-direction: column;
         align-items: space-evenly;
         margin-right: 30px;
-    }
+    } */
 
-    .right-column {
+    /* .right-column {
         max-width: 55%;
         height: 100%;
         margin-top: 30px;
-    }
+    } */
 
     .left-column .desktop-view-taskcontainer {
         margin-top: 0;
