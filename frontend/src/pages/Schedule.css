@@ -1,56 +1,55 @@
 /* Schedule.js page styling & component styling*/
 /*  Header */
-header {
+/* header {
   background-color: #ffff;
-}
+} */
 
-.top-container {
+/* .top-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   background-color: #f3fdd8;
-}
+} */
 
-.header-toggle-container {
+/* .header-toggle-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-}
+} */
 
-.header-toggle-container p {
+/* .header-toggle-container p {
   font-size: 11px;
-  color: #313131;
   font-family: 'Open Sans', sans-serif;
   margin-bottom: 0;
-}
+} */
 
-.welcome-div {
+/* .welcome-div {
   padding: 0 20px;
   margin: 30px 0;
-}
+} */
 
-header h2 {
+/* header h2 {
   font-size: 21px;
   font-weight: 400;
   margin: 0;
   text-align: left;
   color: #313131;
   font-family: 'Quicksand', sans-serif;
-}
+} */
 
-span {
+/* span {
   font-weight: 600;
-}
+} */
 
 /* Logout button */
-.logout-link {
+/* .logout-link {
   align-self: flex-start;
   margin-top: 3px;
-}
+} */
 
-.logout-button {
+/* .logout-button {
   color: #313131;
   border: none;
   background-color: #dfff74;
@@ -61,32 +60,32 @@ span {
   border-radius: 5px;
   font-size: 16px;
   transition: 0.3s;
-}
+} */
 
-.logout-button:hover {
+/* .logout-button:hover {
   background-color: #d6fb5d;
   transition: 0.3s;
-}
+} */
 
 /* Toggle slider */
-.toggle-container {
+/* .toggle-container {
   margin-top: 5px;
-}
+} */
 
-.switch {
+/* .switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 25px;
-}
+} */
 
-.switch input { 
+/* .switch input { 
   opacity: 0;
   width: 0;
   height: 0;
-}
+} */
 
-.slider {
+/* .slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -96,9 +95,9 @@ span {
   background-color: #a5ed84;
   -webkit-transition: .4s;
   transition: .4s;
-}
+} */
 
-.slider:before {
+/* .slider:before {
   position: absolute;
   content: "";
   height: 18px;
@@ -108,9 +107,9 @@ span {
   background-color: #fff;
   -webkit-transition: .4s;
   transition: .4s;
-}
+} */
 
-.input:checked + .slider {
+/* .input:checked + .slider {
   background-color: #f5ccb1;
 }
 
@@ -126,41 +125,39 @@ span {
 
 .slider.round:before {
   border-radius: 50%;
-}
+} */
 
 /* Navlinks */
-nav {
+/* nav {
   margin-top: 20px;
-}
+} */
 
-ul {
+/* ul {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   list-style-type: none;
   margin-bottom: 10px;
   padding: 0;
-}
+} */
 
-.link {
-  text-decoration: none;
-  color: #313131;
+/* .link {
   width: 50%;
   text-align: center;
   padding: 20px;
   font-size: 20px;
   font-family: 'Quicksand', sans-serif;
   background-color: #e7f5c0;
-}
+} */
  
-.active {
+/* .active {
   background-color: #f3fdd8;
   font-weight: 600;
-}
+} */
 
-.hover-tab:hover {
+/* .hover-tab:hover {
   font-weight: 600;
-}
+} */
 
 /* React calendar styling is in Calendar.css */
 /* ------------------------------------------------------------------------ */
