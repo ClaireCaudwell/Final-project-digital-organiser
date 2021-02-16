@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
 import moment from "moment";
 
 import DatePicker from "react-date-picker/dist/entry.nostyle";
 import TimePicker from "react-time-picker/dist/entry.nostyle";
 
-import "../DatePicker.css";
-import "../TimePicker.css";
-
 import { addTask, editTask, task } from "../../reducer/task";
 import { weeklySchedule, getSchedule } from "../../reducer/weeklySchedule";
-import { CalendarWrapper, TaskSection, TaskDiv } from "../../styled-components/Schedule";
+import { 
+    TaskSection, 
+    TaskDiv,
+    AddEditTaskLink,
+    CloseButton,
+    H2Title,
+    AddEditTaskForm,
+    AddEditFormInput,
+    AddEditFormLabel,
+    DateSelect,
+    TimeSelect,
+    AddEditTaskButton,
+    StatusMessage
+} from "../../styled-components/Schedule";
 
 export const AddEditTask = () => {
     const dispatch = useDispatch();
@@ -100,52 +109,56 @@ export const AddEditTask = () => {
     return(
         <>
         <TaskSection>
-            <TaskDiv className="desktop-view-taskcontainer">
-                <NavLink to="/schedule"
-                    className="close-button-container desktop-view-close-button"
-                    activeClassName="not-active">
-                    <button type="button" onClick={handleClose}>close</button> 
-                </NavLink>
-                <h2>{isAddMode ? "Add a task" : "Edit your task"}</h2>
-                <form onSubmit={isAddMode ? handleOnAdd : handleOnUpdate} className="form-container">
-                    <input
+            <TaskDiv>
+                <AddEditTaskLink to="/schedule" className="hide-button">
+                    <CloseButton 
+                        type="button" 
+                        onClick={handleClose}>
+                            Close
+                    </CloseButton> 
+                </AddEditTaskLink>
+                <H2Title>
+                    {isAddMode ? "Add a task" : "Edit your task"}
+                </H2Title>
+                <AddEditTaskForm 
+                    onSubmit={isAddMode ? handleOnAdd : handleOnUpdate}>
+                    <AddEditFormInput
                         type="text"
-                        className="input-box"
                         value={scheduletask}
                         onChange={(event) => setScheduleTask(event.target.value)}
                         required
                         minLength="3"
                         maxLength="30" 
                     />
-                    <CalendarWrapper>
-                        <label className="date-container">
-                            Date:
+                    <AddEditFormLabel>
+                        Date:
+                        <DateSelect>
                             <DatePicker
                                 value={startDateTime}
                                 onChange={isAddMode ? (startDateTime) => setStartDateTime(startDateTime) : dateChosen}
                                 required
-                                className="picker"
                                 clearIcon={null}
                             />
-                        </label>
-                    </CalendarWrapper>
-                    <label className="date-container">
+                        </DateSelect>
+                    </AddEditFormLabel>
+                    <AddEditFormLabel>
                         Time:
-                        <TimePicker
-                            value={taskTime}
-                            onChange={timeChosen}
-                            closeClock
-                            disableClock
-                            required
-                            className="picker"
-                            format="H:mm"
-                        />
-                    </label>
-                    <button className="add-task-button" type="submit">
+                        <TimeSelect>
+                            <TimePicker
+                                value={taskTime}
+                                onChange={timeChosen}
+                                closeClock
+                                disableClock
+                                required
+                                format="H:mm"
+                            />
+                        </TimeSelect>
+                    </AddEditFormLabel>
+                    <AddEditTaskButton type="submit">
                         {isAddMode ? "Add task" : "Update task"}
-                    </button>
-                </form>
-                {statusMessage && <p className="status-message">{`${statusMessage}`}</p>}
+                    </AddEditTaskButton>
+                </AddEditTaskForm>
+                {statusMessage && <StatusMessage className="status-message">{`${statusMessage}`}</StatusMessage>}
             </TaskDiv>
         </TaskSection>
         </>

@@ -22,9 +22,9 @@ const DarkTheme = {
     backgroundColourFour: {
         background: "#ffd9b3"
     },
-    backgroundColourFive: {
-        background: "#ffe6cc"
-    },
+    // backgroundColourFive: {
+    //     background: "#ffe6cc"
+    // },
     backgroundColourSix: {
         background: "#ffcc99"
     },
@@ -40,6 +40,9 @@ const DarkTheme = {
     textColourOne: {
         color: "#313131"
     },
+    borderColourOne: {
+        color: "#ff7733"
+    }
 }
 
 export default DarkTheme;

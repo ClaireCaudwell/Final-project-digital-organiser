@@ -125,7 +125,7 @@ background-color: ${({ theme }) => theme.backgroundColourFour.background};
     font-weight: 600;
 }
 &.${props=> props.activeClassName} {
-    background-color: ${({ theme }) => theme.backgroundColourFive.background};
+    background-color: ${({ theme }) => theme.backgroundColourTwo.background};
     font-weight: 600;
 }
 `;

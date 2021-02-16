@@ -22,9 +22,9 @@ const LightTheme = {
     backgroundColourFour: {
         background: "#e7f5c0"
     },
-    backgroundColourFive: {
-        background: "#f3fdd8"
-    },
+    // backgroundColourFive: {
+    //     background: "#f3fdd8"
+    // },
     backgroundColourSix: {
         background: "#a5ed84"
     },
@@ -40,6 +40,9 @@ const LightTheme = {
     textColourOne: {
         color: "#25b344"
     },
+    borderColourOne: {
+        color: "#6fd845"
+    }
 }
 
 export default LightTheme;

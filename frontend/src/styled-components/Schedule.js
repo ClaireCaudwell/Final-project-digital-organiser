@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 import { Schedule } from "../pages/Schedule";
 import { BasicContainer, BasicLink, BasicButton, BasicP } from "./GlobalStyle";
 import "../components/Calendar.css";
@@ -258,11 +258,14 @@ export const TaskContainer = styled(AddTaskContainer)`
   margin-bottom: 10px;
   border-bottom: 3px solid ${({ theme }) => theme.backgroundColourSeven.background};
   font-family: 'Open Sans', sans-serif;
-  transition: 0.3s;
-  &:hover {
-    border-bottom: 3px solid ${({ theme}) => theme.backgroundColourThree.background};
-    transition: 0.3s;
-  }
+  transition: 0.3s; 
+    &:hover {
+        border-bottom: 3px solid ${({ theme }) => theme.backgroundColourThree.background};
+        transition: 0.3s;
+    }
+    ${props => props.disabled === "none" && css `
+       pointer-events: none;
+    `}
 `;
 
 export const TaskText = styled(WeekdayText)`
@@ -270,7 +273,7 @@ export const TaskText = styled(WeekdayText)`
     font-size: 17px;
 `;
 
-// Add & edit task
+// AddEditTask & Task summary
 export const TaskSection = styled.section`
     width: 100%;
     padding: 0 20px;
@@ -285,7 +288,7 @@ export const TaskSection = styled.section`
 
 export const TaskDiv = styled.div`
     margin: 20px 0;
-    background-color: #C7F5B1;
+    background-color: ${({ theme }) => theme.backgroundColourSeven.background};
     border-radius: 5px;
     width: 300px;
     height: 100%;
@@ -296,7 +299,273 @@ export const TaskDiv = styled.div`
     }
 `;
 
+export const AddEditTaskLink = styled(BasicLink)`
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-decoration: none;
+    /* display: ${props => props.className === "hide-button" ? "none" : "flex"} */
+`;
 
+export const CloseButton = styled(BasicButton)`
+    background-color: ${({ theme }) => theme.backgroundColourThree.background};
+    padding: 5px 7px;
+    font-size: 15px;
+    &:hover{
+        background-color: ${({ theme }) => theme.hoverColourThree.background};
+    }
+`;
+
+export const H2Title = styled.h2`
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    border-bottom: 3px solid #F3FDD8;
+    padding-bottom: 10px;
+`;
+
+export const AddEditTaskForm = styled.form`
+    width: 100%;
+    margin-bottom: 20px;
+`;
+
+export const AddEditFormInput = styled.input`
+    background-color: #fff;
+    border: none;
+    width: 100%;
+    height: 60px;
+    margin-bottom: 17px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    outline: none;
+    padding: 0 10px;
+    &:focus{
+        border: 2px solid ${({ theme }) => theme.borderColourOne.color};
+        transition: 0.3s;
+    }
+`;
+
+export const AddEditFormLabel = styled.label`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+`;
+
+// Date & time picker
+export const DateSelect = styled(CalendarWrapper)`
+    width: 60%;
+    background-color: #fff;
+
+    .react-date-picker,
+    .react-date-picker *,
+    .react-date-picker *:before,
+    .react-date-picker *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .react-date-picker--disabled {
+        background-color: #f0f0f0;
+        color: #6d6d6d;
+    }
+    /* Wrapper for the whole date picker */
+    .react-date-picker__wrapper {
+        display: flex;
+        flex-grow: 1;
+        flex-shrink: 0;
+        border: 3px solid #fff;
+        padding: 7px 5px;
+        color: #313131;
+        font-weight: 500;
+        font-family: 'Quicksand', sans-serif;
+    }
+    /* Date picker */
+    .react-date-picker__inputGroup {
+        min-width: calc((4px * 3) +  0.54em * 8  +  0.217em * 2);
+        flex-grow: 1;
+        padding: 0 2px;
+        box-sizing: content-box;
+    }
+    .react-date-picker__inputGroup__divider {
+        padding: 1px 0;
+        white-space: pre;
+    }
+    .react-date-picker__inputGroup__input {
+        min-width: 0.54em;
+        height: 100%;
+        position: relative;
+        padding: 0 1px;
+        border: 0;
+        background: none;
+        font: inherit;
+        box-sizing: content-box;
+        -moz-appearance: textfield;
+    }
+    .react-date-picker__inputGroup__input::-webkit-outer-spin-button,
+    .react-date-picker__inputGroup__input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    .react-date-picker__inputGroup__input:invalid {
+        background: rgba(255, 0, 0, 0.1);
+    }
+    .react-date-picker__inputGroup__input--hasLeadingZero {
+        margin-left: -0.54em;
+        padding-left: calc(1px +  0.54em);
+    }
+    .react-date-picker__inputGroup__fit {
+        border: 1px solid blue;
+    }
+    .react-date-picker__button {
+        border: 0;
+        background: transparent;
+        padding: 4px 6px;
+    }
+    .react-date-picker__button:enabled {
+        cursor: pointer;
+    }
+    .react-date-picker__button:enabled:hover .react-date-picker__button__icon,
+    .react-date-picker__button:enabled:focus .react-date-picker__button__icon {
+        stroke: #313131;
+    }
+    .react-date-picker__button:disabled .react-date-picker__button__icon {
+        stroke: #313131;
+    }
+    /* Date picker svg icons - cross and calendar symbol */
+    .react-date-picker__button svg {
+        display: inherit;
+    }
+    .react-date-picker__calendar {
+        width: 300px;
+        max-width: 100vw;
+        position: absolute;
+        top: 100%;
+        z-index: 1;
+        line-height: 1.125em;
+        overflow: visible;
+    }
+    .react-date-picker__calendar--closed {
+        display: none;
+    }
+    .react-date-picker__calendar .react-calendar {
+        border-width: thin;
+    }    
+`;
+
+export const TimeSelect = styled(CalendarWrapper)`
+    width: 60%;
+    background-color: #fff;
+
+    .react-time-picker,
+    .react-time-picker *,
+    .react-time-picker *:before,
+    .react-time-picker *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .react-time-picker--disabled {
+        background-color: #f0f0f0;
+        color: #6d6d6d;
+    }
+    .react-time-picker__wrapper {
+        display: flex;
+        flex-grow: 1;
+        flex-shrink: 0;
+        border: 3px solid #fff;
+        padding: 7px 5px;
+        color: #313131;
+        font-weight: 500;
+        font-family: 'Quicksand', sans-serif;
+    }
+    .react-time-picker__inputGroup {
+        min-width: calc((4px * 3) +  0.54em * 6  +  0.217em * 2);
+        flex-grow: 1;
+        padding: 0 2px;
+        box-sizing: content-box;
+    }
+    .react-time-picker__inputGroup__divider {
+        padding: 1px 0;
+        white-space: pre;
+    }
+    .react-time-picker__inputGroup__input {
+        min-width: 0.54em;
+        height: 100%;
+        position: relative;
+        padding: 0 1px;
+        border: 0;
+        background: none;
+        font: inherit;
+        box-sizing: content-box;
+        -moz-appearance: textfield;
+    }
+    .react-time-picker__inputGroup__input::-webkit-outer-spin-button,
+    .react-time-picker__inputGroup__input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    .react-time-picker__inputGroup__input:invalid {
+        background: rgba(199, 245, 177, 0.1);
+    }
+    .react-time-picker__inputGroup__input--hasLeadingZero {
+        margin-left: -0.54em;
+        padding-left: calc(1px +  0.54em);
+    }
+    .react-time-picker__inputGroup__amPm {
+    font: inherit;
+        -moz-appearance: menulist;
+    }
+    .react-time-picker__button {
+        border: 0;
+        background: transparent;
+        padding: 4px 6px;
+    }
+    .react-time-picker__button:enabled {
+        cursor: pointer;
+    }
+    .react-time-picker__button:enabled:hover .react-time-picker__button__icon,
+    .react-time-picker__button:enabled:focus .react-time-picker__button__icon {
+        stroke: #313131;
+        stroke-width: 1;
+    }
+    .react-time-picker__button:disabled .react-time-picker__button__icon {
+        stroke: #6d6d6d;
+    }
+    .react-time-picker__button svg {
+        display: inherit;
+        stroke: #313131;
+    }
+    .react-time-picker__clock {
+        width: 200px;
+        height: 200px;
+        max-width: 100vw;
+        padding: 25px;
+        background-color: white;
+        border: thin solid #a0a096;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1;
+    }
+    .react-time-picker__clock--closed {
+        display: none;    
+    }
+`;
+
+export const AddEditTaskButton = styled(BasicButton)`
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 0;
+    background-color: ${({ theme }) => theme.backgroundColourTwo.background};
+    font-size: 16px;
+    :hover{
+        background-color: ${({ theme }) => theme.backgroundColourThree.background};
+    }
+`;
 
 
 export default Schedule;

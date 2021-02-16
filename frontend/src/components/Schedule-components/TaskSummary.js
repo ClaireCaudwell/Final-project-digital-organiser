@@ -6,7 +6,20 @@ import moment from 'moment';
 
 import { getTask, deleteTask, task } from "../../reducer/task";
 import { weeklySchedule } from "../../reducer/weeklySchedule";
-import { TaskSection, TaskDiv } from "../../styled-components/Schedule";
+import { 
+    TaskSection,
+    TaskDiv,
+    AddEditTaskLink,
+    CloseButton,
+    H2Title,
+    WeekdayContainer,
+    TaskContainer,
+    TaskText,
+
+
+
+
+} from "../../styled-components/Schedule";
 
 export const TaskSummary = () => {
     const { taskId } = useParams();
@@ -51,21 +64,25 @@ export const TaskSummary = () => {
 
     return (
         <TaskSection>
-            <TaskDiv className="desktop-view-taskcontainer">
-                <NavLink to="/schedule" className="close-button-container">
-                    <button type="button" onClick={handleClose}>close</button> 
-                </NavLink>
+            <TaskDiv>
+                <AddEditTaskLink to="/schedule">
+                    < CloseButton 
+                        type="button" 
+                        onClick={handleClose}>
+                            Close
+                    </ CloseButton> 
+                </AddEditTaskLink>
                 {!taskDeleted ? (
                     <>
-                    <h2>Task summary</h2>
-                    <div className="weekday-container-two">
-                        <p>{weekday}</p>
-                        <p>{date}</p>
-                    </div>
-                    <div className="time-task-container">
+                    <H2Title>Task summary</H2Title>
+                    <WeekdayContainer>
+                        <TaskText>{weekday}</TaskText>
+                        <TaskText>{date}</TaskText>
+                    </WeekdayContainer>
+                    <TaskContainer disabled="none">
                         <p>{taskDescription}</p>
                         <p>{time}</p>
-                    </div>
+                    </TaskContainer>
                     <div className="edit-delete-button-container">
                         <NavLink to="/edittask" className="no-link">
                             <button 
