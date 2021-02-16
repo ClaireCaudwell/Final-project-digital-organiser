@@ -39,7 +39,7 @@ const LightTheme = {
     },
     textColourOne: {
         color: "#25b344"
-    }
+    },
 }
 
 export default LightTheme;

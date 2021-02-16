@@ -39,7 +39,7 @@ const DarkTheme = {
     },
     textColourOne: {
         color: "#313131"
-    }
+    },
 }
 
 export default DarkTheme;

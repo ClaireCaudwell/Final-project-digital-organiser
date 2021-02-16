@@ -11,6 +11,7 @@ import "../TimePicker.css";
 
 import { addTask, task } from "../../reducer/task";
 import { weeklySchedule, getSchedule } from "../../reducer/weeklySchedule";
+import { CalendarWrapper } from "../../styled-components/Schedule";
 
 export const AddTask = () => {
     const dispatch = useDispatch();
@@ -76,16 +77,18 @@ export const AddTask = () => {
                         minLength="3"
                         maxLength="30" 
                     />
-                    <label className="date-container">
-                        Date:
-                        <DatePicker
-                            value={startDateTime}
-                            onChange={(startDateTime) => setStartDateTime(startDateTime)}
-                            required
-                            className="picker"
-                            clearIcon={null}
-                        />
-                    </label>
+                    <CalendarWrapper>
+                        <label className="date-container">
+                            Date:
+                            <DatePicker
+                                value={startDateTime}
+                                onChange={(startDateTime) => setStartDateTime(startDateTime)}
+                                required
+                                className="picker"
+                                clearIcon={null}
+                            />
+                        </label>
+                    </CalendarWrapper>
                     <label className="date-container">
                         Time:
                         <TimePicker

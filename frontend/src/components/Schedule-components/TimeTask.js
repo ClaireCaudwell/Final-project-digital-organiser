@@ -1,6 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import moment from "moment";
+
+import { TaskLink, TaskContainer, TaskText } from "../../styled-components/Schedule";
 
 export const TimeTask = ({ task }) => {
 
@@ -9,11 +10,11 @@ export const TimeTask = ({ task }) => {
     const time = moment(task.startdatetime).format("HH:mm");
 
     return (
-        <NavLink to={`/taskSummary/${taskId}`} className="task-link">
-            <div className="time-task-container hover">
-                <p className="task">{task.task}</p>
-                <p className="heavy-text">{time}</p>
-            </div>
-        </NavLink>
+        <TaskLink to={`/taskSummary/${taskId}`}>
+            <TaskContainer>
+                <TaskText>{task.task}</TaskText>
+                <TaskText>{time}</TaskText>
+            </TaskContainer>
+        </TaskLink>
     );
 };

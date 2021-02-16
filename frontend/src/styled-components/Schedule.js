@@ -220,10 +220,9 @@ export const WeeklyTaskContainer = styled(BasicContainer)`
 `;
 
 // Weekday task
-
-export const WeekdayText = styled(BasicP)`
+export const PlansText = styled(BasicP)`
     width: 100%;
-    background-color: #dfff74;
+    background-color: ${({ theme }) => theme.backgroundColourThree.background};
     border-bottom: 3px solid #fff;
     margin: 15px 0 0 0;
     padding: 24px 10px;
@@ -234,6 +233,44 @@ export const WeekdayText = styled(BasicP)`
         margin: 0;
     }
 `;
+
+export const WeekdayContainer = styled(AddTaskContainer)`
+    background-color: 
+    ${props => props.className === "thirdcolour" ? ({theme}) => theme.backgroundColourThree.background : ({theme}) => theme.backgroundColourEight.background};
+    padding: 7px;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+`;
+
+export const WeekdayText = styled(BasicP)`
+    font-family: 'Quicksand', sans-serif;
+`;
+
+// Time Task
+export const TaskLink = styled(BasicLink)`
+    width: 100%;
+`;
+
+export const TaskContainer = styled(AddTaskContainer)`
+  background-color: #ffffff;
+  padding: 7px;
+  margin-bottom: 10px;
+  border-bottom: 3px solid ${({ theme }) => theme.backgroundColourSeven.background};
+  font-family: 'Open Sans', sans-serif;
+  transition: 0.3s;
+  &:hover {
+    border-bottom: 3px solid ${({ theme}) => theme.backgroundColourThree.background};
+    transition: 0.3s;
+  }
+`;
+
+export const TaskText = styled(WeekdayText)`
+    word-wrap: break-word;
+    font-size: 17px;
+`;
+
+
 
 
 export default Schedule;
