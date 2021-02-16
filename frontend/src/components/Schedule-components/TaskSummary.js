@@ -5,6 +5,7 @@ import { useParams, NavLink } from 'react-router-dom';
 import moment from 'moment';
 
 import { getTask, deleteTask, task } from "../../reducer/task";
+import { weeklySchedule } from "../../reducer/weeklySchedule";
 import { TaskSection, TaskDiv } from "../../styled-components/Schedule";
 
 export const TaskSummary = () => {
@@ -21,8 +22,9 @@ export const TaskSummary = () => {
     useEffect(() => {
         if(!taskDeleted){
             dispatch(getTask(taskId, userId));
+            dispatch(weeklySchedule.actions.setSelectedDate({ selectedDate: startdatetime }))
         }
-    }, [taskId, userId, dispatch, taskDeleted]);
+    }, [taskId, userId, dispatch, taskDeleted, startdatetime]);
 
     // Converting the of the week e.g. Monday
     const weekday = moment(startdatetime).format("dddd");

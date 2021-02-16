@@ -9,7 +9,8 @@ import { Header } from "../components/Header";
 import { AddTaskButton } from "../components/Schedule-components/AddTaskButton";
 import { WeeklySchedule } from "../components/Schedule-components/WeeklySchedule";
 import { weeklySchedule, getSchedule } from "../reducer/weeklySchedule";
-import { AddTask } from "../components/Schedule-components/AddTask";
+import { AddEditTask } from "../components/Schedule-components/AddEditTask";
+// import { AddTask } from "../components/Schedule-components/AddTask"
 
 import {
     MainContainer,
@@ -106,7 +107,7 @@ export const Schedule = () => {
                         </BasicContainer>
                         <ScheduleCalendar randomNumber={randomNumber} />
                         {showAddTask && <AddTaskButton />}
-                        {!showAddTask && <AddTask />}
+                        {!showAddTask && <AddEditTask />}
                     </LeftColumn>
                     <RightColumn>
                         <WeeklySchedule />

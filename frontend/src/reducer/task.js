@@ -64,10 +64,7 @@ export const addTask = (scheduletask, userId, startDateTime) => {
             } return res.json();
         })
         .then((json) => {
-            dispatch(task.actions.setTaskId({ taskId: json.taskId }));
             dispatch(task.actions.setStatusMessage({ statusMessage: json.statusMessage}));
-            dispatch(task.actions.setTask({ task: json.task }));
-            dispatch(task.actions.setStartDateTime({ startdatetime: json.startdatetime }));
         })
         .catch((error) => {
             dispatch(task.actions.setErrorMessage({ errorMessage: error.toString()}));

@@ -3,16 +3,14 @@ import { useSelector } from "react-redux"
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./styled-components/GlobalStyle";
-// import { lightTheme, darkTheme } from "./styled-components/Themes";
 import LightTheme from "./styled-components/LightTheme";
 import DarkTheme from "./styled-components/DarkTheme";
 
 import { SignupLogin } from "./pages/SignupLogin";
 import { Schedule } from "./pages/Schedule";
 import { NotesPage } from "./pages/NotesPage";
-import { AddTask } from "components/Schedule-components/AddTask";
+import { AddEditTask } from "components/Schedule-components/AddEditTask";
 import { TaskSummary } from "components/Schedule-components/TaskSummary";
-import { EditTask } from "./components/Schedule-components/EditTask";
 
 export const Home = () => {
     
@@ -33,13 +31,13 @@ export const Home = () => {
                     <NotesPage />                            
                 </Route>
                 <Route path="/addtask">
-                    <AddTask />                            
+                    <AddEditTask />                            
                 </Route>
                 <Route path="/taskSummary/:taskId">
                     <TaskSummary />
                 </Route>
                 <Route path="/edittask">
-                    <EditTask />
+                    <AddEditTask /> 
                 </Route>
                 <Redirect to="/" />
                 </Switch>       
