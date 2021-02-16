@@ -11,7 +11,7 @@ import "../TimePicker.css";
 
 import { addTask, task } from "../../reducer/task";
 import { weeklySchedule, getSchedule } from "../../reducer/weeklySchedule";
-import { CalendarWrapper } from "../../styled-components/Schedule";
+import { CalendarWrapper, TaskSection, TaskDiv } from "../../styled-components/Schedule";
 
 export const AddTask = () => {
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export const AddTask = () => {
     const statusMessage = useSelector((store => store.task.scheduleTask.statusMessage));
     const selectedDate = useSelector((store) => store.weeklySchedule.schedule.selectedDate);
     
-    const [scheduletask, setScheduleTask] = useState("");    
+    const [ scheduletask, setScheduleTask ] = useState("");    
     const [ startDateTime, setStartDateTime ] = useState(new Date(selectedDate));
     const [ taskTime, setTaskTime ] = useState(moment().format("H:mm"));
     const monday = moment(selectedDate).startOf('isoWeek').toISOString();
@@ -61,8 +61,8 @@ export const AddTask = () => {
     };
 
     return (
-        <section className="task-section desktop-view-tasksection">
-            <div className="task-container desktop-view-taskcontainer">
+        <TaskSection>
+            <TaskDiv className="desktop-view-taskcontainer">
                 <NavLink to="/schedule" className="close-button-container desktop-view-close-button" activeClassName="not-active">
                     <button type="button" onClick={handleClose}>close</button> 
                 </NavLink>
@@ -104,7 +104,7 @@ export const AddTask = () => {
                     <button className="add-task-button" type="submit">Add task</button>
                 </form>
                 {statusMessage && <p className="status-message">{`${statusMessage}`}</p>}
-            </div>
-        </section>
+            </TaskDiv>
+        </TaskSection>
     );
 };

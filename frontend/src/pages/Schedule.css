@@ -335,24 +335,23 @@
 
 /* ------------------------------------------------------------------------ */
 /* Add task, Edit task & summary task components */
-.task-section {
+/* .task-section {
   width: 100%;
   padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: #313131;
-}
+} */
 
-.task-container {
+/* .task-container {
   margin: 20px 0;
   background-color: #C7F5B1;
   border-radius: 5px;
   width: 300px;
   height: 100%;
   padding: 20px;
-}
+} */
 
 /*  Close button */
 .close-button-container {

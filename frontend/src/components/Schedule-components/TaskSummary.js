@@ -5,6 +5,7 @@ import { useParams, NavLink } from 'react-router-dom';
 import moment from 'moment';
 
 import { getTask, deleteTask, task } from "../../reducer/task";
+import { TaskSection, TaskDiv } from "../../styled-components/Schedule";
 
 export const TaskSummary = () => {
     const { taskId } = useParams();
@@ -47,8 +48,8 @@ export const TaskSummary = () => {
     };
 
     return (
-        <section className="task-section desktop-view-tasksection">
-            <div className="task-container desktop-view-taskcontainer">
+        <TaskSection>
+            <TaskDiv className="desktop-view-taskcontainer">
                 <NavLink to="/schedule" className="close-button-container">
                     <button type="button" onClick={handleClose}>close</button> 
                 </NavLink>
@@ -92,7 +93,7 @@ export const TaskSummary = () => {
                         <p className="status-message">{statusMessage}</p>
                     </div>
                 )}
-            </div>
-        </section>
+            </TaskDiv>
+        </TaskSection>
     );
 };

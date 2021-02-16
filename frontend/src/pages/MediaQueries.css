@@ -53,19 +53,19 @@
         margin-top: 30px;
     } */
 
-    .left-column .desktop-view-taskcontainer {
+    /* .left-column .desktop-view-taskcontainer {
         margin-top: 0;
-    }
+    } */
 
     .left-column .desktop-view-close-button {
         display: none;
     }
     
     /* Div element in addtask, edit task and tasksummary  */
-    .task-container {
+    /* .task-container {
         width: 360px;
         margin-top: 60px;
-    }
+    } */
 
     .select-calendar-text {
         margin-top: 0;

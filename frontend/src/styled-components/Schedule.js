@@ -28,11 +28,11 @@ export const LeftColumn = styled.div`
     @media(min-width: 750px){    
         width: 360px;
         height: 100%;
-        margin-top: 30px;
         display: flex;
         flex-direction: column;
         align-items: space-evenly;
         margin-right: 30px;
+        margin-top: 20px;
     }
 `;
 
@@ -268,6 +268,32 @@ export const TaskContainer = styled(AddTaskContainer)`
 export const TaskText = styled(WeekdayText)`
     word-wrap: break-word;
     font-size: 17px;
+`;
+
+// Add & edit task
+export const TaskSection = styled.section`
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    @media(min-width: 750px){
+        margin-top: 0;
+    } 
+`;
+
+export const TaskDiv = styled.div`
+    margin: 20px 0;
+    background-color: #C7F5B1;
+    border-radius: 5px;
+    width: 300px;
+    height: 100%;
+    padding: 20px;
+    @media(min-width: 750px){
+        width: 360px;
+        margin-top: 60px;
+    }
 `;
 
 

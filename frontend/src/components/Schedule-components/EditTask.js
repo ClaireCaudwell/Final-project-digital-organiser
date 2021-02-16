@@ -11,6 +11,7 @@ import "../TimePicker.css";
 
 import { editTask, task } from "../../reducer/task";
 import { weeklySchedule } from "reducer/weeklySchedule";
+import { CalendarWrapper, TaskSection, TaskDiv } from "../../styled-components/Schedule";
 
 export const EditTask = () => {
     const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export const EditTask = () => {
     const taskDescription = useSelector((store) => store.task.scheduleTask.task);
     
     // All three states set to the data from the object for the task in the weeklyTasks in redux store
-    const [scheduletask, setScheduleTask] = useState(taskDescription); 
+    const [ scheduletask, setScheduleTask ] = useState(taskDescription); 
     const [ startDateTime, setStartDateTime ] = useState(new Date(dateandtime));
     const [ taskTime, setTaskTime ] = useState(moment(dateandtime).format("H:mm"));
 
@@ -62,8 +63,8 @@ export const EditTask = () => {
     };
 
     return (
-        <section className="task-section desktop-view-tasksection">
-            <div className="task-container desktop-view-taskcontainer">
+        <TaskSection>
+            <TaskDiv className="desktop-view-taskcontainer">
                 <NavLink to="/schedule"
                     className="close-button-container">
                     <button type="button" onClick={handleClose}>close</button> 
@@ -79,16 +80,18 @@ export const EditTask = () => {
                         minLength="3"
                         maxLength="30" 
                     />
-                    <label className="date-container">
-                        DATE:
-                        <DatePicker
-                            value={startDateTime}
-                            onChange={dateChosen}
-                            required
-                            className="picker"
-                            clearIcon={null}
-                        />
-                    </label>
+                    <CalendarWrapper>
+                        <label className="date-container">
+                            DATE:
+                            <DatePicker
+                                value={startDateTime}
+                                onChange={dateChosen}
+                                required
+                                className="picker"
+                                clearIcon={null}
+                            />
+                        </label>
+                    </CalendarWrapper>
                     <label className="date-container">
                         TIME:
                         <TimePicker
@@ -104,7 +107,7 @@ export const EditTask = () => {
                     <button className="add-task-button" type="submit" onClick={handleOnUpdate}>Update task</button>
                 </form>
                 {statusMessage && <p className="status-message">{`${statusMessage}`}</p>}
-            </div>
-        </section>
+            </TaskDiv>
+        </TaskSection>
     )
 }
