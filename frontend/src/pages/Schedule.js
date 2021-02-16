@@ -95,7 +95,7 @@ export const Schedule = () => {
             <Header />
             <MainContainer>
                 <SectionContainer>
-                    <LeftColumn>
+                    <LeftColumn className="column">
                         <ScheduleText>Select a date in the calendar to get your schedule for that week</ScheduleText>
                         <BasicContainer>
                             <WeekText>Week {currentWeek}</WeekText>

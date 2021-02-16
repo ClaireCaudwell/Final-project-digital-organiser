@@ -33,6 +33,12 @@ export const LeftColumn = styled.div`
         align-items: space-evenly;
         margin-right: 30px;
         margin-top: 20px;
+        &.column .button{
+            display: none;
+        }
+        &.column .margin{
+            margin-top: 0;
+        }
     }
 `;
 
@@ -304,7 +310,6 @@ export const AddEditTaskLink = styled(BasicLink)`
     align-items: flex-end;
     justify-content: flex-end;
     text-decoration: none;
-    /* display: ${props => props.className === "hide-button" ? "none" : "flex"} */
 `;
 
 export const CloseButton = styled(BasicButton)`

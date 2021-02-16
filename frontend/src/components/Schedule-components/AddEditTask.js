@@ -109,9 +109,9 @@ export const AddEditTask = () => {
     return(
         <>
         <TaskSection>
-            <TaskDiv>
-                <AddEditTaskLink to="/schedule" className="hide-button">
-                    <CloseButton 
+            <TaskDiv className="margin">
+                <AddEditTaskLink to="/schedule" className="button">
+                    <CloseButton
                         type="button" 
                         onClick={handleClose}>
                             Close
