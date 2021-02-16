@@ -136,7 +136,7 @@ app.post("/users/:id/scheduletask", async (req, res) => {
     user.scheduleTask.push({ task: scheduletask, startdatetime: startDateTime })
     user.save();
     const addedTask = user.scheduleTask[user.scheduleTask.length-1];
-    res.status(200).json({ taskId: addedTask._id, task: addedTask.task, startdatetime: addedTask.startdatetime, statusMessage: "Task added to your schedule" });
+    res.status(200).json({ statusMessage: "Task added to your schedule" });
   } catch (error) {
     res.status(400).json({ notFound: true, errorMesssage: "Could't add to your schedule", error});
   }
