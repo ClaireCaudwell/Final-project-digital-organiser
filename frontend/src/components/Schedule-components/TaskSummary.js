@@ -15,6 +15,8 @@ import {
     WeekdayContainer,
     TaskContainer,
     TaskText,
+    ButtonContainer,
+    StatusMessage
 
 
 
@@ -80,10 +82,10 @@ export const TaskSummary = () => {
                         <TaskText>{date}</TaskText>
                     </WeekdayContainer>
                     <TaskContainer disabled="none">
-                        <p>{taskDescription}</p>
-                        <p>{time}</p>
+                        <TaskText>{taskDescription}</TaskText>
+                        <TaskText>{time}</TaskText>
                     </TaskContainer>
-                    <div className="edit-delete-button-container">
+                    <ButtonContainer>
                         <NavLink to="/edittask" className="no-link">
                             <button 
                                 type="button" 
@@ -104,12 +106,12 @@ export const TaskSummary = () => {
                             </span>
                             Delete
                         </button>
-                    </div>
+                    </ButtonContainer>
                     </>
                 ) : (
                     <div className="delete-container">
                         <span className="material-icons larger-bin">delete</span>
-                        <p className="status-message">{statusMessage}</p>
+                        <StatusMessage>{statusMessage}</StatusMessage>
                     </div>
                 )}
             </TaskDiv>

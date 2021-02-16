@@ -365,6 +365,10 @@ export const DateSelect = styled(CalendarWrapper)`
     width: 60%;
     background-color: #fff;
 
+    .react-date-picker {
+        display: inline-flex;
+        position: relative;
+    }
     .react-date-picker,
     .react-date-picker *,
     .react-date-picker *:before,
@@ -465,6 +469,10 @@ export const TimeSelect = styled(CalendarWrapper)`
     width: 60%;
     background-color: #fff;
 
+    .react-time-picker {
+        display: inline-flex;
+        position: relative;
+    }
     .react-time-picker,
     .react-time-picker *,
     .react-time-picker *:before,
@@ -570,6 +578,12 @@ export const AddEditTaskButton = styled(BasicButton)`
     :hover{
         background-color: ${({ theme }) => theme.backgroundColourThree.background};
     }
+`;
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 0;
 `;
 
 
