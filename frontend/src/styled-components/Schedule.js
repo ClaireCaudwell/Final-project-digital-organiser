@@ -325,7 +325,7 @@ export const H2Title = styled.h2`
     font-family: 'Quicksand', sans-serif;
     font-size: 20px;
     font-weight: 600;
-    border-bottom: 3px solid #F3FDD8;
+    border-bottom: 3px solid ${({ theme }) => theme.backgroundColourTwo.background};
     padding-bottom: 10px;
 `;
 
@@ -584,6 +584,38 @@ export const ButtonContainer = styled.div`
     display: flex;
     justify-content: space-evenly;
     padding: 20px 0;
+`;
+
+export const EditDeleteButton = styled(BasicButton)`
+    background-color: ${({ theme }) => theme.backgroundColourTwo.background};
+    border-radius: 50%;
+    height: 65px;
+    width: 65px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    :hover{
+        background-color: ${({ theme }) => theme.backgroundColourThree.background};
+    }
+`;
+
+export const Icons = styled.span`
+    &.material-icons{
+        margin-bottom: 5px;
+        font-size: ${props => props.largerBin || "16px"};
+        color: #313131;
+    }
+`;
+
+export const DeleteContainer = styled(BasicContainer)`
+    flex-direction: column;
+    margin: 20px 0;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    height: 70%;
 `;
 
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import moment from 'moment';
 
@@ -16,12 +16,13 @@ import {
     TaskContainer,
     TaskText,
     ButtonContainer,
-    StatusMessage
-
-
-
-
+    StatusMessage,
+    EditDeleteButton,
+    Icons,
+    DeleteContainer
 } from "../../styled-components/Schedule";
+
+import { BasicLink } from "../../styled-components/GlobalStyle";
 
 export const TaskSummary = () => {
     const { taskId } = useParams();
@@ -86,33 +87,33 @@ export const TaskSummary = () => {
                         <TaskText>{time}</TaskText>
                     </TaskContainer>
                     <ButtonContainer>
-                        <NavLink to="/edittask" className="no-link">
-                            <button 
+                        <BasicLink to="/edittask">
+                            <EditDeleteButton 
                                 type="button" 
                                 onClick={handleEdit}
                             >
-                                <span className="material-icons">
+                                <Icons className="material-icons">
                                     mode_edit
-                                </span>
+                                </Icons>
                                 Edit
-                            </button>
-                        </NavLink>
-                        <button
+                            </EditDeleteButton>
+                        </BasicLink>
+                        <EditDeleteButton
                             type="button" 
                             onClick={handleDelete}
                         >
-                            <span className="material-icons">
+                            <Icons className="material-icons">
                                 delete
-                            </span>
+                            </Icons>
                             Delete
-                        </button>
+                        </EditDeleteButton>
                     </ButtonContainer>
                     </>
                 ) : (
-                    <div className="delete-container">
-                        <span className="material-icons larger-bin">delete</span>
+                    <DeleteContainer>
+                        <Icons className="material-icons" largerBin="35px">delete</Icons>
                         <StatusMessage>{statusMessage}</StatusMessage>
-                    </div>
+                    </DeleteContainer>
                 )}
             </TaskDiv>
         </TaskSection>

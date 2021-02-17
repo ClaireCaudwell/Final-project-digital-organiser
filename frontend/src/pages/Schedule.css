@@ -450,12 +450,11 @@
   padding: 20px 0;
 } */
 
-.no-link {
+/* .no-link {
   text-decoration: none;
-}
+} */
 
-.edit-delete-button-container button {
-  border: none;
+/* .edit-delete-button-container button {
   background-color: #F3FDD8;
   border-radius: 50%;
   height: 65px;
@@ -464,18 +463,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  color: #313131;
-  transition: 0.3s;
-}
+} */
 
-.edit-delete-button-container button:hover {
+/* .edit-delete-button-container button:hover {
   background-color: #dfff74;
   border: none;
   transition: 0.3s;
-}
+} */
 
-.delete-container {
+/* .delete-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -485,14 +481,14 @@
   text-align: center;
   border-radius: 5px;
   height: 70%;
-}
+} */
 
-.material-icons {
+/* .material-icons {
   margin-bottom: 5px;
   font-size: 16px;
   color: #313131;
-}
+} */
 
-.larger-bin {
+/* .larger-bin {
   font-size: 35px;
-}
+} */

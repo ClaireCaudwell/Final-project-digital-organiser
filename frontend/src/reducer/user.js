@@ -9,7 +9,7 @@ const initialState = {
         errorMessage: null, 
         authorized: false,
     },
-    toggleColourscheme: "unchecked",
+    toggleColourscheme: localStorage.toggleColourscheme || "unchecked",
 };
 
 export const user = createSlice({
@@ -44,6 +44,7 @@ export const user = createSlice({
         },
         setColourScheme: (state, action) => {
             const { colourScheme } = action.payload;
+            localStorage.setItem("toggleColourscheme", colourScheme)
             state.toggleColourscheme = colourScheme;
         },
         setLogOut: (state) => {

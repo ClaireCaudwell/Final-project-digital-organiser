@@ -60,7 +60,6 @@ export const BasicContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 0 25px 0;
-  border: 1px solid blue;
 `;
 
 const activeClassName = 'nav-item-active';
