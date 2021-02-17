@@ -4,6 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteNote, updateNote } from "../../reducer/note";
 import { NoteColourOptions } from "./NoteColourOptions";
 
+import { 
+    NoteContainer,
+    NoteButtonContainer,
+    NoteButton,
+    NoteTextArea
+
+} from "../../styled-components/NotesPage";
+
 export const Note = ({ noteItem }) => {
     const dispatch = useDispatch();
 
@@ -32,31 +40,31 @@ export const Note = ({ noteItem }) => {
     // This number is then used to set the background-colour for the note
     // The colours array represents the className for each of the colours in styled components
     // To get the className/colour that matches the colour number the note has, the colours array is used 
-    // The index number for each element/className is matched to the the colour number for the note e.g. if a note has colour number 0 then the corresponding CSS className will be "colour-0" in the styled componenets etc
-    const colours = ["colour-0","colour-1", "colour-2", "colour-3"];    
+    // The index number for each element/className is matched to the the colour number for the note e.g. if a note has colour number 0 then the corresponding CSS className will be "noteColourZero" in the styled componenets etc
+    const colours = ["noteColourZero", "noteColourOne", "noteColourTwo", "noteColourThree"];
 
     // Concatenating the first string class name with the second
     // The second is made up of the colours array where the index matches the note's colour number
     return (
         <>
-        <div className={"note-container " + colours[noteItem.colour]}>
+        <NoteContainer noteColour={colours[noteItem.colour]}>
             {showColourOptions && <NoteColourOptions setShowColourOptions={setShowColourOptions} noteItem={noteItem}/>}
-            <div className="note-button-container">
-                <button 
+            <NoteButtonContainer>
+                <NoteButton
                     type="button" 
-                    className={"note-buttons "  + colours[noteItem.colour]} 
+                    buttonColour={colours[noteItem.colour]} 
                     onClick={onClickOptions}>
                         ...
-                </button>
-                <button 
+                </NoteButton>
+                <NoteButton 
                     type="button" 
-                    className={"note-buttons "  + colours[noteItem.colour]} 
+                    buttonColour={colours[noteItem.colour]} 
                     onClick={onDelete}>
                         x
-                </button>
-            </div>
-            <textarea
-                className={"note-textarea "  + colours[noteItem.colour]}
+                </NoteButton>
+            </NoteButtonContainer>
+            <NoteTextArea
+                className={colours[noteItem.colour]}
                 type="text"
                 value={noteText}
                 onChange={event => setNoteText(event.target.value)}
@@ -65,7 +73,7 @@ export const Note = ({ noteItem }) => {
                 rows="6"
                 cols="25"                 
             />
-        </div>
+        </NoteContainer>
         </>
     );
 };

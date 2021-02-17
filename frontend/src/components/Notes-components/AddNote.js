@@ -2,12 +2,13 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addNote, note } from "../../reducer/note";
+import { AddButton } from "../../styled-components/Schedule";
+import { AddNoteSection } from "../../styled-components/NotesPage";
 
 export const AddNote = () => {
 
     const dispatch = useDispatch();
     const userId = useSelector((store) => store.user.login.userId);
-    const colourSchemeState = useSelector((store) => store.user.toggleColourscheme);
 
     const onAddNote = () => {
         dispatch(addNote(userId));
@@ -15,13 +16,12 @@ export const AddNote = () => {
     };
  
     return (
-        <section className="section-container">   
-            <button 
-                type="button" 
-                className={colourSchemeState === "checked" ? "add-note-button-two" : "add-note-button-one"}
+        <AddNoteSection>   
+            <AddButton 
+                type="button"
                 onClick={onAddNote}>
-                Add a note +
-            </button>
-        </section>
+                Add note +
+            </AddButton>
+        </AddNoteSection>
     );
 };

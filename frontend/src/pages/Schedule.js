@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch  } from "react-redux";
-// import { NavLink } from "react-router-dom";
 import moment from "moment";
 
 import { ScheduleCalendar } from "../components/Schedule-components/ScheduleCalendar";
@@ -10,7 +9,6 @@ import { AddTaskButton } from "../components/Schedule-components/AddTaskButton";
 import { WeeklySchedule } from "../components/Schedule-components/WeeklySchedule";
 import { weeklySchedule, getSchedule } from "../reducer/weeklySchedule";
 import { AddEditTask } from "../components/Schedule-components/AddEditTask";
-// import { AddTask } from "../components/Schedule-components/AddTask"
 
 import {
     MainContainer,
@@ -23,11 +21,7 @@ import {
     TodayButton
 
 } from "../styled-components/Schedule";
-
 import { BasicContainer } from "../styled-components/GlobalStyle";
-
-import "./Schedule.css";
-import "./MediaQueries.css";
 
 export const Schedule = () => {
     const dispatch = useDispatch();

@@ -19,7 +19,6 @@ export const SectionContainer = styled.div`
         display: flex;
         align-items: flex-start;
         justify-content: center;
-        border: 1px solid blue;
     }
 `;
 
@@ -64,8 +63,9 @@ export const WeekText = styled.p`
     padding: 12px 0;
     margin: 0 10px 0 0;
     font-size: 19px;
+    font-weight: 600;
     border-radius: 2px;
-    background-color: ${({ theme }) => theme.backgroundColourSeven.background};    
+    background-color: ${props => props.theme.backgroundColourSeven.background};    
     font-family: 'Quicksand', sans-serif;
 `;
 
@@ -76,10 +76,10 @@ export const Link = styled(BasicLink)`
 export const TodayButton = styled(BasicButton)`
     width: 100%;
     font-size: 19px;
-    background-color: ${({ theme }) => theme.backgroundColourThree.background};
+    background-color: ${props => props.theme.backgroundColourThree.background};
     padding: 11px 0;
     &:hover{
-        background-color: ${({ theme }) => theme.hoverColourThree.background};
+        background-color: ${props => props.theme.hoverColourThree.background};
     }
 `;
 
@@ -87,7 +87,7 @@ export const TodayButton = styled(BasicButton)`
 export const CalendarContainer = styled(BasicContainer)`
     background-color: #fff;
     padding: 20px 0;
-    border-radius: 5px;
+    border-radius: 2px;
 `;
 
 export const CalendarWrapper = styled.div`
@@ -108,7 +108,7 @@ export const CalendarWrapper = styled.div`
         font-size: 15px;
     }
     .react-calendar__navigation {
-        background-color: ${({ theme }) => theme.backgroundColourEight.background};
+        background-color: ${props => props.theme.backgroundColourEight.background};
         height: 55px;
         width: 100%;
         margin-bottom: 1em;
@@ -146,11 +146,11 @@ export const CalendarWrapper = styled.div`
         padding: 0.2em;
     }
     .react-calendar__month-view__days__day--weekend {
-        color: ${({ theme }) => theme.textColourOne.color};
+        color: ${props => props.theme.textColourOne.color};
         font-family: 'Quicksand', sans-serif;
     }
     .react-calendar__month-view__days__day--neighboringMonth {
-        color: ${({ theme }) => theme.textColourOne.color};
+        color: ${props => props.theme.textColourOne.color};
     }
     .react-calendar__tile {
         background: none;
@@ -158,35 +158,35 @@ export const CalendarWrapper = styled.div`
     /*When hovering over date */
     .react-calendar__tile:enabled:hover,
     .react-calendar__tile:enabled:focus {
-        background-color: ${({ theme }) => theme.backgroundColourEight.background};
+        background-color: ${props => props.theme.backgroundColourEight.background};
     }
     /*Today's date, colour when not selected */
     .react-calendar__tile--now {
-        background: ${({ theme }) => theme.backgroundColourSeven.background};
-        color: ${({ theme }) => theme.textColourOne.color};
+        background: ${props => props.theme.backgroundColourSeven.background};
+        color: ${props => props.theme.textColourOne.color};
         font-weight: 600;
     }
     /*Today's date when not selected and hovering over it */
     .react-calendar__tile--now:enabled:hover,
     .react-calendar__tile--now:enabled:focus {
-        background-color: ${({ theme }) => theme.backgroundColourThree.background};
+        background-color: ${props => props.theme.backgroundColourThree.background};
     }
     .react-calendar__tile--hasActive {
-        background-color: ${({ theme }) => theme.backgroundColourThree.background};
+        background-color: ${props => props.theme.backgroundColourThree.background};
     }
     .react-calendar__tile--now:enabled:hover{
-        background-color: ${({ theme }) => theme.backgroundColourThree.background};
+        background-color: ${props => props.theme.backgroundColourThree.background};
     }
     /* Today's date highlighted */
     .react-calendar__tile--active {
-        background-color: ${({ theme }) => theme.backgroundColourThree.background};
+        background-color: ${props => props.theme.backgroundColourThree.background};
         color: rgb(0, 0, 0);
         font-weight: 600;
     }
     /* Selected date highlighted */
     .react-calendar__tile--active:enabled:hover,
     .react-calendar__tile--active:enabled:focus {
-        background-color: ${({ theme }) => theme.backgroundColourThree.background};
+        background-color: ${props => props.theme.backgroundColourThree.background};
     }
 `;
 
@@ -202,9 +202,9 @@ export const AddButton = styled(BasicButton)`
     text-align: center;
     font-size: 19px;
     padding: 10px 20px;
-    background-color: ${({ theme }) => theme.backgroundColourSeven.background};
+    background-color: ${props => props.theme.backgroundColourSeven.background};
     &:hover{
-        background-color: ${({ theme }) => theme.hoverColourSeven.background};
+        background-color: ${props => props.theme.hoverColourSeven.background};
     }
 `;
 
@@ -228,7 +228,7 @@ export const WeeklyTaskContainer = styled(BasicContainer)`
 // Weekday task
 export const PlansText = styled(BasicP)`
     width: 100%;
-    background-color: ${({ theme }) => theme.backgroundColourThree.background};
+    background-color: ${props => props.theme.backgroundColourThree.background};
     border-bottom: 3px solid #fff;
     margin: 15px 0 0 0;
     padding: 24px 10px;
@@ -242,7 +242,7 @@ export const PlansText = styled(BasicP)`
 
 export const WeekdayContainer = styled(AddTaskContainer)`
     background-color: 
-    ${props => props.className === "thirdcolour" ? ({theme}) => theme.backgroundColourThree.background : ({theme}) => theme.backgroundColourEight.background};
+    ${props => props.className === "thirdcolour" ? props.theme.backgroundColourThree.background : props.theme.backgroundColourEight.background};
     padding: 7px;
     font-size: 17px;
     font-weight: 600;
@@ -251,6 +251,7 @@ export const WeekdayContainer = styled(AddTaskContainer)`
 
 export const WeekdayText = styled(BasicP)`
     font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
 `;
 
 // Time Task
@@ -262,11 +263,11 @@ export const TaskContainer = styled(AddTaskContainer)`
   background-color: #ffffff;
   padding: 7px;
   margin-bottom: 10px;
-  border-bottom: 3px solid ${({ theme }) => theme.backgroundColourSeven.background};
+  border-bottom: 3px solid ${props => props.theme.backgroundColourSeven.background};
   font-family: 'Open Sans', sans-serif;
   transition: 0.3s; 
     &:hover {
-        border-bottom: 3px solid ${({ theme }) => theme.backgroundColourThree.background};
+        border-bottom: 3px solid ${props => props.theme.backgroundColourThree.background};
         transition: 0.3s;
     }
     ${props => props.disabled === "none" && css `
@@ -277,6 +278,7 @@ export const TaskContainer = styled(AddTaskContainer)`
 export const TaskText = styled(WeekdayText)`
     word-wrap: break-word;
     font-size: 17px;
+    font-weight: 500;
 `;
 
 // AddEditTask & Task summary
@@ -294,7 +296,7 @@ export const TaskSection = styled.section`
 
 export const TaskDiv = styled.div`
     margin: 20px 0;
-    background-color: ${({ theme }) => theme.backgroundColourSeven.background};
+    background-color: ${props => props.theme.backgroundColourSeven.background};
     border-radius: 5px;
     width: 300px;
     height: 100%;
@@ -313,11 +315,11 @@ export const AddEditTaskLink = styled(BasicLink)`
 `;
 
 export const CloseButton = styled(BasicButton)`
-    background-color: ${({ theme }) => theme.backgroundColourThree.background};
+    background-color: ${props => props.theme.backgroundColourThree.background};
     padding: 5px 7px;
     font-size: 15px;
     &:hover{
-        background-color: ${({ theme }) => theme.hoverColourThree.background};
+        background-color: ${props => props.theme.hoverColourThree.background};
     }
 `;
 
@@ -325,7 +327,7 @@ export const H2Title = styled.h2`
     font-family: 'Quicksand', sans-serif;
     font-size: 20px;
     font-weight: 600;
-    border-bottom: 3px solid ${({ theme }) => theme.backgroundColourTwo.background};
+    border-bottom: 3px solid ${props => props.theme.backgroundColourTwo.background};
     padding-bottom: 10px;
 `;
 
@@ -342,11 +344,10 @@ export const AddEditFormInput = styled.input`
     margin-bottom: 17px;
     font-family: 'Open Sans', sans-serif;
     font-size: 17px;
-    outline: none;
     padding: 0 10px;
     &:focus{
-        border: 2px solid ${({ theme }) => theme.borderColourOne.color};
-        transition: 0.3s;
+        border: 2px solid ${props => props.theme.borderColourOne.color};
+        outline: none;
     }
 `;
 
@@ -573,10 +574,10 @@ export const AddEditTaskButton = styled(BasicButton)`
     width: 100%;
     margin-top: 20px;
     padding: 10px 0;
-    background-color: ${({ theme }) => theme.backgroundColourTwo.background};
+    background-color: ${props => props.theme.backgroundColourTwo.background};
     font-size: 16px;
-    :hover{
-        background-color: ${({ theme }) => theme.backgroundColourThree.background};
+    &:hover{
+        background-color: ${props => props.theme.backgroundColourThree.background};
     }
 `;
 
@@ -587,7 +588,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const EditDeleteButton = styled(BasicButton)`
-    background-color: ${({ theme }) => theme.backgroundColourTwo.background};
+    background-color: ${props => props.theme.backgroundColourTwo.background};
     border-radius: 50%;
     height: 65px;
     width: 65px;
@@ -596,8 +597,8 @@ export const EditDeleteButton = styled(BasicButton)`
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    :hover{
-        background-color: ${({ theme }) => theme.backgroundColourThree.background};
+    &:hover{
+        background-color: ${props => props.theme.backgroundColourThree.background};
     }
 `;
 
@@ -617,6 +618,5 @@ export const DeleteContainer = styled(BasicContainer)`
     border-radius: 5px;
     height: 70%;
 `;
-
 
 export default Schedule;

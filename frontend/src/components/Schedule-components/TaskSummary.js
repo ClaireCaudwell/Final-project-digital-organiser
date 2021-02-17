@@ -14,6 +14,7 @@ import {
     H2Title,
     WeekdayContainer,
     TaskContainer,
+    WeekdayText,
     TaskText,
     ButtonContainer,
     StatusMessage,
@@ -79,8 +80,8 @@ export const TaskSummary = () => {
                     <>
                     <H2Title>Task summary</H2Title>
                     <WeekdayContainer>
-                        <TaskText>{weekday}</TaskText>
-                        <TaskText>{date}</TaskText>
+                        <WeekdayText>{weekday}</WeekdayText>
+                        <WeekdayText>{date}</WeekdayText>
                     </WeekdayContainer>
                     <TaskContainer disabled="none">
                         <TaskText>{taskDescription}</TaskText>

@@ -1,10 +1,11 @@
 import Header from "./Header";
 import Schedule from "./Schedule";
+import NotesPage from "./NotesPage";
 
 const LightTheme = {
     ...Header,
     ...Schedule,
-    
+    ...NotesPage,    
     
     body: "#f3fdd8",
     backgroundColourOne: {
@@ -39,7 +40,31 @@ const LightTheme = {
     },
     borderColourOne: {
         color: "#6fd845"
-    }
+    },
+    noteColourZero: {
+        background: "#c7f5b1"
+    },
+    noteHoverColourZero: {
+        background: "#b2f394"
+    },
+    noteColourOne: {
+        background: "#def69a"
+    },
+    noteHoverColourOne: {
+        background: "#d7f87b"
+    },
+    noteColourTwo: {
+        background: "#a5ed84"
+    },
+    noteHoverColourTwo: {
+        background: "#99ec72"
+    },
+    noteColourThree: {
+        background: "#dfff74"
+    },
+    noteHoverColourThree: {
+        background: "#d6fa5f"
+    },
 }
 
 export default LightTheme;

@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #313131;
-    /* transition: all 0.3s ease-in-out; */
+    transition: all 0.3s ease-in-out;
   }
 `;
 

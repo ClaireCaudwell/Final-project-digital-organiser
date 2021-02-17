@@ -2,6 +2,11 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { updateNote } from "../../reducer/note";
+import { 
+    ColourSquareContainer, 
+    DropdownColourMenu,
+    ColourSquare
+} from "../../styled-components/NotesPage";
 
 export const NoteColourOptions = ({ setShowColourOptions, noteItem }) => {
     const dispatch = useDispatch();
@@ -26,30 +31,39 @@ export const NoteColourOptions = ({ setShowColourOptions, noteItem }) => {
         dispatch(updateNote(userId, noteId, null, colourNumber));
     };
 
+    // Arrays of names for the background colours and hover colours for the colour squares
+    // Passing them in as props to the styled component and based on this string sent in the property is matched in the light or dark theme document
+    const colours = ["noteColourZero", "noteColourOne", "noteColourTwo", "noteColourThree"];
+    const hoverColours = ["noteHoverColourZero", "noteHoverColourOne", "noteHoverColourTwo", "noteHoverColourThree"];
+
     return (
-        <div className="dropdown-color-menu">
-            <div className="colour-square-container" onClick={onUnclickOptions}>
-                <button 
-                    className="colour-square colour-0 colour-0-hover" 
+        <DropdownColourMenu>
+            <ColourSquareContainer onClick={onUnclickOptions}>
+                <ColourSquare
+                    noteColour={colours[0]}
+                    hoverColour={hoverColours[0]}
                     id="colourButton"
                     onClick={() => onChooseColour(0)}
-                ></button>
-                <button 
-                    className="colour-square colour-1 colour-1-hover" 
+                ></ColourSquare>
+                <ColourSquare 
+                    noteColour={colours[1]} 
+                    hoverColour={hoverColours[1]}
                     id="colourButton"
                     onClick={() => onChooseColour(1)}
-                ></button>
-                <button 
-                    className="colour-square colour-2 colour-2-hover" 
+                ></ColourSquare>
+                <ColourSquare 
+                    noteColour={colours[2]}
+                    hoverColour={hoverColours[2]}
                     id="colourButton"
                     onClick={() => onChooseColour(2)}
-                ></button>
-                <button 
-                    className="colour-square colour-3 colour-3-hover" 
+                ></ColourSquare>
+                <ColourSquare 
+                    noteColour={colours[3]}
+                    hoverColour={hoverColours[3]} 
                     id="colourButton"
                     onClick={() => onChooseColour(3)}
-                ></button>
-            </div>
-        </div>
+                ></ColourSquare>
+            </ColourSquareContainer>
+        </DropdownColourMenu>
     );
 };

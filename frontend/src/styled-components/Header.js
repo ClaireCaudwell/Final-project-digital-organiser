@@ -51,7 +51,6 @@ export const ToggleInput = styled.input`
     border-radius: 15px;
     width: 66px;
     height: 32px;
-    transition: 0.5s;
     margin: 4px;
     cursor: pointer;
     //if the input is checked make the input and label 
@@ -64,7 +63,6 @@ export const ToggleInput = styled.input`
             width: 20px;
             height: 20px;
             margin-left: 38px;
-            transition: 0.5s;
         }
     }
 `;
@@ -79,6 +77,7 @@ margin-bottom: 0;
 export const StyledLink = styled(BasicLink)`
     align-self: flex-start;
     margin-top: 3px;
+    font-size: 21px;
 `;
 
 export const SmallButton = styled(BasicButton)`

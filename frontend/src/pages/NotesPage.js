@@ -6,8 +6,9 @@ import { AddNote } from "../components/Notes-components/AddNote";
 import { NoteList } from "../components/Notes-components/NoteList";
 import { getNotes, note } from "../reducer/note";
 
+import { MainNotesContainer } from "../styled-components/NotesPage";
+
 import  "./NotesPage.css";
-import "./MediaQueries.css";
 
 export const NotesPage = () => {
     const dispatch = useDispatch();
@@ -22,10 +23,10 @@ export const NotesPage = () => {
     return (
         <>
             <Header />
-            <main className="main-container">
+            <MainNotesContainer>
                 <AddNote />
                 <NoteList />
-            </main>
+            </MainNotesContainer>
         </>
     );
 };
