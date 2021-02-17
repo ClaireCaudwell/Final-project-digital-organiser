@@ -3,6 +3,7 @@ import { Schedule } from "../pages/Schedule";
 import { BasicContainer, BasicLink, BasicButton, BasicP } from "./GlobalStyle";
 import { FormLabel, FormInput, FormButton } from "./SignupLogin";
 
+// Schedule.js page styling
 export const MainContainer = styled.main`
     padding: 0 20px;
     @media(min-width: 750px){
@@ -57,6 +58,7 @@ export const ScheduleText = styled(BasicContainer)`
     margin-top: 10px;
 `;
 
+// Week text & today button
 export const WeekText = styled.p`
     width: 70%;
     text-align: center; 
@@ -83,114 +85,7 @@ export const TodayButton = styled(BasicButton)`
     }
 `;
 
-// Styling for calendar
-export const CalendarContainer = styled(BasicContainer)`
-    background-color: #fff;
-    padding: 20px 0;
-    border-radius: 2px;
-`;
-
-export const CalendarWrapper = styled.div`
-    .react-calendar {
-        width: 300px;
-        min-height: 300px;
-        max-height: 343px;
-        background: #fff;
-        border: none;
-        font-family: 'Quicksand', sans-serif;
-    }
-    .react-calendar button {
-        border: 0;
-        outline: none;
-        border-radius: 50px;
-        height: 45px;
-        font-family: 'Quicksand', sans-serif;
-        font-size: 15px;
-    }
-    .react-calendar__navigation {
-        background-color: ${props => props.theme.backgroundColourEight.background};
-        height: 55px;
-        width: 100%;
-        margin-bottom: 1em;
-        padding: 5px;
-        font-weight: bold;
-    }
-    .react-calendar__navigation button {
-        min-width: 44px;
-        background: none;
-    }
-    .react-calendar__navigation button:enabled:hover,
-    .react-calendar__navigation button:enabled:focus {
-        border: 2px solid white;
-    }
-    .react-calendar__navigation__label__labelText {
-        font-family: 'Quicksand', sans-serif;
-        font-weight: 700;
-        font-size: 17px;
-    }
-    .react-calendar__navigation__arrow {
-        font-family: 'Quicksand', sans-serif;
-        font-weight: 700;
-        font-size: 17px;
-    }
-    .react-calendar__month-view__weekdays {
-        text-align: center;
-        text-transform: uppercase;
-        font-family: 'Quicksand', sans-serif;
-        font-weight: 600;
-    }
-    abbr {
-        text-decoration: none;
-    }
-    .react-calendar__month-view__weekdays__weekday {
-        padding: 0.2em;
-    }
-    .react-calendar__month-view__days__day--weekend {
-        color: ${props => props.theme.textColourOne.color};
-        font-family: 'Quicksand', sans-serif;
-    }
-    .react-calendar__month-view__days__day--neighboringMonth {
-        color: ${props => props.theme.textColourOne.color};
-    }
-    .react-calendar__tile {
-        background: none;
-    }
-    /*When hovering over date */
-    .react-calendar__tile:enabled:hover,
-    .react-calendar__tile:enabled:focus {
-        background-color: ${props => props.theme.backgroundColourEight.background};
-    }
-    /*Today's date, colour when not selected */
-    .react-calendar__tile--now {
-        background: ${props => props.theme.backgroundColourSeven.background};
-        color: ${props => props.theme.textColourOne.color};
-        font-weight: 600;
-    }
-    /*Today's date when not selected and hovering over it */
-    .react-calendar__tile--now:enabled:hover,
-    .react-calendar__tile--now:enabled:focus {
-        background-color: ${props => props.theme.backgroundColourThree.background};
-    }
-    .react-calendar__tile--hasActive {
-        background-color: ${props => props.theme.backgroundColourThree.background};
-    }
-    .react-calendar__tile--now:enabled:hover{
-        background-color: ${props => props.theme.backgroundColourThree.background};
-    }
-    /* Today's date highlighted */
-    .react-calendar__tile--active {
-        background-color: ${props => props.theme.backgroundColourThree.background};
-        color: rgb(0, 0, 0);
-        font-weight: 600;
-    }
-    /* Selected date highlighted */
-    .react-calendar__tile--active:enabled:hover,
-    .react-calendar__tile--active:enabled:focus {
-        background-color: ${props => props.theme.backgroundColourThree.background};
-    }
-`;
-
-// Styling for add task button component
+// Add task button component
 export const AddTaskContainer = styled.div`
     display: flex;
     align-items: center;
@@ -214,7 +109,7 @@ export const AddTaskParagraph = styled(BasicP)`
     text-align: justify;
 `;
 
-// Weekly Schedule
+// Weekly Schedule list component
 export const StatusMessage = styled(BasicP)`
     font-family: 'Quicksand', sans-serif;
     margin-top: 10px;
@@ -225,7 +120,7 @@ export const WeeklyTaskContainer = styled(BasicContainer)`
     flex-direction: column;
 `;
 
-// Weekday task
+// Weekday task component
 export const PlansText = styled(BasicP)`
     width: 100%;
     background-color: ${props => props.theme.backgroundColourThree.background};
@@ -254,7 +149,7 @@ export const WeekdayText = styled(BasicP)`
     font-weight: 600;
 `;
 
-// Time Task
+// Time Task component
 export const TaskLink = styled(BasicLink)`
     width: 100%;
 `;
@@ -281,10 +176,11 @@ export const TaskText = styled(WeekdayText)`
     font-weight: 500;
 `;
 
-// AddEditTask & Task summary
+// AddEditTask & Task summary components
 export const TaskSection = styled.section`
     width: 100%;
     padding: 0 20px;
+    margin-top: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -351,215 +247,6 @@ export const AddEditFormLabel = styled(FormLabel)`
     display: flex;
     align-items: center;
     justify-content: space-between;
-`;
-
-// Date & time picker
-export const DateSelect = styled(CalendarWrapper)`
-    width: 60%;
-    background-color: #fff;
-
-    .react-date-picker {
-        display: inline-flex;
-        position: relative;
-    }
-    .react-date-picker,
-    .react-date-picker *,
-    .react-date-picker *:before,
-    .react-date-picker *:after {
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-    .react-date-picker--disabled {
-        background-color: #f0f0f0;
-        color: #6d6d6d;
-    }
-    /* Wrapper for the whole date picker */
-    .react-date-picker__wrapper {
-        display: flex;
-        flex-grow: 1;
-        flex-shrink: 0;
-        border: 3px solid #fff;
-        padding: 7px 5px;
-        color: #313131;
-        font-weight: 500;
-        font-family: 'Quicksand', sans-serif;
-    }
-    /* Date picker */
-    .react-date-picker__inputGroup {
-        min-width: calc((4px * 3) +  0.54em * 8  +  0.217em * 2);
-        flex-grow: 1;
-        padding: 0 2px;
-        box-sizing: content-box;
-    }
-    .react-date-picker__inputGroup__divider {
-        padding: 1px 0;
-        white-space: pre;
-    }
-    .react-date-picker__inputGroup__input {
-        min-width: 0.54em;
-        height: 100%;
-        position: relative;
-        padding: 0 1px;
-        border: 0;
-        background: none;
-        font: inherit;
-        box-sizing: content-box;
-        -moz-appearance: textfield;
-    }
-    .react-date-picker__inputGroup__input::-webkit-outer-spin-button,
-    .react-date-picker__inputGroup__input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-    .react-date-picker__inputGroup__input:invalid {
-        background: rgba(255, 0, 0, 0.1);
-    }
-    .react-date-picker__inputGroup__input--hasLeadingZero {
-        margin-left: -0.54em;
-        padding-left: calc(1px +  0.54em);
-    }
-    .react-date-picker__inputGroup__fit {
-        border: 1px solid blue;
-    }
-    .react-date-picker__button {
-        border: 0;
-        background: transparent;
-        padding: 4px 6px;
-    }
-    .react-date-picker__button:enabled {
-        cursor: pointer;
-    }
-    .react-date-picker__button:enabled:hover .react-date-picker__button__icon,
-    .react-date-picker__button:enabled:focus .react-date-picker__button__icon {
-        stroke: #313131;
-    }
-    .react-date-picker__button:disabled .react-date-picker__button__icon {
-        stroke: #313131;
-    }
-    /* Date picker svg icons - cross and calendar symbol */
-    .react-date-picker__button svg {
-        display: inherit;
-    }
-    .react-date-picker__calendar {
-        width: 300px;
-        max-width: 100vw;
-        position: absolute;
-        top: 100%;
-        z-index: 1;
-        line-height: 1.125em;
-        overflow: visible;
-    }
-    .react-date-picker__calendar--closed {
-        display: none;
-    }
-    .react-date-picker__calendar .react-calendar {
-        border-width: thin;
-    }    
-`;
-
-export const TimeSelect = styled(CalendarWrapper)`
-    width: 60%;
-    background-color: #fff;
-
-    .react-time-picker {
-        display: inline-flex;
-        position: relative;
-    }
-    .react-time-picker,
-    .react-time-picker *,
-    .react-time-picker *:before,
-    .react-time-picker *:after {
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-    .react-time-picker--disabled {
-        background-color: #f0f0f0;
-        color: #6d6d6d;
-    }
-    .react-time-picker__wrapper {
-        display: flex;
-        flex-grow: 1;
-        flex-shrink: 0;
-        border: 3px solid #fff;
-        padding: 7px 5px;
-        color: #313131;
-        font-weight: 500;
-        font-family: 'Quicksand', sans-serif;
-    }
-    .react-time-picker__inputGroup {
-        min-width: calc((4px * 3) +  0.54em * 6  +  0.217em * 2);
-        flex-grow: 1;
-        padding: 0 2px;
-        box-sizing: content-box;
-    }
-    .react-time-picker__inputGroup__divider {
-        padding: 1px 0;
-        white-space: pre;
-    }
-    .react-time-picker__inputGroup__input {
-        min-width: 0.54em;
-        height: 100%;
-        position: relative;
-        padding: 0 1px;
-        border: 0;
-        background: none;
-        font: inherit;
-        box-sizing: content-box;
-        -moz-appearance: textfield;
-    }
-    .react-time-picker__inputGroup__input::-webkit-outer-spin-button,
-    .react-time-picker__inputGroup__input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-    .react-time-picker__inputGroup__input:invalid {
-        background: rgba(199, 245, 177, 0.1);
-    }
-    .react-time-picker__inputGroup__input--hasLeadingZero {
-        margin-left: -0.54em;
-        padding-left: calc(1px +  0.54em);
-    }
-    .react-time-picker__inputGroup__amPm {
-    font: inherit;
-        -moz-appearance: menulist;
-    }
-    .react-time-picker__button {
-        border: 0;
-        background: transparent;
-        padding: 4px 6px;
-    }
-    .react-time-picker__button:enabled {
-        cursor: pointer;
-    }
-    .react-time-picker__button:enabled:hover .react-time-picker__button__icon,
-    .react-time-picker__button:enabled:focus .react-time-picker__button__icon {
-        stroke: #313131;
-        stroke-width: 1;
-    }
-    .react-time-picker__button:disabled .react-time-picker__button__icon {
-        stroke: #6d6d6d;
-    }
-    .react-time-picker__button svg {
-        display: inherit;
-        stroke: #313131;
-    }
-    .react-time-picker__clock {
-        width: 200px;
-        height: 200px;
-        max-width: 100vw;
-        padding: 25px;
-        background-color: white;
-        border: thin solid #a0a096;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 1;
-    }
-    .react-time-picker__clock--closed {
-        display: none;    
-    }
 `;
 
 export const AddEditTaskButton = styled(FormButton)`

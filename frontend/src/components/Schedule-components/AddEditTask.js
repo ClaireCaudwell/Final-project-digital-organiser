@@ -16,11 +16,10 @@ import {
     AddEditTaskForm,
     AddEditFormInput,
     AddEditFormLabel,
-    DateSelect,
-    TimeSelect,
     AddEditTaskButton,
     StatusMessage
 } from "../../styled-components/Schedule";
+import { DateSelect, TimeSelect } from "../../styled-components/DateTimePicker";
 
 export const AddEditTask = () => {
     const dispatch = useDispatch();

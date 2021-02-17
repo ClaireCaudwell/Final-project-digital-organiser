@@ -6,8 +6,7 @@ import { weeklySchedule } from "../../reducer/weeklySchedule";
 import { 
     CalendarContainer,
     CalendarWrapper
-    
-} from "../../styled-components/Schedule";
+} from "../../styled-components/Calendar";
 
 export const ScheduleCalendar = ({ randomNumber }) => {
     const dispatch = useDispatch();

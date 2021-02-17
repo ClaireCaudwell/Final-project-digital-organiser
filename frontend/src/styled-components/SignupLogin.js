@@ -2,6 +2,7 @@ import styled from "styled-components/macro";
 import { SignupLogin } from "../pages/SignupLogin";
 import { BasicH1, BasicP, BasicButton } from "./GlobalStyle";
 
+// SignupLogin.js page styling
 export const MainContainer = styled.main`
     display: flex;
     align-items: center;
@@ -78,7 +79,6 @@ export const FormInput = styled.input`
     &:focus {
         border-bottom: 2px solid ${props => props.theme.borderColourOne.color};
         outline: none;
-        transition: 0.2s;
     }
 `;
 

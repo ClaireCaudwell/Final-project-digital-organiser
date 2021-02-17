@@ -32,7 +32,7 @@ export const weeklySchedule = createSlice({
 });
 
 // Thunk for doing the GET request to get the schedule tasks for the week from. 
-// Based on the date for the beginning of the week
+// Based on the date for the Monday date of that week
 export const getSchedule = (userId, monday) => {
     return(dispatch) => {
         fetch(`http://localhost:8080/users/${userId}/scheduleweek/${monday}`, {

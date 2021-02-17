@@ -85,7 +85,7 @@ export const getOrganiser = (userId, accessToken, authorized) => {
 };
 
 const SIGNUP_URL = "http://localhost:8080/users";
-
+// Thunk and fetch for creating a new user
 export const userSignup = (username, password) => {
     return(dispatch) => {
         fetch(SIGNUP_URL, {
@@ -114,7 +114,8 @@ export const userSignup = (username, password) => {
 
     }
 }
-// Thunk and fetch for the user to login using the sessions endpoint
+
+// Thunk and fetch for the user to login as existing user
 export const userLogin = (username, password) => {
     return(dispatch) => {
         fetch("http://localhost:8080/sessions", {

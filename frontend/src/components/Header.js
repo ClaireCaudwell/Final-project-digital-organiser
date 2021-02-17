@@ -38,10 +38,10 @@ export const Header = () => {
 
     const handleLogOut = () => {
         dispatch(user.actions.setLogOut());
-        dispatch(user.actions.setStatusMessage({ statusMessage: "Logged out!" }));
-        dispatch(user.actions.setErrorMessage({ errorMessage: null }));
         dispatch(weeklySchedule.actions.setLogout()); 
         dispatch(note.actions.setLogOut());  
+        dispatch(user.actions.setStatusMessage({ statusMessage: "Logged out!" }));
+        dispatch(user.actions.setErrorMessage({ errorMessage: null }));
     };
 
     return (        

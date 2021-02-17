@@ -80,6 +80,7 @@ export const getNotes = (userId) => {
     };
 };
 
+// Thunk for updating note
 export const updateNote = (userId, noteId, noteText, colourNumber) => {
     return(dispatch) => {
         fetch(`http://localhost:8080/users/${userId}/note/${noteId}`, {
@@ -106,6 +107,7 @@ export const updateNote = (userId, noteId, noteText, colourNumber) => {
     };
 };
 
+// Thunk for deleting note
 export const deleteNote = (userId, noteId) => {
     return(dispatch) => {
         fetch(`http://localhost:8080/users/${userId}/note/${noteId}`, {

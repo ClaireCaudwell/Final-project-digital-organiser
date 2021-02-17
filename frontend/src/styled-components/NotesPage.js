@@ -4,6 +4,7 @@ import { NotesPage } from "../pages/NotesPage";
 import { MainContainer } from "./Schedule";
 import { BasicButton } from "./GlobalStyle";
 
+// NotesPage.js styling
 export const MainNotesContainer = styled(MainContainer)`
     flex-direction: column;
 `;
@@ -20,7 +21,6 @@ export const AddNoteSection = styled.section`
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            border: 1px solid red;
         }
     }
 `;
