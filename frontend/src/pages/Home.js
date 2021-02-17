@@ -2,13 +2,13 @@ import React from "react";
 import { useSelector } from "react-redux"
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "./styled-components/GlobalStyle";
-import LightTheme from "./styled-components/LightTheme";
-import DarkTheme from "./styled-components/DarkTheme";
+import { GlobalStyle } from "../styled-components/GlobalStyle";
+import LightTheme from "../styled-components/LightTheme";
+import DarkTheme from "../styled-components/DarkTheme";
 
-import { SignupLogin } from "./pages/SignupLogin";
-import { Schedule } from "./pages/Schedule";
-import { NotesPage } from "./pages/NotesPage";
+import { SignupLogin } from "./SignupLogin";
+import { Schedule } from "./Schedule";
+import { NotesPage } from "./NotesPage";
 import { AddEditTask } from "components/Schedule-components/AddEditTask";
 import { TaskSummary } from "components/Schedule-components/TaskSummary";
 

@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components/macro";
 
 import { userLogin, userSignup } from "reducer/user";
-import { BasicH1, BasicButton, BasicP } from "../styled-components/GlobalStyle";
+import {
+    MainContainer,
+    TitleContainer,
+    MainTitle,
+    SubTitle,
+    FormContainer,
+    Form,
+    FormLabel,
+    FormInput,
+    FormButton,
+    ErrorMessage
+} from "../styled-components/SignupLogin";
 
 export const SignupLogin = () => {
     const history = useHistory();
@@ -67,131 +77,21 @@ export const SignupLogin = () => {
                                 required              
                             />
                         <FormButton 
-                            className="form-button" 
                             type="submit" 
                             onClick={() => setButtonClick("signup")}
                             >
                                 Sign up
                             </FormButton>
-                        <FormButton 
-                            className="form-button" 
+                        <FormButton
                             type="submit" 
                             onClick={() => setButtonClick("login")}>
                                 Login
                         </FormButton> 
                     </Form>
                 </FormContainer>
-                {userId === null && <Message className="error-message">{error}</Message>}
+                {userId === null && <ErrorMessage className="error-message">{error}</ErrorMessage>}
             </MainContainer>
         </>
     );
 };
-
-const MainContainer = styled.main`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin: 40px 0;
-    @media (max-width: 1023px) and (min-width: 840px) {
-        margin-top: 90px;
-    }
-    @media(min-height: 1023px){
-        margin: 160px;
-    }
-    @media(min-width: 1024px) {
-        margin-top: 100px;
-    }
-`;
-
-const TitleContainer = styled.div`
-    font-family: 'Quicksand', sans-serif;
-    background-color: #F3FDD8;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-    margin-bottom: 35px;
-    width: 300px;
-    @media(min-width: 1024px) {
-        width: 400px;
-    }
-`;
-
-const MainTitle = styled(BasicH1)`
-    padding-bottom: 7px;
-    border-bottom: 2px solid #c8ec52;
-    margin-bottom: 10px;
-`;
-
-const SubTitle = styled(BasicP)`
-    margin: 0;
-`;
-
-// Div
-const FormContainer = styled(TitleContainer)`
-    padding: 20px 0;
-    margin: 0;
-    background-color: #C7F5B1;
-    border-radius: 5px;
-    flex-direction: row;
-`;
-
-// Form
-const Form = styled.form`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0 20px;  
-`;
-
-const FormLabel = styled.label`
-    margin-bottom: 10px;
-    font-weight: 600;
-    font-size: 17px;
-    font-family: 'Quicksand', sans-serif;
-`;
-
-const FormInput = styled.input`
-    margin-bottom: 20px;
-    width: 100%;
-    height: 40px;
-    border: none;
-    background-color: transparent;
-    border-bottom: 2px solid #F3FDD8;
-    transition: 0.3s;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 17px;
-
-    &:focus {
-        border-bottom: 2px solid #6fd845;
-        outline: none;
-        transition: 0.3s;
-    }
-`;
-
-const FormButton = styled(BasicButton)`
-    width: 100%;
-    background-color: #f3fdd8;
-    margin-top: 10px;
-    margin-right: 20px;
-    margin-bottom: 10px;
-    padding: 10px;
-    &:last-child{
-        margin-bottom: 0;
-    }
-    &:hover{ 
-        background-color: #dfff74;
-    }
-`;
-
-const Message = styled(BasicP)`
-    margin-top: 15px;
-    text-align: center;
-    width: 300px;
-    @media(min-width: 1024px) {
-        width: 400px;
-    }
-`;
 

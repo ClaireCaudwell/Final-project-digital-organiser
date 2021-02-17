@@ -158,7 +158,7 @@ export const AddEditTask = () => {
                         {isAddMode ? "Add task" : "Update task"}
                     </AddEditTaskButton>
                 </AddEditTaskForm>
-                {statusMessage && <StatusMessage className="status-message">{`${statusMessage}`}</StatusMessage>}
+                {statusMessage && <StatusMessage>{`${statusMessage}`}</StatusMessage>}
             </TaskDiv>
         </TaskSection>
         </>

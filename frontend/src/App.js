@@ -7,7 +7,7 @@ import { task } from "./reducer/task";
 import { weeklySchedule } from "./reducer/weeklySchedule";
 import { note } from "./reducer/note";
 
-import { Home } from "./Home";
+import { Home } from "./pages/Home";
 
 const reducer = combineReducers({ user: user.reducer, task: task.reducer, weeklySchedule: weeklySchedule.reducer, note: note.reducer });
 const store = configureStore({ reducer: reducer });

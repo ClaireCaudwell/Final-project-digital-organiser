@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components/macro";
 import { Schedule } from "../pages/Schedule";
 import { BasicContainer, BasicLink, BasicButton, BasicP } from "./GlobalStyle";
-import "../components/Calendar.css";
+import { FormLabel, FormInput, FormButton } from "./SignupLogin";
 
 export const MainContainer = styled.main`
     padding: 0 20px;
@@ -336,29 +336,21 @@ export const AddEditTaskForm = styled.form`
     margin-bottom: 20px;
 `;
 
-export const AddEditFormInput = styled.input`
+export const AddEditFormInput = styled(FormInput)`
     background-color: #fff;
-    border: none;
-    width: 100%;
     height: 60px;
     margin-bottom: 17px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 17px;
     padding: 0 10px;
+    border-bottom: none;
     &:focus{
         border: 2px solid ${props => props.theme.borderColourOne.color};
-        outline: none;
     }
 `;
 
-export const AddEditFormLabel = styled.label`
+export const AddEditFormLabel = styled(FormLabel)`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
-    font-weight: 600;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 17px;
 `;
 
 // Date & time picker
@@ -570,12 +562,10 @@ export const TimeSelect = styled(CalendarWrapper)`
     }
 `;
 
-export const AddEditTaskButton = styled(BasicButton)`
+export const AddEditTaskButton = styled(FormButton)`
     width: 100%;
-    margin-top: 20px;
-    padding: 10px 0;
+    margin: 20px 0 0 0;
     background-color: ${props => props.theme.backgroundColourTwo.background};
-    font-size: 16px;
     &:hover{
         background-color: ${props => props.theme.backgroundColourThree.background};
     }

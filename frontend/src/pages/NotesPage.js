@@ -8,8 +8,6 @@ import { getNotes, note } from "../reducer/note";
 
 import { MainNotesContainer } from "../styled-components/NotesPage";
 
-import  "./NotesPage.css";
-
 export const NotesPage = () => {
     const dispatch = useDispatch();
 

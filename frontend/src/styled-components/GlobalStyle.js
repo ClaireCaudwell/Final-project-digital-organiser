@@ -44,6 +44,7 @@ export const BasicButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
+  outline: none;
   text-decoration: none;
   &:hover{
     transition: 0.3s;

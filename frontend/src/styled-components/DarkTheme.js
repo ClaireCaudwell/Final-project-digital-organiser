@@ -1,8 +1,10 @@
+import SignupLogin from "./SignupLogin";
 import Header from "./Header";
 import Schedule from "./Schedule";
 import NotesPage from "./NotesPage";
 
 const DarkTheme = {
+    ...SignupLogin,
     ...Header,
     ...Schedule,
     ...NotesPage,    
