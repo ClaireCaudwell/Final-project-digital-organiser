@@ -2,6 +2,7 @@ import SignupLogin from "./SignupLogin";
 import Header from "./Header";
 import Schedule from "./Schedule";
 import NotesPage from "./NotesPage";
+import FlowerImage from "../Images/Flowers.jpg";
 
 const LightTheme = {
     ...SignupLogin,
@@ -9,40 +10,32 @@ const LightTheme = {
     ...Schedule,
     ...NotesPage,    
     
+    backgroundImg: FlowerImage,
     body: "#f3fdd8",
-    backgroundColourOne: {
-        background: "#fff",
-    },
-    backgroundColourTwo: {
-        background: "#f3fdd8",  
-    },
-    backgroundColourThree: {
-        background: "#dfff74"
-    },
-    hoverColourThree: {
-        background: "#d6fb5d"
-    },
-    backgroundColourFour: {
-        background: "#e7f5c0"
-    },
-    backgroundColourSix: {
-        background: "#a5ed84"
-    },
-    backgroundColourSeven: {
-        background: "#c7f5b1"
-    },
-    hoverColourSeven: {
-        background: "#b9fa9a"
-    },
-    backgroundColourEight: {
-        background: "#bfe7b6"
-    },
-    textColourOne: {
-        color: "#25b344"
-    },
-    borderColourOne: {
-        color: "#6fd845"
-    },
+    // Text colour
+    textColourOne: "#313131",
+    textColourTwo: "#000",
+    textColourThree: "#25b344",
+    // Border colour
+    border: "none",
+    borderColourOne: "#6fd845",
+    // Background colours
+    // Copy of body colour
+    backgroundColourOne: "#f3fdd8",
+    // Welcome container header
+    backgroundColourTwo: "#fff",
+    // Bright green logout button colour
+    backgroundColourThree: "#dfff74",
+    // Tab non-active link colour
+    backgroundColourFour: "#e7f5c0",
+    // Toggle colour
+    backgroundColourFive: "#a5ed84",
+    backgroundColourSix: "#c7f5b1",
+    backgroundColourEight: "#bfe7b6",
+    // Hover colours
+    hoverColourThree: "#d6fb5d",
+    hoverColourSeven: "#b9fa9a",
+    // Note colours
     noteColourZero: {
         background: "#c7f5b1"
     },

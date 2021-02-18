@@ -3,7 +3,8 @@ import { BasicContainer } from "./GlobalStyle";
 
 // Styling for react-calendar
 export const CalendarContainer = styled(BasicContainer)`
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.backgroundColourTwo};
+    border: ${({ theme}) => theme.border};
     padding: 20px 0;
     border-radius: 2px;
 `;
@@ -13,7 +14,7 @@ export const CalendarWrapper = styled.div`
         width: 300px;
         min-height: 300px;
         max-height: 343px;
-        background: #fff;
+        background-color: ${({ theme }) => theme.backgroundColourTwo};
         border: none;
         font-family: 'Quicksand', sans-serif;
     }
@@ -26,7 +27,7 @@ export const CalendarWrapper = styled.div`
         font-size: 15px;
     }
     .react-calendar__navigation {
-        background-color: ${props => props.theme.backgroundColourEight.background};
+        background-color: ${props => props.theme.backgroundColourEight};
         height: 55px;
         width: 100%;
         margin-bottom: 1em;
@@ -64,11 +65,11 @@ export const CalendarWrapper = styled.div`
         padding: 0.2em;
     }
     .react-calendar__month-view__days__day--weekend {
-        color: ${props => props.theme.textColourOne.color};
+        color: ${props => props.theme.textColourThree};
         font-family: 'Quicksand', sans-serif;
     }
     .react-calendar__month-view__days__day--neighboringMonth {
-        color: ${props => props.theme.textColourOne.color};
+        color: ${props => props.theme.textColourOne};
     }
     .react-calendar__tile {
         background: none;
@@ -76,34 +77,34 @@ export const CalendarWrapper = styled.div`
     /*When hovering over date */
     .react-calendar__tile:enabled:hover,
     .react-calendar__tile:enabled:focus {
-        background-color: ${props => props.theme.backgroundColourEight.background};
+        background-color: ${props => props.theme.backgroundColourEight};
     }
     /*Today's date, colour when not selected */
     .react-calendar__tile--now {
-        background: ${props => props.theme.backgroundColourSeven.background};
-        color: ${props => props.theme.textColourOne.color};
+        background: ${props => props.theme.backgroundColourSix};
+        color: ${props => props.theme.textColourThree};
         font-weight: 600;
     }
     /*Today's date when not selected and hovering over it */
     .react-calendar__tile--now:enabled:hover,
     .react-calendar__tile--now:enabled:focus {
-        background-color: ${props => props.theme.backgroundColourThree.background};
+        background-color: ${props => props.theme.backgroundColourThree};
     }
     .react-calendar__tile--hasActive {
-        background-color: ${props => props.theme.backgroundColourThree.background};
+        background-color: ${props => props.theme.backgroundColourThree};
     }
     .react-calendar__tile--now:enabled:hover{
-        background-color: ${props => props.theme.backgroundColourThree.background};
+        background-color: ${props => props.theme.backgroundColourThree};
     }
     /* Today's date highlighted */
     .react-calendar__tile--active {
-        background-color: ${props => props.theme.backgroundColourThree.background};
+        background-color: ${props => props.theme.backgroundColourThree};
         color: rgb(0, 0, 0);
         font-weight: 600;
     }
     /* Selected date highlighted */
     .react-calendar__tile--active:enabled:hover,
     .react-calendar__tile--active:enabled:focus {
-        background-color: ${props => props.theme.backgroundColourThree.background};
+        background-color: ${props => props.theme.backgroundColourThree};
     }
 `;

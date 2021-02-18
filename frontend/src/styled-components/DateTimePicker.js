@@ -9,6 +9,8 @@ export const DateSelect = styled(CalendarWrapper)`
     .react-date-picker {
         display: inline-flex;
         position: relative;
+        display: flex;
+        justify-content: space-between;
     }
     .react-date-picker,
     .react-date-picker *,
@@ -113,6 +115,8 @@ export const TimeSelect = styled(CalendarWrapper)`
     .react-time-picker {
         display: inline-flex;
         position: relative;
+        display: flex;
+        justify-content: space-between;
     }
     .react-time-picker,
     .react-time-picker *,

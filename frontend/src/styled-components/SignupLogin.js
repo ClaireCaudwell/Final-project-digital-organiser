@@ -22,7 +22,7 @@ export const MainContainer = styled.main`
 
 export const TitleContainer = styled.div`
     font-family: 'Quicksand', sans-serif;
-    background-color: ${props => props.theme.backgroundColourTwo.background};
+    background-color: ${props => props.theme.backgroundColourOne};
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -36,7 +36,7 @@ export const TitleContainer = styled.div`
 
 export const MainTitle = styled(BasicH1)`
     padding-bottom: 7px;
-    border-bottom: 2px solid ${props => props.theme.backgroundColourThree.background};
+    border-bottom: 2px solid ${props => props.theme.borderColourOne};
     margin-bottom: 10px;
 `;
 
@@ -47,7 +47,7 @@ export const SubTitle = styled(BasicP)`
 export const FormContainer = styled(TitleContainer)`
     padding: 20px 0;
     margin: 0;
-    background-color: ${props => props.theme.backgroundColourSeven.background};
+    background-color: ${props => props.theme.backgroundColourSix};
     border-radius: 5px;
     flex-direction: row;
 `;
@@ -73,29 +73,29 @@ export const FormInput = styled.input`
     height: 40px;
     border: none;
     background-color: transparent;
-    border-bottom: 2px solid ${props => props.theme.backgroundColourTwo.background};
+    border-bottom: 2px solid ${props => props.theme.backgroundColourOne};
     font-family: 'Open Sans', sans-serif;
     font-size: 17px;
     &:focus {
-        border-bottom: 2px solid ${props => props.theme.borderColourOne.color};
+        border-bottom: 2px solid ${props => props.theme.borderColourOne};
         outline: none;
     }
 `;
 
 export const FormButton = styled(BasicButton)`
 width: 100%;
-background-color: ${props => props.theme.backgroundColourTwo.background};
+background-color: ${props => props.theme.backgroundColourOne};
 margin-top: 10px;
 margin-right: 20px;
 margin-bottom: 10px;
 padding: 10px;
-font-size: 16px;
+font-size: 17px;
 outline: none;
 &:last-child{
     margin-bottom: 0;
 }
 &:hover{ 
-    background-color: ${props => props.theme.backgroundColourThree.background};
+    background-color: ${props => props.theme.backgroundColourThree};
 }
 `;
 

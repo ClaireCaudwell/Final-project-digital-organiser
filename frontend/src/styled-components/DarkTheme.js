@@ -2,71 +2,64 @@ import SignupLogin from "./SignupLogin";
 import Header from "./Header";
 import Schedule from "./Schedule";
 import NotesPage from "./NotesPage";
+import Concrete from "../Images/Concrete.jpg";
 
-const DarkTheme = {
+const LightTheme = {
     ...SignupLogin,
     ...Header,
     ...Schedule,
     ...NotesPage,    
     
-    body: "#ffe6cc",
-    backgroundColourOne: {
-        background: "#fff",
-    },
-    backgroundColourTwo: {
-        background: "#ffe6cc",  
-    }, 
-    backgroundColourThree: {
-        background: "#ff884d"
-    },
-    hoverColourThree: {
-        background: "#ff7733"
-    },
-    backgroundColourFour: {
-        background: "#ffd9b3"
-    },
-    backgroundColourSix: {
-        background: "#ffcc99"
-    },
-    backgroundColourSeven: {
-        background: "#ffb380"
-    },
-    hoverColourSeven: {
-        background: "#ffa366"
-    },
-    backgroundColourEight: {
-        background: "#ffb366"
-    },
-    textColourOne: {
-        color: "#313131"
-    },
-    borderColourOne: {
-        color: "#ff7733"
-    },
+    backgroundImg: Concrete,
+    body: "#e6e6e6",
+    // Text colour
+    textColourOne: "#313131",
+    textColourTwo: "#000",
+    textColourThree: "#003cb3",
+    // Border colour
+    border: "none",
+    borderColourOne: "#8080ff",
+    // Background colours
+    // Copy of body colour
+    backgroundColourOne: "#e6e6e6",
+    // Welcome container header
+    backgroundColourTwo: "#fff",
+    // Bright green logout button colour
+    backgroundColourThree: "#bfbfbf",
+    // Tab non-active link colour
+    backgroundColourFour: "#d9d9d9",
+    // Toggle colour
+    backgroundColourFive: "#8cb3d9",
+    backgroundColourSix: "#b3ccff",
+    backgroundColourEight: "#8cb3d9",
+    // Hover colours
+    hoverColourThree: "#b3b3b3",
+    hoverColourSeven: "#99bbff",
+    // Note colours
     noteColourZero: {
-        background: "#ffcc99"
+        background: "#8cb3d9"
     },
     noteHoverColourZero: {
-        background: "#ffbf80"
+        background: "#79a6d2"
     },
     noteColourOne: {
-        background: "#ffdb4d"
+        background: "#fff"
     },
     noteHoverColourOne: {
-        background: "#ffd633"
+        background: "#f2f2f2"
     },
     noteColourTwo: {
-        background: "#ffff80"
+        background: "#cccccc"
     },
     noteHoverColourTwo: {
-        background: "#ffff66"
+        background: "#bfbfbf"
     },
     noteColourThree: {
-        background: "#ff944d"
+        background: "#808080"
     },
     noteHoverColourThree: {
-        background: "#ff8533"
+        background: "#737373"
     },
 }
 
-export default DarkTheme;
+export default LightTheme;

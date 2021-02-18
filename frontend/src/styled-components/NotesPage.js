@@ -62,7 +62,6 @@ export const NoteButton = styled(BasicButton)`
 export const NoteTextArea = styled.textarea`
     height: 200px;
     width: 100%;
-    background-color :#C7F5B1;
     border: none;
     overflow: hidden;
     resize: none;

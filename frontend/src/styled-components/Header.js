@@ -3,15 +3,15 @@ import { Header } from "components/Header";
 import { BasicButton, BasicH1, BasicLink } from "styled-components/GlobalStyle";
 
 export const HeaderContainer = styled.header`
-  background-color: ${({ theme }) => theme.backgroundColourOne.background};
+  background-color: ${({ theme }) => theme.backgroundColourOne};
 `;
 
 export const TopContainer = styled.div`
-  background-color: ${({ theme }) => theme.backgroundColourTwo.background};
+  background-color: ${({ theme }) => theme.backgroundColourOne};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px; 
+  padding: 20px;
 `;
 
 export const ToggleContainer = styled.div`
@@ -30,7 +30,7 @@ export const Slider = styled.label`
     width: 66px;
     height: 32px;
     border-radius: 15px;
-    background-color: ${({ theme }) => theme.backgroundColourSix.background};
+    background-color: ${({ theme }) => theme.backgroundColourFive};
     transition: 0.5s;
     cursor: pointer;
     padding-left: 2px;
@@ -56,7 +56,7 @@ export const ToggleInput = styled.input`
     //if the input is checked make the input and label 
     // change colour and apply the after psuedo styling
     &:checked + ${Slider} {
-        background-color: ${({ theme }) => theme.backgroundColourSix.background};
+        background-color: ${({ theme }) => theme.backgroundColourFive};
         &::after {
             display: block;
             border-radius: 50%;
@@ -81,16 +81,18 @@ export const StyledLink = styled(BasicLink)`
 `;
 
 export const SmallButton = styled(BasicButton)`
-    background-color: ${({ theme }) => theme.backgroundColourThree.background};
+    background-color: ${({ theme }) => theme.backgroundColourThree};
     padding: 5px 7px;
+    font-size: 16px;
+    color: ${({ theme }) => theme.textColourOne};
     &:hover{
-        background-color: ${({ theme }) => theme.hoverColourThree.background};
+        background-color: ${({ theme }) => theme.hoverColourThree};
     }
 `;
 
 export const WelcomeContainer = styled.div`
-padding: 0 20px;
-margin: 30px 0;
+    padding: 30px 20px;
+    background-color: ${({ theme }) => theme.backgroundColourTwo};
 `;
 
 export const WelcomeText = styled(BasicH1)`
@@ -101,7 +103,7 @@ export const WelcomeText = styled(BasicH1)`
 `;
 
 export const NavContainer = styled.nav`
-    margin-top: 20px;
+    margin-bottom: 25px;
 `;
 
 export const UlContainer = styled.ul`
@@ -109,24 +111,27 @@ export const UlContainer = styled.ul`
     align-items: center;
     justify-content: space-evenly;
     list-style-type: none;
-    margin-bottom: 10px;
     padding: 0;
+    margin: 0;
 `;
 
 export const Link = styled(BasicLink)`
-width: 50%;
-text-align: center;
-padding: 20px;
-font-size: 20px;
-font-family: 'Quicksand', sans-serif;
-background-color: ${({ theme }) => theme.backgroundColourFour.background};
-&:hover{
-    font-weight: 600;
-}
-&.${props=> props.activeClassName} {
-    background-color: ${({ theme }) => theme.backgroundColourTwo.background};
-    font-weight: 600;
-}
+    width: 50%;
+    text-align: center;
+    padding: 20px;
+    font-size: 21px;
+    font-family: 'Quicksand', sans-serif;
+    background-color: ${({ theme }) => theme.backgroundColourFour};
+    &:hover{
+        font-weight: 600;
+    }
+    &.${props=> props.activeClassName} {
+        background-color: ${({ theme }) => theme.backgroundColourOne};
+        font-weight: 600;
+    }
+    @media(min-width: 640px){
+        padding: 25px;
+    }
 `;
 
 export default Header;

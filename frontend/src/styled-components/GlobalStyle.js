@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components/macro";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -7,20 +7,20 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html { 
+  html, body { 
     min-height: 100%;
   }
 
   body {
     margin: 0;
-    background-color: ${({ theme }) => theme.body};      
+    color: ${({ theme }) => theme.textColourOne};
+    background-color: ${({ theme }) => theme.body};    
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #313131;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.4s ease-in-out;
   }
 `;
 
@@ -65,7 +65,7 @@ export const BasicContainer = styled.div`
 
 const activeClassName = 'nav-item-active';
 export const BasicLink = styled(NavLink).attrs({ activeClassName })`
-    color: #313131;
+    color: ${({ theme }) => theme.textColourOne};
     text-decoration: none;
     &.${activeClassName} {
       text-decoration: none;
