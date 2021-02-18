@@ -77,6 +77,7 @@ export const FormInput = styled.input`
     font-family: 'Open Sans', sans-serif;
     font-size: 17px;
     -webkit-appearance: none;
+    border-radius: none;
     &:focus {
         border-bottom: 2px solid ${({ theme }) => theme.borderColourOne};
         outline: none;
