@@ -79,6 +79,7 @@ export const FormInput = styled.input`
     &:focus {
         border-bottom: 2px solid ${({ theme }) => theme.borderColourOne};
         outline: none;
+        border-radius: none;
     }
 `;
 
