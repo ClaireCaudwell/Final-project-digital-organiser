@@ -83,22 +83,24 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+const documentation = {
+  "Welcome": "Welcome to Claire's digital organiser API 🌼",
+  "Endpoint 1": {
+    "https://claires-digital-organiser.herokuapp.com/users": "POST endpoint - Used to create a user. Requires username and password in body.",
+  },
+  "Endpoint 2": {
+    "https://claires-digital-organiser.herokuapp.com/sessions": "POST endpoint to find user in database based on username and password. Requires username and password in body.",
+  },
+  "Endpoint 3": {
+    "https://claires-digital-organiser.herokuapp.com/users/:id/organiser": " Endpoint for authenticating user and giving access to organiser.",
+  },
+  "Endpoint 4": {
+    "https://claires-digital-organiser.herokuapp.com/users/:id/organiser": " Endpoint for authenticating user and giving access to organiser.",
+  },
+};
+
 app.get('/', (req, res) => {
-  const documentation = {
-    "Welcome": "Welcome to Claire's digital organiser API 🌼",
-    "Endpoint 1": {
-      "https://claires-digital-organiser.herokuapp.com/users": "POST endpoint - Used to create a user. Requires username and password in body.",
-    },
-    "Endpoint 2": {
-      "https://claires-digital-organiser.herokuapp.com/sessions": "POST endpoint to find user in database based on username and password. Requires username and password in body.",
-    },
-    "Endpoint 3": {
-      "https://claires-digital-organiser.herokuapp.com/users/:id/organiser": " Endpoint for authenticating user and giving access to organiser.",
-    },
-    "Endpoint 4": {
-      "https://claires-digital-organiser.herokuapp.com/users/:id/organiser": " Endpoint for authenticating user and giving access to organiser.",
-    },
-  };
+  res.json(documentation);
 });
 
 // POST endpoint to create user
