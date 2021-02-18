@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import Calendar from "react-calendar";
 
 import { weeklySchedule } from "../../reducer/weeklySchedule";
-// import { 
-//     CalendarContainer,
-//     CalendarWrapper
-// } from "../../styled-components/Calendar";
+import { 
+    CalendarContainer,
+    CalendarWrapper
+} from "../../styled-components/Calendar";
 
 export const ScheduleCalendar = ({ randomNumber }) => {
     const dispatch = useDispatch();
@@ -24,13 +24,13 @@ export const ScheduleCalendar = ({ randomNumber }) => {
 
     return (
         <CalendarContainer>
-            {/* <CalendarWrapper> */}
+            <CalendarWrapper>
                 <Calendar
                     value={selectedDate}
                     key={randomNumber}
                     onClickDay={onSelectDate}
                 />
-            {/* </CalendarWrapper>       */}
+            </CalendarWrapper>      
         </CalendarContainer>
     )
 };
