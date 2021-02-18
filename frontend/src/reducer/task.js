@@ -51,7 +51,7 @@ export const task = createSlice({
 // Thunk for fetch to POST endpoint to add a schedule task
 export const addTask = (scheduletask, userId, startDateTime) => {
     return(dispatch) => {
-        fetch(`http://localhost:8080/users/${userId}/scheduletask`, {
+        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduletask`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ scheduletask, startDateTime }),
@@ -75,7 +75,7 @@ export const addTask = (scheduletask, userId, startDateTime) => {
 // Thunk to get the task when the user clicks on the task in the summary. The data received back in json is sent into the taskSummary.js
 export const getTask = (taskId, userId) => {
     return(dispatch) => {
-        fetch(`http://localhost:8080/users/${userId}/scheduletask/${taskId}`, {
+        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduletask/${taskId}`, {
         method: "GET",
         headers: { "Content-Type": "application/json"},
     })
@@ -96,7 +96,7 @@ export const getTask = (taskId, userId) => {
 // Thunk doing the dispatch to the PATCH endpoint that updates a task
 export const editTask = (scheduletask, userId, startDateTime, taskid) => {
     return(dispatch) => {
-        fetch(`http://localhost:8080/users/${userId}/scheduletask/${taskid}`, {
+        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduletask/${taskid}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify({ scheduletask, startDateTime }),
@@ -124,7 +124,7 @@ export const editTask = (scheduletask, userId, startDateTime, taskid) => {
 // Does fetch to DELETE endpoint
 export const deleteTask = (userId, taskId) => {
     return(dispatch) => {
-        fetch(`http://localhost:8080/users/${userId}/scheduletask/${taskId}`, {
+        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduletask/${taskId}`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
         })

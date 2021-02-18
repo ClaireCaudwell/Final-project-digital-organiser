@@ -35,7 +35,7 @@ export const weeklySchedule = createSlice({
 // Based on the date for the Monday date of that week
 export const getSchedule = (userId, monday) => {
     return(dispatch) => {
-        fetch(`http://localhost:8080/users/${userId}/scheduleweek/${monday}`, {
+        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduleweek/${monday}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         })
