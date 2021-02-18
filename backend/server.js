@@ -86,16 +86,40 @@ app.use(bodyParser.json());
 const documentation = {
   "Welcome": "Welcome to Claire's digital organiser API 🌼",
   "Endpoint 1": {
-    "https://claires-digital-organiser.herokuapp.com/users": "POST endpoint - Used to create a user. Requires username and password in body.",
+    "https://claires-digital-organiser.herokuapp.com/users": "POST endpoint - Creates a user. Requires username and password in fetch body.",
   },
   "Endpoint 2": {
-    "https://claires-digital-organiser.herokuapp.com/sessions": "POST endpoint to find user in database based on username and password. Requires username and password in body.",
+    "https://claires-digital-organiser.herokuapp.com/sessions": "POST endpoint- to find user in database based on username and password. Requires username and password in fetch body.",
   },
   "Endpoint 3": {
-    "https://claires-digital-organiser.herokuapp.com/users/:id/organiser": " Endpoint for authenticating user and giving access to organiser.",
+    "https://claires-digital-organiser.herokuapp.com/users/:id/organiser": "GET endpoint - Requires user ID in the path and sending access token in the fetch headers to authenticate user. Gives access to the users organiser if access token in valid.",
   },
   "Endpoint 4": {
-    "https://claires-digital-organiser.herokuapp.com/users/:id/organiser": " Endpoint for authenticating user and giving access to organiser.",
+    "https://claires-digital-organiser.herokuapp.com/users/:id/scheduletask": "POST endpoint - Requires user ID in the path and scheduletask (the description of the task) and startDateTime(combination of date and time) sent in the fetch body. Posts a schedule task to the schedule task array for that user.",
+  },
+  "Endpoint 5": {
+    "https://claires-digital-organiser.herokuapp.com/users/:id/scheduleweek/:starttime": "GET endpoint - Requires user ID in the path and the Monday date for the week you want to get the tasks for sent in the body. Get's that weeks tasks for that user from the Monday to the Sunday date.",
+  },
+  "Endpoint 6": {
+    "https://claires-digital-organiser.herokuapp.com/users/:id/scheduletask/:taskid": "GET endpoint - Requires user ID and the task ID in the path. Get's the specific task for that user.",
+  },
+  "Endpoint 7": {
+    "https://claires-digital-organiser.herokuapp.com/users/:id/scheduletask/:taskid": "PATCH endpoint - Requires user ID and the task ID in the path. Updates the specific task for that user.",
+  },
+  "Endpoint 8": {
+    "https://claires-digital-organiser.herokuapp.com/users/:id/scheduletask/:taskid": "DELETE endpoint - Requires user ID and the task ID in the path. Deletes the specific task for that user.",
+  },
+  "Endpoint 9": {
+    "https://claires-digital-organiser.herokuapp.com/users/:id/note": "POST endpoint - Requires user ID in the path. Creates an object containing default id and colourNumber for the note in the users notes array.",
+  },
+  "Endpoint 10": {
+    "https://claires-digital-organiser.herokuapp.com/users/:id/note": "GET endpoint - Requires user ID in the path. Gets the users array of notes.",
+  },
+  "Endpoint 11": {
+    "https://claires-digital-organiser.herokuapp.com/users/:id/note/:noteid": "PATCH endpoint - Requires user ID and note ID in the path. And you can send a noteText(the text of the note) and colourNumber(Number the note will be which corresponds to a class name/colour in the frontend) in the body. Cannot send in noteText and colourNumber at the same time when updating the users note, only seperately depending on what you want to do.",
+  },
+  "Endpoint 12": {
+    "https://claires-digital-organiser.herokuapp.com/users/:id/note/:noteid": "DELETE endpoint - Requires user ID and task ID in the path. Deletes the specified note for that user.",
   },
 };
 
