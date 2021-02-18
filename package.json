@@ -6,6 +6,7 @@
     "postinstall": "npm install --prefix backend"
   },
   "dependencies": {
+    "@babel/helper-compilation-targets": "^7.12.16",
     "react-redux": "^7.2.2"
   }
 }
