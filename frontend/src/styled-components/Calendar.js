@@ -18,6 +18,26 @@ export const CalendarWrapper = styled.div`
         border: none;
         font-family: 'Quicksand', sans-serif;
     }
+
+    .react-calendar--doubleView {
+        width: 700px;
+    }
+    .react-calendar--doubleView .react-calendar__viewContainer {
+        display: flex;
+        margin: -0.5em;
+    }
+    .react-calendar--doubleView .react-calendar__viewContainer > * {
+        width: 50%;
+        margin: 0.5em;
+    }
+    .react-calendar,
+    .react-calendar *,
+    .react-calendar *:before,
+    .react-calendar *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }        
     .react-calendar button {
         border: 0;
         outline: none;
