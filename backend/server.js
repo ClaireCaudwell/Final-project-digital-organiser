@@ -83,6 +83,10 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+  res.json("welcome");
+});
+
 // POST endpoint to create user
 // Returns access Token amongst other things
 app.post("/users", async (req, res) => {
