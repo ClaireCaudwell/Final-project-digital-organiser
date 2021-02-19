@@ -110,8 +110,7 @@ export const updateNote = (userId, noteId, noteText, colourNumber) => {
 // Thunk for deleting note
 export const deleteNote = (userId, noteId) => {
     return(dispatch) => {
-        // `https://claires-digital-organiser.herokuapp.com/users/${userId}/note/${noteId}`
-        fetch(`http://localhost:3000/users/${userId}/note/${noteId}`, {
+        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/note/${noteId}`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
         })
