@@ -9,6 +9,7 @@ import { AddTaskButton } from "../components/Schedule-components/AddTaskButton";
 import { WeeklySchedule } from "../components/Schedule-components/WeeklySchedule";
 import { weeklySchedule, getSchedule } from "../reducer/weeklySchedule";
 import { AddEditTask } from "../components/Schedule-components/AddEditTask";
+import { Footer } from "../components/Footer";
 
 import {
     MainContainer,
@@ -108,6 +109,7 @@ export const Schedule = () => {
                     </RightColumn>
                 </SectionContainer>
             </MainContainer>     
+            <Footer />
         </>
     )
 };

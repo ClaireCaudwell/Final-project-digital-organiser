@@ -5,6 +5,7 @@ import { Header } from "../components/Header";
 import { AddNote } from "../components/Notes-components/AddNote";
 import { NoteList } from "../components/Notes-components/NoteList";
 import { getNotes, note } from "../reducer/note";
+import { Footer } from "../components/Footer";
 
 import { MainNotesContainer } from "../styled-components/NotesPage";
 
@@ -25,6 +26,7 @@ export const NotesPage = () => {
                 <AddNote />
                 <NoteList />
             </MainNotesContainer>
+            <Footer />
         </>
     );
 };

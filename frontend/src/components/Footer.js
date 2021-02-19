@@ -6,14 +6,15 @@ import { BasicP } from "../styled-components/GlobalStyle";
 export const Footer = () => {
     return(
         <FooterContainer>
-            <FooterText>Digital Organiser created by Claire Caudwell for the Technigo Bootcamp final project</FooterText>
+            <FooterText>Digital Organiser built by Claire Caudwell for the Technigo Bootcamp final project 2021</FooterText>
         </FooterContainer>
     );
 };
 
 const FooterContainer = styled.div`
-    padding: 0 20px;
-    margin: 0;
+    margin: 0 auto;
+    padding: 0 10px;
+    width: 100%;
 `;
 
 const FooterText = styled(BasicP)`
