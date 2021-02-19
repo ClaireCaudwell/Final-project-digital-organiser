@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { userLogin, userSignup } from "reducer/user";
+import { Footer } from "../components/Footer";
 import {
     MainContainer,
     TitleContainer,
@@ -91,6 +92,7 @@ export const SignupLogin = () => {
                 </FormContainer>
                 {userId === null && <ErrorMessage className="error-message">{error}</ErrorMessage>}
             </MainContainer>
+            <Footer />
         </>
     );
 };
