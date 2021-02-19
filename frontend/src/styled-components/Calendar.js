@@ -93,6 +93,7 @@ export const CalendarWrapper = styled.div`
     }
     .react-calendar__tile {
         background: none;
+        margin: 0;
     }
     /*When hovering over date */
     .react-calendar__tile:enabled:hover,
