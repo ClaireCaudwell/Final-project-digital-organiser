@@ -13,9 +13,11 @@ export const Footer = () => {
 
 const FooterContainer = styled.div`
     padding: 20px;
+    margin: 0;
 `;
 
 const FooterText = styled(BasicP)`
-    font-size: 16px;
+    font-size: 13px;
+    text-align: center;
 `;
 
