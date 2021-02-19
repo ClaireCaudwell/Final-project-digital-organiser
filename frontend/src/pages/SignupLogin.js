@@ -91,7 +91,7 @@ export const SignupLogin = () => {
                     </Form>
                 </FormContainer>
                 {userId === null && <ErrorMessage className="error-message">{error}</ErrorMessage>}
-                <Footer className="smaller-width" />
+                <Footer width="smallerWidth" />
             </MainContainer>
         </>
     );
