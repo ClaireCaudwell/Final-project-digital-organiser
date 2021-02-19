@@ -14,10 +14,10 @@ export const Footer = () => {
 const FooterContainer = styled.div`
     margin: 0 auto;
     padding: 0 10px;
-    width: ${props => props.widthSize || "100%"};
-        /* @media(min-width: 1024px){
-            width: 400px;
-        } */
+    width: 300px;
+    @media(min-width: 1024px){
+        width: 400px;
+    }
 `;
 
 const FooterText = styled(BasicP)`
