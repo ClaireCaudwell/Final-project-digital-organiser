@@ -12,7 +12,7 @@ export const Footer = () => {
 };
 
 const FooterContainer = styled.div`
-    padding: 20px;
+    padding: 0 20px;
     margin: 0;
 `;
 
