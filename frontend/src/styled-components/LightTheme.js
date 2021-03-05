@@ -34,7 +34,7 @@ const LightTheme = {
     backgroundColourSix: "#c7f5b1",
     backgroundColourEight: "#bfe7b6",
     // Opaque colours
-    backgroundColourNine: "rgba(215, 215, 215, 0.5)",
+    backgroundColourNine: "rgba(255, 255, 255, 0.5)",
     // Hover colours
     hoverColourThree: "#d6fb5d",
     hoverColourSeven: "#b9fa9a",
