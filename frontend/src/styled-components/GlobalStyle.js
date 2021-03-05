@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html, body { 
+  html { 
     min-height: 100%;
   }
 
@@ -20,7 +20,6 @@ export const GlobalStyle = createGlobalStyle`
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    transition: all 0.4s ease-in-out;
   }
 `;
 

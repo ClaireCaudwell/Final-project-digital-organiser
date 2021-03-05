@@ -32,8 +32,9 @@ export const note = createSlice({
 
 // Thunk for adding a note
 export const addNote = (userId) => {
+    // `https://claires-digital-organiser.herokuapp.com/users/${userId}/note`
     return(dispatch) => {
-        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/note`, {
+        fetch(`http://localhost:8080/users/${userId}/note`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
         })
@@ -56,10 +57,11 @@ export const addNote = (userId) => {
     };
 };
 
+// `https://claires-digital-organiser.herokuapp.com/users/${userId}/note`
 // Thunk for getting the array of notes
 export const getNotes = (userId) => {
     return(dispatch) => {
-        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/note`,{
+        fetch(`http://localhost:8080/users/${userId}/note`,{
             method: "GET",
             headers: { "Content-Type": "application/json" },
         })
@@ -80,10 +82,11 @@ export const getNotes = (userId) => {
     };
 };
 
+// `https://claires-digital-organiser.herokuapp.com/users/${userId}/note/${noteId}
 // Thunk for updating note
 export const updateNote = (userId, noteId, noteText, colourNumber) => {
     return(dispatch) => {
-        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/note/${noteId}`, {
+        fetch(`http://localhost:8080/users/${userId}/note/${noteId}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify({ noteText, colourNumber }),
@@ -107,10 +110,11 @@ export const updateNote = (userId, noteId, noteText, colourNumber) => {
     };
 };
 
+// `https://claires-digital-organiser.herokuapp.com/users/${userId}/note/${noteId}`
 // Thunk for deleting note
 export const deleteNote = (userId, noteId) => {
     return(dispatch) => {
-        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/note/${noteId}`, {
+        fetch(`http://localhost:8080/users/${userId}/note/${noteId}`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
         })

@@ -1,22 +1,46 @@
-import styled from "styled-components/macro";
+import styled, { keyframes } from "styled-components/macro";
 import { SignupLogin } from "../pages/SignupLogin";
-import { BasicH1, BasicP, BasicButton } from "./GlobalStyle";
+import { BasicH1, BasicP, BasicButton, BasicContainer } from "./GlobalStyle";
 
 // SignupLogin.js page styling
-export const MainContainer = styled.main`
+export const ImageWrapper = styled.main`
+    background-image: url(${({ theme }) => theme.backgroundImg});
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    overflow-y: scroll;
+    overflow-x: hidden;
+`;
+
+export const MainContainer = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 40px 0;
-    @media (max-width: 1023px) and (min-width: 840px) {
-        margin-top: 90px;
+    min-height: 100vh;
+    @media(min-width: 640px){
+        margin: 20px 0;
     }
-    @media(min-height: 1023px){
-        margin: 160px;
+    @media(min-width: 750px){
+        margin: 0;
     }
-    @media(min-width: 1024px) {
-        margin-top: 100px;
+`;
+
+export const SectionWrapper = styled.section`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 100%;
+    background-color: ${({ theme }) => theme.backgroundColourNine};
+    border-radius: 5px;
+    @media(min-width: 750px){
+        padding: 30px;
     }
 `;
 
@@ -27,10 +51,15 @@ export const TitleContainer = styled.div`
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 35px;
-    width: 300px;
-    @media(min-width: 1024px) {
-        width: 400px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    width: 90%;
+    @media(min-width: 600px){
+        width: 80%;
+    }
+    @media(min-width: 750px){
+        width: 70%;
     }
 `;
 
@@ -38,18 +67,27 @@ export const MainTitle = styled(BasicH1)`
     padding-bottom: 7px;
     border-bottom: 2px solid ${({ theme }) => theme.borderColourOne};
     margin-bottom: 10px;
+    margin-top: 0;
 `;
 
 export const SubTitle = styled(BasicP)`
     margin: 0;
+    font-size: 16px;
 `;
 
 export const FormContainer = styled(TitleContainer)`
-    padding: 20px 0;
+    padding: 30px 0;
     margin: 0;
     background-color: ${({ theme }) => theme.backgroundColourSix};
     border-radius: 5px;
     flex-direction: row;
+    width: 90%;
+    @media(min-width: 600px){
+        width: 80%;
+    }
+    @media(min-width: 750px){
+        width: 70%;
+    }
 `;
 
 export const Form = styled.form`
@@ -85,29 +123,87 @@ export const FormInput = styled.input`
 `;
 
 export const FormButton = styled(BasicButton)`
-width: 100%;
-background-color: ${({ theme }) => theme.backgroundColourOne};
-margin-top: 10px;
-margin-right: 20px;
-margin-bottom: 10px;
-padding: 10px;
-font-size: 17px;
-outline: none;
-&:last-child{
-    margin-bottom: 0;
-}
-&:hover{ 
-    background-color: ${({ theme }) => theme.backgroundColourThree};
+    width: 100%;
+    background-color: ${({ theme }) => theme.backgroundColourOne};
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 17px;
+    outline: none;
+    &:last-child{
+        margin-bottom: 0;
+    }
+    &:hover{ 
+        background-color: ${({ theme }) => theme.backgroundColourThree};
 }
 `;
 
-export const ErrorMessage = styled(BasicP)`
-margin-top: 15px;
-text-align: center;
-width: 300px;
-@media(min-width: 1024px) {
-    width: 400px;
-}
+export const ErrorMessage = styled.div`
+    text-align: center;
+    width: 90%;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 128, 128, 0.6);
+    margin: 20px 0 0;
+    &:empty{
+        display: none;
+    }
+    @media(min-width: 600px){
+        width: 80%;
+    }
+    @media(min-width: 750px){
+        width: 70%;
+    }
+`;
+
+// Footer styling
+export const FooterContainer = styled.div`
+    margin: 20px 0 0 0;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: ${({ theme }) => theme.backgroundColourOne};
+    width: 90%;
+    @media(min-width: 600px){
+        width: 80%;
+    }
+    @media(min-width: 750px){
+        width: 70%;
+    }
+`;
+
+export const FooterText = styled(BasicP)`
+    font-size: 13px;
+    text-align: center;
+`;
+
+//Loading component
+export const LoaderDiv = styled(BasicContainer)`
+    flex-direction: column;
+    background-color: ${({ theme }) => theme.backgroundColourNine};
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 315px;
+    color: ${({ theme }) => theme.textColourFour};
+`;
+
+const rotate = keyframes`
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+`;
+
+export const LoaderAnimation = styled.div`
+    border: 8px solid ${({ theme }) => theme.backgroundColourThree};
+    border-top: 8px solid ${({ theme }) => theme.backgroundColourEight};
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: ${rotate} 2s linear infinite;
 `;
 
 export default SignupLogin;

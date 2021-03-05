@@ -7,6 +7,7 @@ import { FormLabel, FormInput, FormButton } from "./SignupLogin";
 export const MainContainer = styled.main`
     min-height: 100%;
     padding: 0 20px;
+    background-color: ${({ theme }) => theme.body};
     @media(min-width: 750px){
         display: flex;
         flex-direction: row;

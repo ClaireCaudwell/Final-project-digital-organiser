@@ -8,14 +8,15 @@ const LightTheme = {
     ...SignupLogin,
     ...Header,
     ...Schedule,
-    ...NotesPage,    
-    
-    backgroundImg: FlowerImage,
+    ...NotesPage,        
+
+    backgroundImg: FlowerImage,        
     body: "#f3fdd8",
     // Text colour
     textColourOne: "#313131",
     textColourTwo: "#000",
     textColourThree: "#25b344",
+    textColourFour: "#000",
     // Border colour
     border: "none",
     borderColourOne: "#6fd845",
@@ -32,6 +33,8 @@ const LightTheme = {
     backgroundColourFive: "#a5ed84",
     backgroundColourSix: "#c7f5b1",
     backgroundColourEight: "#bfe7b6",
+    // Opaque colours
+    backgroundColourNine: "rgba(215, 215, 215, 0.5)",
     // Hover colours
     hoverColourThree: "#d6fb5d",
     hoverColourSeven: "#b9fa9a",

@@ -7,6 +7,7 @@ import { BasicButton } from "./GlobalStyle";
 // NotesPage.js styling
 export const MainNotesContainer = styled(MainContainer)`
     flex-direction: column;
+    background-color: ${({ theme }) => theme.body};
 `;
 
 export const AddNoteSection = styled.section`

@@ -16,6 +16,7 @@ const LightTheme = {
     textColourOne: "#313131",
     textColourTwo: "#000",
     textColourThree: "#003cb3",
+    textColourFour: "#fff",
     // Border colour
     border: "none",
     borderColourOne: "#8080ff",
@@ -32,6 +33,8 @@ const LightTheme = {
     backgroundColourFive: "#8cb3d9",
     backgroundColourSix: "#b3ccff",
     backgroundColourEight: "#8cb3d9",
+    // Opaque colours
+    backgroundColourNine: "rgba(51, 51, 51, 0.5)",
     // Hover colours
     hoverColourThree: "#b3b3b3",
     hoverColourSeven: "#99bbff",

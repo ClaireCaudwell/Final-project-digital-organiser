@@ -33,9 +33,11 @@ export const weeklySchedule = createSlice({
 
 // Thunk for doing the GET request to get the schedule tasks for the week from. 
 // Based on the date for the Monday date of that week
+
+// `https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduleweek/${monday}`
 export const getSchedule = (userId, monday) => {
     return(dispatch) => {
-        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduleweek/${monday}`, {
+        fetch(`http://localhost:8080/users/${userId}/scheduleweek/${monday}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         })
@@ -50,7 +52,7 @@ export const getSchedule = (userId, monday) => {
             dispatch(weeklySchedule.actions.setWeeklySchedule({ weeklySchedule: json.weeklySchedule }));
         })
         .catch((error) => {
-            dispatch(weeklySchedule.actions.setErrorMessage({ errorMessage: error.toString() }));
+            dispatch(weeklySchedule.actions.setErrorMessage({ errorMessage: error.toString()}));
         })
     };
 };
