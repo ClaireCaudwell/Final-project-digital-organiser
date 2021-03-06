@@ -32,9 +32,9 @@ export const note = createSlice({
 
 // Thunk for adding a note
 export const addNote = (userId) => {
-    // `https://claires-digital-organiser.herokuapp.com/users/${userId}/note`
+    // `http://localhost:8080/users/${userId}/note`
     return(dispatch) => {
-        fetch(`http://localhost:8080/users/${userId}/note`, {
+        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/note`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
         })
