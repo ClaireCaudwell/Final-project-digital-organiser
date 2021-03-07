@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import { userLogin, userSignup } from "reducer/user";
 import { Footer } from "../components/Footer";
+import { Toggle } from "../components/Toggle";
 import {
     ImageWrapper,
     MainContainer,
@@ -57,6 +58,7 @@ export const SignupLogin = () => {
 
     return (
         <ImageWrapper>
+            <Toggle frontpageToggle={"frontpageToggle"}/>
             <MainContainer>
                 {!isLoading ? (
                     <>
@@ -85,6 +87,7 @@ export const SignupLogin = () => {
                                             maxLength="30"
                                             required              
                                         />
+                                    {userId === null && <ErrorMessage className="error-message">{error}</ErrorMessage>}
                                     <FormButton 
                                         type="submit" 
                                         onClick={() => setButtonClick("signup")}
@@ -98,7 +101,6 @@ export const SignupLogin = () => {
                                     </FormButton> 
                                 </Form>
                             </FormContainer>
-                        {userId === null && <ErrorMessage className="error-message">{error}</ErrorMessage>}
                         <Footer />
                     </SectionWrapper>
                         </>

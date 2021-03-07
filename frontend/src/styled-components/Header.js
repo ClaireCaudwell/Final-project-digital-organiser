@@ -1,13 +1,13 @@
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 import { Header } from "components/Header";
 import { BasicButton, BasicH1, BasicLink } from "styled-components/GlobalStyle";
 
 export const HeaderContainer = styled.header`
-  background-color: ${({ theme }) => theme.backgroundColourOne};
+  background-color: ${({ theme }) => theme.colourOne};
 `;
 
 export const TopContainer = styled.div`
-  background-color: ${({ theme }) => theme.backgroundColourOne};
+  background-color: ${({ theme }) => theme.colourFive};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,6 +21,9 @@ export const ToggleContainer = styled.div`
     justify-content: center;
     margin-top: 5px;
     position: relative;
+    &.frontpageToggle {
+        margin: 15px 10px;
+    }
 `;
 
 export const Slider = styled.label`
@@ -30,7 +33,7 @@ export const Slider = styled.label`
     width: 66px;
     height: 32px;
     border-radius: 15px;
-    background-color: ${({ theme }) => theme.backgroundColourFive};
+    background-color: ${({ theme }) => theme.textColourTwo};
     transition: 0.5s;
     cursor: pointer;
     padding-left: 2px;
@@ -70,7 +73,7 @@ export const ToggleInput = styled.input`
 export const ToggleText = styled.p`
 font-size: 11px;
 font-family: 'Open Sans', sans-serif;
-margin-bottom: 0;
+margin: 0;
 `;
 
 // const activeClassName = 'nav-item-active';
@@ -81,18 +84,18 @@ export const StyledLink = styled(BasicLink)`
 `;
 
 export const SmallButton = styled(BasicButton)`
-    background-color: ${({ theme }) => theme.backgroundColourThree};
+    background-color: ${({ theme }) => theme.colourSix};
     padding: 5px 7px;
     font-size: 16px;
     color: ${({ theme }) => theme.textColourOne};
     &:hover{
-        background-color: ${({ theme }) => theme.hoverColourThree};
+        background-color: ${({ theme }) => theme.colourSixHover};
     }
 `;
 
 export const WelcomeContainer = styled.div`
     padding: 30px 20px;
-    background-color: ${({ theme }) => theme.backgroundColourTwo};
+    background-color: ${({ theme }) => theme.colourOne};
 `;
 
 export const WelcomeText = styled(BasicH1)`
@@ -121,12 +124,12 @@ export const Link = styled(BasicLink)`
     padding: 20px;
     font-size: 21px;
     font-family: 'Quicksand', sans-serif;
-    background-color: ${({ theme }) => theme.backgroundColourFour};
+    background-color: ${({ theme }) => theme.colourTwo};
     &:hover{
         font-weight: 600;
     }
     &.${props=> props.activeClassName} {
-        background-color: ${({ theme }) => theme.backgroundColourOne};
+        background-color: ${({ theme }) => theme.colourFive};
         font-weight: 600;
     }
     @media(min-width: 640px){

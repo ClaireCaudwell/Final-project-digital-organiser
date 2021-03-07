@@ -48,11 +48,11 @@ export const task = createSlice({
     }
 });
 
-// `http://localhost:8080/users/${userId}/scheduletask`
+// `https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduletask`
 // Thunk for fetch to POST endpoint to add a schedule task
 export const addTask = (scheduletask, userId, startDateTime) => {
     return(dispatch) => {
-        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduletask`, {
+        fetch(`http://localhost:8080/users/${userId}/scheduletask`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ scheduletask, startDateTime }),
@@ -73,11 +73,11 @@ export const addTask = (scheduletask, userId, startDateTime) => {
     };
 };
 
-// `http://localhost:8080/users/${userId}/scheduletask/${taskId}`
+// `https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduletask/${taskId}`
 // Thunk to get the task when the user clicks on the task in the summary. The data received back in json is sent into the taskSummary.js
 export const getTask = (taskId, userId) => {
     return(dispatch) => {
-        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduletask/${taskId}`, {
+        fetch(`http://localhost:8080/users/${userId}/scheduletask/${taskId}`, {
         method: "GET",
         headers: { "Content-Type": "application/json"},
     })
@@ -95,11 +95,11 @@ export const getTask = (taskId, userId) => {
     };
 };
 
-// `http://localhost:8080/users/${userId}/scheduletask/${taskid}`
+// `https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduletask/${taskid}`
 // Thunk doing the dispatch to the PATCH endpoint that updates a task
 export const editTask = (scheduletask, userId, startDateTime, taskid) => {
     return(dispatch) => {
-        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduletask/${taskid}`, {
+        fetch(`http://localhost:8080/users/${userId}/scheduletask/${taskid}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify({ scheduletask, startDateTime }),
@@ -123,12 +123,12 @@ export const editTask = (scheduletask, userId, startDateTime, taskid) => {
     };
 };
 
-// `http://localhost:8080/users/${userId}/scheduletask/${taskId}`
+// `https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduletask/${taskId}`
 // Thunk is called when user deletes task
 // Does fetch to DELETE endpoint
 export const deleteTask = (userId, taskId) => {
     return(dispatch) => {
-        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/scheduletask/${taskId}`, {
+        fetch(`http://localhost:8080/users/${userId}/scheduletask/${taskId}`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
         })

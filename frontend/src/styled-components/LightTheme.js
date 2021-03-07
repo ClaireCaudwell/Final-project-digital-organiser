@@ -10,59 +10,38 @@ const LightTheme = {
     ...Schedule,
     ...NotesPage,        
 
-    backgroundImg: FlowerImage,        
-    body: "#f3fdd8",
-    // Text colour
+    backgroundImg: FlowerImage,
+    opaqueColour: "rgba(255, 255, 255, 0.5)",
+    colourOne: "#fff",
+    // Darker mint green colour
+    colourTwo: "#ccffcc",
+    hoverColourTwo: "#b3ffb3",
+    // Light grey colour
+    colourThree: "#f2f2f2",
+    // Slightly darker grey colour
+    colourFour: "#e6e6e6",
+    // Light mint green colour
+    colourFive: "#e6ffe6",
+    // Light green colour
+    colourSix: "#ccff66",
+    hoverColourSix: "#a6ff4d",
+    // Even darker mint green colour
+    colourSeven: "#b3ffcc", 
+    hoverColourSeven: "#c4ff4d",
+    // Error message colour
+    colourEight: "#ffcccc",   
+    // Text colours
     textColourOne: "#313131",
-    textColourTwo: "#000",
-    textColourThree: "#25b344",
-    textColourFour: "#000",
-    // Border colour
-    border: "none",
-    borderColourOne: "#6fd845",
-    // Background colours
-    // Copy of body colour
-    backgroundColourOne: "#f3fdd8",
-    // Welcome container header
-    backgroundColourTwo: "#fff",
-    // Bright green logout button colour
-    backgroundColourThree: "#dfff74",
-    // Tab non-active link colour
-    backgroundColourFour: "#e7f5c0",
-    // Toggle colour
-    backgroundColourFive: "#a5ed84",
-    backgroundColourSix: "#c7f5b1",
-    backgroundColourEight: "#bfe7b6",
-    // Opaque colours
-    backgroundColourNine: "rgba(255, 255, 255, 0.5)",
-    // Hover colours
-    hoverColourThree: "#d6fb5d",
-    hoverColourSeven: "#b9fa9a",
+    textColourTwo: "#00e6ac",   
     // Note colours
-    noteColourZero: {
-        background: "#c7f5b1"
-    },
-    noteHoverColourZero: {
-        background: "#b2f394"
-    },
-    noteColourOne: {
-        background: "#def69a"
-    },
-    noteHoverColourOne: {
-        background: "#d7f87b"
-    },
-    noteColourTwo: {
-        background: "#a5ed84"
-    },
-    noteHoverColourTwo: {
-        background: "#99ec72"
-    },
-    noteColourThree: {
-        background: "#dfff74"
-    },
-    noteHoverColourThree: {
-        background: "#d6fa5f"
-    },
+    noteColourZero: "#ccff99",
+    noteHoverColourZero: " #bfff80",
+    noteColourOne: "#00e6ac",
+    noteHoverColourOne: "#00cc99",
+    noteColourTwo: "#fff",
+    noteHoverColourTwo: "#f2f2f2",
+    noteColourThree: "#b3ffb3",
+    noteHoverColourThree: "#99ff99",
 }
 
 export default LightTheme;

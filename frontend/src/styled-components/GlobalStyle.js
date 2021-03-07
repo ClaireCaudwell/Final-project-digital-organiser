@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     color: ${({ theme }) => theme.textColourOne};
-    background-color: ${({ theme }) => theme.body};    
+    background-color: ${({ theme }) => theme.colourFive};    
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -45,6 +45,7 @@ export const BasicButton = styled.button`
   transition: 0.3s;
   outline: none;
   text-decoration: none;
+  color: ${({ theme }) => theme.textColourOne};
   &:hover{
     transition: 0.3s;
   }

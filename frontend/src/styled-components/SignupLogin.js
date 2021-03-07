@@ -5,6 +5,7 @@ import { BasicH1, BasicP, BasicButton, BasicContainer } from "./GlobalStyle";
 // SignupLogin.js page styling
 export const ImageWrapper = styled.main`
     background-image: url(${({ theme }) => theme.backgroundImg});
+    transition: 0.3s;
     background-size: cover;
     position: absolute;
     width: 100%;
@@ -36,24 +37,31 @@ export const SectionWrapper = styled.section`
     justify-content: center;
     flex-direction: column;
     padding: 20px;
-    max-width: 100%;
-    background-color: ${({ theme }) => theme.backgroundColourNine};
+    width: 90%;
+    margin: 10px 0;
+    background-color: ${({ theme }) => theme.opaqueColour};
     border-radius: 5px;
     @media(min-width: 750px){
         padding: 30px;
+        max-width: 70%;
+    }
+    @media(min-width: 1024px){
+        padding: 30px;
+        margin: 0;
+        min-width: 30%;
+        max-width: 50%;
     }
 `;
 
 export const TitleContainer = styled.div`
     font-family: 'Quicksand', sans-serif;
-    background-color: ${({ theme }) => theme.backgroundColourOne};
+    background-color: ${({ theme }) => theme.colourTwo};
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 20px;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
     width: 90%;
     @media(min-width: 600px){
         width: 80%;
@@ -65,7 +73,7 @@ export const TitleContainer = styled.div`
 
 export const MainTitle = styled(BasicH1)`
     padding-bottom: 7px;
-    border-bottom: 2px solid ${({ theme }) => theme.borderColourOne};
+    border-bottom: 3px solid ${({ theme }) => theme.textColourTwo};
     margin-bottom: 10px;
     margin-top: 0;
 `;
@@ -78,8 +86,8 @@ export const SubTitle = styled(BasicP)`
 export const FormContainer = styled(TitleContainer)`
     padding: 30px 0;
     margin: 0;
-    background-color: ${({ theme }) => theme.backgroundColourSix};
-    border-radius: 5px;
+    background-color: ${({ theme }) => theme.colourOne};
+    border-radius: 0 0 5px 5px;
     flex-direction: row;
     width: 90%;
     @media(min-width: 600px){
@@ -110,51 +118,47 @@ export const FormInput = styled.input`
     width: 100%;
     height: 40px;
     border: none;
-    background-color: transparent;
-    border-bottom: 2px solid ${({ theme }) => theme.backgroundColourOne};
+    background-color: ${({ theme }) => theme.colourThree};
+    padding: 5px;
     font-family: 'Open Sans', sans-serif;
     font-size: 17px;
     -webkit-border-radius: 0;
     border-radius: 0;
+    color: ${({ theme }) => theme.textColourOne};
     &:focus {
-        border-bottom: 2px solid ${({ theme }) => theme.borderColourOne};
         outline: none;
     }
 `;
 
 export const FormButton = styled(BasicButton)`
     width: 100%;
-    background-color: ${({ theme }) => theme.backgroundColourOne};
+    background-color: ${({ theme }) => theme.colourTwo};
     margin-top: 10px;
     margin-right: 20px;
     margin-bottom: 10px;
     padding: 10px;
     font-size: 17px;
+    border-radius: 40px;
     outline: none;
+    color: ${({ theme }) => theme.textColourOne};
     &:last-child{
         margin-bottom: 0;
     }
     &:hover{ 
-        background-color: ${({ theme }) => theme.backgroundColourThree};
+        background-color: ${({ theme }) => theme.hoverColourTwo};
 }
 `;
 
 export const ErrorMessage = styled.div`
     text-align: center;
-    width: 90%;
+    width: 100%;
     font-size: 15px;
     padding: 10px;
     border-radius: 5px;
-    background-color: rgba(255, 128, 128, 0.6);
-    margin: 20px 0 0;
+    margin-bottom: 10px;
+    background-color: ${({ theme }) => theme.colourEight};
     &:empty{
         display: none;
-    }
-    @media(min-width: 600px){
-        width: 80%;
-    }
-    @media(min-width: 750px){
-        width: 70%;
     }
 `;
 
@@ -163,7 +167,7 @@ export const FooterContainer = styled.div`
     margin: 20px 0 0 0;
     padding: 10px;
     border-radius: 5px;
-    background-color: ${({ theme }) => theme.backgroundColourOne};
+    background-color: ${({ theme }) => theme.colourOne};
     width: 90%;
     @media(min-width: 600px){
         width: 80%;
@@ -181,7 +185,7 @@ export const FooterText = styled(BasicP)`
 //Loading component
 export const LoaderDiv = styled(BasicContainer)`
     flex-direction: column;
-    background-color: ${({ theme }) => theme.backgroundColourNine};
+    background-color: ${({ theme }) => theme.opaqueColour};
     border-radius: 5px;
     padding: 20px;
     max-width: 315px;
@@ -198,8 +202,8 @@ const rotate = keyframes`
 `;
 
 export const LoaderAnimation = styled.div`
-    border: 8px solid ${({ theme }) => theme.backgroundColourThree};
-    border-top: 8px solid ${({ theme }) => theme.backgroundColourEight};
+    border: 8px solid ${({ theme }) => theme.colourOne};
+    border-top: 8px solid ${({ theme }) => theme.colourSix};
     border-radius: 50%;
     width: 80px;
     height: 80px;

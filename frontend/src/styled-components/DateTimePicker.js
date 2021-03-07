@@ -4,13 +4,14 @@ import { CalendarWrapper } from "./Calendar";
 // Styling for react Date & time picker
 export const DateSelect = styled(CalendarWrapper)`
     width: 60%;
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.colourThree};
 
     .react-date-picker {
         display: inline-flex;
         position: relative;
         display: flex;
         justify-content: space-between;
+        color: ${({ theme }) => theme.textColourOne};
     }
     .react-date-picker,
     .react-date-picker *,
@@ -19,6 +20,7 @@ export const DateSelect = styled(CalendarWrapper)`
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
+        color: ${({ theme }) => theme.textColourOne};
     }
     .react-date-picker--disabled {
         background-color: #f0f0f0;
@@ -29,9 +31,8 @@ export const DateSelect = styled(CalendarWrapper)`
         display: flex;
         flex-grow: 1;
         flex-shrink: 0;
-        border: 3px solid #fff;
         padding: 7px 5px;
-        color: #313131;
+        color: ${({ theme }) => theme.textColourOne};
         font-weight: 500;
         font-family: 'Quicksand', sans-serif;
     }
@@ -41,6 +42,7 @@ export const DateSelect = styled(CalendarWrapper)`
         flex-grow: 1;
         padding: 0 2px;
         box-sizing: content-box;
+        ${({ theme }) => theme.textColourOne};
     }
     .react-date-picker__inputGroup__divider {
         padding: 1px 0;
@@ -82,14 +84,15 @@ export const DateSelect = styled(CalendarWrapper)`
     }
     .react-date-picker__button:enabled:hover .react-date-picker__button__icon,
     .react-date-picker__button:enabled:focus .react-date-picker__button__icon {
-        stroke: #313131;
+        stroke: ${({ theme }) => theme.textColourOne};
     }
     .react-date-picker__button:disabled .react-date-picker__button__icon {
-        stroke: #313131;
+        stroke:  ${({ theme }) => theme.textColourOne};
     }
     /* Date picker svg icons - cross and calendar symbol */
     .react-date-picker__button svg {
         display: inherit;
+        stroke: ${({ theme }) => theme.textColourOne};
     }
     .react-date-picker__calendar {
         width: 300px;
@@ -110,7 +113,7 @@ export const DateSelect = styled(CalendarWrapper)`
 
 export const TimeSelect = styled(CalendarWrapper)`
     width: 60%;
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.colourThree};
 
     .react-time-picker {
         display: inline-flex;
@@ -125,6 +128,7 @@ export const TimeSelect = styled(CalendarWrapper)`
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
+        color: ${({ theme }) => theme.textColourOne};
     }
     .react-time-picker--disabled {
         background-color: #f0f0f0;
@@ -134,9 +138,8 @@ export const TimeSelect = styled(CalendarWrapper)`
         display: flex;
         flex-grow: 1;
         flex-shrink: 0;
-        border: 3px solid #fff;
         padding: 7px 5px;
-        color: #313131;
+        color: ${({ theme }) => theme.textColourOne};
         font-weight: 500;
         font-family: 'Quicksand', sans-serif;
     }
@@ -187,15 +190,15 @@ export const TimeSelect = styled(CalendarWrapper)`
     }
     .react-time-picker__button:enabled:hover .react-time-picker__button__icon,
     .react-time-picker__button:enabled:focus .react-time-picker__button__icon {
-        stroke: #313131;
+        stroke: ${({ theme }) => theme.textColourOne};
         stroke-width: 1;
     }
     .react-time-picker__button:disabled .react-time-picker__button__icon {
-        stroke: #6d6d6d;
+        stroke: ${({ theme }) => theme.textColourOne};
     }
     .react-time-picker__button svg {
         display: inherit;
-        stroke: #313131;
+        stroke: ${({ theme }) => theme.textColourOne};
     }
     .react-time-picker__clock {
         width: 200px;

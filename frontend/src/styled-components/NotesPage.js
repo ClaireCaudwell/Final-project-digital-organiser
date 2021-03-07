@@ -7,7 +7,7 @@ import { BasicButton } from "./GlobalStyle";
 // NotesPage.js styling
 export const MainNotesContainer = styled(MainContainer)`
     flex-direction: column;
-    background-color: ${({ theme }) => theme.body};
+    background-color: ${({ theme }) => theme.colourFive};
 `;
 
 export const AddNoteSection = styled.section`
@@ -31,7 +31,7 @@ export const NoteContainer = styled(AddNoteSection)`
     height: 250px;
     padding: 10px;
     margin: 0 0 10px 0;
-    background-color: ${props => props.theme[props.noteColour].background};
+    background-color: ${props => props.theme[props.noteColour]};
     @media(min-width: 600px){
         margin: 0 20px 20px 20px;
     }
@@ -53,7 +53,8 @@ export const NoteButton = styled(BasicButton)`
     color: #313131;
     transition: none;
     outline: none;
-    background-color: ${props => props.theme[props.buttonColour].background};
+    background-color: ${props => props.theme[props.buttonColour]};
+    color: ${({ theme }) => theme.textColourOne};
     &:hover{
         color: #000;
     }
@@ -68,7 +69,8 @@ export const NoteTextArea = styled.textarea`
     resize: none;
     font-size: 16px;
     font-family: 'Open Sans', sans-serif;
-    background-color: ${props => props.theme[props.className].background};
+    background-color: ${props => props.theme[props.className]};
+    color: ${({ theme }) => theme.textColourOne};
     &:focus{
         outline: none;
     }
@@ -98,9 +100,9 @@ export const ColourSquare = styled.button`
     font-size: 18px;
     cursor: pointer;
     outline: none;
-    background-color: ${props => props.theme[props.noteColour].background};
+    background-color: ${props => props.theme[props.noteColour]};
     &:hover{
-        background-color: ${props => props.theme[props.hoverColour].background};
+        background-color: ${props => props.theme[props.hoverColour]};
     }
 `;
 

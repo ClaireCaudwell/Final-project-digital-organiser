@@ -4,14 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { user} from "../reducer/user";
 import { weeklySchedule } from "../reducer/weeklySchedule";
 import { note } from "../reducer/note";
+import { Toggle } from "./Toggle";
+
 import { Bold } from "../styled-components/GlobalStyle";
 import { 
     HeaderContainer, 
     TopContainer,
-    ToggleContainer,
-    Slider,
-    ToggleInput,
-    ToggleText,
     StyledLink,
     Link,
     SmallButton,
@@ -22,17 +20,17 @@ import {
  } from "../styled-components/Header";
  
 export const Header = () => {
-    const dispatch = useDispatch();;
+    const dispatch = useDispatch();
     
-    const colourSchemeState = useSelector((store) => store.user.toggleColourscheme);
+    // const colourSchemeState = useSelector((store) => store.user.toggleColourscheme);
 
-    const changeColourScheme = () => {
-        if(colourSchemeState === "unchecked"){
-            dispatch(user.actions.setColourScheme({ colourScheme: "checked" }));
-        } else {
-            dispatch(user.actions.setColourScheme({ colourScheme: "unchecked" }));
-        }
-    };
+    // const changeColourScheme = () => {
+    //     if(colourSchemeState === "unchecked"){
+    //         dispatch(user.actions.setColourScheme({ colourScheme: "checked" }));
+    //     } else {
+    //         dispatch(user.actions.setColourScheme({ colourScheme: "unchecked" }));
+    //     }
+    // };
 
     const username = useSelector((store) => store.user.login.username);
 
@@ -48,16 +46,7 @@ export const Header = () => {
     return (        
         <HeaderContainer>
             <TopContainer>
-                <ToggleContainer>
-                    <ToggleInput
-                    type="checkbox"
-                    id="checkbox"
-                    checked={colourSchemeState === "checked" ? true : false}
-                    onChange={changeColourScheme}
-                    />
-                    <Slider htmlFor="checkbox" />
-                    <ToggleText>Toggle to choose between colour themes</ToggleText>
-                </ToggleContainer>
+                <Toggle />
                 <StyledLink to="/">
                     <SmallButton 
                         type="button" 

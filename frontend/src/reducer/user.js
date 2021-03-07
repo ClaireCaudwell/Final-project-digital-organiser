@@ -67,10 +67,10 @@ export const user = createSlice({
 // Does a fetch and a GET request sending the accessToken in headers which will allow for the Organiser.js to be rendered and the user will have access to their organiser
 // If not successful e.g. they haven't created a valid username/password or inputted the correct credentials the the throw error is shown
 
-// `http://localhost:8080/users/${userId}/organiser`
+// `https://claires-digital-organiser.herokuapp.com/users/${userId}/organiser`
 export const getOrganiser = (userId, accessToken, authorized) => {
     return(dispatch) => {
-        fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/organiser`,{
+        fetch(`http://localhost:8080/users/${userId}/organiser`,{
             method: "GET",
             headers: { Authorization: accessToken },
         })
@@ -90,8 +90,8 @@ export const getOrganiser = (userId, accessToken, authorized) => {
     };
 };
 
-// "http://localhost:8080/users"
-const SIGNUP_URL = "https://claires-digital-organiser.herokuapp.com/users";
+// "https://claires-digital-organiser.herokuapp.com/users"
+const SIGNUP_URL = "http://localhost:8080/users";
 // Thunk and fetch for creating a new user
 export const userSignup = (username, password) => {
     return(dispatch) => {
@@ -127,11 +127,11 @@ export const userSignup = (username, password) => {
     }
 }
 
-// "http://localhost:8080/sessions"
+// "https://claires-digital-organiser.herokuapp.com/sessions"
 // Thunk and fetch for the user to login as existing user
 export const userLogin = (username, password) => {
     return(dispatch) => {
-        fetch("https://claires-digital-organiser.herokuapp.com/sessions", {
+        fetch("http://localhost:8080/sessions", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password }),

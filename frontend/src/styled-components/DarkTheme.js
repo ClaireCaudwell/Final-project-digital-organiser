@@ -2,67 +2,47 @@ import SignupLogin from "./SignupLogin";
 import Header from "./Header";
 import Schedule from "./Schedule";
 import NotesPage from "./NotesPage";
-import Concrete from "../Images/Concrete.jpg";
+import StarrySky from "../Images/Starry-sky.jpg";
 
-const LightTheme = {
+const DarkTheme = {
     ...SignupLogin,
     ...Header,
     ...Schedule,
     ...NotesPage,    
     
-    backgroundImg: Concrete,
-    body: "#e6e6e6",
-    // Text colour
-    textColourOne: "#313131",
-    textColourTwo: "#000",
-    textColourThree: "#003cb3",
-    textColourFour: "#fff",
-    // Border colour
-    border: "none",
-    borderColourOne: "#8080ff",
-    // Background colours
-    // Copy of body colour
-    backgroundColourOne: "#e6e6e6",
-    // Welcome container header
-    backgroundColourTwo: "#fff",
-    // Bright green logout button colour
-    backgroundColourThree: "#bfbfbf",
-    // Tab non-active link colour
-    backgroundColourFour: "#d9d9d9",
-    // Toggle colour
-    backgroundColourFive: "#8cb3d9",
-    backgroundColourSix: "#b3ccff",
-    backgroundColourEight: "#8cb3d9",
-    // Opaque colours
-    backgroundColourNine: "rgba(51, 51, 51, 0.5)",
-    // Hover colours
-    hoverColourThree: "#b3b3b3",
-    hoverColourSeven: "#99bbff",
+    backgroundImg: StarrySky,
+    opaqueColour: "rgba(31, 61, 122, 0.5)",
+    // Almost black colour
+    colourOne: "#050a14",
+    // Dark blue colour
+    colourTwo: "#142a52",
+    hoverColourTwo: "#193467",
+    // Darker blue colour - input colour
+    colourThree: "#24478f",
+    // Slightly darker blue colour
+    colourFour: "#193366",
+    // Darker blue colour
+    colourFive: "#0f1e3e",
+    // Light blue colour
+    colourSix: "#2d5bb9",
+    hoverColourSix: "#2851a4",
+    // Medium blue colour
+    colourSeven: "#1f3d7a", 
+    hoverColourSeven: "#c4ff4d",
+    // Error message colour
+    colourEight: "#4d4dff",   
+    // Text colours
+    textColourOne: "#f2f2f2",
+    textColourTwo: "#0066ff",   
     // Note colours
-    noteColourZero: {
-        background: "#8cb3d9"
-    },
-    noteHoverColourZero: {
-        background: "#79a6d2"
-    },
-    noteColourOne: {
-        background: "#fff"
-    },
-    noteHoverColourOne: {
-        background: "#f2f2f2"
-    },
-    noteColourTwo: {
-        background: "#cccccc"
-    },
-    noteHoverColourTwo: {
-        background: "#bfbfbf"
-    },
-    noteColourThree: {
-        background: "#808080"
-    },
-    noteHoverColourThree: {
-        background: "#737373"
-    },
+    noteColourZero: "#24478f",
+    noteHoverColourZero: "#1f3d7a",
+    noteColourOne: "#2d5bb9",
+    noteHoverColourOne: "#2851a4",
+    noteColourTwo: "#6f94dc",
+    noteHoverColourTwo: "#5b84d7",
+    noteColourThree: "#050a14",
+    noteHoverColourThree: "#84a3e1",
 }
 
-export default LightTheme;
+export default DarkTheme;

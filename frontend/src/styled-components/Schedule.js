@@ -7,7 +7,7 @@ import { FormLabel, FormInput, FormButton } from "./SignupLogin";
 export const MainContainer = styled.main`
     min-height: 100%;
     padding: 0 20px;
-    background-color: ${({ theme }) => theme.body};
+    background-color: ${({ theme }) => theme.colourFive};
     @media(min-width: 750px){
         display: flex;
         flex-direction: row;
@@ -69,9 +69,8 @@ export const WeekText = styled.p`
     font-size: 19px;
     font-weight: 600;
     border-radius: 2px;
-    background-color: ${({ theme }) => theme.backgroundColourSix};    
+    background-color: ${({ theme }) => theme.colourSeven};    
     font-family: 'Quicksand', sans-serif;
-    border: ${({ theme }) => theme.border};
 `;
 
 export const Link = styled(BasicLink)`
@@ -82,10 +81,10 @@ export const TodayButton = styled(BasicButton)`
     width: 100%;
     font-size: 19px;
     color: ${({ theme }) => theme.textColourOne};
-    background-color: ${({ theme }) => theme.backgroundColourThree};
+    background-color: ${({ theme }) => theme.colourSix};
     padding: 12px 0;
     &:hover{
-        background-color: ${({ theme }) => theme.hoverColourThree};
+        background-color: ${({ theme }) => theme.hoverColourSix};
     }
 `;
 
@@ -102,12 +101,11 @@ export const AddButton = styled(BasicButton)`
     font-size: 19px;
     padding: 10px 20px;
     color: ${({ theme }) => theme.textColour};
-    background-color: ${({ theme }) => theme.backgroundColourSix};
+    background-color: ${({ theme }) => theme.colourSix};
     &:hover{
-        background-color: ${({ theme }) => theme.hoverColourSeven};
+        background-color: ${({ theme }) => theme.colourHoverSix};
     }
 `;
-
 
 export const AddTaskParagraph = styled(BasicP)`
     margin-left: 20px;
@@ -129,8 +127,8 @@ export const WeeklyTaskContainer = styled(BasicContainer)`
 // Weekday task component
 export const PlansText = styled(BasicP)`
     width: 100%;
-    background-color: ${({ theme }) => theme.backgroundColourThree};
-    border-bottom: 3px solid #fff;
+    background-color: ${({ theme }) => theme.colourOne};
+    border-bottom: 4px solid ${({ theme }) => theme.textColourTwo};
     margin: 15px 0 0 0;
     padding: 24px 10px;
     font-size: 19px;
@@ -143,7 +141,7 @@ export const PlansText = styled(BasicP)`
 
 export const WeekdayContainer = styled(AddTaskContainer)`
     background-color: 
-    ${props => props.className === "thirdcolour" ? props.theme.backgroundColourThree : props.theme.backgroundColourEight};
+    ${props => props.className === "thirdcolour" ? props.theme.colourSix : props.theme.colourSeven};
     padding: 7px;
     font-size: 17px;
     font-weight: 600;
@@ -161,14 +159,14 @@ export const TaskLink = styled(BasicLink)`
 `;
 
 export const TaskContainer = styled(AddTaskContainer)`
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colourOne};
   padding: 7px;
   margin-bottom: 10px;
-  border-bottom: 3px solid ${({ theme }) => theme.backgroundColourSix};
+  border: 4px solid ${({ theme }) => theme.colourSeven};
   font-family: 'Open Sans', sans-serif;
   transition: 0.3s; 
     &:hover {
-        border-bottom: 3px solid ${({ theme }) => theme.backgroundColourThree};
+        border-bottom: 4px solid ${({ theme }) => theme.hoverColourSix};
         transition: 0.3s;
     }
     ${props => props.disabled === "none" && css `
@@ -198,8 +196,7 @@ export const TaskSection = styled.section`
 
 export const TaskDiv = styled.div`
     margin: 20px 0;
-    background-color: ${({ theme }) => theme.backgroundColourSix};    
-    border: ${({ theme }) => theme.border};
+    background-color: ${({ theme }) => theme.colourOne};
     border-radius: 5px;
     width: 300px;
     height: 100%;
@@ -218,12 +215,12 @@ export const AddEditTaskLink = styled(BasicLink)`
 `;
 
 export const CloseButton = styled(BasicButton)`
-    background-color: ${({ theme }) => theme.backgroundColourThree};
+    background-color: ${({ theme }) => theme.colourTwo};
     color: ${props => props.theme.textColourOne};
     padding: 5px 7px;
     font-size: 15px;
     &:hover{
-        background-color: ${({ theme }) => theme.hoverColourThree};
+        background-color: ${({ theme }) => theme.hoverColourTwo};
     }
 `;
 
@@ -231,7 +228,7 @@ export const H2Title = styled.h2`
     font-family: 'Quicksand', sans-serif;
     font-size: 19px;
     font-weight: 600;
-    border-bottom: 3px solid ${({ theme }) => theme.backgroundColourOne};
+    border-bottom: 4px solid ${({ theme }) => theme.colourSix};
     padding-bottom: 10px;
 `;
 
@@ -241,14 +238,11 @@ export const AddEditTaskForm = styled.form`
 `;
 
 export const AddEditFormInput = styled(FormInput)`
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.colourThree};
     height: 60px;
     margin-bottom: 17px;
     padding: 0 10px;
     border-bottom: none;
-    &:focus{
-        border: 2px solid ${({ theme }) => theme.borderColourOne};
-    }
 `;
 
 export const AddEditFormLabel = styled(FormLabel)`
@@ -261,9 +255,9 @@ export const AddEditTaskButton = styled(FormButton)`
     width: 100%;
     margin: 20px 0 0 0;
     color: ${({ theme }) => theme.textColourOne};
-    background-color: ${({ theme }) => theme.backgroundColourOne};
+    background-color: ${({ theme }) => theme.colourTwo};
     &:hover{
-        background-color: ${({ theme }) => theme.backgroundColourThree};
+        background-color: ${({ theme }) => theme.hoverColourTwo};
     }
 `;
 
@@ -274,7 +268,8 @@ export const ButtonContainer = styled.div`
 `;
 
 export const EditDeleteButton = styled(BasicButton)`
-    background-color: ${({ theme }) => theme.backgroundColourOne};
+    background-color: ${({ theme }) => theme.colourTwo};
+    color: ${({ theme }) => theme.textColourOne};
     border-radius: 50%;
     height: 65px;
     width: 65px;
@@ -284,7 +279,7 @@ export const EditDeleteButton = styled(BasicButton)`
     justify-content: center;
     font-size: 14px;
     &:hover{
-        background-color: ${({ theme }) => theme.backgroundColourThree};
+        background-color: ${({ theme }) => theme.hoverColourTwo};
     }
 `;
 
