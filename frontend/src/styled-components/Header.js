@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components/macro";
+import styled from "styled-components/macro";
 import { Header } from "components/Header";
 import { BasicButton, BasicH1, BasicLink } from "styled-components/GlobalStyle";
 
