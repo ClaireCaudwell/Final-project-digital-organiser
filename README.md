@@ -12,7 +12,7 @@ The organiser contains two pages, Schedule and Notes:
     - Edit and delete notes.
     - Change the colour of the notes.
 
-Their is also a toggle button for the user to be able to choose between two different colour themes.
+I also implemented a toggle button for the user to be able to choose between a light and dark colour themes.
 
 It's a multi-page React app created using React Router, Redux and styled components for the frontend and for the backend a RESTful API created using Express and Node.js with the data being collected and stored via Mongoose and MongoDB.
 
@@ -36,8 +36,9 @@ In order to get a good overview and understanding of what my applications would 
 4. After the process of setting up the redux stores I updated each component with the relevant code relating to if it was selecting or dispatching data to and from the redux stores. 
 5. I implemented react-calendar, date and time picker and used moment.js to handle converting dates from strings to date objects and vice versa when displaying and dispatching new dates etc. 
 6. The list of weekly task objects that are returned in the GET request from the backend (if the user has created any tasks for that week) are sorted into chronological order and then pushed into a new array that matches the getDay() number that the task is equivalent to based on it's date.
-7. Once I felt all the functionality was up and running and working error free I then went on to style the application and make it suitable for mobile tablet and desktop devices using styled components. This was alot of fun to do especially when working with props and figuring out how to hide the button on the addedittask component that is shown when the screen size is larger than 750px. On the smaller view the component is shown on it's own route and the button is needed to navigate back to the scheule page.
-8. Finally I deployed both the front and backend and checked the application on Chrome, Safari and Firefox with a few differences that I fixed.
+7. Once I felt all the functionality was up and running and working error free I then went on to style the application and make it suitable for mobile tablet and desktop devices using styled components. This was alot of fun to do especially when working with props and figuring out how to hide the button on the addedittask component that is shown when the screen size is larger than 750px. On the smaller view the component is shown on it's own route and the button is needed to navigate back to the schedule page.
+8. I also implemented the toggle colour scheme using redux to change the state to either "checked" or "unchecked" depending on if the toggle checkbox was checked or not. This then controls which colour theme is show where if "checked" then show the dark theme and "unchecked" show the light theme.
+9. Finally I deployed both the front and backend and checked the application on Chrome, Safari and Firefox with a few differences that I fixed.
 
 ## View it live
 1. Backend RESTful API: https://claires-digital-organiser.herokuapp.com/
