@@ -12,7 +12,7 @@ export const TopContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-`;
+`;  
 
 export const ToggleContainer = styled.div`
     display: flex;

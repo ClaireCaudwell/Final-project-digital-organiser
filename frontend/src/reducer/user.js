@@ -90,12 +90,11 @@ export const getOrganiser = (userId, accessToken, authorized) => {
     };
 };
 
-// http://localhost:8080/users
-const SIGNUP_URL = "https://claires-digital-organiser.herokuapp.com/users";
 // Thunk and fetch for creating a new user
+// "http://localhost:8080/users"
 export const userSignup = (username, password) => {
     return(dispatch) => {
-        fetch(SIGNUP_URL, {
+        fetch("https://claires-digital-organiser.herokuapp.com/users", {
             method: "POST",
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify({ username, password }),
@@ -127,8 +126,8 @@ export const userSignup = (username, password) => {
     }
 }
 
-// "http://localhost:8080/sessions"
 // Thunk and fetch for the user to login as existing user
+// "http://localhost:8080/sessions"
 export const userLogin = (username, password) => {
     return(dispatch) => {
         fetch("https://claires-digital-organiser.herokuapp.com/sessions", {

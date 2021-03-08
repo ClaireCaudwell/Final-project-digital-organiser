@@ -162,9 +162,9 @@ export const TaskContainer = styled(AddTaskContainer)`
   background-color: ${({ theme }) => theme.colourOne};
   padding: 7px;
   margin-bottom: 10px;
-  border: 4px solid ${({ theme }) => theme.colourSeven};
   font-family: 'Open Sans', sans-serif;
-  transition: 0.3s; 
+  transition: 0.3s;
+  border: 4px solid ${props => props.className === "thirdcolour" ? props.theme.colourSix : props.theme.colourSeven}; 
     &:hover {
         border-bottom: 4px solid ${({ theme }) => theme.hoverColourSix};
         transition: 0.3s;

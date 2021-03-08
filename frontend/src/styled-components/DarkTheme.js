@@ -13,7 +13,7 @@ const DarkTheme = {
     backgroundImg: StarrySky,
     opaqueColour: "rgba(31, 61, 122, 0.5)",
     // Almost black colour
-    colourOne: "#050a14",
+    colourOne: "#0a1429",
     // Dark blue colour
     colourTwo: "#142a52",
     hoverColourTwo: "#193467",
@@ -33,6 +33,7 @@ const DarkTheme = {
     colourEight: "#4d4dff",   
     // Text colours
     textColourOne: "#f2f2f2",
+    hoverTextColourOne: "#d9d9d9",
     textColourTwo: "#0066ff",   
     // Note colours
     noteColourZero: "#24478f",
@@ -41,8 +42,8 @@ const DarkTheme = {
     noteHoverColourOne: "#2851a4",
     noteColourTwo: "#6f94dc",
     noteHoverColourTwo: "#5b84d7",
-    noteColourThree: "#050a14",
-    noteHoverColourThree: "#84a3e1",
+    noteColourThree: "#0a1429",
+    noteHoverColourThree: "#050a15",
 }
 
 export default DarkTheme;

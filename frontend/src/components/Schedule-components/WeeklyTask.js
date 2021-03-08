@@ -41,7 +41,7 @@ export const WeeklyTask = ({ tasks, dayIndex }) => {
             </WeekdayContainer>
             <>
             {tasks.map(task => (
-                <TimeTask task={task} key={task._id} dayIndex={dayIndex} />
+                <TimeTask task={task} dateSelected={dateSelected} weekdate={weekdate} key={task._id} dayIndex={dayIndex} />
             ))}
             </>           
         </>

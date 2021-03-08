@@ -56,7 +56,7 @@ export const NoteButton = styled(BasicButton)`
     background-color: ${props => props.theme[props.buttonColour]};
     color: ${({ theme }) => theme.textColourOne};
     &:hover{
-        color: #000;
+        color: ${({ theme }) => theme.hoverTextColourOne};
     }
 `;
 

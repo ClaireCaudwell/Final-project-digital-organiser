@@ -31,7 +31,7 @@ export const note = createSlice({
 });
 
 // Thunk for adding a note
-//`http://localhost:8080/users/${userId}/note`
+// `http://localhost:8080/users/${userId}/note`
 export const addNote = (userId) => {
     return(dispatch) => {
         fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/note`, {
@@ -57,8 +57,8 @@ export const addNote = (userId) => {
     };
 };
 
-// `http://localhost:8080/users/${userId}/note`
 // Thunk for getting the array of notes
+// `http://localhost:8080/users/${userId}/note`
 export const getNotes = (userId) => {
     return(dispatch) => {
         fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/note`,{
@@ -82,8 +82,9 @@ export const getNotes = (userId) => {
     };
 };
 
-// `http://localhost:8080/users/${userId}/note/${noteId}`
+
 // Thunk for updating note
+// `http://localhost:8080/users/${userId}/note/${noteId}`
 export const updateNote = (userId, noteId, noteText, colourNumber) => {
     return(dispatch) => {
         fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/note/${noteId}`, {
@@ -110,8 +111,9 @@ export const updateNote = (userId, noteId, noteText, colourNumber) => {
     };
 };
 
-// `http://localhost:8080/users/${userId}/note/${noteId}`
+
 // Thunk for deleting note
+// `http://localhost:8080/users/${userId}/note/${noteId}`
 export const deleteNote = (userId, noteId) => {
     return(dispatch) => {
         fetch(`https://claires-digital-organiser.herokuapp.com/users/${userId}/note/${noteId}`, {

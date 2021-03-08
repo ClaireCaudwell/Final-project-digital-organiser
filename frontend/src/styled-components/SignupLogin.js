@@ -42,13 +42,14 @@ export const SectionWrapper = styled.section`
     background-color: ${({ theme }) => theme.opaqueColour};
     border-radius: 5px;
     @media(min-width: 750px){
-        padding: 30px;
         max-width: 70%;
+        padding: 70px 0;
     }
     @media(min-width: 1024px){
-        padding: 30px;
         margin: 0;
-        min-width: 30%;
+        max-width: 70%;
+    }
+    @media(min-width: 1200px){
         max-width: 50%;
     }
 `;
@@ -68,6 +69,9 @@ export const TitleContainer = styled.div`
     }
     @media(min-width: 750px){
         width: 70%;
+    }
+    @media(min-width: 1024px){
+        width: 50%;
     }
 `;
 
@@ -95,6 +99,9 @@ export const FormContainer = styled(TitleContainer)`
     }
     @media(min-width: 750px){
         width: 70%;
+    }
+    @media(min-width: 1024px){
+        width: 50%;
     }
 `;
 
@@ -174,6 +181,9 @@ export const FooterContainer = styled.div`
     }
     @media(min-width: 750px){
         width: 70%;
+    }
+    @media(min-width: 1024px){
+        width: 50%;
     }
 `;
 

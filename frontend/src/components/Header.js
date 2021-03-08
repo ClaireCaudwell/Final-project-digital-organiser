@@ -22,16 +22,6 @@ import {
 export const Header = () => {
     const dispatch = useDispatch();
     
-    // const colourSchemeState = useSelector((store) => store.user.toggleColourscheme);
-
-    // const changeColourScheme = () => {
-    //     if(colourSchemeState === "unchecked"){
-    //         dispatch(user.actions.setColourScheme({ colourScheme: "checked" }));
-    //     } else {
-    //         dispatch(user.actions.setColourScheme({ colourScheme: "unchecked" }));
-    //     }
-    // };
-
     const username = useSelector((store) => store.user.login.username);
 
     const handleLogOut = () => {

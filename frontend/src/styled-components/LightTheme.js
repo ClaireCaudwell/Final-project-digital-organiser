@@ -32,6 +32,7 @@ const LightTheme = {
     colourEight: "#ffcccc",   
     // Text colours
     textColourOne: "#313131",
+    hoverTextColourOne: "#262626",
     textColourTwo: "#00e6ac",   
     // Note colours
     noteColourZero: "#ccff99",
