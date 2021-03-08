@@ -24,7 +24,7 @@ const LightTheme = {
     colourFive: "#e6ffe6",
     // Light green colour
     colourSix: "#ccff66",
-    hoverColourSix: "#a6ff4d",
+    hoverColourSix: "#d5ff80",
     // Even darker mint green colour
     colourSeven: "#b3ffcc", 
     hoverColourSeven: "#c4ff4d",

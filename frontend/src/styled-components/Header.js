@@ -89,7 +89,7 @@ export const SmallButton = styled(BasicButton)`
     font-size: 16px;
     color: ${({ theme }) => theme.textColourOne};
     &:hover{
-        background-color: ${({ theme }) => theme.colourSixHover};
+        background-color: ${({ theme }) => theme.hoverColourSix};
     }
 `;
 
