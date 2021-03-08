@@ -108,9 +108,10 @@ export const AddButton = styled(BasicButton)`
 `;
 
 export const AddTaskParagraph = styled(BasicP)`
-    margin-left: 20px;
+    margin-left: 18px;
     font-family: 'Quicksand', sans-serif;
     text-align: justify;
+    text-align: center;
 `;
 
 // Weekly Schedule list component
