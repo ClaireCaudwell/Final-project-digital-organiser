@@ -21,7 +21,7 @@ import {
     TodayButton
 
 } from "../styled-components/Schedule";
-import { AddTaskParagraph } from "../../styled-components/Schedule";
+import { AddTaskParagraph } from "../styled-components/Schedule";
 import { BasicContainer } from "../styled-components/GlobalStyle";
 
 export const Schedule = () => {
