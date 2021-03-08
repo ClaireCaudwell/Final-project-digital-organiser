@@ -21,6 +21,7 @@ import {
     TodayButton
 
 } from "../styled-components/Schedule";
+import { AddTaskParagraph } from "../../styled-components/Schedule";
 import { BasicContainer } from "../styled-components/GlobalStyle";
 
 export const Schedule = () => {
@@ -104,6 +105,11 @@ export const Schedule = () => {
                         {!showAddTask && <AddEditTask />}
                     </LeftColumn>
                     <RightColumn>
+                        {showAddTask &&
+                            <>
+                                <AddTaskParagraph>Click on a task in your schedule to edit or delete</AddTaskParagraph>
+                            </>
+                        }
                         <WeeklySchedule />
                     </RightColumn>
                 </SectionContainer>
