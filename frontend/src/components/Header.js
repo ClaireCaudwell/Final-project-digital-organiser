@@ -30,7 +30,6 @@ export const Header = () => {
         dispatch(note.actions.setLogOut());  
         dispatch(user.actions.setStatusMessage({ statusMessage: "Logged out!" }));
         dispatch(user.actions.setErrorMessage({ errorMessage: null }));
-        dispatch(user.actions.setLoading(false));
     };
 
     return (        

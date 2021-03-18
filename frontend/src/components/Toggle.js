@@ -29,7 +29,7 @@ export const Toggle = ({ frontpageToggle }) => {
             <ToggleInput
                 type="checkbox"
                 id="checkbox"
-                checked={colourSchemeState === "checked" ? true : false}
+                checked={colourSchemeState === "checked"}
                 onChange={changeColourScheme}
             />
             <Slider htmlFor="checkbox" />
