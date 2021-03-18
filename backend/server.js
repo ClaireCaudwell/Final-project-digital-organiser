@@ -9,7 +9,7 @@ const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/digitalOrganiser"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
 
-const userSchema = new mongoose.Schema( {
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
