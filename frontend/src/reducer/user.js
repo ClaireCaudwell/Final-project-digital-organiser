@@ -100,28 +100,26 @@ export const userSignup = (username, password) => {
             body: JSON.stringify({ username, password }),
         })
         .then((res) => {
-            if(!res.ok) {
-                throw new Error(
-                    "Sign up failed. Please enter a valid username and password"
-                );
-            } else {
-                dispatch(user.actions.setLoading(true));
-            }            
             return res.json();
         })
         .then((json) => {
+            if(json.error){
+                throw new Error(
+                    json.errorMessage
+                )
+            }
             dispatch(user.actions.setAccessToken({ accessToken: json.accessToken })); 
             dispatch(user.actions.setUserId({ userId: json.userId}));
             dispatch(user.actions.setUsername({ username: json.username }));        
-            dispatch(user.actions.setStatusMessage({ statusMessage: json.statusMessage})); 
-            dispatch(user.actions.setErrorMessage({ errorMessage: json.errorMessage}));
+            dispatch(user.actions.setStatusMessage({ statusMessage: json.statusMessage}));
         })
-        .catch((error) => { 
+        .catch((error) => {
+            console.log(error);
             dispatch(user.actions.setUsername({ username: null }));
             dispatch(user.actions.setErrorMessage({ errorMessage: error.toString()}));
         })
         .finally(() => {
-            dispatch(user.actions.setLoading(true));
+            dispatch(user.actions.setLoading(false));
         })
     }
 }
@@ -135,17 +133,15 @@ export const userLogin = (username, password) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password }),
         })
-        .then((res) => {
-            if(!res.ok) {
-                throw new Error(
-                    "Login failed. Please check your username and password"
-                );
-            } else {
-                dispatch(user.actions.setLoading(true));
-            }            
+        .then((res) => {            
             return res.json(); 
         })               
         .then((json) => {
+            if(json.error){
+                throw new Error(
+                    json.errorMessage
+                )
+            }
             dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }));
             dispatch(user.actions.setUserId({ userId: json.userId}));      
             dispatch(user.actions.setUsername({ username: json.username }));        
@@ -155,6 +151,9 @@ export const userLogin = (username, password) => {
         .catch((error) => { 
             dispatch(user.actions.setUsername({ username: null }));
             dispatch(user.actions.setErrorMessage({ errorMessage: error.toString()}));
+        })
+        .finally(() => {
+            dispatch(user.actions.setLoading(false));
         })
     };
 };

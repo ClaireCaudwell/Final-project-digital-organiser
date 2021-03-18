@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { userLogin, userSignup } from "reducer/user";
+import { userLogin, userSignup, user } from "reducer/user";
 import { Footer } from "../components/Footer";
 import { Toggle } from "../components/Toggle";
 import {
@@ -39,9 +39,12 @@ export const SignupLogin = () => {
         event.preventDefault();
         if(buttonClick === "signup") {
             dispatch(userSignup(username, password));
+            dispatch(user.actions.setLoading(true));
+            
         } 
         if(buttonClick === "login") {
             dispatch(userLogin(username, password));
+            dispatch(user.actions.setLoading(true));
         }
         setUsername("");
         setPassword("");        

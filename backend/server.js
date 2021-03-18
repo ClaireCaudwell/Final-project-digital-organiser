@@ -75,7 +75,7 @@ const authenticateUser = async (req, res, next) => {
     const errorMessage = "Please try logging in again";
     res.status(401).json({ error: errorMessage, error });
   }
-};
+}; 
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -139,7 +139,7 @@ app.post("/users", async (req, res) => {
     }).save();
     res.status(200).json({ userId: user._id, accessToken: user.accessToken, username: user.username, statusMessage: "User created" });
   } catch (error) {
-    res.status(400).json({errorMessage: "Could not create user", error})
+    res.status(400).json({errorMessage: "Sign up failed. Please enter a valid username and password", error})
   }
 });
 
@@ -155,7 +155,7 @@ app.post("/sessions", async (req, res) => {
       throw "User not found";
     }
   } catch (error) {
-    res.status(404).json({ errorMessage: "User not found", error });
+    res.status(404).json({ errorMessage: "Login failed. Please check your username and password", error });
   }
 });
 
