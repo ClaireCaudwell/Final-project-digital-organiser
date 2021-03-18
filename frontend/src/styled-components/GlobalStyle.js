@@ -2,7 +2,6 @@ import styled, { createGlobalStyle } from "styled-components/macro";
 import { NavLink } from "react-router-dom";
 
 export const GlobalStyle = createGlobalStyle`
-
   * {
     box-sizing: border-box;
   }

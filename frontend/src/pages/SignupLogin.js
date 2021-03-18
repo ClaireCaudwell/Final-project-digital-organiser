@@ -70,40 +70,40 @@ export const SignupLogin = () => {
                             <MainTitle>Organiser</MainTitle>
                             <SubTitle>Sign up or login to get your organiser</SubTitle>
                         </TitleContainer>
-                            <FormContainer>
-                                <Form onSubmit={handleSubmit}>
-                                    <FormLabel htmlFor="username">Username</FormLabel>
-                                        <FormInput
-                                            type="text"
-                                            value={username}
-                                            onChange={(event) => setUsername(event.target.value)}
-                                            minLength="3"
-                                            maxLength="20"
-                                            required                 
-                                        />
-                                    <FormLabel htmlFor="password">Password</FormLabel>
-                                        <FormInput
-                                            type="password"
-                                            value={password}
-                                            onChange={(event) => setPassword(event.target.value)}
-                                            minLength="5"
-                                            maxLength="30"
-                                            required              
-                                        />
-                                    {userId === null && <ErrorMessage className="error-message">{error}</ErrorMessage>}
-                                    <FormButton 
-                                        type="submit" 
-                                        onClick={() => setButtonClick("signup")}
-                                        >
-                                            Sign up
-                                        </FormButton>
-                                    <FormButton
-                                        type="submit" 
-                                        onClick={() => setButtonClick("login")}>
-                                            Login
-                                    </FormButton> 
-                                </Form>
-                            </FormContainer>
+                        <FormContainer>
+                            <Form onSubmit={handleSubmit}>
+                                <FormLabel htmlFor="username">Username</FormLabel>
+                                <FormInput
+                                    type="text"
+                                    value={username}
+                                    onChange={(event) => setUsername(event.target.value)}
+                                    minLength="3"
+                                    maxLength="20"
+                                    required                 
+                                />
+                                <FormLabel htmlFor="password">Password</FormLabel>
+                                <FormInput
+                                    type="password"
+                                    value={password}
+                                    onChange={(event) => setPassword(event.target.value)}
+                                    minLength="5"
+                                    maxLength="30"
+                                    required              
+                                />
+                                {userId === null && <ErrorMessage className="error-message">{error}</ErrorMessage>}
+                                <FormButton 
+                                    type="submit" 
+                                    onClick={() => setButtonClick("signup")}
+                                    >
+                                        Sign up
+                                    </FormButton>
+                                <FormButton
+                                    type="submit" 
+                                    onClick={() => setButtonClick("login")}>
+                                        Login
+                                </FormButton> 
+                            </Form>
+                        </FormContainer>
                         <Footer />
                     </SectionWrapper>
                         </>
